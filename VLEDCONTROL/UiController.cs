@@ -145,7 +145,7 @@ namespace VLEDCONTROL
          using (OpenFileDialog chooser = new OpenFileDialog())
          {
 
-            chooser.InitialDirectory = chooser.InitialDirectory = Tools.GetApplicationFolder();
+            chooser.InitialDirectory = Tools.GetApplicationFolder();
             chooser.Multiselect = false;
             chooser.Filter = "Profile files (*.profile)|*.profile";
             chooser.FilterIndex = 1;
@@ -163,7 +163,7 @@ namespace VLEDCONTROL
          using (SaveFileDialog chooser = new SaveFileDialog())
          {
 
-            chooser.InitialDirectory = chooser.InitialDirectory = Tools.GetApplicationFolder();
+            chooser.InitialDirectory = Tools.GetApplicationFolder();
             chooser.Filter = "Profile files (*.profile)|*.profile";
             chooser.FilterIndex = 1;
             chooser.RestoreDirectory = true;

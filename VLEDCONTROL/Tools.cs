@@ -57,6 +57,33 @@ namespace VLEDCONTROL
          e.Handled = true;
       }
 
+      internal static string ScanForFile(string path,string file)
+      {
+         string[] files = Directory.GetFiles(path);
+         foreach ( string cmp in files )
+         {
+            string name = Path.GetFileName(cmp);
+            if (name.Equals(file))
+            {
+               return cmp;
+            }
+         }
+         string[] dirs = Directory.GetDirectories(path);
+
+         foreach (string dir in dirs)
+         {
+            try
+            {
+               string match = ScanForFile(dir, file);
+               if (match != null) return match;
+            }
+            catch
+            {
+               // ignore all exceptions
+            }
+         }
+         return null;
+      }
 
       public static void NoKeyPressed(Object o, KeyPressEventArgs e)
       {

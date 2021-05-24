@@ -60,6 +60,17 @@ namespace VLEDCONTROL
          }
       }
 
+      public static void ShowVpcLedControlSetupDialog()
+      {
+         VpcLedControlSetupDialog dialog = new VpcLedControlSetupDialog();
+         if (dialog.ShowDialog() == DialogResult.OK)
+         {
+            VLED.Engine.CurrentSettings.VirpilLedControl = dialog.VpcLedControlExePath;
+            VLED.Engine.CurrentSettings.SaveAsync();
+            VLED.MainWindow.Controller.SetSettings(VLED.Engine.CurrentSettings);
+         }
+      }
+
 
       /// <summary>
       /// Main Entry Point
@@ -76,7 +87,6 @@ namespace VLEDCONTROL
          settings.Load();
          SetLogLevel(settings.LogLevel);
          LogInfo("starting VLED");
-
 
          // ======== Creating Main Window ======== 
          Application.EnableVisualStyles();
@@ -97,7 +107,7 @@ namespace VLEDCONTROL
 
       public static void DEBUG(String msg)
       {
-         Loggable.LogError(msg);
+         Loggable.LogUrgend(msg);
       }
    }
 

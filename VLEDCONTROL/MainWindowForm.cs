@@ -41,10 +41,16 @@ namespace VLEDCONTROL
       private void MainWindowForm_Load(object sender, EventArgs e)
       {
          // Check if this is the First run of VLEDCONTROL
-         if(VLED.IsFirstRun)
+         if (VLED.IsFirstRun)
          {
             VLED.ShowInstallScriptsDialog(true);
          }
+         // check if VpcLedControlExe is set
+         if(VLED.Engine.CurrentSettings.VirpilLedControl==null || VLED.Engine.CurrentSettings.VirpilLedControl.Length==0)
+         {
+            VLED.ShowVpcLedControlSetupDialog();
+         }
+
       }
 
       private void listViewProfileEvents_SelectedIndexChanged(object sender, EventArgs e)

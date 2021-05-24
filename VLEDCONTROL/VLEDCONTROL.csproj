@@ -126,6 +126,12 @@
     <Compile Include="UiController.cs" />
     <Compile Include="VLED.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VpcLedControlSetupDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VpcLedControlSetupDialog.Designer.cs">
+      <DependentUpon>VpcLedControlSetupDialog.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ColorChooserDialog.resx">
       <DependentUpon>ColorChooserDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,6 +160,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="VpcLedControlSetupDialog.resx">
+      <DependentUpon>VpcLedControlSetupDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

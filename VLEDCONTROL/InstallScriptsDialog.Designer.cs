@@ -117,7 +117,7 @@
          this.textBoxFirstInstallWarning.Location = new System.Drawing.Point(23, 154);
          this.textBoxFirstInstallWarning.Multiline = true;
          this.textBoxFirstInstallWarning.Name = "textBoxFirstInstallWarning";
-         this.textBoxFirstInstallWarning.Size = new System.Drawing.Size(748, 61);
+         this.textBoxFirstInstallWarning.Size = new System.Drawing.Size(748, 38);
          this.textBoxFirstInstallWarning.TabIndex = 7;
          this.textBoxFirstInstallWarning.Text = "This is the first execution of VLEDCONTROL. If you skip this installation, VLEDCO" +
     "NTROL will not work unless you configure the DCS yourself later.\r\n";
