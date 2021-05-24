@@ -36,14 +36,17 @@ namespace VLEDCONTROL
          {
             IsFirstRun = true;
             defaultSettings.Save();
+            Engine.CurrentSettings.Load();
+            Engine.CurrentProfile = Profile.Load(defaultSettings.DefaultProfile);
          }
-         defaultSettings.Load();
          // Create Empty Default-Profile if not present
+         Engine.CurrentSettings.Load();
          if (!System.IO.File.Exists(defaultSettings.DefaultProfile))
          {
             Profile profile = new Profile();
             profile.Name = "Default";
             profile.SaveAs(defaultSettings.DefaultProfile);
+            Engine.CurrentProfile = profile;
          }
       }
 
