@@ -190,6 +190,8 @@ namespace VLEDCONTROL
             // Colors
             this.buttonColor1.BackColor = Event.ColorOn.ToSystemColor();
             this.buttonColor2.BackColor = Event.ColorFlashing.ToSystemColor();
+            //
+            this.textBoxDescription.Text = Event.Description;
          }
          else
          {
@@ -206,6 +208,8 @@ namespace VLEDCONTROL
             // Colors
             this.buttonColor1.BackColor = Color.GRAY.ToSystemColor();
             this.buttonColor2.BackColor = Color.GRAY.ToSystemColor();
+            //
+            this.textBoxDescription.Text = "";
          }
          IsAdjusting = false;
       }

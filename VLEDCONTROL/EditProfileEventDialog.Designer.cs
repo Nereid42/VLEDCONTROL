@@ -435,6 +435,7 @@
          this.Name = "EditProfileEventDialog";
          this.ShowIcon = false;
          this.ShowInTaskbar = false;
+         this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
          this.Text = "Edit Profile Event";
          this.Load += new System.EventHandler(this.EditProfileEventDialog_Load);
          this.groupBoxEvent.ResumeLayout(false);

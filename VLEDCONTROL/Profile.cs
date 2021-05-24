@@ -90,12 +90,25 @@ namespace VLEDCONTROL
          }
       }
 
-      
-      public void AddMapping(String aircraft, int id, String name)
+      internal void RemoveMapping(MappingEntry entry)
       {
-         MappingEntry entry = new MappingEntry(aircraft, id, name);
+         MappingEntries.Remove(entry);
+         Tuple<String, int> mapid = new Tuple<String, int>(entry.Aircraft, entry.Id);
+         MapNameEntries.Remove(mapid);
+         Tuple<String, String> nameid = new Tuple<String, String>(entry.Aircraft, entry.Name);
+         MapNameEventId.Remove(nameid);
+         List<String> eventsForAircraft;
+         if (MapAircraftEvents.TryGetValue(entry.Aircraft, out eventsForAircraft))
+         {
+            eventsForAircraft.Remove(entry.Name);
+            eventsForAircraft.Sort();
+         }
+      }
+
+      internal void AddMapping(MappingEntry entry)
+      {
          MappingEntries.Add(entry);
-         Tuple<String, int> mapid = new Tuple<String, int>(aircraft, id);
+         Tuple<String, int> mapid = new Tuple<String, int>(entry.Aircraft, entry.Id);
          MapNameEntries.Add(mapid, entry);
          Tuple<String, String> nameid = new Tuple<String, String>(entry.Aircraft, entry.Name);
          MapNameEventId.Add(nameid, entry);
@@ -107,6 +120,25 @@ namespace VLEDCONTROL
             MapAircraftEvents.Add(entry.Aircraft, eventsForAircraft);
          }
          eventsForAircraft.Add(entry.Name);
+         eventsForAircraft.Sort();
+      }
+
+      public void AddMapping(String aircraft, int id, String name)
+      {
+         MappingEntry entry = new MappingEntry(aircraft, id, name);
+         AddMapping(entry);
+      }
+
+      public bool ContainsMapping(String aircraft, int id)
+      {
+         Tuple<String, int> mapid = new Tuple<String, int>(aircraft, id);
+         return MapNameEntries.ContainsKey(mapid);
+      }
+
+      public bool ContainsMapping(String aircraft, String name)
+      {
+         Tuple<String, String> nameid = new Tuple<String, String>(aircraft, name);
+         return MapNameEventId.ContainsKey(nameid);
       }
 
       public IReadOnlyCollection<String> GetEventNamesForAircraft(String aircraft)
@@ -177,6 +209,18 @@ namespace VLEDCONTROL
             this.Id = id;
             this.Aircraft = aircraft;
             this.Name = name;
+         }
+
+         public override bool Equals(object obj)
+         {
+            if (obj.GetType() != typeof(MappingEntry)) return false;
+            MappingEntry cmp = (MappingEntry)obj;
+            return this.Id == cmp.Id && this.Aircraft.Equals(cmp.Aircraft) && this.Name.Equals(cmp.Name);
+         }
+
+         public override int GetHashCode()
+         {
+            return this.Id * this.Aircraft.GetHashCode();
          }
 
          public override string ToString()
@@ -276,5 +320,7 @@ namespace VLEDCONTROL
             return result;
          }
       }
+
+
    }
 }

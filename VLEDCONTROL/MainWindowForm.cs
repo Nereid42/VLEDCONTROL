@@ -19,6 +19,7 @@ namespace VLEDCONTROL
          InitializeComponent();
          Controller = new UiController(this);
          this.comboBoxLogLevel.KeyPress += new KeyPressEventHandler(LogLevelComboBoxKeyPressed);
+         this.listViewMapping.ListViewItemSorter = new NumericListViewSorter();
       }
 
 
@@ -464,6 +465,11 @@ namespace VLEDCONTROL
       private void installExportScrriptsToolStripMenuItem_Click(object sender, EventArgs e)
       {
          VLED.ShowInstallScriptsDialog(false);
+      }
+
+      private void panel2_Paint(object sender, PaintEventArgs e)
+      {
+
       }
    }
 }

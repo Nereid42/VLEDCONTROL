@@ -14,10 +14,13 @@ namespace VLEDCONTROL
    {
       public Profile Profile;
       public Profile.MappingEntry MappingEntry;
+
       public EditMappingEntryDialog()
       {
          InitializeComponent();
          this.textBoxEventId.KeyPress += new KeyPressEventHandler(Tools.IntegerKeyPressed);
+         this.comboBoxAircraft.TextChanged += new EventHandler(this.ComboBoxAircraftTextChanged);
+
       }
 
       public String GetAircraft()
@@ -59,6 +62,55 @@ namespace VLEDCONTROL
                this.textBoxEventId.Text = (lastEntry.Id + 1).ToString();
             }
          }
+      }
+
+      private void textBoxEventId_TextChanged(object sender, EventArgs e)
+      {
+         int idOk = (MappingEntry != null) ? MappingEntry.Id : -1;
+         int id = Tools.ToInt(textBoxEventId.Text);
+         if ( id != idOk && VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, id) )
+         {
+            buttonOk.Enabled = false;
+         }
+         else
+         {
+            buttonOk.Enabled = true;
+         }
+      }
+
+      private void textBoxName_TextChanged(object sender, EventArgs e)
+      {
+         string nameOk = (MappingEntry != null) ? MappingEntry.Name : "";
+         String name = textBoxName.Text;
+         if (name != nameOk && VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, name) )
+         {
+            buttonOk.Enabled = false;
+         }
+         else
+         {
+            buttonOk.Enabled = true;
+         }
+      }
+      private void ComboBoxAircraftTextChanged(Object o, EventArgs e)
+      {
+         string nameOk = (MappingEntry != null)?MappingEntry.Name:"";
+         int idOk = (MappingEntry != null) ? MappingEntry.Id : -1;
+         String name = textBoxName.Text;
+         int id = Tools.ToInt(textBoxEventId.Text);
+         if ( ( name != nameOk && VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, name))
+         || (id != idOk && VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, id)) )
+         {
+            buttonOk.Enabled = false;
+         }
+         else
+         {
+            buttonOk.Enabled = true;
+         }
+      }
+
+      private void comboBoxAircraft_SelectedIndexChanged(object sender, EventArgs e)
+      {
+
       }
    }
 }

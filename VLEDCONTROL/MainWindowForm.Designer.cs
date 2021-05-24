@@ -79,6 +79,7 @@
          this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderCondition = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderDevice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+         this.columnHeaderLed = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderColorOn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderColorFlashing = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -142,9 +143,6 @@
          this.panelMode = new System.Windows.Forms.Panel();
          this.labelMode = new System.Windows.Forms.Label();
          this.panel1 = new System.Windows.Forms.Panel();
-         this.panel2 = new System.Windows.Forms.Panel();
-         this.radioButton1 = new System.Windows.Forms.RadioButton();
-         this.radioButton2 = new System.Windows.Forms.RadioButton();
          this.radioButtonFull = new System.Windows.Forms.RadioButton();
          this.radioButtonChanges = new System.Windows.Forms.RadioButton();
          this.buttonRegister = new System.Windows.Forms.Button();
@@ -152,7 +150,6 @@
          this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
-         this.columnHeaderLed = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -164,7 +161,6 @@
          this.groupBox1.SuspendLayout();
          this.panelMode.SuspendLayout();
          this.panel1.SuspendLayout();
-         this.panel2.SuspendLayout();
          this.SuspendLayout();
          // 
          // menuStrip1
@@ -665,6 +661,11 @@
          this.columnHeaderDevice.Text = "Device";
          this.columnHeaderDevice.Width = 50;
          // 
+         // columnHeaderLed
+         // 
+         this.columnHeaderLed.Text = "LED";
+         this.columnHeaderLed.Width = 40;
+         // 
          // columnHeaderColorOn
          // 
          this.columnHeaderColorOn.Text = "Color On";
@@ -773,6 +774,7 @@
          this.listViewMapping.MultiSelect = false;
          this.listViewMapping.Name = "listViewMapping";
          this.listViewMapping.Size = new System.Drawing.Size(479, 505);
+         this.listViewMapping.Sorting = System.Windows.Forms.SortOrder.Ascending;
          this.listViewMapping.TabIndex = 1;
          this.listViewMapping.UseCompatibleStateImageBehavior = false;
          this.listViewMapping.View = System.Windows.Forms.View.Details;
@@ -1297,7 +1299,6 @@
          // panel1
          // 
          this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         this.panel1.Controls.Add(this.panel2);
          this.panel1.Controls.Add(this.radioButtonFull);
          this.panel1.Controls.Add(this.radioButtonChanges);
          this.panel1.Location = new System.Drawing.Point(12, 229);
@@ -1305,41 +1306,7 @@
          this.panel1.Name = "panel1";
          this.panel1.Size = new System.Drawing.Size(83, 56);
          this.panel1.TabIndex = 10;
-         // 
-         // panel2
-         // 
-         this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-         this.panel2.Controls.Add(this.radioButton1);
-         this.panel2.Controls.Add(this.radioButton2);
-         this.panel2.Location = new System.Drawing.Point(-2, -2);
-         this.panel2.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-         this.panel2.Name = "panel2";
-         this.panel2.Size = new System.Drawing.Size(83, 56);
-         this.panel2.TabIndex = 11;
-         this.panel2.Visible = false;
-         // 
-         // radioButton1
-         // 
-         this.radioButton1.AutoSize = true;
-         this.radioButton1.Location = new System.Drawing.Point(3, 26);
-         this.radioButton1.Name = "radioButton1";
-         this.radioButton1.Size = new System.Drawing.Size(41, 17);
-         this.radioButton1.TabIndex = 8;
-         this.radioButton1.TabStop = true;
-         this.radioButton1.Text = "Full";
-         this.radioButton1.UseVisualStyleBackColor = true;
-         // 
-         // radioButton2
-         // 
-         this.radioButton2.AutoSize = true;
-         this.radioButton2.Checked = true;
-         this.radioButton2.Location = new System.Drawing.Point(3, 3);
-         this.radioButton2.Name = "radioButton2";
-         this.radioButton2.Size = new System.Drawing.Size(67, 17);
-         this.radioButton2.TabIndex = 7;
-         this.radioButton2.TabStop = true;
-         this.radioButton2.Text = "Changes";
-         this.radioButton2.UseVisualStyleBackColor = true;
+         this.panel1.Visible = false;
          // 
          // radioButtonFull
          // 
@@ -1399,11 +1366,6 @@
          this.progressBarEngineStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
          this.progressBarEngineStatus.TabIndex = 12;
          // 
-         // columnHeaderLed
-         // 
-         this.columnHeaderLed.Text = "LED";
-         this.columnHeaderLed.Width = 40;
-         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1449,8 +1411,6 @@
          this.panelMode.PerformLayout();
          this.panel1.ResumeLayout(false);
          this.panel1.PerformLayout();
-         this.panel2.ResumeLayout(false);
-         this.panel2.PerformLayout();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -1565,9 +1525,6 @@
       private System.Windows.Forms.Label label6;
       private System.Windows.Forms.Panel panel3;
       private System.Windows.Forms.Button buttonProfileDuplicate;
-      private System.Windows.Forms.Panel panel2;
-      private System.Windows.Forms.RadioButton radioButton1;
-      private System.Windows.Forms.RadioButton radioButton2;
       internal System.Windows.Forms.CheckBox checkBox3;
       private System.Windows.Forms.Label labelLogLevel;
       internal System.Windows.Forms.ComboBox comboBoxLogLevel;

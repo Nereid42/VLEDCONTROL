@@ -111,6 +111,7 @@
     <Compile Include="InstallScriptsDialog.Designer.cs">
       <DependentUpon>InstallScriptsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="NumericListViewSorter.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Loggable.cs" />

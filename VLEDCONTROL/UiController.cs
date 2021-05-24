@@ -311,6 +311,7 @@ namespace VLEDCONTROL
                   item.SubItems.Add(entry.Aircraft);
                   item.SubItems.Add(entry.Name);
                }
+               MainWindow.listViewMapping.Sort();
             })
          );
          SetTextBoxText(MainWindow.textBoxProfileName, profile.Name);
@@ -444,16 +445,19 @@ namespace VLEDCONTROL
          {
             String aircraft = dialog.GetAircraft();
             int id = dialog.GetId();
-            String name = dialog.GetName();
-            VLED.Engine.CurrentProfile.AddMapping(aircraft, id, name);
-            MainWindow.listViewMapping.BeginInvoke(
-            new Action(() =>
+            if(!VLED.Engine.CurrentProfile.ContainsMapping(aircraft,id))
             {
-               System.Windows.Forms.ListViewItem item = MainWindow.listViewMapping.Items.Add(id.ToString());
-               item.SubItems.Add(aircraft);
-               item.SubItems.Add(name);
-            })
-            );
+               String name = dialog.GetName();
+               VLED.Engine.CurrentProfile.AddMapping(aircraft, id, name);
+               MainWindow.listViewMapping.BeginInvoke(
+               new Action(() =>
+               {
+                  System.Windows.Forms.ListViewItem item = MainWindow.listViewMapping.Items.Add(id.ToString());
+                  item.SubItems.Add(aircraft);
+                  item.SubItems.Add(name);
+               })
+               );
+            }
          }
       }
 
@@ -469,6 +473,11 @@ namespace VLEDCONTROL
             entry.Aircraft = dialog.GetAircraft();
             entry.Id = dialog.GetId();
             entry.Name = dialog.GetName();
+
+            // Reinsert for correcct internal Mapping
+            VLED.Engine.CurrentProfile.RemoveMapping(entry);
+            VLED.Engine.CurrentProfile.AddMapping(entry);
+
             MainWindow.listViewMapping.BeginInvoke(
             new Action(() =>
             {
@@ -476,6 +485,7 @@ namespace VLEDCONTROL
                item.Text = entry.Id.ToString();
                item.SubItems[1].Text = entry.Aircraft;
                item.SubItems[2].Text = entry.Name;
+               MainWindow.listViewMapping.Sort();
                })
             );
          }
