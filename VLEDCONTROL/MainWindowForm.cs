@@ -422,13 +422,11 @@ namespace VLEDCONTROL
 
          if (listViewMapping.SelectedIndices.Count == 0)
          {
-            buttonMappingAdd.Enabled = false;
             buttonMappingRemove.Enabled = false;
             buttonMappingEdit.Enabled = false;
          }
          else
          {
-            buttonMappingAdd.Enabled = true;
             buttonMappingRemove.Enabled = true;
             buttonMappingEdit.Enabled = true;
          }
