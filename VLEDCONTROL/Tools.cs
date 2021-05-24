@@ -69,6 +69,23 @@ namespace VLEDCONTROL
          return System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
       }
 
+      internal static void MakeDir(string path)
+      {
+         if (!Directory.Exists(path))
+         {
+            Directory.CreateDirectory(path);
+         }
+      }
+
+      internal static void CopyDcsScripts(string dcsBasePath)
+      {
+         MakeDir(dcsBasePath + "/Scripts");
+         MakeDir(dcsBasePath + "/Scripts/Hooks");
+         MakeDir(dcsBasePath + "/Scripts/Hooks/vled");
+         System.IO.File.Copy("Scripts/Hooks/VledExportHook.lua", dcsBasePath + "/Scripts/Hooks/VledExportHook.lua",true);
+         System.IO.File.Copy("Scripts/Hooks/vled/VledExport.lua", dcsBasePath + "/Scripts/Hooks/vled/VledExport.lua",true);
+      }
+
       public static Process ExecuteCommand(string command, String arguments)
       {
          if (Loggable.IsLoggable(Loggable.LEVEL.DEBUG)) Loggable.LogDebug("EXECUTE: " + command + " " + arguments);
