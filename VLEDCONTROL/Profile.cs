@@ -105,22 +105,46 @@ namespace VLEDCONTROL
          }
       }
 
+      public void RemoveMapping(String aircraft, int id)
+      {
+         MappingEntry entry;
+
+         Tuple<String, int> mapid = new Tuple<String, int>(aircraft, id);
+         if (MapNameEntries.TryGetValue(mapid, out entry))
+         {
+            RemoveMapping(entry);
+         }
+      }
+
       internal void AddMapping(MappingEntry entry)
       {
-         MappingEntries.Add(entry);
-         Tuple<String, int> mapid = new Tuple<String, int>(entry.Aircraft, entry.Id);
-         MapNameEntries.Add(mapid, entry);
-         Tuple<String, String> nameid = new Tuple<String, String>(entry.Aircraft, entry.Name);
-         MapNameEventId.Add(nameid, entry);
-         // add m,apping for aircraft events
-         List<String> eventsForAircraft;
-         if (!MapAircraftEvents.TryGetValue(entry.Aircraft, out eventsForAircraft))
+         try
          {
-            eventsForAircraft = new List<String>();
-            MapAircraftEvents.Add(entry.Aircraft, eventsForAircraft);
+            MappingEntries.Add(entry);
+            Tuple<String, int> mapid = new Tuple<String, int>(entry.Aircraft, entry.Id);
+            MapNameEntries.Add(mapid, entry);
+            Tuple<String, String> nameid = new Tuple<String, String>(entry.Aircraft, entry.Name);
+            MapNameEventId.Add(nameid, entry);
+            // add m,apping for aircraft events
+            List<String> eventsForAircraft;
+            if (!MapAircraftEvents.TryGetValue(entry.Aircraft, out eventsForAircraft))
+            {
+               eventsForAircraft = new List<String>();
+               MapAircraftEvents.Add(entry.Aircraft, eventsForAircraft);
+            }
+            eventsForAircraft.Add(entry.Name);
+            eventsForAircraft.Sort();
+            //
+            foreach (MappingEntry e in MappingEntries)
+            {
+               LogUrgend(">> " + e);
+            }
+         } 
+         catch(Exception e)
+         {
+            LogError("failed to add mapping entry "+entry);
+            LogException(e);
          }
-         eventsForAircraft.Add(entry.Name);
-         eventsForAircraft.Sort();
       }
 
       public void AddMapping(String aircraft, int id, String name)
@@ -198,7 +222,7 @@ namespace VLEDCONTROL
          ProfileEvents.RemoveAt(index);
       }
 
-      public class MappingEntry
+      public class MappingEntry : IComparable
       {
          public int Id { get; set; }
          public String Aircraft { get; set; }
@@ -226,6 +250,12 @@ namespace VLEDCONTROL
          public override string ToString()
          {
             return Id + ":" + Aircraft + ":" + Name;
+         }
+
+         public int CompareTo(object obj)
+         {
+            if (!(obj is MappingEntry)) return 1;
+            return this.CompareTo((MappingEntry)obj);
          }
       }
 
@@ -320,7 +350,6 @@ namespace VLEDCONTROL
             return result;
          }
       }
-
 
    }
 }

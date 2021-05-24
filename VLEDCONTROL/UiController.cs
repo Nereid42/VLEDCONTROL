@@ -427,7 +427,11 @@ namespace VLEDCONTROL
 
       internal void RemoveMapping(int index)
       {
-         VLED.Engine.CurrentProfile.MappingEntries.RemoveAt(index);
+         System.Windows.Forms.ListViewItem item = MainWindow.listViewMapping.Items[index];
+         int id = Tools.ToInt(item.Text);
+         String aircraft = item.SubItems[1].Text;
+
+         VLED.Engine.CurrentProfile.RemoveMapping(aircraft,id);
          MainWindow.listViewMapping.BeginInvoke(
          new Action(() =>
          {
