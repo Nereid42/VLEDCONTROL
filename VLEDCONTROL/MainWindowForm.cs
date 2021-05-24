@@ -210,7 +210,11 @@ namespace VLEDCONTROL
 
       private void setLEDCOntrolToolStripMenuItem_Click(object sender, EventArgs e)
       {
-         Controller.ChooseVirpilLedControl();
+         String path = Controller.ChooseVirpilLedControl();
+         if (path != null)
+         {
+            textBoxSettingsVirpilLedControl.Text = path;
+         }
       }
 
       private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)

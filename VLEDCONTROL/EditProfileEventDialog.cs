@@ -237,9 +237,18 @@ namespace VLEDCONTROL
          }
       }
 
-      private void button1_Click(object sender, EventArgs e)
+
+      private DialogResult OpenColorChooserAtButton(Button button)
       {
-         if( colorChooser.ShowDialog() == DialogResult.OK)
+         Point componentLocation = button.PointToScreen(Point.Empty);
+         colorChooser.Location = new Point(componentLocation.X, button.Size.Height + componentLocation.Y);
+         colorChooser.StartPosition = FormStartPosition.Manual;
+         return colorChooser.ShowDialog();
+      }
+
+      private void button1_Click(object sender, EventArgs e)
+      {                  
+         if (OpenColorChooserAtButton(buttonColor1) == DialogResult.OK)
          {
             buttonColor1.BackColor = colorChooser.ResultColor;
          }
@@ -247,7 +256,7 @@ namespace VLEDCONTROL
 
       private void buttonColor2_Click(object sender, EventArgs e)
       {
-         if (colorChooser.ShowDialog() == DialogResult.OK)
+         if (OpenColorChooserAtButton(buttonColor2) == DialogResult.OK)
          {
             buttonColor2.BackColor = colorChooser.ResultColor;
          }

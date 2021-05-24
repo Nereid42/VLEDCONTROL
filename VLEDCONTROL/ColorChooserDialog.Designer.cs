@@ -409,6 +409,7 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+         this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
          this.ClientSize = new System.Drawing.Size(251, 194);
          this.ControlBox = false;
          this.Controls.Add(this.textBoxColorCodes);
@@ -445,7 +446,8 @@
          this.Name = "ColorChooserDialog";
          this.ShowIcon = false;
          this.ShowInTaskbar = false;
-         this.Text = "ColorChooserDialog";
+         this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+         this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
          this.TopMost = true;
          this.Load += new System.EventHandler(this.ColorChooserDialog_Load);
          ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRed)).EndInit();
