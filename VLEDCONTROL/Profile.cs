@@ -144,9 +144,9 @@ namespace VLEDCONTROL
          return 0;
       }
 
-      public ProfileEvent AddProfileEvent(String aircraft, int id, String condition1, double value1, String condition2, double value2, int deviceId, int ledNumber, Color colorOn, Color colorFlashing)
+      public ProfileEvent AddProfileEvent(String aircraft, int id, String condition1, double value1, String condition2, double value2, int deviceId, int ledNumber, Color colorOn, Color colorFlashing, String description)
       {
-         ProfileEvent entry = new ProfileEvent(aircraft, id, condition1, value1, condition2, value2, deviceId, ledNumber, colorOn, colorFlashing);
+         ProfileEvent entry = new ProfileEvent(aircraft, id, condition1, value1, condition2, value2, deviceId, ledNumber, colorOn, colorFlashing, description);
          AddProfileEntry(entry);
          return entry;
       }
@@ -242,7 +242,7 @@ namespace VLEDCONTROL
          }
 
 
-         public ProfileEvent(String aircraft, int id, String primaryCondition, double primaryValue, String secondaryCondition, double secondaryValue,  int deviceId, int ledNumber, Color colorOn, Color colorFlashing)
+         public ProfileEvent(String aircraft, int id, String primaryCondition, double primaryValue, String secondaryCondition, double secondaryValue,  int deviceId, int ledNumber, Color colorOn, Color colorFlashing, String description)
          {
             this.Id = id;
             this.Aircraft = aircraft;
@@ -254,6 +254,7 @@ namespace VLEDCONTROL
             this.ColorFlashing = colorFlashing;
             this.DeviceId = deviceId;
             this.LedNumber = ledNumber;
+            this.Description = description;
          }
 
 
@@ -268,7 +269,7 @@ namespace VLEDCONTROL
          {
             if (PrimaryCondition.Equals("S")) return "STATIC";
             String result ="X " + PrimaryCondition + " " + PrimaryValue.ToString("0.00");
-            if (SecondaryCondition!=null && SecondaryCondition.Length>0)
+            if (SecondaryCondition!=null && SecondaryCondition.Length>0 && !SecondaryCondition.Equals("NONE"))
             {
                result += " AND X " + SecondaryCondition + " " + SecondaryValue.ToString("0.00") ;
             }

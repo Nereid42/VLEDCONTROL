@@ -152,6 +152,7 @@
          this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
+         this.columnHeaderLed = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -489,6 +490,7 @@
          // radioButtonNewElementsAppend
          // 
          this.radioButtonNewElementsAppend.AutoSize = true;
+         this.radioButtonNewElementsAppend.Checked = true;
          this.radioButtonNewElementsAppend.Location = new System.Drawing.Point(3, 49);
          this.radioButtonNewElementsAppend.Name = "radioButtonNewElementsAppend";
          this.radioButtonNewElementsAppend.Size = new System.Drawing.Size(62, 17);
@@ -504,19 +506,16 @@
          this.radioButtonNewElementsInsertAfter.Name = "radioButtonNewElementsInsertAfter";
          this.radioButtonNewElementsInsertAfter.Size = new System.Drawing.Size(47, 17);
          this.radioButtonNewElementsInsertAfter.TabIndex = 8;
-         this.radioButtonNewElementsInsertAfter.TabStop = true;
          this.radioButtonNewElementsInsertAfter.Text = "After";
          this.radioButtonNewElementsInsertAfter.UseVisualStyleBackColor = true;
          // 
          // radioButtonNewElementsInsertBefore
          // 
          this.radioButtonNewElementsInsertBefore.AutoSize = true;
-         this.radioButtonNewElementsInsertBefore.Checked = true;
          this.radioButtonNewElementsInsertBefore.Location = new System.Drawing.Point(3, 3);
          this.radioButtonNewElementsInsertBefore.Name = "radioButtonNewElementsInsertBefore";
          this.radioButtonNewElementsInsertBefore.Size = new System.Drawing.Size(56, 17);
          this.radioButtonNewElementsInsertBefore.TabIndex = 7;
-         this.radioButtonNewElementsInsertBefore.TabStop = true;
          this.radioButtonNewElementsInsertBefore.Text = "Before";
          this.radioButtonNewElementsInsertBefore.UseVisualStyleBackColor = true;
          // 
@@ -625,6 +624,7 @@
             this.columnHeaderName,
             this.columnHeaderCondition,
             this.columnHeaderDevice,
+            this.columnHeaderLed,
             this.columnHeaderColorOn,
             this.columnHeaderColorFlashing,
             this.columnHeaderDescription});
@@ -1399,6 +1399,11 @@
          this.progressBarEngineStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
          this.progressBarEngineStatus.TabIndex = 12;
          // 
+         // columnHeaderLed
+         // 
+         this.columnHeaderLed.Text = "LED";
+         this.columnHeaderLed.Width = 40;
+         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1559,9 +1564,6 @@
       private System.Windows.Forms.Label label5;
       private System.Windows.Forms.Label label6;
       private System.Windows.Forms.Panel panel3;
-      private System.Windows.Forms.RadioButton radioButtonNewElementsAppend;
-      private System.Windows.Forms.RadioButton radioButtonNewElementsInsertAfter;
-      private System.Windows.Forms.RadioButton radioButtonNewElementsInsertBefore;
       private System.Windows.Forms.Button buttonProfileDuplicate;
       private System.Windows.Forms.Panel panel2;
       private System.Windows.Forms.RadioButton radioButton1;
@@ -1576,6 +1578,10 @@
       internal System.Windows.Forms.Button buttonMainStart;
       private System.Windows.Forms.Button buttonRegisterFromProfile;
       internal System.Windows.Forms.ProgressBar progressBarEngineStatus;
+      internal System.Windows.Forms.RadioButton radioButtonNewElementsAppend;
+      internal System.Windows.Forms.RadioButton radioButtonNewElementsInsertAfter;
+      internal System.Windows.Forms.RadioButton radioButtonNewElementsInsertBefore;
+      private System.Windows.Forms.ColumnHeader columnHeaderLed;
    }
 }
 

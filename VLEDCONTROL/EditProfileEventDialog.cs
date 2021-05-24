@@ -83,6 +83,12 @@ namespace VLEDCONTROL
          return Color.FromSystemColor(this.buttonColor2.BackColor);
       }
 
+      internal string GetDescription()
+      {
+         return this.textBoxDescription.Text;
+      }
+
+
       private void ComboBoxAircraftTextChanged(Object o, EventArgs e)
       {
          String aircraft = this.comboBoxAircraft.Text;
@@ -359,6 +365,14 @@ namespace VLEDCONTROL
          }
       }
 
+      private void textBox1_TextChanged(object sender, EventArgs e)
+      {
 
+      }
+
+      private void buttonOk_Click(object sender, EventArgs e)
+      {
+
+      }
    }
 }

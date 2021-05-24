@@ -48,17 +48,20 @@
          this.comboBoxLed = new System.Windows.Forms.ComboBox();
          this.buttonColor2 = new System.Windows.Forms.Button();
          this.buttonColor1 = new System.Windows.Forms.Button();
-         this.button3 = new System.Windows.Forms.Button();
-         this.button4 = new System.Windows.Forms.Button();
+         this.buttonOk = new System.Windows.Forms.Button();
+         this.buttonCancel = new System.Windows.Forms.Button();
          this.groupBoxTestLed = new System.Windows.Forms.GroupBox();
          this.label6 = new System.Windows.Forms.Label();
          this.textBoxCommand = new System.Windows.Forms.TextBox();
          this.buttonTestColor2 = new System.Windows.Forms.Button();
          this.buttonTestColor1 = new System.Windows.Forms.Button();
+         this.groupBoxDescription = new System.Windows.Forms.GroupBox();
+         this.textBoxDescription = new System.Windows.Forms.TextBox();
          this.groupBoxEvent.SuspendLayout();
          this.groupBoxCondition.SuspendLayout();
          this.groupBoxLed.SuspendLayout();
          this.groupBoxTestLed.SuspendLayout();
+         this.groupBoxDescription.SuspendLayout();
          this.SuspendLayout();
          // 
          // label1
@@ -318,25 +321,26 @@
          this.buttonColor1.UseVisualStyleBackColor = true;
          this.buttonColor1.Click += new System.EventHandler(this.button1_Click);
          // 
-         // button3
+         // buttonOk
          // 
-         this.button3.DialogResult = System.Windows.Forms.DialogResult.OK;
-         this.button3.Location = new System.Drawing.Point(497, 231);
-         this.button3.Name = "button3";
-         this.button3.Size = new System.Drawing.Size(75, 23);
-         this.button3.TabIndex = 15;
-         this.button3.Text = "OK";
-         this.button3.UseVisualStyleBackColor = true;
+         this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+         this.buttonOk.Location = new System.Drawing.Point(497, 258);
+         this.buttonOk.Name = "buttonOk";
+         this.buttonOk.Size = new System.Drawing.Size(75, 23);
+         this.buttonOk.TabIndex = 15;
+         this.buttonOk.Text = "OK";
+         this.buttonOk.UseVisualStyleBackColor = true;
+         this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
          // 
-         // button4
+         // buttonCancel
          // 
-         this.button4.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-         this.button4.Location = new System.Drawing.Point(578, 231);
-         this.button4.Name = "button4";
-         this.button4.Size = new System.Drawing.Size(75, 23);
-         this.button4.TabIndex = 16;
-         this.button4.Text = "Cancel";
-         this.button4.UseVisualStyleBackColor = true;
+         this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+         this.buttonCancel.Location = new System.Drawing.Point(578, 258);
+         this.buttonCancel.Name = "buttonCancel";
+         this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+         this.buttonCancel.TabIndex = 16;
+         this.buttonCancel.Text = "Cancel";
+         this.buttonCancel.UseVisualStyleBackColor = true;
          // 
          // groupBoxTestLed
          // 
@@ -395,15 +399,35 @@
          this.buttonTestColor1.UseVisualStyleBackColor = false;
          this.buttonTestColor1.Click += new System.EventHandler(this.buttonTestColor1_Click);
          // 
+         // groupBoxDescription
+         // 
+         this.groupBoxDescription.Controls.Add(this.textBoxDescription);
+         this.groupBoxDescription.Location = new System.Drawing.Point(16, 222);
+         this.groupBoxDescription.Name = "groupBoxDescription";
+         this.groupBoxDescription.Size = new System.Drawing.Size(328, 66);
+         this.groupBoxDescription.TabIndex = 18;
+         this.groupBoxDescription.TabStop = false;
+         this.groupBoxDescription.Text = "Description";
+         // 
+         // textBoxDescription
+         // 
+         this.textBoxDescription.Location = new System.Drawing.Point(7, 19);
+         this.textBoxDescription.Multiline = true;
+         this.textBoxDescription.Name = "textBoxDescription";
+         this.textBoxDescription.Size = new System.Drawing.Size(315, 37);
+         this.textBoxDescription.TabIndex = 0;
+         this.textBoxDescription.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+         // 
          // EditProfileEventDialog
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(666, 265);
+         this.ClientSize = new System.Drawing.Size(669, 293);
          this.ControlBox = false;
+         this.Controls.Add(this.groupBoxDescription);
          this.Controls.Add(this.groupBoxTestLed);
-         this.Controls.Add(this.button4);
-         this.Controls.Add(this.button3);
+         this.Controls.Add(this.buttonCancel);
+         this.Controls.Add(this.buttonOk);
          this.Controls.Add(this.groupBoxLed);
          this.Controls.Add(this.groupBoxCondition);
          this.Controls.Add(this.groupBoxEvent);
@@ -421,6 +445,8 @@
          this.groupBoxLed.PerformLayout();
          this.groupBoxTestLed.ResumeLayout(false);
          this.groupBoxTestLed.PerformLayout();
+         this.groupBoxDescription.ResumeLayout(false);
+         this.groupBoxDescription.PerformLayout();
          this.ResumeLayout(false);
 
       }
@@ -446,13 +472,15 @@
       private System.Windows.Forms.ComboBox comboBoxLed;
       private System.Windows.Forms.Button buttonColor2;
       private System.Windows.Forms.Button buttonColor1;
-      private System.Windows.Forms.Button button3;
-      private System.Windows.Forms.Button button4;
+      private System.Windows.Forms.Button buttonOk;
+      private System.Windows.Forms.Button buttonCancel;
       private System.Windows.Forms.ComboBox comboBoxDeviceName;
       private System.Windows.Forms.GroupBox groupBoxTestLed;
       private System.Windows.Forms.Label label6;
       private System.Windows.Forms.TextBox textBoxCommand;
       private System.Windows.Forms.Button buttonTestColor2;
       private System.Windows.Forms.Button buttonTestColor1;
+      private System.Windows.Forms.GroupBox groupBoxDescription;
+      private System.Windows.Forms.TextBox textBoxDescription;
    }
 }

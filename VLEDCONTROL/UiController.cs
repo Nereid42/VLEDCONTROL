@@ -298,6 +298,7 @@ namespace VLEDCONTROL
                   item.SubItems.Add(profile.MapPropertyName(entry.Aircraft,entry.Id));
                   item.SubItems.Add(entry.GetConditionsAsString());
                   item.SubItems.Add(entry.DeviceId.ToString());
+                  item.SubItems.Add(entry.LedNumber.ToString());
                   item.SubItems.Add(entry.ColorOn.AsString());
                   item.SubItems.Add(entry.ColorFlashing.AsString());
                   item.SubItems.Add(entry.Description);
@@ -496,17 +497,32 @@ namespace VLEDCONTROL
             int led = dialog.GetLedNumber();
             Color color1 = dialog.GetColorOn();
             Color color2 = dialog.GetColorFlashing();
+            String description = dialog.GetDescription();
 
-            Profile.ProfileEvent newEvent = VLED.Engine.CurrentProfile.AddProfileEvent(aircraft, eventId, condition1, value1, condition2, value2, deviceId, led, color1, color2);
+            Profile.ProfileEvent newEvent = VLED.Engine.CurrentProfile.AddProfileEvent(aircraft, eventId, condition1, value1, condition2, value2, deviceId, led, color1, color2, description);
+
+            int index = MainWindow.listViewProfileEvents.Items.Count;
+            if(MainWindow.listViewProfileEvents.SelectedIndices.Count>0)
+            {
+               if(MainWindow.radioButtonNewElementsInsertAfter.Checked)
+               {
+                  index = MainWindow.listViewProfileEvents.SelectedIndices[0] +1;
+               } 
+               else if (MainWindow.radioButtonNewElementsInsertBefore.Checked && index>0)
+               {
+                  index = MainWindow.listViewProfileEvents.SelectedIndices[0];
+               }
+            }
 
             MainWindow.listViewProfileEvents.BeginInvoke(
                new Action(() =>
                {
-                  System.Windows.Forms.ListViewItem item = MainWindow.listViewProfileEvents.Items.Add(newEvent.Id.ToString());
+                  System.Windows.Forms.ListViewItem item = MainWindow.listViewProfileEvents.Items.Insert(index,newEvent.Id.ToString());
                   item.SubItems.Add(newEvent.Aircraft);
                   item.SubItems.Add(VLED.Engine.CurrentProfile.MapPropertyName(newEvent.Aircraft, newEvent.Id));
                   item.SubItems.Add(newEvent.GetConditionsAsString());
                   item.SubItems.Add(newEvent.DeviceId.ToString());
+                  item.SubItems.Add(newEvent.LedNumber.ToString());
                   item.SubItems.Add(newEvent.ColorOn.AsString());
                   item.SubItems.Add(newEvent.ColorFlashing.AsString());
                   item.SubItems.Add(newEvent.Description);
@@ -535,6 +551,7 @@ namespace VLEDCONTROL
                edit.LedNumber = dialog.GetLedNumber();
                edit.ColorOn = dialog.GetColorOn();
                edit.ColorFlashing = dialog.GetColorFlashing();
+               edit.Description = dialog.GetDescription();
 
                MainWindow.listViewProfileEvents.BeginInvoke(
                   new Action(() =>
@@ -545,9 +562,10 @@ namespace VLEDCONTROL
                      item.SubItems[2].Text = VLED.Engine.CurrentProfile.MapPropertyName(edit.Aircraft, edit.Id);
                      item.SubItems[3].Text = edit.GetConditionsAsString();
                      item.SubItems[4].Text = edit.DeviceId.ToString();
-                     item.SubItems[5].Text = edit.ColorOn.AsString();
-                     item.SubItems[6].Text = edit.ColorFlashing.AsString();
-                     item.SubItems[7].Text = edit.Description;
+                     item.SubItems[5].Text = edit.LedNumber.ToString();
+                     item.SubItems[6].Text = edit.ColorOn.AsString();
+                     item.SubItems[7].Text = edit.ColorFlashing.AsString();
+                     item.SubItems[8].Text = edit.Description;
                   })
                );
             }

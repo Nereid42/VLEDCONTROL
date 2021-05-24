@@ -19,7 +19,7 @@ namespace VLEDCONTROL
       public double UpdateInterval { get; set; } = 0.1;
       public double DataInterval { get; set; } = 0.3;
       public int FlashingCycles { get; set; } = 5;
-      public Loggable.LEVEL LogLevel { get; set; } = Loggable.LEVEL.DEBUG;
+      public Loggable.LEVEL LogLevel { get; set; } = Loggable.LEVEL.INFO;
 
       public static bool FileExists()
       {
