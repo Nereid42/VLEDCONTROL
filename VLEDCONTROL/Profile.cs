@@ -166,7 +166,6 @@ namespace VLEDCONTROL
          ProfileEvents.RemoveAt(index);
       }
 
-
       public class MappingEntry
       {
          public int Id { get; set; }

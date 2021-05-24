@@ -26,6 +26,24 @@ namespace VLEDCONTROL
          Exit();
       }
 
+      private static void EnvironmentSetup()
+      {
+         // Create Settings if not present
+         Settings defaultSettings = new Settings();
+         if ( ! Settings.FileExists() )
+         {
+            defaultSettings.Save();
+         }
+         defaultSettings.Load();
+         // Create Empty Default-Profile if not present
+         if (!System.IO.File.Exists(defaultSettings.DefaultProfile))
+         {
+            Profile profile = new Profile();
+            profile.Name = "Default";
+            profile.SaveAs(defaultSettings.DefaultProfile);
+         }
+      }
+
 
       /// <summary>
       /// Main Entry Point
@@ -33,16 +51,15 @@ namespace VLEDCONTROL
       [STAThread]
       static void Main()
       {
+         // ======== Setup´========
+         // Add all missing files, if nessessary
+         EnvironmentSetup();
+
          // ======== Init Logging ======== 
          Settings settings = new Settings();
          settings.Load();
          SetLogLevel(settings.LogLevel);
          LogInfo("starting VLED");
-
-         Color a = new Color(1, 2, 3);
-         Color b = new Color(1, 2, 3);
-         LogDebug("A EQ B:" + (a.Equals(b)));
-         LogDebug("A==B  :" + (a==b));
 
 
          // ======== Creating Main Window ======== 

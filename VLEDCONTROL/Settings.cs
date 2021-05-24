@@ -14,12 +14,17 @@ namespace VLEDCONTROL
       private const string FILENAME = "vled.ini";
 
       public List<VirpilDevice> Devices { get; set; } = new List<VirpilDevice>();
-      public String VirpilLedControl { get; set; } = "T:/Spiele/Eagle Dynamics/VPC Software Suite/tools/VPC_LED_Control.exe";
-      public String DefaultProfile { get; set; } = "default.profile";
+      public String VirpilLedControl { get; set; } = "";
+      public String DefaultProfile { get; set; } = "Default.profile";
       public double UpdateInterval { get; set; } = 0.1;
       public double DataInterval { get; set; } = 0.3;
       public int FlashingCycles { get; set; } = 5;
       public Loggable.LEVEL LogLevel { get; set; } = Loggable.LEVEL.DEBUG;
+
+      public static bool FileExists()
+      {
+         return System.IO.File.Exists(FILENAME);
+      }
 
       public void Load()
       {
