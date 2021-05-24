@@ -105,6 +105,12 @@
     <Compile Include="EditProfileEventDialog.Designer.cs">
       <DependentUpon>EditProfileEventDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="InstallScriptsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InstallScriptsDialog.Designer.cs">
+      <DependentUpon>InstallScriptsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Loggable.cs" />
@@ -160,4 +166,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir Scripts\Hooks\vled
+copy /Y ..\..\..\Scripts\Hooks\VledExportHook.lua Scripts\Hooks
+copy /Y ..\..\..\Scripts\Hooks\vled\VledExport.lua Scripts\Hooks\vled</PostBuildEvent>
+  </PropertyGroup>
 </Project>
