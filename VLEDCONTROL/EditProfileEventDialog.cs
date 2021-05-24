@@ -278,18 +278,21 @@ namespace VLEDCONTROL
          {
             Settings settings = VLED.Engine.CurrentSettings;
             VirpilDevice device = settings.GetDevice(Tools.ToInt(this.textBoxDeviceId.Text));
-            int led = IndexOfSelectedItem(this.comboBoxLed);
+            if(device!=null)
+            {
+               int led = IndexOfSelectedItem(this.comboBoxLed);
 
-            String command = settings.VirpilLedControl;
-            String r = button.BackColor.R.ToString("X2");
-            String g = button.BackColor.G.ToString("X2");
-            String b = button.BackColor.B.ToString("X2");
+               String command = settings.VirpilLedControl;
+               String r = button.BackColor.R.ToString("X2");
+               String g = button.BackColor.G.ToString("X2");
+               String b = button.BackColor.B.ToString("X2");
 
-            String arguments = device.USB_VID + " " + device.USB_PID + " " + led + " " + r + " " + g + " " + b;
+               String arguments = device.USB_VID + " " + device.USB_PID + " " + led + " " + r + " " + g + " " + b;
 
-            this.textBoxCommand.Text = command + " " + arguments;
-            this.textBoxCommand.Select(this.textBoxCommand.Text.Length, 0);
-            Tools.ExecuteCommand(command, arguments);
+               this.textBoxCommand.Text = command + " " + arguments;
+               this.textBoxCommand.Select(this.textBoxCommand.Text.Length, 0);
+               Tools.ExecuteCommand(command, arguments);
+            }
          }
          else
          {
