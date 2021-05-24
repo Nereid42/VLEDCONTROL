@@ -258,41 +258,49 @@ namespace VLEDCONTROL
 
       private void Run()
       {
-         LogInfo("starting engine...");
-         IsRunning = true;
-
-         if(Controller!=null)
+         try
          {
-            Controller.SetEngineStarted(true);
-         }
 
-         Receiver.Start();
+            LogInfo("starting engine...");
+            IsRunning = true;
 
-         while (!this.StopRequest)
-         {
-            if (IsLoggable(LEVEL.TRACE)) LogTrace("main loop cycle "+Cycle);
-
-            if (!ControlerInitDone && Controller != null)
+            if (Controller != null)
             {
-               InitUiController();
+               Controller.SetEngineStarted(true);
             }
-            
-            CalculateLEDs();
-            if(IsLoggable(LEVEL.DEBUG)) LogDebug("Commdands executed: "+Executes);
 
-            Thread.Sleep(CurrentSettings.GetUpdateIntervalInMillis());
-            Cycle++;
+            Receiver.Start();
+
+            while (!this.StopRequest)
+            {
+               if (IsLoggable(LEVEL.TRACE)) LogTrace("main loop cycle " + Cycle);
+
+               if (!ControlerInitDone && Controller != null)
+               {
+                  InitUiController();
+               }
+
+               CalculateLEDs();
+               if (IsLoggable(LEVEL.DEBUG)) LogDebug("Commdands executed: " + Executes);
+
+               Thread.Sleep(CurrentSettings.GetUpdateIntervalInMillis());
+               Cycle++;
+            }
+
+            Receiver.Stop();
+
+            if (Controller != null)
+            {
+               Controller.SetEngineStarted(false);
+            }
+
+            IsRunning = false;
+            LogInfo("engine stopped");
          }
-
-         Receiver.Stop();
-
-         if (Controller != null)
+         catch (Exception e)
          {
-            Controller.SetEngineStarted(false);
+            LogException(e);
          }
-
-         IsRunning = false;
-         LogInfo("engine stopped");
       }
 
 

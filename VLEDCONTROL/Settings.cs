@@ -61,7 +61,7 @@ namespace VLEDCONTROL
 
       public VirpilDevice GetDevice(int id)
       {
-         if(Devices.Count<id) return null;
+         if(Devices.Count<=id) return null;
          return Devices.ElementAt(id);
       }
 
