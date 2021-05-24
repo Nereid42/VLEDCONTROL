@@ -13,6 +13,8 @@ namespace VLEDCONTROL
       static public MainWindowForm MainWindow;
       static public Engine Engine = new Engine();
 
+      static public volatile bool IsFirstRun = false;
+
       static public void Exit()
       {
          LogInfo("exiting VLED...");
@@ -32,6 +34,7 @@ namespace VLEDCONTROL
          Settings defaultSettings = new Settings();
          if ( ! Settings.FileExists() )
          {
+            IsFirstRun = true;
             defaultSettings.Save();
          }
          defaultSettings.Load();
@@ -41,6 +44,19 @@ namespace VLEDCONTROL
             Profile profile = new Profile();
             profile.Name = "Default";
             profile.SaveAs(defaultSettings.DefaultProfile);
+         }
+      }
+
+      public static void ShowInstallScriptsDialog(bool isFirstInstallation)
+      {
+         InstallScriptsDialog dialog = new InstallScriptsDialog();
+         if(isFirstInstallation)
+         {
+            dialog.textBoxFirstInstallWarning.Visible = true;
+         }
+         if (dialog.ShowDialog() == DialogResult.OK)
+         {
+            Tools.CopyDcsScripts(dialog.BasePath);
          }
       }
 

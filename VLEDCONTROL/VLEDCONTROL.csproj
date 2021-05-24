@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{69E7E84C-517E-4287-8D6E-D0FDBCFA7737}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>VLED</RootNamespace>
-    <AssemblyName>VLED</AssemblyName>
+    <RootNamespace>VLEDCONTROL</RootNamespace>
+    <AssemblyName>VLEDCONTROL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -137,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditProfileEventDialog.resx">
       <DependentUpon>EditProfileEventDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InstallScriptsDialog.resx">
+      <DependentUpon>InstallScriptsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindowForm.resx">
       <DependentUpon>MainWindowForm.cs</DependentUpon>

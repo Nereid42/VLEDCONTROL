@@ -42,6 +42,7 @@
          this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
          this.tabMain = new System.Windows.Forms.TabControl();
          this.tabPageData = new System.Windows.Forms.TabPage();
+         this.buttonRegisterFromProfile = new System.Windows.Forms.Button();
          this.checkBoxDataShowUnknown = new System.Windows.Forms.CheckBox();
          this.buttonRegisterRemove = new System.Windows.Forms.Button();
          this.buttonRegisterAdd = new System.Windows.Forms.Button();
@@ -150,7 +151,6 @@
          this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
          this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
-         this.buttonRegisterFromProfile = new System.Windows.Forms.Button();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
@@ -223,6 +223,7 @@
          this.installExportScrriptsToolStripMenuItem.Name = "installExportScrriptsToolStripMenuItem";
          this.installExportScrriptsToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
          this.installExportScrriptsToolStripMenuItem.Text = "Install Export Scrripts";
+         this.installExportScrriptsToolStripMenuItem.Click += new System.EventHandler(this.installExportScrriptsToolStripMenuItem_Click);
          // 
          // setLEDCOntrolToolStripMenuItem
          // 
@@ -244,7 +245,7 @@
          // 
          this.aboutToolStripMenuItem1.Enabled = false;
          this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-         this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+         this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
          this.aboutToolStripMenuItem1.Text = "About";
          // 
          // contextMenuStrip1
@@ -283,6 +284,16 @@
          this.tabPageData.TabIndex = 0;
          this.tabPageData.Text = "Data";
          this.tabPageData.UseVisualStyleBackColor = true;
+         // 
+         // buttonRegisterFromProfile
+         // 
+         this.buttonRegisterFromProfile.Location = new System.Drawing.Point(809, 110);
+         this.buttonRegisterFromProfile.Name = "buttonRegisterFromProfile";
+         this.buttonRegisterFromProfile.Size = new System.Drawing.Size(75, 23);
+         this.buttonRegisterFromProfile.TabIndex = 10;
+         this.buttonRegisterFromProfile.Text = "From Profile";
+         this.buttonRegisterFromProfile.UseVisualStyleBackColor = true;
+         this.buttonRegisterFromProfile.Visible = false;
          // 
          // checkBoxDataShowUnknown
          // 
@@ -1376,16 +1387,6 @@
          // openFileDialog3
          // 
          this.openFileDialog3.FileName = "openFileDialog3";
-         // 
-         // buttonRegisterFromProfile
-         // 
-         this.buttonRegisterFromProfile.Location = new System.Drawing.Point(809, 110);
-         this.buttonRegisterFromProfile.Name = "buttonRegisterFromProfile";
-         this.buttonRegisterFromProfile.Size = new System.Drawing.Size(75, 23);
-         this.buttonRegisterFromProfile.TabIndex = 10;
-         this.buttonRegisterFromProfile.Text = "From Profile";
-         this.buttonRegisterFromProfile.UseVisualStyleBackColor = true;
-         this.buttonRegisterFromProfile.Visible = false;
          // 
          // progressBarEngineStatus
          // 

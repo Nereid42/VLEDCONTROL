@@ -40,7 +40,11 @@ namespace VLEDCONTROL
 
       private void MainWindowForm_Load(object sender, EventArgs e)
       {
-
+         // Check if this is the First run of VLEDCONTROL
+         if(VLED.IsFirstRun)
+         {
+            VLED.ShowInstallScriptsDialog(true);
+         }
       }
 
       private void listViewProfileEvents_SelectedIndexChanged(object sender, EventArgs e)
@@ -449,6 +453,11 @@ namespace VLEDCONTROL
       {
          ColorChooserDialog d = new ColorChooserDialog();
          d.ShowDialog();
+      }
+
+      private void installExportScrriptsToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         VLED.ShowInstallScriptsDialog(false);
       }
    }
 }
