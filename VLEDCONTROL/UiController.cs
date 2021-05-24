@@ -169,15 +169,15 @@ namespace VLEDCONTROL
             chooser.RestoreDirectory = true;
             if (chooser.ShowDialog() == DialogResult.OK)
             {
-               String filename = chooser.FileName;
-               String name = filename;
-               int p = filename.LastIndexOf('.');
+               String path = chooser.FileName;
+               String name = Path.GetFileName(path); ;
+               int p = name.LastIndexOf('.');
                if(p>=0)
                {
                   name = name.Remove(p);
                }
                VLED.Engine.CurrentProfile.Name = name;
-               VLED.Engine.CurrentProfile.SaveAs(filename);
+               VLED.Engine.CurrentProfile.SaveAs(path);
             }
 
          }
