@@ -37,7 +37,7 @@ namespace VLEDCONTROL
       public void Stop()
       {
          LogInfo("Stoprequest for Receiver");
-         this.StopRequest =  true;
+         this.StopRequest = true;
       }
 
       public void AddDataHandler(DataHandler handler)
@@ -69,7 +69,7 @@ namespace VLEDCONTROL
          StringBuilder sb = new StringBuilder();
          try
          {
-            while (true)
+            while (!StopRequest)
             {
                // Blocks until a message returns on this socket from a remote host.
                LogDebug("waiting for data to receive...");
