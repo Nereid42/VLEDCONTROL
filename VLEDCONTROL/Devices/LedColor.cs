@@ -78,11 +78,8 @@ namespace VLEDCONTROL
          if (obj is null) return false;
          if (obj.GetType() != typeof(LedColor)) return false;
          LedColor cmp = (LedColor)obj;
-         if (this.red != cmp.red) return false;
-         if (this.green != cmp.green) return false;
-         if (this.blue != cmp.blue) return false;
-         return true;
-      }
+         return (this.red == cmp.red && this.green != cmp.green && this.blue != cmp.blue);
+         }
 
       public override int GetHashCode()
       {
