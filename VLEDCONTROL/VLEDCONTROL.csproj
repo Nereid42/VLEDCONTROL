@@ -77,48 +77,48 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Color.cs" />
-    <Compile Include="ColorChooserDialog.cs">
+    <Compile Include="Forms\ColorChooserDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ColorChooserDialog.Designer.cs">
+    <Compile Include="Forms\ColorChooserDialog.Designer.cs">
       <DependentUpon>ColorChooserDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="DataHandler\AircraftDataHandler.cs" />
     <Compile Include="DataHandler\DataHandler.cs" />
     <Compile Include="DataHandler\PropertyDataHandler.cs" />
     <Compile Include="Devices\VirpilDevice.cs" />
-    <Compile Include="EditDeviceDialog.cs">
+    <Compile Include="Forms\EditDeviceDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditDeviceDialog.Designer.cs">
+    <Compile Include="Forms\EditDeviceDialog.Designer.cs">
       <DependentUpon>EditDeviceDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditMappingEntryDialog.cs">
+    <Compile Include="Forms\EditMappingEntryDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditMappingEntryDialog.Designer.cs">
+    <Compile Include="Forms\EditMappingEntryDialog.Designer.cs">
       <DependentUpon>EditMappingEntryDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditProfileEventDialog.cs">
+    <Compile Include="Forms\EditProfileEventDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditProfileEventDialog.Designer.cs">
+    <Compile Include="Forms\EditProfileEventDialog.Designer.cs">
       <DependentUpon>EditProfileEventDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="InstallScriptsDialog.cs">
+    <Compile Include="Forms\InstallScriptsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InstallScriptsDialog.Designer.cs">
+    <Compile Include="Forms\InstallScriptsDialog.Designer.cs">
       <DependentUpon>InstallScriptsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="NumericListViewSorter.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Loggable.cs" />
-    <Compile Include="MainWindowForm.cs">
+    <Compile Include="Forms\MainWindowForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindowForm.Designer.cs">
+    <Compile Include="Forms\MainWindowForm.Designer.cs">
       <DependentUpon>MainWindowForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Profile.cs" />
@@ -127,28 +127,28 @@
     <Compile Include="UiController.cs" />
     <Compile Include="VLED.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VpcLedControlSetupDialog.cs">
+    <Compile Include="Forms\VpcLedControlSetupDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VpcLedControlSetupDialog.Designer.cs">
+    <Compile Include="Forms\VpcLedControlSetupDialog.Designer.cs">
       <DependentUpon>VpcLedControlSetupDialog.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ColorChooserDialog.resx">
+    <EmbeddedResource Include="Forms\ColorChooserDialog.resx">
       <DependentUpon>ColorChooserDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditDeviceDialog.resx">
+    <EmbeddedResource Include="Forms\EditDeviceDialog.resx">
       <DependentUpon>EditDeviceDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditMappingEntryDialog.resx">
+    <EmbeddedResource Include="Forms\EditMappingEntryDialog.resx">
       <DependentUpon>EditMappingEntryDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditProfileEventDialog.resx">
+    <EmbeddedResource Include="Forms\EditProfileEventDialog.resx">
       <DependentUpon>EditProfileEventDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InstallScriptsDialog.resx">
+    <EmbeddedResource Include="Forms\InstallScriptsDialog.resx">
       <DependentUpon>InstallScriptsDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainWindowForm.resx">
+    <EmbeddedResource Include="Forms\MainWindowForm.resx">
       <DependentUpon>MainWindowForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -161,7 +161,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="VpcLedControlSetupDialog.resx">
+    <EmbeddedResource Include="Forms\VpcLedControlSetupDialog.resx">
       <DependentUpon>VpcLedControlSetupDialog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
