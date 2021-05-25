@@ -537,5 +537,11 @@ namespace VLEDCONTROL
       {
          Clipboard.SetText(this.textBoxAircraft.Text);
       }
+
+      private void checkBoxEnableStatistics_CheckedChanged(object sender, EventArgs e)
+      {
+         Controller.SetStatisticsEnabled(this.checkBoxEnableStatistics.Checked);
+         Controller.SetSettingsModified(true);
+      }
    }
 }

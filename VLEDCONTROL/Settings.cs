@@ -36,13 +36,16 @@ namespace VLEDCONTROL
    {
       private const string FILENAME = "vled.ini";
 
+      private const Loggable.LEVEL DEFAULT_LOGLEVEL = Loggable.LEVEL.INFO;
+
       public List<VirpilDevice> Devices { get; set; } = new List<VirpilDevice>();
       public String VirpilLedControl { get; set; } = "";
       public String DefaultProfile { get; set; } = "Default.profile";
       public double UpdateInterval { get; set; } = 0.5;
       public double DataInterval { get; set; } = 0.3;
       public int FlashingCycles { get; set; } = 2;
-      public Loggable.LEVEL LogLevel { get; set; } = Loggable.LEVEL.INFO;
+      public Loggable.LEVEL LogLevel { get; set; } = DEFAULT_LOGLEVEL;
+      public bool StatisticsEnabled { get; set; } = true;
 
       public static bool FileExists()
       {

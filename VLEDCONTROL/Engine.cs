@@ -300,34 +300,53 @@ namespace VLEDCONTROL
       {
          swTotalRunning.Start();
 
+         LogInfo("starting engine...");
+         IsRunning = true;
 
-            LogInfo("starting engine...");
-            IsRunning = true;
+         if (Controller != null)
+         {
+            Controller.SetEngineStarted(true);
+         }
 
-            if (Controller != null)
-            {
-               Controller.SetEngineStarted(true);
-            }
+         Receiver.Start();
 
-            Receiver.Start();
-
-            while (!this.StopRequest)
-            {
+         long millis = -1000;
+         while (!this.StopRequest)
+         {
             try
             {
-
                if (IsLoggable(LEVEL.TRACE)) LogTrace("main loop cycle " + Cycle);
 
-               if (!ControlerInitDone && Controller != null)
+               LogUrgend("CYCLE "+Cycle);
+               // Update UI
+               if (Controller != null)
                {
-                  InitUiController();
+                  LogUrgend("CONTROLLER FOUND");
+
+                  if (!ControlerInitDone)
+                  {
+                     // First Init
+                     InitUiController();
+                  }
+                  //
+                  // Live Statistics enabled?
+                  if(CurrentSettings.StatisticsEnabled)
+                  {
+                     LogUrgend("STATS enabled "+millis+" "+ swTotalRunning.ElapsedMilliseconds);
+                     // Update Statistics every second
+                     if (swTotalRunning.ElapsedMilliseconds >= millis + 1000)
+                     {
+                        LogUrgend("DISPLAY STATS");
+                        millis = swTotalRunning.ElapsedMilliseconds;
+                        Controller.DisplayStatistics(swTotalRunning.ElapsedMilliseconds, swCalcLeds.ElapsedMilliseconds, Executes);
+                     }
+                  }     
                }
 
                CalculateLEDs();
                if (IsLoggable(LEVEL.DEBUG)) LogDebug("Commdands executed: " + Executes);
 
                Thread.Sleep(CurrentSettings.GetUpdateIntervalInMillis());
-
             }
             catch (Exception e)
             {
@@ -336,7 +355,6 @@ namespace VLEDCONTROL
             finally
             {
                Cycle++;
-
             }
          }
 

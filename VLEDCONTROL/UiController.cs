@@ -241,6 +241,9 @@ namespace VLEDCONTROL
             })
          );
 
+         // Checkboxes
+         MainWindow.checkBoxEnableStatistics.Checked = settings.StatisticsEnabled;
+
          // Buttons
          SetSettingsModified(modified);
          SetSettingsLogLevel(DisplayedSettings.LogLevel);
@@ -307,6 +310,14 @@ namespace VLEDCONTROL
          SettingsUpdating = false;
       }
 
+      public void SetStatisticsEnabled(bool enabled)
+      {
+         SettingsUpdating = true;
+         this.DisplayedSettings.StatisticsEnabled = enabled;
+         MainWindow.checkBoxEnableStatistics.Checked = enabled;
+         SettingsUpdating = false;
+      }
+
       public void SetProfile(Profile profile)
       {
          MainWindow.listViewProfileEvents.BeginInvoke(
@@ -341,6 +352,15 @@ namespace VLEDCONTROL
          SetTextBoxText(MainWindow.textBoxMappingProfileName, profile.Name);
       }
 
+      public void DisplayStatistics (long totalRuntime, long ledCalcTime, long ledChanges)
+      {
+         if (IsLoggable(LEVEL.TRACE)) LogTrace("Statistics: totalRuntime=" + totalRuntime + ", ledCalcTime=" + ledCalcTime + ", ledChanges=" + ledChanges);
+         LogUrgend("Statistics: totalRuntime=" + totalRuntime + ", ledCalcTime=" + ledCalcTime + ", ledChanges=" + ledChanges);
+         SetTextBoxText(MainWindow.textBoxTimeRunning, totalRuntime.ToString());
+         SetTextBoxText(MainWindow.textBoxTimeUsedLedCalc, ledCalcTime.ToString());
+         SetTextBoxText(MainWindow.textBoxNumberLedChanges, ledChanges.ToString());
+      }
+
       public void Log(String msg)
       {
          LogError(msg);
@@ -352,9 +372,11 @@ namespace VLEDCONTROL
          SetSettings(VLED.Engine.CurrentSettings);
          SetSettingsModified(false);
       }
+
       internal void SaveSettings()
       {
          VLED.Engine.CurrentSettings.CopySettings(DisplayedSettings);
+         SetLogLevel(VLED.Engine.CurrentSettings.LogLevel);
          SetSettingsModified(false);
          VLED.Engine.CurrentSettings.SaveAsync();
          SetSettingsLogLevel(VLED.Engine.CurrentSettings.LogLevel);

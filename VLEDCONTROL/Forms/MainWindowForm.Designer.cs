@@ -100,10 +100,9 @@
          this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabPageSettings = new System.Windows.Forms.TabPage();
          this.groupBox2 = new System.Windows.Forms.GroupBox();
-         this.label4 = new System.Windows.Forms.Label();
-         this.label3 = new System.Windows.Forms.Label();
-         this.label2 = new System.Windows.Forms.Label();
-         this.label1 = new System.Windows.Forms.Label();
+         this.labelTimeUsedLedCalc = new System.Windows.Forms.Label();
+         this.labelTimeRunning = new System.Windows.Forms.Label();
+         this.labelNumberLedChanges = new System.Windows.Forms.Label();
          this.groupBox1 = new System.Windows.Forms.GroupBox();
          this.comboBoxLogLevel = new System.Windows.Forms.ComboBox();
          this.labelLogLevel = new System.Windows.Forms.Label();
@@ -154,6 +153,10 @@
          this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
+         this.textBoxTimeRunning = new System.Windows.Forms.TextBox();
+         this.textBoxTimeUsedLedCalc = new System.Windows.Forms.TextBox();
+         this.textBoxNumberLedChanges = new System.Windows.Forms.TextBox();
+         this.checkBoxEnableStatistics = new System.Windows.Forms.CheckBox();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -866,56 +869,49 @@
          // 
          // groupBox2
          // 
-         this.groupBox2.Controls.Add(this.label4);
-         this.groupBox2.Controls.Add(this.label3);
-         this.groupBox2.Controls.Add(this.label2);
-         this.groupBox2.Controls.Add(this.label1);
+         this.groupBox2.Controls.Add(this.textBoxNumberLedChanges);
+         this.groupBox2.Controls.Add(this.textBoxTimeUsedLedCalc);
+         this.groupBox2.Controls.Add(this.textBoxTimeRunning);
+         this.groupBox2.Controls.Add(this.labelTimeUsedLedCalc);
+         this.groupBox2.Controls.Add(this.labelTimeRunning);
+         this.groupBox2.Controls.Add(this.labelNumberLedChanges);
          this.groupBox2.Location = new System.Drawing.Point(563, 407);
          this.groupBox2.Name = "groupBox2";
-         this.groupBox2.Size = new System.Drawing.Size(414, 92);
+         this.groupBox2.Size = new System.Drawing.Size(414, 110);
          this.groupBox2.TabIndex = 24;
          this.groupBox2.TabStop = false;
-         this.groupBox2.Text = "Information";
+         this.groupBox2.Text = "Statistics";
          // 
-         // label4
+         // labelTimeUsedLedCalc
          // 
-         this.label4.AutoSize = true;
-         this.label4.Location = new System.Drawing.Point(68, 20);
-         this.label4.Name = "label4";
-         this.label4.Size = new System.Drawing.Size(51, 13);
-         this.label4.TabIndex = 3;
-         this.label4.Text = "unknown";
+         this.labelTimeUsedLedCalc.AutoSize = true;
+         this.labelTimeUsedLedCalc.Location = new System.Drawing.Point(6, 51);
+         this.labelTimeUsedLedCalc.Name = "labelTimeUsedLedCalc";
+         this.labelTimeUsedLedCalc.Size = new System.Drawing.Size(159, 13);
+         this.labelTimeUsedLedCalc.TabIndex = 3;
+         this.labelTimeUsedLedCalc.Text = "Time used LED calculation [ms]:";
          // 
-         // label3
+         // labelTimeRunning
          // 
-         this.label3.AutoSize = true;
-         this.label3.Location = new System.Drawing.Point(6, 20);
-         this.label3.Name = "label3";
-         this.label3.Size = new System.Drawing.Size(45, 13);
-         this.label3.TabIndex = 2;
-         this.label3.Text = "Version:";
+         this.labelTimeRunning.AutoSize = true;
+         this.labelTimeRunning.Location = new System.Drawing.Point(9, 25);
+         this.labelTimeRunning.Name = "labelTimeRunning";
+         this.labelTimeRunning.Size = new System.Drawing.Size(93, 13);
+         this.labelTimeRunning.TabIndex = 2;
+         this.labelTimeRunning.Text = "Time running [ms]:";
          // 
-         // label2
+         // labelNumberLedChanges
          // 
-         this.label2.AutoSize = true;
-         this.label2.Location = new System.Drawing.Point(68, 42);
-         this.label2.Name = "label2";
-         this.label2.Size = new System.Drawing.Size(51, 13);
-         this.label2.TabIndex = 1;
-         this.label2.Text = "unknown";
-         this.label2.Click += new System.EventHandler(this.label2_Click_1);
-         // 
-         // label1
-         // 
-         this.label1.AutoSize = true;
-         this.label1.Location = new System.Drawing.Point(6, 42);
-         this.label1.Name = "label1";
-         this.label1.Size = new System.Drawing.Size(56, 13);
-         this.label1.TabIndex = 0;
-         this.label1.Text = "BuildDate:";
+         this.labelNumberLedChanges.AutoSize = true;
+         this.labelNumberLedChanges.Location = new System.Drawing.Point(9, 77);
+         this.labelNumberLedChanges.Name = "labelNumberLedChanges";
+         this.labelNumberLedChanges.Size = new System.Drawing.Size(127, 13);
+         this.labelNumberLedChanges.TabIndex = 0;
+         this.labelNumberLedChanges.Text = "Number of LED changes:";
          // 
          // groupBox1
          // 
+         this.groupBox1.Controls.Add(this.checkBoxEnableStatistics);
          this.groupBox1.Controls.Add(this.comboBoxLogLevel);
          this.groupBox1.Controls.Add(this.labelLogLevel);
          this.groupBox1.Controls.Add(this.checkBox3);
@@ -938,7 +934,7 @@
             "INFO",
             "DEBUG",
             "TRACE"});
-         this.comboBoxLogLevel.Location = new System.Drawing.Point(12, 147);
+         this.comboBoxLogLevel.Location = new System.Drawing.Point(9, 172);
          this.comboBoxLogLevel.Name = "comboBoxLogLevel";
          this.comboBoxLogLevel.Size = new System.Drawing.Size(121, 21);
          this.comboBoxLogLevel.TabIndex = 27;
@@ -948,7 +944,7 @@
          // labelLogLevel
          // 
          this.labelLogLevel.AutoSize = true;
-         this.labelLogLevel.Location = new System.Drawing.Point(9, 127);
+         this.labelLogLevel.Location = new System.Drawing.Point(6, 152);
          this.labelLogLevel.Name = "labelLogLevel";
          this.labelLogLevel.Size = new System.Drawing.Size(57, 13);
          this.labelLogLevel.TabIndex = 26;
@@ -1103,7 +1099,7 @@
          this.listViewSettingsDevices.Location = new System.Drawing.Point(114, 217);
          this.listViewSettingsDevices.MultiSelect = false;
          this.listViewSettingsDevices.Name = "listViewSettingsDevices";
-         this.listViewSettingsDevices.Size = new System.Drawing.Size(298, 282);
+         this.listViewSettingsDevices.Size = new System.Drawing.Size(298, 300);
          this.listViewSettingsDevices.TabIndex = 12;
          this.listViewSettingsDevices.UseCompatibleStateImageBehavior = false;
          this.listViewSettingsDevices.View = System.Windows.Forms.View.Details;
@@ -1401,6 +1397,43 @@
          this.progressBarEngineStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
          this.progressBarEngineStatus.TabIndex = 12;
          // 
+         // textBoxTimeRunning
+         // 
+         this.textBoxTimeRunning.Location = new System.Drawing.Point(171, 22);
+         this.textBoxTimeRunning.Name = "textBoxTimeRunning";
+         this.textBoxTimeRunning.ReadOnly = true;
+         this.textBoxTimeRunning.Size = new System.Drawing.Size(171, 20);
+         this.textBoxTimeRunning.TabIndex = 4;
+         // 
+         // textBoxTimeUsedLedCalc
+         // 
+         this.textBoxTimeUsedLedCalc.Location = new System.Drawing.Point(171, 48);
+         this.textBoxTimeUsedLedCalc.Name = "textBoxTimeUsedLedCalc";
+         this.textBoxTimeUsedLedCalc.ReadOnly = true;
+         this.textBoxTimeUsedLedCalc.Size = new System.Drawing.Size(171, 20);
+         this.textBoxTimeUsedLedCalc.TabIndex = 5;
+         // 
+         // textBoxNumberLedChanges
+         // 
+         this.textBoxNumberLedChanges.Location = new System.Drawing.Point(171, 74);
+         this.textBoxNumberLedChanges.Name = "textBoxNumberLedChanges";
+         this.textBoxNumberLedChanges.ReadOnly = true;
+         this.textBoxNumberLedChanges.Size = new System.Drawing.Size(171, 20);
+         this.textBoxNumberLedChanges.TabIndex = 6;
+         // 
+         // checkBoxEnableStatistics
+         // 
+         this.checkBoxEnableStatistics.AutoSize = true;
+         this.checkBoxEnableStatistics.Checked = true;
+         this.checkBoxEnableStatistics.CheckState = System.Windows.Forms.CheckState.Checked;
+         this.checkBoxEnableStatistics.Location = new System.Drawing.Point(6, 110);
+         this.checkBoxEnableStatistics.Name = "checkBoxEnableStatistics";
+         this.checkBoxEnableStatistics.Size = new System.Drawing.Size(104, 17);
+         this.checkBoxEnableStatistics.TabIndex = 28;
+         this.checkBoxEnableStatistics.Text = "Enable Statistics";
+         this.checkBoxEnableStatistics.UseVisualStyleBackColor = true;
+         this.checkBoxEnableStatistics.CheckedChanged += new System.EventHandler(this.checkBoxEnableStatistics_CheckedChanged);
+         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1548,14 +1581,13 @@
       private System.Windows.Forms.OpenFileDialog openFileDialog2;
       private System.Windows.Forms.OpenFileDialog openFileDialog3;
       private System.Windows.Forms.GroupBox groupBox2;
-      private System.Windows.Forms.Label label2;
-      private System.Windows.Forms.Label label1;
+      private System.Windows.Forms.Label labelNumberLedChanges;
       internal System.Windows.Forms.CheckBox checkBox2;
       internal System.Windows.Forms.CheckBox checkBox1;
       private System.Windows.Forms.Label labelMappingProfileName;
       internal System.Windows.Forms.TextBox textBoxMappingProfileName;
-      private System.Windows.Forms.Label label4;
-      private System.Windows.Forms.Label label3;
+      private System.Windows.Forms.Label labelTimeUsedLedCalc;
+      private System.Windows.Forms.Label labelTimeRunning;
       private System.Windows.Forms.Label label5;
       private System.Windows.Forms.Label label6;
       private System.Windows.Forms.Panel panel3;
@@ -1577,6 +1609,10 @@
       private System.Windows.Forms.ToolStripMenuItem removeExportScriptsToolStripMenuItem;
       private System.Windows.Forms.Button buttonProfilesClear;
       private System.Windows.Forms.Button buttonCopyAircraftToClipboard;
+      internal System.Windows.Forms.CheckBox checkBoxEnableStatistics;
+      internal System.Windows.Forms.TextBox textBoxNumberLedChanges;
+      internal System.Windows.Forms.TextBox textBoxTimeUsedLedCalc;
+      internal System.Windows.Forms.TextBox textBoxTimeRunning;
    }
 }
 
