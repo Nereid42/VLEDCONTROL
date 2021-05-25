@@ -36,6 +36,7 @@
          this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.setupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.installExportScrriptsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.removeExportScriptsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.setLEDCOntrolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -150,7 +151,6 @@
          this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
-         this.removeExportScriptsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -224,6 +224,13 @@
          this.installExportScrriptsToolStripMenuItem.Text = "Install Export Scrripts";
          this.installExportScrriptsToolStripMenuItem.Click += new System.EventHandler(this.installExportScrriptsToolStripMenuItem_Click);
          // 
+         // removeExportScriptsToolStripMenuItem
+         // 
+         this.removeExportScriptsToolStripMenuItem.Name = "removeExportScriptsToolStripMenuItem";
+         this.removeExportScriptsToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+         this.removeExportScriptsToolStripMenuItem.Text = "Remove Export Scripts";
+         this.removeExportScriptsToolStripMenuItem.Click += new System.EventHandler(this.removeExportScriptsToolStripMenuItem_Click);
+         // 
          // setLEDCOntrolToolStripMenuItem
          // 
          this.setLEDCOntrolToolStripMenuItem.Name = "setLEDCOntrolToolStripMenuItem";
@@ -243,7 +250,7 @@
          // aboutToolStripMenuItem1
          // 
          this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-         this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+         this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
          this.aboutToolStripMenuItem1.Text = "About";
          this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
          // 
@@ -1368,13 +1375,6 @@
          this.progressBarEngineStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
          this.progressBarEngineStatus.TabIndex = 12;
          // 
-         // removeExportScriptsToolStripMenuItem
-         // 
-         this.removeExportScriptsToolStripMenuItem.Name = "removeExportScriptsToolStripMenuItem";
-         this.removeExportScriptsToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-         this.removeExportScriptsToolStripMenuItem.Text = "Remove Export Scripts";
-         this.removeExportScriptsToolStripMenuItem.Click += new System.EventHandler(this.removeExportScriptsToolStripMenuItem_Click);
-         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1397,7 +1397,7 @@
          this.MainMenuStrip = this.menuStrip1;
          this.Name = "MainWindowForm";
          this.ShowIcon = false;
-         this.Text = "VLED";
+         this.Text = "VLEDCONTROL";
          this.Load += new System.EventHandler(this.MainWindowForm_Load);
          this.menuStrip1.ResumeLayout(false);
          this.menuStrip1.PerformLayout();

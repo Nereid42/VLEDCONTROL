@@ -76,7 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LedColor.cs" />
+    <Compile Include="Devices\LedColor.cs" />
     <Compile Include="Forms\ColorChooserDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,7 +114,7 @@
     <Compile Include="Utils\NumericListViewSorter.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Engine.cs" />
-    <Compile Include="Loggable.cs" />
+    <Compile Include="Utils\Loggable.cs" />
     <Compile Include="Forms\MainWindowForm.cs">
       <SubType>Form</SubType>
     </Compile>
