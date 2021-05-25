@@ -123,6 +123,16 @@
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonCopyAircraftToClipboard.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAYAAAAmlE46AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAMtJREFUOE+lkuEOgjAMhBEQ9K14//cRRDT43Siuc1N/eMklvd4NlrXVLwzDUMPG
+        ZATNHl7hDG9wgavjHU4Wj6DZQR08whYmX3e+PGW63ZCYgyjAfP1Zt9GttixFA5cgCvB+lkWsVhbh/ST7
+        z8EHPJjM4P0kS6Enr4MowPtJlkKzy4ds8H6SpdBTt0EU4P0kS6EBb4N9A32t3MtPshQT/LZy6vUuG2oJ
+        rdW+cmNoGtBhyc1TZoQnsyNoXmDpj/vK6apni0fQ/Pi6EVX1BPGki0+wc23LAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>287, 17</value>
   </metadata>

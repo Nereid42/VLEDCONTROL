@@ -523,5 +523,19 @@ namespace VLEDCONTROL
 
          MessageBox.Show(about, "About", MessageBoxButtons.OK);
       }
+
+      private void buttonProfilesClear_Click(object sender, EventArgs e)
+      {
+         if(MessageBox.Show("Are you sure to delete all profile events", "Clear Profile", MessageBoxButtons.YesNo) == DialogResult.Yes)
+         {
+            VLED.Engine.CurrentProfile.ClearProfileEvents();
+            this.listViewProfileEvents.Items.Clear();
+         }
+      }
+
+      private void buttonCopyAircraftToClipboard_Click(object sender, EventArgs e)
+      {
+         Clipboard.SetText(this.textBoxAircraft.Text);
+      }
    }
 }

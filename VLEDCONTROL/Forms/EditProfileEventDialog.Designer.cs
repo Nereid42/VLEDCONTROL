@@ -200,8 +200,7 @@
          // 
          this.comboBoxSecondaryCondition.FormattingEnabled = true;
          this.comboBoxSecondaryCondition.Items.AddRange(new object[] {
-            "NONE",
-            "S",
+            "-",
             "=",
             "!=",
             ">",

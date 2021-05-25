@@ -245,6 +245,12 @@ namespace VLEDCONTROL
          ProfileEvents.RemoveAt(index);
       }
 
+
+      internal void ClearProfileEvents()
+      {
+         ProfileEvents.Clear();
+      }
+
       public class MappingEntry : IComparable
       {
          public int Id { get; set; }
@@ -367,7 +373,7 @@ namespace VLEDCONTROL
          {
             if (PrimaryCondition.Equals("S")) return "STATIC";
             String result ="X " + PrimaryCondition + " " + PrimaryValue.ToString("0.00");
-            if (SecondaryCondition!=null && SecondaryCondition.Length>0 && !SecondaryCondition.Equals("NONE"))
+            if (SecondaryCondition!=null && SecondaryCondition.Length>0 && !SecondaryCondition.Equals("NONE") && !SecondaryCondition.Equals("-"))
             {
                result += " AND X " + SecondaryCondition + " " + SecondaryValue.ToString("0.00") ;
             }

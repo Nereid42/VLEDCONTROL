@@ -238,9 +238,13 @@ namespace VLEDCONTROL
                double currentValue = CurrentProperties[id];
                double primaryValue = entry.PrimaryValue;
                double secondaryValue = entry.SecondaryValue;
+               LogUrgend("*** ====> "+entry);
+               LogUrgend("*** entry.PrimaryCondition="+ entry.PrimaryCondition);
                if ( CheckCondition(currentValue, primaryValue, entry.PrimaryCondition) 
                && ( CheckCondition(currentValue, secondaryValue, entry.SecondaryCondition)) )
                {
+                  LogUrgend("*** TRUE ");
+
                   if (IsLoggable(LEVEL.DEBUG)) LogDebug("-> Condition true");
                   VirpilDevice device = CurrentSettings.GetDevice(entry.DeviceId);
                   if (device != null)
@@ -280,6 +284,7 @@ namespace VLEDCONTROL
             case "<":  return currentValue <  value;
             case ">":  return currentValue >  value;
             case "NONE": return true;
+            case "-": return true;
             default:
                LogError("Invalid condition: '"+condition);
                return false;

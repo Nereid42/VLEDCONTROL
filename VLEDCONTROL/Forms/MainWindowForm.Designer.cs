@@ -29,6 +29,7 @@
       private void InitializeComponent()
       {
          this.components = new System.ComponentModel.Container();
+         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindowForm));
          this.menuStrip1 = new System.Windows.Forms.MenuStrip();
          this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.loadProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +44,7 @@
          this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
          this.tabMain = new System.Windows.Forms.TabControl();
          this.tabPageData = new System.Windows.Forms.TabPage();
+         this.buttonCopyAircraftToClipboard = new System.Windows.Forms.Button();
          this.buttonRegisterFromProfile = new System.Windows.Forms.Button();
          this.checkBoxDataShowUnknown = new System.Windows.Forms.CheckBox();
          this.buttonRegisterRemove = new System.Windows.Forms.Button();
@@ -60,6 +62,7 @@
          this.columnHeaderDataValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderLastChange = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabPageProfile = new System.Windows.Forms.TabPage();
+         this.buttonProfilesClear = new System.Windows.Forms.Button();
          this.label6 = new System.Windows.Forms.Label();
          this.panel3 = new System.Windows.Forms.Panel();
          this.radioButtonNewElementsAppend = new System.Windows.Forms.RadioButton();
@@ -273,6 +276,7 @@
          // 
          // tabPageData
          // 
+         this.tabPageData.Controls.Add(this.buttonCopyAircraftToClipboard);
          this.tabPageData.Controls.Add(this.buttonRegisterFromProfile);
          this.tabPageData.Controls.Add(this.checkBoxDataShowUnknown);
          this.tabPageData.Controls.Add(this.buttonRegisterRemove);
@@ -290,6 +294,16 @@
          this.tabPageData.TabIndex = 0;
          this.tabPageData.Text = "Data";
          this.tabPageData.UseVisualStyleBackColor = true;
+         // 
+         // buttonCopyAircraftToClipboard
+         // 
+         this.buttonCopyAircraftToClipboard.Image = ((System.Drawing.Image)(resources.GetObject("buttonCopyAircraftToClipboard.Image")));
+         this.buttonCopyAircraftToClipboard.Location = new System.Drawing.Point(158, 5);
+         this.buttonCopyAircraftToClipboard.Name = "buttonCopyAircraftToClipboard";
+         this.buttonCopyAircraftToClipboard.Size = new System.Drawing.Size(22, 22);
+         this.buttonCopyAircraftToClipboard.TabIndex = 11;
+         this.buttonCopyAircraftToClipboard.UseVisualStyleBackColor = true;
+         this.buttonCopyAircraftToClipboard.Click += new System.EventHandler(this.buttonCopyAircraftToClipboard_Click);
          // 
          // buttonRegisterFromProfile
          // 
@@ -451,6 +465,7 @@
          // 
          // tabPageProfile
          // 
+         this.tabPageProfile.Controls.Add(this.buttonProfilesClear);
          this.tabPageProfile.Controls.Add(this.label6);
          this.tabPageProfile.Controls.Add(this.panel3);
          this.tabPageProfile.Controls.Add(this.buttonProfileDuplicate);
@@ -471,10 +486,21 @@
          this.tabPageProfile.Text = "Profile";
          this.tabPageProfile.UseVisualStyleBackColor = true;
          // 
+         // buttonProfilesClear
+         // 
+         this.buttonProfilesClear.ForeColor = System.Drawing.Color.Maroon;
+         this.buttonProfilesClear.Location = new System.Drawing.Point(902, 256);
+         this.buttonProfilesClear.Name = "buttonProfilesClear";
+         this.buttonProfilesClear.Size = new System.Drawing.Size(75, 23);
+         this.buttonProfilesClear.TabIndex = 14;
+         this.buttonProfilesClear.Text = "Clear";
+         this.buttonProfilesClear.UseVisualStyleBackColor = true;
+         this.buttonProfilesClear.Click += new System.EventHandler(this.buttonProfilesClear_Click);
+         // 
          // label6
          // 
          this.label6.AutoSize = true;
-         this.label6.Location = new System.Drawing.Point(901, 253);
+         this.label6.Location = new System.Drawing.Point(901, 293);
          this.label6.Name = "label6";
          this.label6.Size = new System.Drawing.Size(65, 13);
          this.label6.TabIndex = 13;
@@ -486,7 +512,7 @@
          this.panel3.Controls.Add(this.radioButtonNewElementsAppend);
          this.panel3.Controls.Add(this.radioButtonNewElementsInsertAfter);
          this.panel3.Controls.Add(this.radioButtonNewElementsInsertBefore);
-         this.panel3.Location = new System.Drawing.Point(902, 269);
+         this.panel3.Location = new System.Drawing.Point(902, 309);
          this.panel3.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
          this.panel3.Name = "panel3";
          this.panel3.Size = new System.Drawing.Size(75, 75);
@@ -538,7 +564,7 @@
          // buttonProfileDown
          // 
          this.buttonProfileDown.Enabled = false;
-         this.buttonProfileDown.Location = new System.Drawing.Point(900, 213);
+         this.buttonProfileDown.Location = new System.Drawing.Point(902, 213);
          this.buttonProfileDown.Name = "buttonProfileDown";
          this.buttonProfileDown.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileDown.TabIndex = 10;
@@ -549,7 +575,7 @@
          // buttonProfileUp
          // 
          this.buttonProfileUp.Enabled = false;
-         this.buttonProfileUp.Location = new System.Drawing.Point(900, 184);
+         this.buttonProfileUp.Location = new System.Drawing.Point(902, 184);
          this.buttonProfileUp.Name = "buttonProfileUp";
          this.buttonProfileUp.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileUp.TabIndex = 9;
@@ -560,7 +586,7 @@
          // buttonProfileEdit
          // 
          this.buttonProfileEdit.Enabled = false;
-         this.buttonProfileEdit.Location = new System.Drawing.Point(900, 141);
+         this.buttonProfileEdit.Location = new System.Drawing.Point(902, 141);
          this.buttonProfileEdit.Name = "buttonProfileEdit";
          this.buttonProfileEdit.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileEdit.TabIndex = 8;
@@ -571,7 +597,7 @@
          // buttonProfileRemove
          // 
          this.buttonProfileRemove.Enabled = false;
-         this.buttonProfileRemove.Location = new System.Drawing.Point(901, 112);
+         this.buttonProfileRemove.Location = new System.Drawing.Point(902, 112);
          this.buttonProfileRemove.Name = "buttonProfileRemove";
          this.buttonProfileRemove.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileRemove.TabIndex = 7;
@@ -1549,6 +1575,8 @@
       internal System.Windows.Forms.RadioButton radioButtonNewElementsInsertBefore;
       private System.Windows.Forms.ColumnHeader columnHeaderLed;
       private System.Windows.Forms.ToolStripMenuItem removeExportScriptsToolStripMenuItem;
+      private System.Windows.Forms.Button buttonProfilesClear;
+      private System.Windows.Forms.Button buttonCopyAircraftToClipboard;
    }
 }
 

@@ -53,6 +53,7 @@ namespace VLEDCONTROL
          this.textBoxPrimaryValue.KeyPress += new KeyPressEventHandler(Tools.NumericKeyPressed);
          this.textBoxSecondaryValue.KeyPress += new KeyPressEventHandler(Tools.NumericKeyPressed);
          this.comboBoxEventNames.KeyPress += new KeyPressEventHandler(Tools.NoKeyPressed);
+         this.comboBoxAircraft.KeyPress += new KeyPressEventHandler(this.ComboBoxAircraftTextChanged);
 
          this.comboBoxAircraft.TextChanged += new EventHandler(this.ComboBoxAircraftTextChanged);
       }
@@ -114,27 +115,30 @@ namespace VLEDCONTROL
 
       private void ComboBoxAircraftTextChanged(Object o, EventArgs e)
       {
-         String aircraft = this.comboBoxAircraft.Text;
-         if(comboBoxAircraft.Items.Contains(aircraft))
+         if (!IsAdjusting)
          {
-            IsAdjusting = true;
-
+            String aircraft = this.comboBoxAircraft.Text;
             IReadOnlyCollection<String> eventNames = Profile.GetEventNamesForAircraft(aircraft);
-            this.comboBoxEventNames.Items.Clear();
-            foreach (String name in eventNames)
+            if(eventNames!=null && eventNames.Count>0)
             {
-               this.comboBoxEventNames.Items.Add(name);
+               IsAdjusting = true;
+
+               this.comboBoxEventNames.Items.Clear();
+               foreach (String name in eventNames)
+               {
+                  this.comboBoxEventNames.Items.Add(name);
+               }
+
+               int id = Tools.ToInt(this.textBoxEventId.Text);
+               comboBoxEventNames.Text = Profile.MapPropertyName(aircraft, id);
+
+               IsAdjusting = false;
             }
-
-            int id = Tools.ToInt(this.textBoxEventId.Text);
-            comboBoxEventNames.Text = Profile.MapPropertyName(aircraft, id);
-
-            IsAdjusting = false;
-         }
-         else
-         {
-            comboBoxEventNames.Items.Clear();
-            comboBoxEventNames.Text = "";
+            else
+            {
+               comboBoxEventNames.Items.Clear();
+               comboBoxEventNames.Text = "";
+            }
          }
       }
 
@@ -201,7 +205,7 @@ namespace VLEDCONTROL
             //
             this.comboBoxPrimaryCondition.Text = Event.PrimaryCondition;
             this.textBoxPrimaryValue.Text = Event.PrimaryValue.ToString();
-            this.comboBoxSecondaryCondition.Text = Event.SecondaryCondition.Length==0?"NONE" : Event.SecondaryCondition;
+            this.comboBoxSecondaryCondition.Text = Event.SecondaryCondition.Length==0 ? "-" : Event.SecondaryCondition;
             this.textBoxSecondaryValue.Text = Event.SecondaryValue.ToString();
             //
             //
