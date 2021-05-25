@@ -1108,9 +1108,9 @@
          this.labelSettingsDescriptionUpdateInterval.ForeColor = System.Drawing.Color.DimGray;
          this.labelSettingsDescriptionUpdateInterval.Location = new System.Drawing.Point(173, 113);
          this.labelSettingsDescriptionUpdateInterval.Name = "labelSettingsDescriptionUpdateInterval";
-         this.labelSettingsDescriptionUpdateInterval.Size = new System.Drawing.Size(181, 13);
+         this.labelSettingsDescriptionUpdateInterval.Size = new System.Drawing.Size(184, 13);
          this.labelSettingsDescriptionUpdateInterval.TabIndex = 11;
-         this.labelSettingsDescriptionUpdateInterval.Text = "Interval in seconds forupdating LEDs";
+         this.labelSettingsDescriptionUpdateInterval.Text = "Interval in seconds for updating LEDs";
          this.labelSettingsDescriptionUpdateInterval.Click += new System.EventHandler(this.label2_Click);
          // 
          // labelSettingsDescriptionDataInterval
