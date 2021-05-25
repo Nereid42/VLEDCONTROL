@@ -260,6 +260,7 @@ namespace VLEDCONTROL
 
          public override bool Equals(object obj)
          {
+            if (obj is null) return false;
             if (obj.GetType() != typeof(MappingEntry)) return false;
             MappingEntry cmp = (MappingEntry)obj;
             return this.Id == cmp.Id && this.Aircraft.Equals(cmp.Aircraft) && this.Name.Equals(cmp.Name);
