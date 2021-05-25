@@ -408,5 +408,22 @@ namespace VLEDCONTROL
       {
 
       }
+
+      private void buttonSetDefault_Click(object sender, EventArgs e)
+      {
+         Settings settings = VLED.Engine.CurrentSettings;
+         VirpilDevice device = settings.GetDevice(Tools.ToInt(this.textBoxDeviceId.Text));
+         if (device != null)
+         {
+
+            String command = settings.VirpilLedControl;
+
+            String arguments = device.USB_VID + " " + device.USB_PID + " 0 00 00 00";
+
+            this.textBoxCommand.Text = command + " " + arguments;
+            this.textBoxCommand.Select(this.textBoxCommand.Text.Length, 0);
+            Tools.ExecuteCommand(command, arguments);
+         }
+      }
    }
 }

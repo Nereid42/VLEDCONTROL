@@ -57,6 +57,7 @@
          this.buttonTestColor1 = new System.Windows.Forms.Button();
          this.groupBoxDescription = new System.Windows.Forms.GroupBox();
          this.textBoxDescription = new System.Windows.Forms.TextBox();
+         this.buttonSetDefault = new System.Windows.Forms.Button();
          this.groupBoxEvent.SuspendLayout();
          this.groupBoxCondition.SuspendLayout();
          this.groupBoxLed.SuspendLayout();
@@ -344,6 +345,7 @@
          // groupBoxTestLed
          // 
          this.groupBoxTestLed.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.groupBoxTestLed.Controls.Add(this.buttonSetDefault);
          this.groupBoxTestLed.Controls.Add(this.label6);
          this.groupBoxTestLed.Controls.Add(this.textBoxCommand);
          this.groupBoxTestLed.Controls.Add(this.buttonTestColor2);
@@ -417,6 +419,18 @@
          this.textBoxDescription.TabIndex = 0;
          this.textBoxDescription.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
          // 
+         // buttonSetDefault
+         // 
+         this.buttonSetDefault.BackColor = System.Drawing.Color.Silver;
+         this.buttonSetDefault.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+         this.buttonSetDefault.Location = new System.Drawing.Point(170, 18);
+         this.buttonSetDefault.Name = "buttonSetDefault";
+         this.buttonSetDefault.Size = new System.Drawing.Size(123, 23);
+         this.buttonSetDefault.TabIndex = 4;
+         this.buttonSetDefault.Text = "Set Default";
+         this.buttonSetDefault.UseVisualStyleBackColor = false;
+         this.buttonSetDefault.Click += new System.EventHandler(this.buttonSetDefault_Click);
+         // 
          // EditProfileEventDialog
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -482,5 +496,6 @@
       private System.Windows.Forms.Button buttonTestColor1;
       private System.Windows.Forms.GroupBox groupBoxDescription;
       private System.Windows.Forms.TextBox textBoxDescription;
+      private System.Windows.Forms.Button buttonSetDefault;
    }
 }
