@@ -150,6 +150,7 @@
          this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
+         this.removeExportScriptsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -210,6 +211,7 @@
          // 
          this.setupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.installExportScrriptsToolStripMenuItem,
+            this.removeExportScriptsToolStripMenuItem,
             this.setLEDCOntrolToolStripMenuItem});
          this.setupToolStripMenuItem.Name = "setupToolStripMenuItem";
          this.setupToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
@@ -240,10 +242,10 @@
          // 
          // aboutToolStripMenuItem1
          // 
-         this.aboutToolStripMenuItem1.Enabled = false;
          this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-         this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+         this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
          this.aboutToolStripMenuItem1.Text = "About";
+         this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
          // 
          // contextMenuStrip1
          // 
@@ -1366,6 +1368,13 @@
          this.progressBarEngineStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
          this.progressBarEngineStatus.TabIndex = 12;
          // 
+         // removeExportScriptsToolStripMenuItem
+         // 
+         this.removeExportScriptsToolStripMenuItem.Name = "removeExportScriptsToolStripMenuItem";
+         this.removeExportScriptsToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+         this.removeExportScriptsToolStripMenuItem.Text = "Remove Export Scripts";
+         this.removeExportScriptsToolStripMenuItem.Click += new System.EventHandler(this.removeExportScriptsToolStripMenuItem_Click);
+         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1539,6 +1548,7 @@
       internal System.Windows.Forms.RadioButton radioButtonNewElementsInsertAfter;
       internal System.Windows.Forms.RadioButton radioButtonNewElementsInsertBefore;
       private System.Windows.Forms.ColumnHeader columnHeaderLed;
+      private System.Windows.Forms.ToolStripMenuItem removeExportScriptsToolStripMenuItem;
    }
 }
 

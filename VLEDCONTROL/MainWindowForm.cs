@@ -492,5 +492,36 @@ namespace VLEDCONTROL
       {
 
       }
+
+      private void removeExportScriptsToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         if (MessageBox.Show("Are you sure to remove all export scripts?", "Remove Export Scripts from DCS",MessageBoxButtons.YesNo) == DialogResult.Yes)
+         {
+            String userprofile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            Tools.RemoveDcsScripts(userprofile + "\\" + "Saved Games" + "\\DCS");
+            Tools.RemoveDcsScripts(userprofile + "\\" + "Saved Games" + "\\DCS.openbeta");
+         }
+      }
+
+      private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+      {
+         String about = "- VLEDCONTROL -";
+         about += "\n\n";
+         about += "Written by André Kolster";
+         about += "\n\n\n";
+         about += "MIT License";
+         about += "\n";
+         about += "\nPermission is hereby granted, free of charge, to any person obtaining a ";
+         about += "\ncopy of this software and associated documentation files (the";
+         about += "\n\"Software\"), to deal in the Software without restriction, including";
+         about += "\nwithout limitation the rights to use, copy, modify, merge, publish,";
+         about += "\ndistribute, sublicense, and/ or sell copies of the Software, and to permit";
+         about += "\npersons to whom the Software is furnished to do so, subject to the following conditions:\n";
+
+         about += "\nThe above copyright notice and this permission notice shall be included";
+         about += "\nin all copies or substantial portions of the Software.";
+
+         MessageBox.Show(about, "About", MessageBoxButtons.OK);
+      }
    }
 }

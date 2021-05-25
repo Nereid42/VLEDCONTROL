@@ -136,6 +136,13 @@ namespace VLEDCONTROL
          System.IO.File.Copy("Scripts/Hooks/vled/VledExport.lua", dcsBasePath + "/Scripts/Hooks/vled/VledExport.lua",true);
       }
 
+      internal static void RemoveDcsScripts(string dcsBasePath)
+      {
+         System.IO.File.Delete(dcsBasePath + "/Scripts/Hooks/VledExportHook.lua");
+         System.IO.File.Delete(dcsBasePath + "/Scripts/Hooks/vled/VledExport.lua" );
+      }
+
+
       public static Process ExecuteCommand(string command, String arguments)
       {
          if (Loggable.IsLoggable(Loggable.LEVEL.DEBUG)) Loggable.LogDebug("EXECUTE: " + command + " " + arguments);
