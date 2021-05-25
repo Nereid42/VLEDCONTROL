@@ -238,13 +238,9 @@ namespace VLEDCONTROL
                double currentValue = CurrentProperties[id];
                double primaryValue = entry.PrimaryValue;
                double secondaryValue = entry.SecondaryValue;
-               LogUrgend("*** ====> "+entry);
-               LogUrgend("*** entry.PrimaryCondition="+ entry.PrimaryCondition);
                if ( CheckCondition(currentValue, primaryValue, entry.PrimaryCondition) 
                && ( CheckCondition(currentValue, secondaryValue, entry.SecondaryCondition)) )
                {
-                  LogUrgend("*** TRUE ");
-
                   if (IsLoggable(LEVEL.DEBUG)) LogDebug("-> Condition true");
                   VirpilDevice device = CurrentSettings.GetDevice(entry.DeviceId);
                   if (device != null)
@@ -317,12 +313,9 @@ namespace VLEDCONTROL
             {
                if (IsLoggable(LEVEL.TRACE)) LogTrace("main loop cycle " + Cycle);
 
-               LogUrgend("CYCLE "+Cycle);
                // Update UI
                if (Controller != null)
                {
-                  LogUrgend("CONTROLLER FOUND");
-
                   if (!ControlerInitDone)
                   {
                      // First Init
@@ -332,11 +325,9 @@ namespace VLEDCONTROL
                   // Live Statistics enabled?
                   if(CurrentSettings.StatisticsEnabled)
                   {
-                     LogUrgend("STATS enabled "+millis+" "+ swTotalRunning.ElapsedMilliseconds);
                      // Update Statistics every second
                      if (swTotalRunning.ElapsedMilliseconds >= millis + 1000)
                      {
-                        LogUrgend("DISPLAY STATS");
                         millis = swTotalRunning.ElapsedMilliseconds;
                         Controller.DisplayStatistics(swTotalRunning.ElapsedMilliseconds, swCalcLeds.ElapsedMilliseconds, Executes);
                      }

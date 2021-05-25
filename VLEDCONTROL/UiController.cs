@@ -220,9 +220,9 @@ namespace VLEDCONTROL
          SetTextBoxText(MainWindow.textBoxSettingsVirpilLedControl, settings.VirpilLedControl,false);
          SetTextBoxText(MainWindow.textBoxSettingsDefaultProfile, settings.DefaultProfile, false);
          // Intervals
-         SetTextBoxText(MainWindow.textBoxSettingsDataInterval, settings.DataInterval.ToString(), false);
+         SetTextBoxText(MainWindow.textBoxSettingsDataInterval, settings.DataInterval.ToString("N2"), false);
+         SetTextBoxText(MainWindow.textBoxSettingsUpdateInterval, settings.UpdateInterval.ToString("N2"), false);
          SetTextBoxText(MainWindow.textBoxSettingsFlashingCycles, settings.FlashingCycles.ToString(), false);
-         SetTextBoxText(MainWindow.textBoxSettingsUpdateInterval, settings.UpdateInterval.ToString(), false);
          // Devices
          MainWindow.listViewSettingsDevices.Invoke(
             new Action(() =>
@@ -355,7 +355,6 @@ namespace VLEDCONTROL
       public void DisplayStatistics (long totalRuntime, long ledCalcTime, long ledChanges)
       {
          if (IsLoggable(LEVEL.TRACE)) LogTrace("Statistics: totalRuntime=" + totalRuntime + ", ledCalcTime=" + ledCalcTime + ", ledChanges=" + ledChanges);
-         LogUrgend("Statistics: totalRuntime=" + totalRuntime + ", ledCalcTime=" + ledCalcTime + ", ledChanges=" + ledChanges);
          SetTextBoxText(MainWindow.textBoxTimeRunning, totalRuntime.ToString());
          SetTextBoxText(MainWindow.textBoxTimeUsedLedCalc, ledCalcTime.ToString());
          SetTextBoxText(MainWindow.textBoxNumberLedChanges, ledChanges.ToString());

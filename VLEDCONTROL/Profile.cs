@@ -157,11 +157,6 @@ namespace VLEDCONTROL
             }
             eventsForAircraft.Add(entry.Name);
             eventsForAircraft.Sort();
-            //
-            foreach (MappingEntry e in MappingEntries)
-            {
-               LogUrgend(">> " + e);
-            }
          } 
          catch(Exception e)
          {

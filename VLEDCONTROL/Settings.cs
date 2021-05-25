@@ -26,7 +26,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -38,14 +38,23 @@ namespace VLEDCONTROL
 
       private const Loggable.LEVEL DEFAULT_LOGLEVEL = Loggable.LEVEL.INFO;
 
-      public List<VirpilDevice> Devices { get; set; } = new List<VirpilDevice>();
-      public String VirpilLedControl { get; set; } = "";
-      public String DefaultProfile { get; set; } = "Default.profile";
-      public double UpdateInterval { get; set; } = 0.5;
-      public double DataInterval { get; set; } = 0.3;
-      public int FlashingCycles { get; set; } = 2;
-      public Loggable.LEVEL LogLevel { get; set; } = DEFAULT_LOGLEVEL;
-      public bool StatisticsEnabled { get; set; } = true;
+      private volatile bool _StatisticsEnabled = true;
+      private volatile List<VirpilDevice> _Devices = new List<VirpilDevice>();
+      private volatile String _VirpilLedControl = "";
+      private volatile String _DefaultProfile = "Default.profile";
+      private volatile int _FlashingCycles = 2;
+      private volatile Loggable.LEVEL _LogLevel = DEFAULT_LOGLEVEL;
+      public volatile float _UpdateInterval = 0.2f;
+      public volatile float _DataInterval = 0.3f;
+
+      public List<VirpilDevice> Devices { get { return _Devices; } set { _Devices = value; } }
+      public String VirpilLedControl { get { return _VirpilLedControl; } set { _VirpilLedControl = value; } }
+      public String DefaultProfile { get { return _DefaultProfile; } set { _DefaultProfile = value; } }
+      public double UpdateInterval { get { return _UpdateInterval; } set { _UpdateInterval = (float)value; } }
+      public double DataInterval { get { return _DataInterval; } set { _DataInterval = (float)value; } }
+      public int FlashingCycles { get { return _FlashingCycles; } set { _FlashingCycles = value; } }
+      public Loggable.LEVEL LogLevel { get { return _LogLevel; } set { _LogLevel = value; } }
+      public bool StatisticsEnabled { get { return _StatisticsEnabled; } set { _StatisticsEnabled = value; } } 
 
       public static bool FileExists()
       {
@@ -68,9 +77,10 @@ namespace VLEDCONTROL
          }
          this.VirpilLedControl = settings.VirpilLedControl;
          this.DefaultProfile = settings.DefaultProfile;
-         this.UpdateInterval = settings.UpdateInterval;
+         this.UpdateInterval =settings.UpdateInterval;
          this.DataInterval = settings.DataInterval;
          this.LogLevel = settings.LogLevel;
+         this.StatisticsEnabled = settings.StatisticsEnabled;
       }
 
       public void Save()
