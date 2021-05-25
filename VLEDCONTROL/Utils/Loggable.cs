@@ -32,9 +32,9 @@ namespace VLEDCONTROL
 {
    public class Loggable
    {
-      public enum LEVEL { URGEND = -1, OFF = 0, ERROR = 1, WARNING = 2, INFO = 3, DEBUG = 4, TRACE = 5 };
+      public  enum LEVEL : int { URGEND = -1, OFF = 0, ERROR = 1, WARNING = 2, INFO = 3, DEBUG = 4, TRACE = 5 };
 
-      static LEVEL level = LEVEL.INFO;
+      static volatile LEVEL level = LEVEL.INFO;
 
       static void Log(LEVEL level, String message)
       {
