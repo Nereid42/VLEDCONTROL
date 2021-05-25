@@ -182,6 +182,7 @@
   <PropertyGroup>
     <PostBuildEvent>mkdir Scripts\Hooks\vled
 copy /Y ..\..\..\Scripts\Hooks\VledExportHook.lua Scripts\Hooks
-copy /Y ..\..\..\Scripts\Hooks\vled\VledExport.lua Scripts\Hooks\vled</PostBuildEvent>
+copy /Y ..\..\..\Scripts\Hooks\vled\VledExport.lua Scripts\Hooks\vled
+copy /Y ..\..\..\LICENSE LICENSE</PostBuildEvent>
   </PropertyGroup>
 </Project>

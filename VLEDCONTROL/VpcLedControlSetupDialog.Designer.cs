@@ -103,6 +103,7 @@
          this.ShowInTaskbar = false;
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "Search for VPC_LED_CONTROL";
+         this.Load += new System.EventHandler(this.VpcLedControlSetupDialog_Load);
          this.ResumeLayout(false);
          this.PerformLayout();
 
