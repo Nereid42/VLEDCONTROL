@@ -16,9 +16,9 @@ namespace VLEDCONTROL
       public int MinLedNumber = 0;
       public int MaxLedNumber = MAX_LED_CNT-1;
 
-      private Color[] CurrentLedColors = new Color[MAX_LED_CNT];
+      private LedColor[] CurrentLedColors = new LedColor[MAX_LED_CNT];
       //private bool[] CurrentLedChanged = new bool[MAX_LED_CNT];
-      private Color[] PreparedLedColors = new Color[MAX_LED_CNT];
+      private LedColor[] PreparedLedColors = new LedColor[MAX_LED_CNT];
 
 
       public VirpilDevice()
@@ -34,7 +34,7 @@ namespace VLEDCONTROL
       }
 
 
-      public void PrepareColor(int ledNumber, Color color)
+      public void PrepareColor(int ledNumber, LedColor color)
       {
          if (ledNumber >= MAX_LED_CNT)
          {
@@ -44,7 +44,7 @@ namespace VLEDCONTROL
          PreparedLedColors[ledNumber] = color;
       }
 
-      public Color SetCurrentColor(int ledNumber)
+      public LedColor SetCurrentColor(int ledNumber)
       {
          if (ledNumber >= MAX_LED_CNT)
          {
