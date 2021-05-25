@@ -76,7 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Color.cs" />
+    <Compile Include="LedColor.cs" />
     <Compile Include="Forms\ColorChooserDialog.cs">
       <SubType>Form</SubType>
     </Compile>

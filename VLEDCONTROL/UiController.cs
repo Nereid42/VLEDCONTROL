@@ -532,8 +532,8 @@ namespace VLEDCONTROL
             double value2 = dialog.GetSecondaryValue();
             int deviceId = dialog.GetDeviceId();
             int led = dialog.GetLedNumber();
-            Color color1 = dialog.GetColorOn();
-            Color color2 = dialog.GetColorFlashing();
+            LedColor color1 = dialog.GetColorOn();
+            LedColor color2 = dialog.GetColorFlashing();
             String description = dialog.GetDescription();
 
             Profile.ProfileEvent newEvent = VLED.Engine.CurrentProfile.AddProfileEvent(aircraft, eventId, condition1, value1, condition2, value2, deviceId, led, color1, color2, description);

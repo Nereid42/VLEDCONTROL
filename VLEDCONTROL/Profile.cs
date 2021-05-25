@@ -223,7 +223,7 @@ namespace VLEDCONTROL
          return 0;
       }
 
-      public ProfileEvent AddProfileEvent(String aircraft, int id, String condition1, double value1, String condition2, double value2, int deviceId, int ledNumber, Color colorOn, Color colorFlashing, String description)
+      public ProfileEvent AddProfileEvent(String aircraft, int id, String condition1, double value1, String condition2, double value2, int deviceId, int ledNumber, LedColor colorOn, LedColor colorFlashing, String description)
       {
          ProfileEvent entry = new ProfileEvent(aircraft, id, condition1, value1, condition2, value2, deviceId, ledNumber, colorOn, colorFlashing, description);
          AddProfileEntry(entry);
@@ -302,8 +302,8 @@ namespace VLEDCONTROL
          public Double PrimaryValue { get; set; }
          public String SecondaryCondition { get; set; }
          public Double SecondaryValue { get; set; }
-         public Color ColorOn { get; set; } = Color.BLACK;
-         public Color ColorFlashing { get; set; } = Color.BLACK;
+         public LedColor ColorOn { get; set; } = LedColor.BLACK;
+         public LedColor ColorFlashing { get; set; } = LedColor.BLACK;
          public int DeviceId { get; set; } = 0;
          public int LedNumber { get; set; } = 0;
          public String Description { get; set; }
@@ -316,8 +316,8 @@ namespace VLEDCONTROL
             this.PrimaryValue = 0.0;
             this.SecondaryCondition = "";
             this.SecondaryValue = 0.0;
-            this.ColorOn = Color.BLACK;
-            this.ColorFlashing = Color.BLACK;
+            this.ColorOn = LedColor.BLACK;
+            this.ColorFlashing = LedColor.BLACK;
             this.DeviceId = 0;
             this.LedNumber = 0;
             this.Description = "";
@@ -339,7 +339,7 @@ namespace VLEDCONTROL
          }
 
 
-         public ProfileEvent(String aircraft, int id, String primaryCondition, double primaryValue, String secondaryCondition, double secondaryValue,  int deviceId, int ledNumber, Color colorOn, Color colorFlashing, String description)
+         public ProfileEvent(String aircraft, int id, String primaryCondition, double primaryValue, String secondaryCondition, double secondaryValue,  int deviceId, int ledNumber, LedColor colorOn, LedColor colorFlashing, String description)
          {
             this.Id = id;
             this.Aircraft = aircraft;

@@ -41,7 +41,7 @@ namespace VLEDCONTROL
       private const int LOW = 64;
       private const int NONE = 0;
 
-      public readonly Color Color = new Color();
+      public readonly LedColor Color = new LedColor();
       public System.Drawing.Color ResultColor { get; private set; } = System.Drawing.Color.Black;
 
       public ColorChooserDialog()

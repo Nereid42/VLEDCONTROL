@@ -96,14 +96,14 @@ namespace VLEDCONTROL
          return Tools.ToInt(this.textBoxDeviceId.Text);
       }
 
-      public Color GetColorOn()
+      public LedColor GetColorOn()
       {
-         return Color.FromSystemColor(this.buttonColor1.BackColor);
+         return LedColor.FromSystemColor(this.buttonColor1.BackColor);
       }
 
-      public Color GetColorFlashing()
+      public LedColor GetColorFlashing()
       {
-         return Color.FromSystemColor(this.buttonColor2.BackColor);
+         return LedColor.FromSystemColor(this.buttonColor2.BackColor);
       }
 
       internal string GetDescription()
@@ -229,8 +229,8 @@ namespace VLEDCONTROL
             //
             SelectItem(this.comboBoxLed, 0);
             // Colors
-            this.buttonColor1.BackColor = Color.GRAY.ToSystemColor();
-            this.buttonColor2.BackColor = Color.GRAY.ToSystemColor();
+            this.buttonColor1.BackColor = LedColor.GRAY.ToSystemColor();
+            this.buttonColor2.BackColor = LedColor.GRAY.ToSystemColor();
             //
             this.textBoxDescription.Text = "";
          }

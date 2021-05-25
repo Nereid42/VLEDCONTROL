@@ -174,7 +174,7 @@ namespace VLEDCONTROL
 
 
 
-      private void ExecuteLedCommand(VirpilDevice device, int ledNumber, Color color)
+      private void ExecuteLedCommand(VirpilDevice device, int ledNumber, LedColor color)
       {
          String command = CurrentSettings.VirpilLedControl;
          if(command==null || command.Length==0)
@@ -201,7 +201,7 @@ namespace VLEDCONTROL
             if (IsLoggable(LEVEL.DEBUG)) LogDebug("Set LEDs for device " + device.Name);
             for (int ledNumber = device.MinLedNumber; ledNumber <= device.MaxLedNumber; ledNumber++)
             {
-               Color color = device.SetCurrentColor(ledNumber);
+               LedColor color = device.SetCurrentColor(ledNumber);
                if (color != null)
                {
                   if(IsLoggable(LEVEL.DEBUG))
