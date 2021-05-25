@@ -39,9 +39,9 @@ namespace VLEDCONTROL
       public List<VirpilDevice> Devices { get; set; } = new List<VirpilDevice>();
       public String VirpilLedControl { get; set; } = "";
       public String DefaultProfile { get; set; } = "Default.profile";
-      public double UpdateInterval { get; set; } = 0.1;
+      public double UpdateInterval { get; set; } = 0.5;
       public double DataInterval { get; set; } = 0.3;
-      public int FlashingCycles { get; set; } = 5;
+      public int FlashingCycles { get; set; } = 2;
       public Loggable.LEVEL LogLevel { get; set; } = Loggable.LEVEL.INFO;
 
       public static bool FileExists()

@@ -49,6 +49,11 @@ namespace VLEDCONTROL
       private volatile double[] CurrentProperties = new double[VALUE_COUNT];
       private volatile DateTime[] CurrentTimestamps = new DateTime[VALUE_COUNT];
 
+      // Measuring time for performance analysis
+      private Stopwatch swTotalRunning = new Stopwatch();
+      private Stopwatch swCalcLeds = new Stopwatch();
+      private Stopwatch swExecutes = new Stopwatch();
+
       private long Cycle = 0;
 
       private long Executes = 0;
@@ -188,7 +193,10 @@ namespace VLEDCONTROL
          String b = color.blue.ToString("X2");
 
          String arguments = device.USB_VID + " " + device.USB_PID + " " + ledNumber + " " + r + " " + g + " " + b;
+         if(IsLoggable(LEVEL.TRACE)) LogTrace("EXECUTE COMMAND: "+ command+" "+ arguments);
+         swExecutes.Start();
          Tools.ExecuteCommand(command, arguments);
+         swExecutes.Stop();
          Interlocked.Increment(ref Executes);
       }
 
@@ -217,6 +225,8 @@ namespace VLEDCONTROL
 
       private void CalculateLEDs()
       {
+         swCalcLeds.Start();
+
          if (IsLoggable(LEVEL.DEBUG)) LogDebug("calculating all LEDs");
 
          foreach (Profile.ProfileEvent entry in CurrentProfile.ProfileEvents)
@@ -250,6 +260,8 @@ namespace VLEDCONTROL
             }
          }
          SetAllDeviceLeds();
+
+         swCalcLeds.Stop();
       }
 
 
@@ -281,8 +293,8 @@ namespace VLEDCONTROL
 
       private void Run()
       {
-         try
-         {
+         swTotalRunning.Start();
+
 
             LogInfo("starting engine...");
             IsRunning = true;
@@ -296,6 +308,9 @@ namespace VLEDCONTROL
 
             while (!this.StopRequest)
             {
+            try
+            {
+
                if (IsLoggable(LEVEL.TRACE)) LogTrace("main loop cycle " + Cycle);
 
                if (!ControlerInitDone && Controller != null)
@@ -307,23 +322,34 @@ namespace VLEDCONTROL
                if (IsLoggable(LEVEL.DEBUG)) LogDebug("Commdands executed: " + Executes);
 
                Thread.Sleep(CurrentSettings.GetUpdateIntervalInMillis());
-               Cycle++;
+
             }
-
-            Receiver.Stop();
-
-            if (Controller != null)
+            catch (Exception e)
             {
-               Controller.SetEngineStarted(false);
+               LogException(e);
             }
+            finally
+            {
+               Cycle++;
 
-            IsRunning = false;
-            LogInfo("engine stopped");
+            }
          }
-         catch (Exception e)
+
+         Receiver.Stop();
+
+         if (Controller != null)
          {
-            LogException(e);
+            Controller.SetEngineStarted(false);
          }
+
+         IsRunning = false;
+         LogInfo("engine stopped");
+
+         LogInfo("Total time running: "+swTotalRunning.ElapsedMilliseconds+" ms");
+         LogInfo("Calculating Leds: " + swCalcLeds.ElapsedMilliseconds + " ms");
+         LogInfo("Executes: " + swCalcLeds.ElapsedMilliseconds + " ms for "+Executes+" command executes");
+
+         swTotalRunning.Stop();
       }
 
 

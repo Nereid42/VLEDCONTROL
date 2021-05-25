@@ -159,8 +159,7 @@ namespace VLEDCONTROL
          ProcessInfo.CreateNoWindow = true;
          ProcessInfo.UseShellExecute = true;
 
-         //return Process.Start(ProcessInfo);
-         return Process.Start(command,arguments);
+         return Process.Start(ProcessInfo);
       }
 
       public static bool IsInteger(String s)
