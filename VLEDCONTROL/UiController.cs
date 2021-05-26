@@ -532,14 +532,14 @@ namespace VLEDCONTROL
                VLED.Engine.CurrentProfile.AddMapping(entry);
 
                MainWindow.listViewMapping.BeginInvoke(
-               new Action(() =>
-               {
-                  System.Windows.Forms.ListViewItem changeditem = MainWindow.listViewMapping.Items[index];
-                  changeditem.Text = entry.Id.ToString();
-                  changeditem.SubItems[1].Text = entry.Aircraft;
-                  changeditem.SubItems[2].Text = entry.Name;
-                  MainWindow.listViewMapping.Sort();
-               })
+                  new Action(() =>
+                  {
+                     System.Windows.Forms.ListViewItem changeditem = MainWindow.listViewMapping.Items[index];
+                     changeditem.Text = entry.Id.ToString();
+                     changeditem.SubItems[1].Text = entry.Aircraft;
+                     changeditem.SubItems[2].Text = entry.Name;
+                     MainWindow.listViewMapping.Sort();
+                  })
                );
             }
          }
