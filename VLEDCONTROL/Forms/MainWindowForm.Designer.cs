@@ -100,10 +100,14 @@
          this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabPageSettings = new System.Windows.Forms.TabPage();
          this.groupBox2 = new System.Windows.Forms.GroupBox();
+         this.textBoxNumberLedChanges = new System.Windows.Forms.TextBox();
+         this.textBoxTimeUsedLedCalc = new System.Windows.Forms.TextBox();
+         this.textBoxTimeRunning = new System.Windows.Forms.TextBox();
          this.labelTimeUsedLedCalc = new System.Windows.Forms.Label();
          this.labelTimeRunning = new System.Windows.Forms.Label();
          this.labelNumberLedChanges = new System.Windows.Forms.Label();
          this.groupBox1 = new System.Windows.Forms.GroupBox();
+         this.checkBoxEnableStatistics = new System.Windows.Forms.CheckBox();
          this.comboBoxLogLevel = new System.Windows.Forms.ComboBox();
          this.labelLogLevel = new System.Windows.Forms.Label();
          this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -153,10 +157,12 @@
          this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
-         this.textBoxTimeRunning = new System.Windows.Forms.TextBox();
-         this.textBoxTimeUsedLedCalc = new System.Windows.Forms.TextBox();
-         this.textBoxNumberLedChanges = new System.Windows.Forms.TextBox();
-         this.checkBoxEnableStatistics = new System.Windows.Forms.CheckBox();
+         this.groupBoxFilter = new System.Windows.Forms.GroupBox();
+         this.comboBoxFilterAircraft = new System.Windows.Forms.ComboBox();
+         this.label1 = new System.Windows.Forms.Label();
+         this.checkBoxFilterStatic = new System.Windows.Forms.CheckBox();
+         this.label2 = new System.Windows.Forms.Label();
+         this.comboBox1 = new System.Windows.Forms.ComboBox();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -168,6 +174,7 @@
          this.groupBox1.SuspendLayout();
          this.panelMode.SuspendLayout();
          this.panel1.SuspendLayout();
+         this.groupBoxFilter.SuspendLayout();
          this.SuspendLayout();
          // 
          // menuStrip1
@@ -468,6 +475,7 @@
          // 
          // tabPageProfile
          // 
+         this.tabPageProfile.Controls.Add(this.groupBoxFilter);
          this.tabPageProfile.Controls.Add(this.buttonProfilesClear);
          this.tabPageProfile.Controls.Add(this.label6);
          this.tabPageProfile.Controls.Add(this.panel3);
@@ -882,6 +890,30 @@
          this.groupBox2.TabStop = false;
          this.groupBox2.Text = "Statistics";
          // 
+         // textBoxNumberLedChanges
+         // 
+         this.textBoxNumberLedChanges.Location = new System.Drawing.Point(171, 74);
+         this.textBoxNumberLedChanges.Name = "textBoxNumberLedChanges";
+         this.textBoxNumberLedChanges.ReadOnly = true;
+         this.textBoxNumberLedChanges.Size = new System.Drawing.Size(171, 20);
+         this.textBoxNumberLedChanges.TabIndex = 6;
+         // 
+         // textBoxTimeUsedLedCalc
+         // 
+         this.textBoxTimeUsedLedCalc.Location = new System.Drawing.Point(171, 48);
+         this.textBoxTimeUsedLedCalc.Name = "textBoxTimeUsedLedCalc";
+         this.textBoxTimeUsedLedCalc.ReadOnly = true;
+         this.textBoxTimeUsedLedCalc.Size = new System.Drawing.Size(171, 20);
+         this.textBoxTimeUsedLedCalc.TabIndex = 5;
+         // 
+         // textBoxTimeRunning
+         // 
+         this.textBoxTimeRunning.Location = new System.Drawing.Point(171, 22);
+         this.textBoxTimeRunning.Name = "textBoxTimeRunning";
+         this.textBoxTimeRunning.ReadOnly = true;
+         this.textBoxTimeRunning.Size = new System.Drawing.Size(171, 20);
+         this.textBoxTimeRunning.TabIndex = 4;
+         // 
          // labelTimeUsedLedCalc
          // 
          this.labelTimeUsedLedCalc.AutoSize = true;
@@ -924,6 +956,19 @@
          this.groupBox1.TabIndex = 23;
          this.groupBox1.TabStop = false;
          this.groupBox1.Text = "System";
+         // 
+         // checkBoxEnableStatistics
+         // 
+         this.checkBoxEnableStatistics.AutoSize = true;
+         this.checkBoxEnableStatistics.Checked = true;
+         this.checkBoxEnableStatistics.CheckState = System.Windows.Forms.CheckState.Checked;
+         this.checkBoxEnableStatistics.Location = new System.Drawing.Point(6, 110);
+         this.checkBoxEnableStatistics.Name = "checkBoxEnableStatistics";
+         this.checkBoxEnableStatistics.Size = new System.Drawing.Size(104, 17);
+         this.checkBoxEnableStatistics.TabIndex = 28;
+         this.checkBoxEnableStatistics.Text = "Enable Statistics";
+         this.checkBoxEnableStatistics.UseVisualStyleBackColor = true;
+         this.checkBoxEnableStatistics.CheckedChanged += new System.EventHandler(this.checkBoxEnableStatistics_CheckedChanged);
          // 
          // comboBoxLogLevel
          // 
@@ -1397,42 +1442,64 @@
          this.progressBarEngineStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
          this.progressBarEngineStatus.TabIndex = 12;
          // 
-         // textBoxTimeRunning
+         // groupBoxFilter
          // 
-         this.textBoxTimeRunning.Location = new System.Drawing.Point(171, 22);
-         this.textBoxTimeRunning.Name = "textBoxTimeRunning";
-         this.textBoxTimeRunning.ReadOnly = true;
-         this.textBoxTimeRunning.Size = new System.Drawing.Size(171, 20);
-         this.textBoxTimeRunning.TabIndex = 4;
+         this.groupBoxFilter.Controls.Add(this.comboBox1);
+         this.groupBoxFilter.Controls.Add(this.label2);
+         this.groupBoxFilter.Controls.Add(this.checkBoxFilterStatic);
+         this.groupBoxFilter.Controls.Add(this.label1);
+         this.groupBoxFilter.Controls.Add(this.comboBoxFilterAircraft);
+         this.groupBoxFilter.Location = new System.Drawing.Point(414, 0);
+         this.groupBoxFilter.Name = "groupBoxFilter";
+         this.groupBoxFilter.Size = new System.Drawing.Size(563, 46);
+         this.groupBoxFilter.TabIndex = 15;
+         this.groupBoxFilter.TabStop = false;
+         this.groupBoxFilter.Text = "Filter";
+         this.groupBoxFilter.Visible = false;
          // 
-         // textBoxTimeUsedLedCalc
+         // comboBoxFilterAircraft
          // 
-         this.textBoxTimeUsedLedCalc.Location = new System.Drawing.Point(171, 48);
-         this.textBoxTimeUsedLedCalc.Name = "textBoxTimeUsedLedCalc";
-         this.textBoxTimeUsedLedCalc.ReadOnly = true;
-         this.textBoxTimeUsedLedCalc.Size = new System.Drawing.Size(171, 20);
-         this.textBoxTimeUsedLedCalc.TabIndex = 5;
+         this.comboBoxFilterAircraft.FormattingEnabled = true;
+         this.comboBoxFilterAircraft.Location = new System.Drawing.Point(53, 14);
+         this.comboBoxFilterAircraft.Name = "comboBoxFilterAircraft";
+         this.comboBoxFilterAircraft.Size = new System.Drawing.Size(149, 21);
+         this.comboBoxFilterAircraft.TabIndex = 0;
          // 
-         // textBoxNumberLedChanges
+         // label1
          // 
-         this.textBoxNumberLedChanges.Location = new System.Drawing.Point(171, 74);
-         this.textBoxNumberLedChanges.Name = "textBoxNumberLedChanges";
-         this.textBoxNumberLedChanges.ReadOnly = true;
-         this.textBoxNumberLedChanges.Size = new System.Drawing.Size(171, 20);
-         this.textBoxNumberLedChanges.TabIndex = 6;
+         this.label1.AutoSize = true;
+         this.label1.Location = new System.Drawing.Point(7, 17);
+         this.label1.Name = "label1";
+         this.label1.Size = new System.Drawing.Size(40, 13);
+         this.label1.TabIndex = 1;
+         this.label1.Text = "Aircraft";
          // 
-         // checkBoxEnableStatistics
+         // checkBoxFilterStatic
          // 
-         this.checkBoxEnableStatistics.AutoSize = true;
-         this.checkBoxEnableStatistics.Checked = true;
-         this.checkBoxEnableStatistics.CheckState = System.Windows.Forms.CheckState.Checked;
-         this.checkBoxEnableStatistics.Location = new System.Drawing.Point(6, 110);
-         this.checkBoxEnableStatistics.Name = "checkBoxEnableStatistics";
-         this.checkBoxEnableStatistics.Size = new System.Drawing.Size(104, 17);
-         this.checkBoxEnableStatistics.TabIndex = 28;
-         this.checkBoxEnableStatistics.Text = "Enable Statistics";
-         this.checkBoxEnableStatistics.UseVisualStyleBackColor = true;
-         this.checkBoxEnableStatistics.CheckedChanged += new System.EventHandler(this.checkBoxEnableStatistics_CheckedChanged);
+         this.checkBoxFilterStatic.AutoSize = true;
+         this.checkBoxFilterStatic.Location = new System.Drawing.Point(428, 17);
+         this.checkBoxFilterStatic.Name = "checkBoxFilterStatic";
+         this.checkBoxFilterStatic.Size = new System.Drawing.Size(53, 17);
+         this.checkBoxFilterStatic.TabIndex = 2;
+         this.checkBoxFilterStatic.Text = "Static";
+         this.checkBoxFilterStatic.UseVisualStyleBackColor = true;
+         // 
+         // label2
+         // 
+         this.label2.AutoSize = true;
+         this.label2.Location = new System.Drawing.Point(208, 18);
+         this.label2.Name = "label2";
+         this.label2.Size = new System.Drawing.Size(41, 13);
+         this.label2.TabIndex = 3;
+         this.label2.Text = "Device";
+         // 
+         // comboBox1
+         // 
+         this.comboBox1.FormattingEnabled = true;
+         this.comboBox1.Location = new System.Drawing.Point(255, 14);
+         this.comboBox1.Name = "comboBox1";
+         this.comboBox1.Size = new System.Drawing.Size(149, 21);
+         this.comboBox1.TabIndex = 4;
          // 
          // MainWindowForm
          // 
@@ -1479,6 +1546,8 @@
          this.panelMode.PerformLayout();
          this.panel1.ResumeLayout(false);
          this.panel1.PerformLayout();
+         this.groupBoxFilter.ResumeLayout(false);
+         this.groupBoxFilter.PerformLayout();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -1613,6 +1682,12 @@
       internal System.Windows.Forms.TextBox textBoxNumberLedChanges;
       internal System.Windows.Forms.TextBox textBoxTimeUsedLedCalc;
       internal System.Windows.Forms.TextBox textBoxTimeRunning;
+      private System.Windows.Forms.GroupBox groupBoxFilter;
+      private System.Windows.Forms.ComboBox comboBox1;
+      private System.Windows.Forms.Label label2;
+      private System.Windows.Forms.CheckBox checkBoxFilterStatic;
+      private System.Windows.Forms.Label label1;
+      private System.Windows.Forms.ComboBox comboBoxFilterAircraft;
    }
 }
 

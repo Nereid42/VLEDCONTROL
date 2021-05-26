@@ -511,31 +511,37 @@ namespace VLEDCONTROL
 
       internal void EditMapping(int index)
       {
-         Profile.MappingEntry entry = VLED.Engine.CurrentProfile.MappingEntries.ElementAt(index);
+         System.Windows.Forms.ListViewItem item = MainWindow.listViewMapping.Items[index];
+         int id = Tools.ToInt(item.Text);
+         String aircraft = item.SubItems[1].Text;
 
-         EditMappingEntryDialog dialog = new EditMappingEntryDialog();
-         dialog.Profile = VLED.Engine.CurrentProfile;
-         dialog.MappingEntry = entry;
-         if (dialog.ShowDialog() == DialogResult.OK)
+         Profile.MappingEntry entry = VLED.Engine.CurrentProfile.GetMapingEntry(aircraft, id);
+         if(entry!=null)
          {
-            entry.Aircraft = dialog.GetAircraft();
-            entry.Id = dialog.GetId();
-            entry.Name = dialog.GetName();
-
-            // Reinsert for correcct internal Mapping
-            VLED.Engine.CurrentProfile.RemoveMapping(entry);
-            VLED.Engine.CurrentProfile.AddMapping(entry);
-
-            MainWindow.listViewMapping.BeginInvoke(
-            new Action(() =>
+            EditMappingEntryDialog dialog = new EditMappingEntryDialog();
+            dialog.Profile = VLED.Engine.CurrentProfile;
+            dialog.MappingEntry = entry;
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
-               System.Windows.Forms.ListViewItem item = MainWindow.listViewMapping.Items[index];
-               item.Text = entry.Id.ToString();
-               item.SubItems[1].Text = entry.Aircraft;
-               item.SubItems[2].Text = entry.Name;
-               MainWindow.listViewMapping.Sort();
+               entry.Aircraft = dialog.GetAircraft();
+               entry.Id = dialog.GetId();
+               entry.Name = dialog.GetName();
+
+               // Reinsert for correcct internal Mapping
+               VLED.Engine.CurrentProfile.RemoveMapping(entry);
+               VLED.Engine.CurrentProfile.AddMapping(entry);
+
+               MainWindow.listViewMapping.BeginInvoke(
+               new Action(() =>
+               {
+                  System.Windows.Forms.ListViewItem changeditem = MainWindow.listViewMapping.Items[index];
+                  changeditem.Text = entry.Id.ToString();
+                  changeditem.SubItems[1].Text = entry.Aircraft;
+                  changeditem.SubItems[2].Text = entry.Name;
+                  MainWindow.listViewMapping.Sort();
                })
-            );
+               );
+            }
          }
       }
 

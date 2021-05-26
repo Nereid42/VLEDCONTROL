@@ -148,7 +148,7 @@ namespace VLEDCONTROL
             MapNameEntries.Add(mapid, entry);
             Tuple<String, String> nameid = new Tuple<String, String>(entry.Aircraft, entry.Name);
             MapNameEventId.Add(nameid, entry);
-            // add m,apping for aircraft events
+            // add mapping for aircraft events
             List<String> eventsForAircraft;
             if (!MapAircraftEvents.TryGetValue(entry.Aircraft, out eventsForAircraft))
             {
@@ -216,6 +216,19 @@ namespace VLEDCONTROL
             return entry.Id;
          }
          return 0;
+      }
+
+      internal MappingEntry GetMapingEntry(string aircraft, int id)
+      {
+         Tuple<String, int> mapid = new Tuple<String, int>(aircraft, id);
+
+         MappingEntry entry;
+
+         if (MapNameEntries.TryGetValue(mapid, out entry))
+         {
+            return entry;
+         }
+         return null;
       }
 
       public ProfileEvent AddProfileEvent(String aircraft, int id, String condition1, double value1, String condition2, double value2, int deviceId, int ledNumber, LedColor colorOn, LedColor colorFlashing, String description)
@@ -289,6 +302,10 @@ namespace VLEDCONTROL
          HashSet<String> aircrafts = new HashSet<String>();
 
          foreach(ProfileEvent e in ProfileEvents)
+         {
+            aircrafts.Add(e.Aircraft);
+         }
+         foreach(MappingEntry e in MappingEntries)
          {
             aircrafts.Add(e.Aircraft);
          }
@@ -375,6 +392,5 @@ namespace VLEDCONTROL
             return result;
          }
       }
-
    }
 }
