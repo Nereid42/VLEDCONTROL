@@ -66,7 +66,6 @@ namespace VLEDCONTROL
          return null;
       }
 
-
       public override string ToString()
       {
          return "[" + Name + ":" + USB_VID + ":" + USB_PID + ")";

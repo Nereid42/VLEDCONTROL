@@ -163,6 +163,7 @@
          this.checkBoxFilterStatic = new System.Windows.Forms.CheckBox();
          this.label2 = new System.Windows.Forms.Label();
          this.comboBox1 = new System.Windows.Forms.ComboBox();
+         this.checkBoxLiveDataEnabled = new System.Windows.Forms.CheckBox();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -286,6 +287,7 @@
          // 
          // tabPageData
          // 
+         this.tabPageData.Controls.Add(this.checkBoxLiveDataEnabled);
          this.tabPageData.Controls.Add(this.buttonCopyAircraftToClipboard);
          this.tabPageData.Controls.Add(this.buttonRegisterFromProfile);
          this.tabPageData.Controls.Add(this.checkBoxDataShowUnknown);
@@ -1501,6 +1503,19 @@
          this.comboBox1.Size = new System.Drawing.Size(149, 21);
          this.comboBox1.TabIndex = 4;
          // 
+         // checkBoxLiveDataEnabled
+         // 
+         this.checkBoxLiveDataEnabled.AutoSize = true;
+         this.checkBoxLiveDataEnabled.Checked = true;
+         this.checkBoxLiveDataEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
+         this.checkBoxLiveDataEnabled.Location = new System.Drawing.Point(438, 540);
+         this.checkBoxLiveDataEnabled.Name = "checkBoxLiveDataEnabled";
+         this.checkBoxLiveDataEnabled.Size = new System.Drawing.Size(65, 17);
+         this.checkBoxLiveDataEnabled.TabIndex = 12;
+         this.checkBoxLiveDataEnabled.Text = "Enabled";
+         this.checkBoxLiveDataEnabled.UseVisualStyleBackColor = true;
+         this.checkBoxLiveDataEnabled.CheckedChanged += new System.EventHandler(this.checkBoxLiveDataEnabled_CheckedChanged);
+         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1688,6 +1703,7 @@
       private System.Windows.Forms.CheckBox checkBoxFilterStatic;
       private System.Windows.Forms.Label label1;
       private System.Windows.Forms.ComboBox comboBoxFilterAircraft;
+      internal System.Windows.Forms.CheckBox checkBoxLiveDataEnabled;
    }
 }
 

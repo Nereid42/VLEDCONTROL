@@ -543,5 +543,15 @@ namespace VLEDCONTROL
          Controller.SetStatisticsEnabled(this.checkBoxEnableStatistics.Checked);
          Controller.SetSettingsModified(true);
       }
+
+      private void checkBoxLiveDataEnabled_CheckedChanged(object sender, EventArgs e)
+      {
+         bool enabled = this.checkBoxLiveDataEnabled.Checked;
+         VLED.Engine.CurrentSettings.LiveDataEnabled = enabled;
+         if (enabled)
+         {
+            VLED.Engine.ShowProperties();
+         }
+      }
    }
 }

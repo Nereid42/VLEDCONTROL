@@ -99,13 +99,25 @@ namespace VLEDCONTROL
          {
             LogException(e);
          }
+      }
 
+      private void SetCheckBoxChecked(System.Windows.Forms.CheckBox checkBox, bool state)
+      {
+         try
+         {
+            checkBox.Invoke(
+               new Action(() => checkBox.Checked = state)
+               );
+         }
+         catch (Exception e)
+         {
+            LogException(e);
+         }
       }
 
 
       public void SetData(int id, String name, double value, DateTime lastChange)
       {
-
          if (MainWindow.IsHandleCreated)
          {
             MainWindow.listViewData.BeginInvoke(
@@ -150,16 +162,26 @@ namespace VLEDCONTROL
       {
          if(started)
          {
-            MainWindow.buttonMainStart.BackColor = System.Drawing.Color.GreenYellow;
-            MainWindow.buttonMainStart.Text = "STOP";
-            MainWindow.progressBarEngineStatus.MarqueeAnimationSpeed = 40;
+            MainWindow.BeginInvoke(
+               new Action(() =>
+               {
+                  MainWindow.buttonMainStart.BackColor = System.Drawing.Color.GreenYellow;
+                  MainWindow.buttonMainStart.Text = "STOP";
+                  MainWindow.progressBarEngineStatus.MarqueeAnimationSpeed = 40;
+               })
+            );
          }
          else
          {
-            MainWindow.buttonMainStart.BackColor = System.Drawing.Color.Coral;
-            MainWindow.buttonMainStart.Text = "START";
-            MainWindow.progressBarEngineStatus.MarqueeAnimationSpeed = 0;
-            MainWindow.progressBarEngineStatus.Value = 0;
+            MainWindow.BeginInvoke(
+               new Action(() =>
+               {
+                  MainWindow.buttonMainStart.BackColor = System.Drawing.Color.Coral;
+                  MainWindow.buttonMainStart.Text = "START";
+                  MainWindow.progressBarEngineStatus.MarqueeAnimationSpeed = 0;
+                  MainWindow.progressBarEngineStatus.Value = 0;
+               })
+            );
          }
       }
 
@@ -242,7 +264,8 @@ namespace VLEDCONTROL
          );
 
          // Checkboxes
-         MainWindow.checkBoxEnableStatistics.Checked = settings.StatisticsEnabled;
+         SetCheckBoxChecked(MainWindow.checkBoxEnableStatistics, settings.StatisticsEnabled);
+         SetCheckBoxChecked(MainWindow.checkBoxLiveDataEnabled, settings.LiveDataEnabled);
 
          // Buttons
          SetSettingsModified(modified);

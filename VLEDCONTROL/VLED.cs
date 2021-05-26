@@ -41,7 +41,9 @@ namespace VLEDCONTROL
       static public void Exit()
       {
          LogInfo("exiting VLED...");
+         Engine.Stop();
          Engine.CurrentSettings.Save();
+         Engine.Join(10);
          Environment.Exit(0);
       }
 

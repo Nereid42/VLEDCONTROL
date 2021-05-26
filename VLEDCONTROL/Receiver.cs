@@ -151,5 +151,13 @@ namespace VLEDCONTROL
       readonly UdpClient udpClient;
       private volatile bool StopRequest;
       private readonly List<DataHandler> handler;
+
+      internal void Join()
+      {
+         while(IsRunning)
+         {
+            Thread.Sleep(100);
+         }
+      }
    }
 }

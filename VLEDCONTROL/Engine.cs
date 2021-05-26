@@ -45,6 +45,19 @@ namespace VLEDCONTROL
       private UiController Controller;
       private volatile bool ControlerInitDone;
 
+      internal void Join(int timeoutInSeconds)
+      {
+         int timeInSeconds = 0;
+         while(IsRunning && timeInSeconds < timeoutInSeconds)
+         {
+            for(int i=0; i<10 && IsRunning;i++)
+            {
+               Thread.Sleep(100);
+            }
+            timeInSeconds++;
+         }
+      }
+
       private volatile String CurrentAircraft;
       private volatile double[] CurrentProperties = new double[VALUE_COUNT];
       private volatile DateTime[] CurrentTimestamps = new DateTime[VALUE_COUNT];
@@ -65,7 +78,6 @@ namespace VLEDCONTROL
          this.Receiver = new Receiver(5555);
          Receiver.AddDataHandler(new AircraftDataHandler(this));
          Receiver.AddDataHandler(new PropertyDataHandler(this));
-
 
          try
          {
@@ -131,6 +143,12 @@ namespace VLEDCONTROL
          t.Start();
       }
 
+      public void Stop()
+      {
+         LogInfo("Stoprequest for Engine");
+         this.StopRequest = true;
+      }
+
       public void RemoveDevice(VirpilDevice device)
       {
          // TODO
@@ -148,7 +166,7 @@ namespace VLEDCONTROL
          }
       }
 
-         internal void SetAirplane(String aircraft)
+      internal void SetAirplane(String aircraft)
       {
          this.CurrentAircraft = aircraft;
          LogDebug("airplane is now" + aircraft);
@@ -164,18 +182,25 @@ namespace VLEDCONTROL
          CurrentProperties[id] = value;
          CurrentTimestamps[id] = DateTime.Now;
 
-         if (Controller != null)
+         if (Controller != null && CurrentSettings.LiveDataEnabled)
          {
             String name = CurrentProfile.MapPropertyName(CurrentAircraft, id);
             Controller.SetData(id, name, value, CurrentTimestamps[id]);
          }
       }
 
-      public void Stop()
+      internal void ShowProperties()
       {
-         LogInfo("Stoprequest for Engine");
-         this.StopRequest = true;
+         for(int id=0; id<CurrentProperties.Length; id++)
+         {
+            if(CurrentTimestamps[id] != null && CurrentTimestamps[id]!=DateTime.MinValue)
+            {
+               String name = CurrentProfile.MapPropertyName(CurrentAircraft, id);
+               Controller.SetData(id, name, CurrentProperties[id], CurrentTimestamps[id]);
+            }
+         }
       }
+
 
 
 
@@ -264,6 +289,13 @@ namespace VLEDCONTROL
          swCalcLeds.Stop();
       }
 
+      private void ResetAllDeviceLeds()
+      {
+         foreach(VirpilDevice device in CurrentSettings.Devices)
+         {
+            ExecuteLedCommand(device,0, LedColor.BLACK);
+         }
+      }
 
       private bool CheckCondition(double currentValue, double value, string condition)
       {
@@ -350,6 +382,10 @@ namespace VLEDCONTROL
          }
 
          Receiver.Stop();
+         // Wait until Receiver is terminated
+         Receiver.Join();
+         // Reset Devices
+         ResetAllDeviceLeds();
 
          if (Controller != null)
          {
