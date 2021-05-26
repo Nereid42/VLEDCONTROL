@@ -44,6 +44,7 @@
          this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
          this.tabMain = new System.Windows.Forms.TabControl();
          this.tabPageData = new System.Windows.Forms.TabPage();
+         this.checkBoxLiveDataEnabled = new System.Windows.Forms.CheckBox();
          this.buttonCopyAircraftToClipboard = new System.Windows.Forms.Button();
          this.buttonRegisterFromProfile = new System.Windows.Forms.Button();
          this.checkBoxDataShowUnknown = new System.Windows.Forms.CheckBox();
@@ -62,6 +63,12 @@
          this.columnHeaderDataValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderLastChange = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabPageProfile = new System.Windows.Forms.TabPage();
+         this.groupBoxFilter = new System.Windows.Forms.GroupBox();
+         this.comboBox1 = new System.Windows.Forms.ComboBox();
+         this.label2 = new System.Windows.Forms.Label();
+         this.checkBoxFilterStatic = new System.Windows.Forms.CheckBox();
+         this.label1 = new System.Windows.Forms.Label();
+         this.comboBoxFilterAircraft = new System.Windows.Forms.ComboBox();
          this.buttonProfilesClear = new System.Windows.Forms.Button();
          this.label6 = new System.Windows.Forms.Label();
          this.panel3 = new System.Windows.Forms.Panel();
@@ -157,17 +164,12 @@
          this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
-         this.groupBoxFilter = new System.Windows.Forms.GroupBox();
-         this.comboBoxFilterAircraft = new System.Windows.Forms.ComboBox();
-         this.label1 = new System.Windows.Forms.Label();
-         this.checkBoxFilterStatic = new System.Windows.Forms.CheckBox();
-         this.label2 = new System.Windows.Forms.Label();
-         this.comboBox1 = new System.Windows.Forms.ComboBox();
-         this.checkBoxLiveDataEnabled = new System.Windows.Forms.CheckBox();
+         this.panel2 = new System.Windows.Forms.Panel();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
          this.tabPageProfile.SuspendLayout();
+         this.groupBoxFilter.SuspendLayout();
          this.panel3.SuspendLayout();
          this.tabPageMapping.SuspendLayout();
          this.tabPageSettings.SuspendLayout();
@@ -175,7 +177,7 @@
          this.groupBox1.SuspendLayout();
          this.panelMode.SuspendLayout();
          this.panel1.SuspendLayout();
-         this.groupBoxFilter.SuspendLayout();
+         this.panel2.SuspendLayout();
          this.SuspendLayout();
          // 
          // menuStrip1
@@ -287,7 +289,7 @@
          // 
          // tabPageData
          // 
-         this.tabPageData.Controls.Add(this.checkBoxLiveDataEnabled);
+         this.tabPageData.Controls.Add(this.panel2);
          this.tabPageData.Controls.Add(this.buttonCopyAircraftToClipboard);
          this.tabPageData.Controls.Add(this.buttonRegisterFromProfile);
          this.tabPageData.Controls.Add(this.checkBoxDataShowUnknown);
@@ -306,6 +308,19 @@
          this.tabPageData.TabIndex = 0;
          this.tabPageData.Text = "Data";
          this.tabPageData.UseVisualStyleBackColor = true;
+         // 
+         // checkBoxLiveDataEnabled
+         // 
+         this.checkBoxLiveDataEnabled.AutoSize = true;
+         this.checkBoxLiveDataEnabled.Checked = true;
+         this.checkBoxLiveDataEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
+         this.checkBoxLiveDataEnabled.Location = new System.Drawing.Point(3, 2);
+         this.checkBoxLiveDataEnabled.Name = "checkBoxLiveDataEnabled";
+         this.checkBoxLiveDataEnabled.Size = new System.Drawing.Size(65, 17);
+         this.checkBoxLiveDataEnabled.TabIndex = 12;
+         this.checkBoxLiveDataEnabled.Text = "Enabled";
+         this.checkBoxLiveDataEnabled.UseVisualStyleBackColor = true;
+         this.checkBoxLiveDataEnabled.CheckedChanged += new System.EventHandler(this.checkBoxLiveDataEnabled_CheckedChanged);
          // 
          // buttonCopyAircraftToClipboard
          // 
@@ -498,6 +513,65 @@
          this.tabPageProfile.TabIndex = 1;
          this.tabPageProfile.Text = "Profile";
          this.tabPageProfile.UseVisualStyleBackColor = true;
+         // 
+         // groupBoxFilter
+         // 
+         this.groupBoxFilter.Controls.Add(this.comboBox1);
+         this.groupBoxFilter.Controls.Add(this.label2);
+         this.groupBoxFilter.Controls.Add(this.checkBoxFilterStatic);
+         this.groupBoxFilter.Controls.Add(this.label1);
+         this.groupBoxFilter.Controls.Add(this.comboBoxFilterAircraft);
+         this.groupBoxFilter.Location = new System.Drawing.Point(414, 0);
+         this.groupBoxFilter.Name = "groupBoxFilter";
+         this.groupBoxFilter.Size = new System.Drawing.Size(563, 46);
+         this.groupBoxFilter.TabIndex = 15;
+         this.groupBoxFilter.TabStop = false;
+         this.groupBoxFilter.Text = "Filter";
+         this.groupBoxFilter.Visible = false;
+         // 
+         // comboBox1
+         // 
+         this.comboBox1.FormattingEnabled = true;
+         this.comboBox1.Location = new System.Drawing.Point(255, 14);
+         this.comboBox1.Name = "comboBox1";
+         this.comboBox1.Size = new System.Drawing.Size(149, 21);
+         this.comboBox1.TabIndex = 4;
+         // 
+         // label2
+         // 
+         this.label2.AutoSize = true;
+         this.label2.Location = new System.Drawing.Point(208, 18);
+         this.label2.Name = "label2";
+         this.label2.Size = new System.Drawing.Size(41, 13);
+         this.label2.TabIndex = 3;
+         this.label2.Text = "Device";
+         // 
+         // checkBoxFilterStatic
+         // 
+         this.checkBoxFilterStatic.AutoSize = true;
+         this.checkBoxFilterStatic.Location = new System.Drawing.Point(428, 17);
+         this.checkBoxFilterStatic.Name = "checkBoxFilterStatic";
+         this.checkBoxFilterStatic.Size = new System.Drawing.Size(53, 17);
+         this.checkBoxFilterStatic.TabIndex = 2;
+         this.checkBoxFilterStatic.Text = "Static";
+         this.checkBoxFilterStatic.UseVisualStyleBackColor = true;
+         // 
+         // label1
+         // 
+         this.label1.AutoSize = true;
+         this.label1.Location = new System.Drawing.Point(7, 17);
+         this.label1.Name = "label1";
+         this.label1.Size = new System.Drawing.Size(40, 13);
+         this.label1.TabIndex = 1;
+         this.label1.Text = "Aircraft";
+         // 
+         // comboBoxFilterAircraft
+         // 
+         this.comboBoxFilterAircraft.FormattingEnabled = true;
+         this.comboBoxFilterAircraft.Location = new System.Drawing.Point(53, 14);
+         this.comboBoxFilterAircraft.Name = "comboBoxFilterAircraft";
+         this.comboBoxFilterAircraft.Size = new System.Drawing.Size(149, 21);
+         this.comboBoxFilterAircraft.TabIndex = 0;
          // 
          // buttonProfilesClear
          // 
@@ -1444,77 +1518,15 @@
          this.progressBarEngineStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
          this.progressBarEngineStatus.TabIndex = 12;
          // 
-         // groupBoxFilter
+         // panel2
          // 
-         this.groupBoxFilter.Controls.Add(this.comboBox1);
-         this.groupBoxFilter.Controls.Add(this.label2);
-         this.groupBoxFilter.Controls.Add(this.checkBoxFilterStatic);
-         this.groupBoxFilter.Controls.Add(this.label1);
-         this.groupBoxFilter.Controls.Add(this.comboBoxFilterAircraft);
-         this.groupBoxFilter.Location = new System.Drawing.Point(414, 0);
-         this.groupBoxFilter.Name = "groupBoxFilter";
-         this.groupBoxFilter.Size = new System.Drawing.Size(563, 46);
-         this.groupBoxFilter.TabIndex = 15;
-         this.groupBoxFilter.TabStop = false;
-         this.groupBoxFilter.Text = "Filter";
-         this.groupBoxFilter.Visible = false;
-         // 
-         // comboBoxFilterAircraft
-         // 
-         this.comboBoxFilterAircraft.FormattingEnabled = true;
-         this.comboBoxFilterAircraft.Location = new System.Drawing.Point(53, 14);
-         this.comboBoxFilterAircraft.Name = "comboBoxFilterAircraft";
-         this.comboBoxFilterAircraft.Size = new System.Drawing.Size(149, 21);
-         this.comboBoxFilterAircraft.TabIndex = 0;
-         // 
-         // label1
-         // 
-         this.label1.AutoSize = true;
-         this.label1.Location = new System.Drawing.Point(7, 17);
-         this.label1.Name = "label1";
-         this.label1.Size = new System.Drawing.Size(40, 13);
-         this.label1.TabIndex = 1;
-         this.label1.Text = "Aircraft";
-         // 
-         // checkBoxFilterStatic
-         // 
-         this.checkBoxFilterStatic.AutoSize = true;
-         this.checkBoxFilterStatic.Location = new System.Drawing.Point(428, 17);
-         this.checkBoxFilterStatic.Name = "checkBoxFilterStatic";
-         this.checkBoxFilterStatic.Size = new System.Drawing.Size(53, 17);
-         this.checkBoxFilterStatic.TabIndex = 2;
-         this.checkBoxFilterStatic.Text = "Static";
-         this.checkBoxFilterStatic.UseVisualStyleBackColor = true;
-         // 
-         // label2
-         // 
-         this.label2.AutoSize = true;
-         this.label2.Location = new System.Drawing.Point(208, 18);
-         this.label2.Name = "label2";
-         this.label2.Size = new System.Drawing.Size(41, 13);
-         this.label2.TabIndex = 3;
-         this.label2.Text = "Device";
-         // 
-         // comboBox1
-         // 
-         this.comboBox1.FormattingEnabled = true;
-         this.comboBox1.Location = new System.Drawing.Point(255, 14);
-         this.comboBox1.Name = "comboBox1";
-         this.comboBox1.Size = new System.Drawing.Size(149, 21);
-         this.comboBox1.TabIndex = 4;
-         // 
-         // checkBoxLiveDataEnabled
-         // 
-         this.checkBoxLiveDataEnabled.AutoSize = true;
-         this.checkBoxLiveDataEnabled.Checked = true;
-         this.checkBoxLiveDataEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
-         this.checkBoxLiveDataEnabled.Location = new System.Drawing.Point(438, 540);
-         this.checkBoxLiveDataEnabled.Name = "checkBoxLiveDataEnabled";
-         this.checkBoxLiveDataEnabled.Size = new System.Drawing.Size(65, 17);
-         this.checkBoxLiveDataEnabled.TabIndex = 12;
-         this.checkBoxLiveDataEnabled.Text = "Enabled";
-         this.checkBoxLiveDataEnabled.UseVisualStyleBackColor = true;
-         this.checkBoxLiveDataEnabled.CheckedChanged += new System.EventHandler(this.checkBoxLiveDataEnabled_CheckedChanged);
+         this.panel2.BackColor = System.Drawing.SystemColors.Control;
+         this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+         this.panel2.Controls.Add(this.checkBoxLiveDataEnabled);
+         this.panel2.Location = new System.Drawing.Point(438, 537);
+         this.panel2.Name = "panel2";
+         this.panel2.Size = new System.Drawing.Size(65, 20);
+         this.panel2.TabIndex = 13;
          // 
          // MainWindowForm
          // 
@@ -1547,6 +1559,8 @@
          this.tabPageData.PerformLayout();
          this.tabPageProfile.ResumeLayout(false);
          this.tabPageProfile.PerformLayout();
+         this.groupBoxFilter.ResumeLayout(false);
+         this.groupBoxFilter.PerformLayout();
          this.panel3.ResumeLayout(false);
          this.panel3.PerformLayout();
          this.tabPageMapping.ResumeLayout(false);
@@ -1561,8 +1575,8 @@
          this.panelMode.PerformLayout();
          this.panel1.ResumeLayout(false);
          this.panel1.PerformLayout();
-         this.groupBoxFilter.ResumeLayout(false);
-         this.groupBoxFilter.PerformLayout();
+         this.panel2.ResumeLayout(false);
+         this.panel2.PerformLayout();
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -1704,6 +1718,7 @@
       private System.Windows.Forms.Label label1;
       private System.Windows.Forms.ComboBox comboBoxFilterAircraft;
       internal System.Windows.Forms.CheckBox checkBoxLiveDataEnabled;
+      private System.Windows.Forms.Panel panel2;
    }
 }
 
