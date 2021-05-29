@@ -401,6 +401,10 @@ namespace VLEDCONTROL
          SetTextBoxText(MainWindow.textBoxTimeRunning, totalRuntime.ToString());
          SetTextBoxText(MainWindow.textBoxTimeUsedLedCalc, ledCalcTime.ToString());
          SetTextBoxText(MainWindow.textBoxNumberLedChanges, ledChanges.ToString());
+         double runtimePct = totalRuntime!=0 ? 100.0 * (double)ledCalcTime / (double)totalRuntime : 0.0;
+         double ledChangesPerSecond = totalRuntime != 0 ? 1000.0 * (double) ledChanges / (double)totalRuntime : 0.0;
+         SetTextBoxText(MainWindow.textBoxTimeUsedLedCalcPercent, Tools.ToString(runtimePct));
+         SetTextBoxText(MainWindow.textBoxNumberLedChangesPerSecond, Tools.ToString(ledChangesPerSecond));
       }
 
       public void Log(String msg)

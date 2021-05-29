@@ -165,6 +165,10 @@
          this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
+         this.textBoxTimeUsedLedCalcPercent = new System.Windows.Forms.TextBox();
+         this.label3 = new System.Windows.Forms.Label();
+         this.textBoxNumberLedChangesPerSecond = new System.Windows.Forms.TextBox();
+         this.label4 = new System.Windows.Forms.Label();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -973,6 +977,10 @@
          // 
          // groupBox2
          // 
+         this.groupBox2.Controls.Add(this.label4);
+         this.groupBox2.Controls.Add(this.textBoxNumberLedChangesPerSecond);
+         this.groupBox2.Controls.Add(this.label3);
+         this.groupBox2.Controls.Add(this.textBoxTimeUsedLedCalcPercent);
          this.groupBox2.Controls.Add(this.textBoxNumberLedChanges);
          this.groupBox2.Controls.Add(this.textBoxTimeUsedLedCalc);
          this.groupBox2.Controls.Add(this.textBoxTimeRunning);
@@ -991,7 +999,7 @@
          this.textBoxNumberLedChanges.Location = new System.Drawing.Point(171, 74);
          this.textBoxNumberLedChanges.Name = "textBoxNumberLedChanges";
          this.textBoxNumberLedChanges.ReadOnly = true;
-         this.textBoxNumberLedChanges.Size = new System.Drawing.Size(171, 20);
+         this.textBoxNumberLedChanges.Size = new System.Drawing.Size(162, 20);
          this.textBoxNumberLedChanges.TabIndex = 6;
          // 
          // textBoxTimeUsedLedCalc
@@ -999,7 +1007,7 @@
          this.textBoxTimeUsedLedCalc.Location = new System.Drawing.Point(171, 48);
          this.textBoxTimeUsedLedCalc.Name = "textBoxTimeUsedLedCalc";
          this.textBoxTimeUsedLedCalc.ReadOnly = true;
-         this.textBoxTimeUsedLedCalc.Size = new System.Drawing.Size(171, 20);
+         this.textBoxTimeUsedLedCalc.Size = new System.Drawing.Size(162, 20);
          this.textBoxTimeUsedLedCalc.TabIndex = 5;
          // 
          // textBoxTimeRunning
@@ -1007,7 +1015,7 @@
          this.textBoxTimeRunning.Location = new System.Drawing.Point(171, 22);
          this.textBoxTimeRunning.Name = "textBoxTimeRunning";
          this.textBoxTimeRunning.ReadOnly = true;
-         this.textBoxTimeRunning.Size = new System.Drawing.Size(171, 20);
+         this.textBoxTimeRunning.Size = new System.Drawing.Size(162, 20);
          this.textBoxTimeRunning.TabIndex = 4;
          // 
          // labelTimeUsedLedCalc
@@ -1536,6 +1544,42 @@
          this.progressBarEngineStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
          this.progressBarEngineStatus.TabIndex = 12;
          // 
+         // textBoxTimeUsedLedCalcPercent
+         // 
+         this.textBoxTimeUsedLedCalcPercent.Location = new System.Drawing.Point(346, 48);
+         this.textBoxTimeUsedLedCalcPercent.Name = "textBoxTimeUsedLedCalcPercent";
+         this.textBoxTimeUsedLedCalcPercent.ReadOnly = true;
+         this.textBoxTimeUsedLedCalcPercent.Size = new System.Drawing.Size(44, 20);
+         this.textBoxTimeUsedLedCalcPercent.TabIndex = 7;
+         // 
+         // label3
+         // 
+         this.label3.AutoSize = true;
+         this.label3.Location = new System.Drawing.Point(393, 51);
+         this.label3.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+         this.label3.Name = "label3";
+         this.label3.Size = new System.Drawing.Size(15, 13);
+         this.label3.TabIndex = 8;
+         this.label3.Text = "%";
+         // 
+         // textBoxNumberLedChangesPerSecond
+         // 
+         this.textBoxNumberLedChangesPerSecond.Location = new System.Drawing.Point(346, 74);
+         this.textBoxNumberLedChangesPerSecond.Name = "textBoxNumberLedChangesPerSecond";
+         this.textBoxNumberLedChangesPerSecond.ReadOnly = true;
+         this.textBoxNumberLedChangesPerSecond.Size = new System.Drawing.Size(44, 20);
+         this.textBoxNumberLedChangesPerSecond.TabIndex = 9;
+         // 
+         // label4
+         // 
+         this.label4.AutoSize = true;
+         this.label4.Location = new System.Drawing.Point(393, 77);
+         this.label4.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+         this.label4.Name = "label4";
+         this.label4.Size = new System.Drawing.Size(17, 13);
+         this.label4.TabIndex = 10;
+         this.label4.Text = "/s";
+         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1727,6 +1771,10 @@
       internal System.Windows.Forms.CheckBox checkBoxProfileFilterStatic;
       internal System.Windows.Forms.ComboBox comboBoxProfileFilterDevice;
       internal System.Windows.Forms.ComboBox comboBoxProfileFilterAircraft;
+      private System.Windows.Forms.Label label4;
+      internal System.Windows.Forms.TextBox textBoxNumberLedChangesPerSecond;
+      private System.Windows.Forms.Label label3;
+      internal System.Windows.Forms.TextBox textBoxTimeUsedLedCalcPercent;
    }
 }
 
