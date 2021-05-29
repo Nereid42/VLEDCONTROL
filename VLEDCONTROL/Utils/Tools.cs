@@ -34,6 +34,9 @@ namespace VLEDCONTROL
 {
    public static class Tools 
    {
+      private static readonly System.Globalization.CultureInfo EN_CI = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
+
+
       public static int ToInt(String s)
       {
          try
@@ -56,6 +59,11 @@ namespace VLEDCONTROL
          {
             return 0.0;
          }
+      }
+
+      public static string ToString(double value)
+      {
+         return String.Format(EN_CI, "{0:0.##}", value);
       }
 
 

@@ -80,6 +80,7 @@ namespace VLEDCONTROL
       {
          this.Sender = new Sender(UDP_PORT_SEND);
          this.Receiver = new Receiver(UDP_PORT_RECEIVE);
+         Receiver.AddDataHandler(new EstablishCommunicationDataHandler(this));
          Receiver.AddDataHandler(new AircraftDataHandler(this));
          Receiver.AddDataHandler(new PropertyDataHandler(this));
 
@@ -171,6 +172,11 @@ namespace VLEDCONTROL
       {
          LogInfo("Sending Query to DCS");
          SendCommand("QUERY");
+      }
+
+      internal void CommitDataUpdate()
+      {
+         SendCommand("INTERVAL:"+ Tools.ToString(CurrentSettings.DataInterval));
       }
 
       public void Stop()
@@ -366,7 +372,10 @@ namespace VLEDCONTROL
             Controller.SetEngineStarted(true);
          }
 
+         // Setup Communication
          Receiver.Start();
+         CommitDataUpdate();
+
 
          long millis = -1000;
          while (!this.StopRequest)

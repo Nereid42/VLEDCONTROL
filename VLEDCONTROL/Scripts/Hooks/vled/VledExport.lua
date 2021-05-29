@@ -54,9 +54,23 @@ end
 function ExecuteCommand(command)
 	if command ~=nil then
 		log.write('VLED.EXPORT', log.INFO, 'Execute command...');
+		--
+		local p = string.find(command, ":")
+		if p == nil
+		then
+		  data = ""
+		else
+			log.write('VLED.EXPORT', log.INFO, 'COMMAND & DATA '..p);			
+			data = string.sub(command,p+1);
+			command = string.sub(command,1, p-1);
+		end;
+		--
 		if command == "QUERY" then
 			-- force sending all data again
-			currentData[9999] = nil
+			currentData[9999] = nil;
+		end
+		if command == "INTERVAL" then
+			EXPORT_INTERVAL = data;					
 		end
 	end
 end

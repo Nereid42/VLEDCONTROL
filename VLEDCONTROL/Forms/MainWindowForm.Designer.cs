@@ -1288,7 +1288,6 @@
          // 
          // textBoxSettingsDataInterval
          // 
-         this.textBoxSettingsDataInterval.Enabled = false;
          this.textBoxSettingsDataInterval.Location = new System.Drawing.Point(114, 178);
          this.textBoxSettingsDataInterval.Name = "textBoxSettingsDataInterval";
          this.textBoxSettingsDataInterval.Size = new System.Drawing.Size(52, 20);

@@ -422,6 +422,7 @@ namespace VLEDCONTROL
          SetSettingsModified(false);
          VLED.Engine.CurrentSettings.SaveAsync();
          SetSettingsLogLevel(VLED.Engine.CurrentSettings.LogLevel);
+         VLED.Engine.CommitDataUpdate();
       }
 
       internal void RemoveDevice(int deviceId)

@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataHandler\ConnectDataHandler.cs" />
     <Compile Include="Devices\LedColor.cs" />
     <Compile Include="Forms\ColorChooserDialog.cs">
       <SubType>Form</SubType>
