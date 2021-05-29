@@ -35,11 +35,18 @@ namespace VLEDCONTROL
 {
    public class Receiver : Loggable
    {
+      public volatile bool IsRunning = false;
+
+      readonly UdpClient Client;
+      private volatile bool StopRequest;
+      private readonly List<DataHandler> handler;
+
+
       public Receiver(int port)
       {
          LogInfo("Creating UDP receiver for Port " + port);
-         this.udpClient = new UdpClient(port);
-         this.udpClient.Client.ReceiveTimeout = 200;
+         this.Client = new UdpClient(port);
+         this.Client.Client.ReceiveTimeout = 200;
          this.StopRequest = false;
          this.handler = new List<DataHandler>();
       }
@@ -75,7 +82,7 @@ namespace VLEDCONTROL
          {
             try
             {
-               bytes = udpClient.Receive(ref endpoint);
+               bytes = Client.Receive(ref endpoint);
                break;
             }
             catch (SocketException)
@@ -141,16 +148,10 @@ namespace VLEDCONTROL
             }
          }
 
-         udpClient.Close();
+         Client.Close();
          LogInfo("UDP Receiver stopped");
          IsRunning = false;
       }
-
-      public volatile bool IsRunning = false;
-
-      readonly UdpClient udpClient;
-      private volatile bool StopRequest;
-      private readonly List<DataHandler> handler;
 
       internal void Join()
       {

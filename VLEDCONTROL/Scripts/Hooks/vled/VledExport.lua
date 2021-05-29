@@ -52,7 +52,13 @@ function SendData(data)
 end
 
 function ExecuteCommand(command)
-	log.write('VLED.EXPORT', log.INFO, 'Execute command...');
+	if command ~=nil then
+		log.write('VLED.EXPORT', log.INFO, 'Execute command...');
+		if command == "QUERY" then
+			-- force sending all data again
+			currentData[9999] = nil
+		end
+	end
 end
 
 function PrepareData()
@@ -66,7 +72,6 @@ function PrepareData()
 	end
 	
 	local aircraft = MyAircraft.Name
-	--log.write('VLED.EXPORT', log.INFO, 'aircraft is '..aircraft);
 	
 	-- Su-27 ius not supported
 	--if ( aircraft == 'Su-27' ) then

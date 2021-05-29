@@ -134,7 +134,7 @@ namespace VLEDCONTROL
 
       private void button1_Click_2(object sender, EventArgs e)
       {
-
+         VLED.Engine.Query();
       }
 
       private void radioButton2_CheckedChanged(object sender, EventArgs e)

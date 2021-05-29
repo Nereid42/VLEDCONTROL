@@ -33,6 +33,8 @@ namespace VLEDCONTROL
 {
    public class Engine : Loggable
    {
+      private const int UDP_PORT_RECEIVE = 5555;
+      private const int UDP_PORT_SEND = 5556;
       public const int VALUE_COUNT = 1000;
 
       public readonly Settings CurrentSettings = new Settings();
@@ -40,7 +42,8 @@ namespace VLEDCONTROL
       public Profile CurrentProfile = new Profile();
 
       private volatile bool StopRequest;
-      private Receiver Receiver;
+      private readonly Receiver Receiver;
+      private readonly Sender Sender;
 
       private UiController Controller;
       private volatile bool ControlerInitDone;
@@ -75,7 +78,8 @@ namespace VLEDCONTROL
 
       public Engine()
       {
-         this.Receiver = new Receiver(5555);
+         this.Sender = new Sender(UDP_PORT_SEND);
+         this.Receiver = new Receiver(UDP_PORT_RECEIVE);
          Receiver.AddDataHandler(new AircraftDataHandler(this));
          Receiver.AddDataHandler(new PropertyDataHandler(this));
 
@@ -142,6 +146,31 @@ namespace VLEDCONTROL
          t.IsBackground = true;
          LogInfo("Starting engine thread");
          t.Start();
+      }
+
+      private void SendCommand(String command, String data)
+      {
+         if(data==null)
+         {
+            LogDebug("Sending command "+command);
+            Sender.Send(command);
+         }
+         else
+         {
+            LogDebug("Sending command " + command+":"+data);
+            Sender.Send(command+":"+data);
+         }
+      }
+
+      private void SendCommand(String command)
+      {
+         SendCommand(command, null);
+      }
+
+      internal void Query()
+      {
+         LogInfo("Sending Query to DCS");
+         SendCommand("QUERY");
       }
 
       public void Stop()
