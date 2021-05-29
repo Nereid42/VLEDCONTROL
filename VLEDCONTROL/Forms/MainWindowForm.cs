@@ -507,6 +507,8 @@ namespace VLEDCONTROL
       {
          String about = "- VLEDCONTROL -";
          about += "\n\n";
+         about += VLED.Version;
+         about += "\n\n";
          about += "Written by André Kolster";
          about += "\n\n\n";
          about += "MIT License";

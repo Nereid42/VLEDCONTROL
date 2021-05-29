@@ -33,6 +33,8 @@ namespace VLEDCONTROL
 {
    class VLED : Loggable
    {
+      static public String Version;
+
       static public MainWindowForm MainWindow;
       static public Engine Engine = new Engine();
 
@@ -51,6 +53,18 @@ namespace VLEDCONTROL
       {
          e.Cancel = true;
          Exit();
+      }
+
+      private static void LoadVersion()
+      {
+         try
+         {
+            Version = System.IO.File.ReadAllText("version");
+         }
+         catch
+         {
+            Version = "unknown";
+         }
       }
 
       private static void EnvironmentSetup()
@@ -106,6 +120,9 @@ namespace VLEDCONTROL
       [STAThread]
       static void Main()
       {
+         // ======== Load Version´========
+         LoadVersion();
+
          // ======== Setup´========
          // Add all missing files, if nessessary
          EnvironmentSetup();
