@@ -189,6 +189,12 @@
     <PostBuildEvent>mkdir Scripts\Hooks\vled
 copy /Y ...\..\Scripts\Hooks\VledExportHook.lua Scripts\Hooks
 copy /Y ...\..\Scripts\Hooks\vled\VledExport.lua Scripts\Hooks\vled
-copy /Y ..\..\..\LICENSE LICENSE</PostBuildEvent>
+copy /Y ..\..\..\LICENSE LICENSE
+
+set /p build=&lt;..\..\..\build\build.txt
+set /a build=%25build%25+1
+echo %25build%25 &gt;..\..\..\build\build.txt
+type ..\..\..\build\version.txt &gt;version
+echo -%25build%25 &gt;&gt;version</PostBuildEvent>
   </PropertyGroup>
 </Project>
