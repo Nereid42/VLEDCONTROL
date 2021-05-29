@@ -374,7 +374,7 @@ namespace VLEDCONTROL
 
          // Setup Communication
          Receiver.Start();
-         CommitDataUpdate();
+         Query();
 
 
          long millis = -1000;
