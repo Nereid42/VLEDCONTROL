@@ -65,12 +65,10 @@ function ExecuteCommand(command)
 			command = string.sub(command,1, p-1);
 		end;
 		--
-		if command == "QUERY" then
-			-- force sending all data again
-			currentData[9999] = nil;
-		end
-		if command == "INTERVAL" then
-			EXPORT_INTERVAL = data;					
+		if     command == "QUERY"    then  currentData[9999] = nil; 
+		elseif command == "INTERVAL" then  EXPORT_INTERVAL = data;					
+		else
+			log.write('VLED.EXPORT', log.INFO, 'unknow command: '..command);					  
 		end
 	end
 end
