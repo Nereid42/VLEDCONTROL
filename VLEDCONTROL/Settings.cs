@@ -83,6 +83,7 @@ namespace VLEDCONTROL
          this.DataInterval = settings.DataInterval;
          this.LogLevel = settings.LogLevel;
          this.StatisticsEnabled = settings.StatisticsEnabled;
+         this.FlashingCycles = settings.FlashingCycles;
          this.LiveDataEnabled = settings.LiveDataEnabled;
       }
 
