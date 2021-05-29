@@ -111,6 +111,7 @@
     <Compile Include="Forms\InstallScriptsDialog.Designer.cs">
       <DependentUpon>InstallScriptsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sender.cs" />
     <Compile Include="Utils\NumericListViewSorter.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Engine.cs" />
@@ -187,8 +188,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mkdir Scripts\Hooks\vled
-copy /Y ...\..\Scripts\Hooks\VledExportHook.lua Scripts\Hooks
-copy /Y ...\..\Scripts\Hooks\vled\VledExport.lua Scripts\Hooks\vled
+copy /Y ..\..\Scripts\Hooks\VledExportHook.lua Scripts\Hooks\VledExportHook.lua
+copy /Y ..\..\Scripts\Hooks\vled\VledExport.lua Scripts\Hooks\vled\VledExport.lua
 copy /Y ..\..\..\LICENSE LICENSE
 
 set /p build=&lt;..\..\..\build\build.txt
