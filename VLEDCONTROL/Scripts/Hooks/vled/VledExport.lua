@@ -2,6 +2,8 @@ local HOST = '127.0.0.1';
 local OUTGOING_PORT = 5555;
 local INGOING_PORT = 5556;
 
+local EXPORT_INTERVAL = 0.3;
+
 statistics = {}
 
 log.write('VLED.EXPORT', log.INFO, 'Starting VLED export script');
@@ -17,16 +19,6 @@ log.write('VLED.EXPORT', log.INFO, 'Starting socket on port '..INGOING_PORT);
 udpin = socket.udp();
 udpin:setsockname(HOST, INGOING_PORT);
 udpin:settimeout(0);
-
-
--- Data class
--- Data = { aircraft = nil; changed=false }
---function Data:new (o)
---  o = o or {};   -- create object if user does not provide one
---  setmetatable(o, self);
---  self.__index = self;
---  return o;
---end
 
 currentData = {}
 
@@ -136,7 +128,7 @@ function LuaExportActivityNextEvent(t)
 	
 	SendData(data);
 	
-    return t + 0.3;
+    return t + EXPORT_INTERVAL;
 end
 
 function LuaExportStart()

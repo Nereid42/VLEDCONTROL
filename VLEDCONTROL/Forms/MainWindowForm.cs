@@ -553,5 +553,21 @@ namespace VLEDCONTROL
             VLED.Engine.ShowProperties();
          }
       }
+
+      private void comboBoxFilterAircraft_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         Controller.SetProfile(VLED.Engine.CurrentProfile);
+      }
+
+      private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         Controller.SetProfile(VLED.Engine.CurrentProfile);
+      }
+
+
+      private void checkBoxFilterStatic_CheckedChanged(object sender, EventArgs e)
+      {
+            Controller.SetProfile(VLED.Engine.CurrentProfile);
+      }
    }
 }

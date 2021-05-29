@@ -34,6 +34,9 @@ namespace VLEDCONTROL
 {
    public class UiController : Loggable
    {
+      private const String PROFILE_FILTER_ANY_AIRCAFT = "ANY";
+      private const String PROFILE_FILTER_ANY_DEVICE = "ANY";
+
       private readonly MainWindowForm MainWindow;
       private Settings DisplayedSettings = new Settings();
 
@@ -199,6 +202,7 @@ namespace VLEDCONTROL
             {
                VLED.Engine.CurrentProfile = Profile.Load(chooser.FileName);
                SetProfile(VLED.Engine.CurrentProfile);
+               SetProfileFilter(VLED.Engine.CurrentProfile);
             }
          }
       }
@@ -349,16 +353,19 @@ namespace VLEDCONTROL
                MainWindow.listViewProfileEvents.Items.Clear();
                foreach(Profile.ProfileEvent entry in profile.ProfileEvents)
                {
-                  System.Windows.Forms.ListViewItem item = MainWindow.listViewProfileEvents.Items.Add(entry.Id.ToString());
-                  item.BackColor = System.Drawing.Color.Empty;
-                  item.SubItems.Add(entry.Aircraft);
-                  item.SubItems.Add(profile.MapPropertyName(entry.Aircraft,entry.Id));
-                  item.SubItems.Add(entry.GetConditionsAsString());
-                  item.SubItems.Add(entry.DeviceId.ToString());
-                  item.SubItems.Add(entry.LedNumber.ToString());
-                  item.SubItems.Add(entry.ColorOn.AsString());
-                  item.SubItems.Add(entry.ColorFlashing.AsString());
-                  item.SubItems.Add(entry.Description);
+                  if(ProfileFilterAccept(entry))
+                  {
+                     System.Windows.Forms.ListViewItem item = MainWindow.listViewProfileEvents.Items.Add(entry.Id.ToString());
+                     item.BackColor = System.Drawing.Color.Empty;
+                     item.SubItems.Add(entry.Aircraft);
+                     item.SubItems.Add(profile.MapPropertyName(entry.Aircraft, entry.Id));
+                     item.SubItems.Add(entry.GetConditionsAsString());
+                     item.SubItems.Add(entry.DeviceId.ToString());
+                     item.SubItems.Add(entry.LedNumber.ToString());
+                     item.SubItems.Add(entry.ColorOn.AsString());
+                     item.SubItems.Add(entry.ColorFlashing.AsString());
+                     item.SubItems.Add(entry.Description);
+                  }
                }
 
                MainWindow.listViewMapping.Items.Clear();
@@ -373,6 +380,19 @@ namespace VLEDCONTROL
          );
          SetTextBoxText(MainWindow.textBoxProfileName, profile.Name);
          SetTextBoxText(MainWindow.textBoxMappingProfileName, profile.Name);
+      }
+
+      private bool ProfileFilterAccept(Profile.ProfileEvent entry)
+      {
+         if (!MainWindow.checkBoxProfileFilterStatic.Checked && entry.IsStatic()) return false;
+         if (!MainWindow.comboBoxProfileFilterAircraft.Text.Equals(PROFILE_FILTER_ANY_AIRCAFT) && !MainWindow.comboBoxProfileFilterAircraft.Text.Equals(entry.Aircraft)) return false;
+         int id = Tools.IndexOfSelectedComboBoxItem(MainWindow.comboBoxProfileFilterDevice) - 1;
+         if (id >= 0)
+         {
+            return entry.DeviceId == id;
+         }
+
+         return true;
       }
 
       public void DisplayStatistics (long totalRuntime, long ledCalcTime, long ledChanges)
@@ -529,6 +549,33 @@ namespace VLEDCONTROL
                })
                );
             }
+         }
+      }
+
+      internal void ClearProfileFilter()
+      {
+         MainWindow.checkBoxProfileFilterStatic.Checked = true;
+         MainWindow.comboBoxProfileFilterAircraft.Text = PROFILE_FILTER_ANY_AIRCAFT;
+         MainWindow.comboBoxProfileFilterDevice.Text = PROFILE_FILTER_ANY_DEVICE;
+         MainWindow.comboBoxProfileFilterAircraft.Items.Clear();
+         MainWindow.comboBoxProfileFilterDevice.Items.Clear();
+         MainWindow.comboBoxProfileFilterAircraft.Items.Add(PROFILE_FILTER_ANY_AIRCAFT);
+         MainWindow.comboBoxProfileFilterDevice.Items.Add(PROFILE_FILTER_ANY_DEVICE);
+         SetProfile(VLED.Engine.CurrentProfile);
+      }
+
+      internal void SetProfileFilter(Profile profile)
+      {
+         ClearProfileFilter();
+         for (int id=0; id < VLED.Engine.CurrentSettings.Devices.Count; id++)
+         {
+            VirpilDevice device = VLED.Engine.CurrentSettings.Devices.ElementAt(id);
+            MainWindow.comboBoxProfileFilterDevice.Items.Add(id+": "+device.Name);
+         }
+         IReadOnlyCollection<String> aircrafts = profile.GetAircraftList();
+         foreach(String aircraft in aircrafts)
+         {
+            MainWindow.comboBoxProfileFilterAircraft.Items.Add(aircraft);
          }
       }
 

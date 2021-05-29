@@ -381,9 +381,14 @@ namespace VLEDCONTROL
             return sb.ToString();
          }
 
+         internal bool IsStatic()
+         {
+            return PrimaryCondition.Equals("S");
+         }
+
          public String GetConditionsAsString()
          {
-            if (PrimaryCondition.Equals("S")) return "STATIC";
+            if (IsStatic()) return "STATIC";
             String result ="X " + PrimaryCondition + " " + PrimaryValue.ToString("0.00");
             if (SecondaryCondition!=null && SecondaryCondition.Length>0 && !SecondaryCondition.Equals("NONE") && !SecondaryCondition.Equals("-"))
             {

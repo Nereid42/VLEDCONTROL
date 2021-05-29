@@ -89,7 +89,7 @@ namespace VLEDCONTROL
 
       public int GetLedNumber()
       {
-         return IndexOfSelectedItem(this.comboBoxLed);
+         return Tools.IndexOfSelectedComboBoxItem(this.comboBoxLed);
       }
 
       public int GetDeviceId()
@@ -147,24 +147,6 @@ namespace VLEDCONTROL
 
       }
 
-      private int IndexOfSelectedItem(ComboBox box)
-      {
-         int result = -1;
-         foreach (Object item in box.Items)
-         {
-            result++;
-            if (item.Equals(box.Text)) return result;
-         }
-         return result;
-      }
-
-      private void SelectItem(ComboBox box, int index)
-      {
-         if(index<box.Items.Count)
-         {
-            box.Text = box.Items[index].ToString();
-         }
-      }
 
       private void EditProfileEventDialog_Load(object sender, EventArgs e)
       {
@@ -211,7 +193,7 @@ namespace VLEDCONTROL
             //
             // Device
             this.textBoxDeviceId.Text = Event.DeviceId.ToString();
-            SelectItem(this.comboBoxDeviceName, Event.DeviceId);
+            Tools.SelectComboBoxItem(this.comboBoxDeviceName, Event.DeviceId);
             // LEDs
             this.comboBoxLed.Text = this.comboBoxLed.Items[Event.LedNumber].ToString();
             // Colors
@@ -222,16 +204,16 @@ namespace VLEDCONTROL
          }
          else
          {
-            SelectItem(this.comboBoxDeviceName, 0);
+            Tools.SelectComboBoxItem(this.comboBoxDeviceName, 0);
             this.textBoxDeviceId.Text = "0";
             this.textBoxEventId.Text = "0";
             //
-            SelectItem(this.comboBoxPrimaryCondition, 1);
-            SelectItem(this.comboBoxSecondaryCondition, 0);
+            Tools.SelectComboBoxItem(this.comboBoxPrimaryCondition, 1);
+            Tools.SelectComboBoxItem(this.comboBoxSecondaryCondition, 0);
             this.textBoxPrimaryValue.Text = "0";
             this.textBoxSecondaryValue.Text = "0";
             //
-            SelectItem(this.comboBoxLed, 0);
+            Tools.SelectComboBoxItem(this.comboBoxLed, 0);
             // Colors
             this.buttonColor1.BackColor = LedColor.GRAY.ToSystemColor();
             this.buttonColor2.BackColor = LedColor.GRAY.ToSystemColor();
@@ -307,7 +289,7 @@ namespace VLEDCONTROL
             VirpilDevice device = settings.GetDevice(Tools.ToInt(this.textBoxDeviceId.Text));
             if(device!=null)
             {
-               int led = IndexOfSelectedItem(this.comboBoxLed);
+               int led = Tools.IndexOfSelectedComboBoxItem(this.comboBoxLed);
 
                String command = settings.VirpilLedControl;
                String r = button.BackColor.R.ToString("X2");
@@ -365,7 +347,7 @@ namespace VLEDCONTROL
          {
             IsAdjusting = true;
 
-            int id = IndexOfSelectedItem(comboBoxDeviceName);
+            int id = Tools.IndexOfSelectedComboBoxItem(comboBoxDeviceName);
             if(id>=0)
             {
                textBoxDeviceId.Text = id.ToString();

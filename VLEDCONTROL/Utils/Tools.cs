@@ -174,5 +174,25 @@ namespace VLEDCONTROL
             return false;
          }
       }
+
+      public  static int IndexOfSelectedComboBoxItem(ComboBox box)
+      {
+         int result = -1;
+         foreach (Object item in box.Items)
+         {
+            result++;
+            if (item.Equals(box.Text)) return result;
+         }
+         return result;
+      }
+
+      public static void SelectComboBoxItem(ComboBox box, int index)
+      {
+         if (index < box.Items.Count)
+         {
+            box.Text = box.Items[index].ToString();
+         }
+      }
+
    }
 }
