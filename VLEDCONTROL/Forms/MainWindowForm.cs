@@ -43,6 +43,10 @@ namespace VLEDCONTROL
          Controller = new UiController(this);
          this.comboBoxLogLevel.KeyPress += new KeyPressEventHandler(LogLevelComboBoxKeyPressed);
          this.listViewMapping.ListViewItemSorter = new NumericListViewSorter();
+
+         this.comboBoxProfileFilterAircraft.KeyPress += new KeyPressEventHandler(Tools.NoKeyPressed);
+         this.comboBoxProfileFilterDevice.KeyPress += new KeyPressEventHandler(Tools.NoKeyPressed);
+         this.comboBoxMappingFilterAircraft.KeyPress += new KeyPressEventHandler(Tools.NoKeyPressed);
       }
 
 
@@ -556,12 +560,12 @@ namespace VLEDCONTROL
          }
       }
 
-      private void comboBoxFilterAircraft_SelectedIndexChanged(object sender, EventArgs e)
+      private void comboBoxProfileFilterAircraft_SelectedIndexChanged(object sender, EventArgs e)
       {
          Controller.SetProfile(VLED.Engine.CurrentProfile);
       }
 
-      private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+      private void comboBoxProfileFilterDevice_SelectedIndexChanged(object sender, EventArgs e)
       {
          Controller.SetProfile(VLED.Engine.CurrentProfile);
       }
@@ -569,7 +573,12 @@ namespace VLEDCONTROL
 
       private void checkBoxFilterStatic_CheckedChanged(object sender, EventArgs e)
       {
-            Controller.SetProfile(VLED.Engine.CurrentProfile);
+         Controller.SetProfile(VLED.Engine.CurrentProfile);
+      }
+
+      private void comboBoxMappingFilterAircraft_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         Controller.SetProfile(VLED.Engine.CurrentProfile);
       }
    }
 }

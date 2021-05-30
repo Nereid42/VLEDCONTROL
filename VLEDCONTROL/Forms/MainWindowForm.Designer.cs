@@ -64,7 +64,7 @@
          this.columnHeaderDataValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderLastChange = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabPageProfile = new System.Windows.Forms.TabPage();
-         this.groupBoxFilter = new System.Windows.Forms.GroupBox();
+         this.groupBoxFilterProfile = new System.Windows.Forms.GroupBox();
          this.comboBoxProfileFilterDevice = new System.Windows.Forms.ComboBox();
          this.label2 = new System.Windows.Forms.Label();
          this.checkBoxProfileFilterStatic = new System.Windows.Forms.CheckBox();
@@ -96,6 +96,9 @@
          this.columnHeaderColorFlashing = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabPageMapping = new System.Windows.Forms.TabPage();
+         this.groupBoxFilterMapping = new System.Windows.Forms.GroupBox();
+         this.label7 = new System.Windows.Forms.Label();
+         this.comboBoxMappingFilterAircraft = new System.Windows.Forms.ComboBox();
          this.buttonMappingEdit = new System.Windows.Forms.Button();
          this.buttonMappingRemove = new System.Windows.Forms.Button();
          this.buttonMappingAdd = new System.Windows.Forms.Button();
@@ -108,6 +111,10 @@
          this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabPageSettings = new System.Windows.Forms.TabPage();
          this.groupBox2 = new System.Windows.Forms.GroupBox();
+         this.label4 = new System.Windows.Forms.Label();
+         this.textBoxNumberLedChangesPerSecond = new System.Windows.Forms.TextBox();
+         this.label3 = new System.Windows.Forms.Label();
+         this.textBoxTimeUsedLedCalcPercent = new System.Windows.Forms.TextBox();
          this.textBoxNumberLedChanges = new System.Windows.Forms.TextBox();
          this.textBoxTimeUsedLedCalc = new System.Windows.Forms.TextBox();
          this.textBoxTimeRunning = new System.Windows.Forms.TextBox();
@@ -165,18 +172,15 @@
          this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
-         this.textBoxTimeUsedLedCalcPercent = new System.Windows.Forms.TextBox();
-         this.label3 = new System.Windows.Forms.Label();
-         this.textBoxNumberLedChangesPerSecond = new System.Windows.Forms.TextBox();
-         this.label4 = new System.Windows.Forms.Label();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
          this.panel2.SuspendLayout();
          this.tabPageProfile.SuspendLayout();
-         this.groupBoxFilter.SuspendLayout();
+         this.groupBoxFilterProfile.SuspendLayout();
          this.panel3.SuspendLayout();
          this.tabPageMapping.SuspendLayout();
+         this.groupBoxFilterMapping.SuspendLayout();
          this.tabPageSettings.SuspendLayout();
          this.groupBox2.SuspendLayout();
          this.groupBox1.SuspendLayout();
@@ -270,7 +274,7 @@
          // aboutToolStripMenuItem1
          // 
          this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-         this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+         this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
          this.aboutToolStripMenuItem1.Text = "About";
          this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
          // 
@@ -506,7 +510,7 @@
          // 
          // tabPageProfile
          // 
-         this.tabPageProfile.Controls.Add(this.groupBoxFilter);
+         this.tabPageProfile.Controls.Add(this.groupBoxFilterProfile);
          this.tabPageProfile.Controls.Add(this.buttonProfilesClear);
          this.tabPageProfile.Controls.Add(this.label6);
          this.tabPageProfile.Controls.Add(this.panel3);
@@ -528,19 +532,19 @@
          this.tabPageProfile.Text = "Profile";
          this.tabPageProfile.UseVisualStyleBackColor = true;
          // 
-         // groupBoxFilter
+         // groupBoxFilterProfile
          // 
-         this.groupBoxFilter.Controls.Add(this.comboBoxProfileFilterDevice);
-         this.groupBoxFilter.Controls.Add(this.label2);
-         this.groupBoxFilter.Controls.Add(this.checkBoxProfileFilterStatic);
-         this.groupBoxFilter.Controls.Add(this.label1);
-         this.groupBoxFilter.Controls.Add(this.comboBoxProfileFilterAircraft);
-         this.groupBoxFilter.Location = new System.Drawing.Point(414, 0);
-         this.groupBoxFilter.Name = "groupBoxFilter";
-         this.groupBoxFilter.Size = new System.Drawing.Size(563, 46);
-         this.groupBoxFilter.TabIndex = 15;
-         this.groupBoxFilter.TabStop = false;
-         this.groupBoxFilter.Text = "Filter";
+         this.groupBoxFilterProfile.Controls.Add(this.comboBoxProfileFilterDevice);
+         this.groupBoxFilterProfile.Controls.Add(this.label2);
+         this.groupBoxFilterProfile.Controls.Add(this.checkBoxProfileFilterStatic);
+         this.groupBoxFilterProfile.Controls.Add(this.label1);
+         this.groupBoxFilterProfile.Controls.Add(this.comboBoxProfileFilterAircraft);
+         this.groupBoxFilterProfile.Location = new System.Drawing.Point(414, 0);
+         this.groupBoxFilterProfile.Name = "groupBoxFilterProfile";
+         this.groupBoxFilterProfile.Size = new System.Drawing.Size(563, 46);
+         this.groupBoxFilterProfile.TabIndex = 15;
+         this.groupBoxFilterProfile.TabStop = false;
+         this.groupBoxFilterProfile.Text = "Filter";
          // 
          // comboBoxProfileFilterDevice
          // 
@@ -552,7 +556,7 @@
          this.comboBoxProfileFilterDevice.Size = new System.Drawing.Size(149, 21);
          this.comboBoxProfileFilterDevice.TabIndex = 4;
          this.comboBoxProfileFilterDevice.Text = "ANY";
-         this.comboBoxProfileFilterDevice.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+         this.comboBoxProfileFilterDevice.SelectedIndexChanged += new System.EventHandler(this.comboBoxProfileFilterDevice_SelectedIndexChanged);
          // 
          // label2
          // 
@@ -595,7 +599,7 @@
          this.comboBoxProfileFilterAircraft.Size = new System.Drawing.Size(149, 21);
          this.comboBoxProfileFilterAircraft.TabIndex = 0;
          this.comboBoxProfileFilterAircraft.Text = "ANY ";
-         this.comboBoxProfileFilterAircraft.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilterAircraft_SelectedIndexChanged);
+         this.comboBoxProfileFilterAircraft.SelectedIndexChanged += new System.EventHandler(this.comboBoxProfileFilterAircraft_SelectedIndexChanged);
          // 
          // buttonProfilesClear
          // 
@@ -831,6 +835,7 @@
          // 
          // tabPageMapping
          // 
+         this.tabPageMapping.Controls.Add(this.groupBoxFilterMapping);
          this.tabPageMapping.Controls.Add(this.buttonMappingEdit);
          this.tabPageMapping.Controls.Add(this.buttonMappingRemove);
          this.tabPageMapping.Controls.Add(this.buttonMappingAdd);
@@ -846,10 +851,42 @@
          this.tabPageMapping.Text = "Mapping";
          this.tabPageMapping.UseVisualStyleBackColor = true;
          // 
+         // groupBoxFilterMapping
+         // 
+         this.groupBoxFilterMapping.Controls.Add(this.label7);
+         this.groupBoxFilterMapping.Controls.Add(this.comboBoxMappingFilterAircraft);
+         this.groupBoxFilterMapping.Location = new System.Drawing.Point(414, 0);
+         this.groupBoxFilterMapping.Name = "groupBoxFilterMapping";
+         this.groupBoxFilterMapping.Size = new System.Drawing.Size(216, 46);
+         this.groupBoxFilterMapping.TabIndex = 13;
+         this.groupBoxFilterMapping.TabStop = false;
+         this.groupBoxFilterMapping.Text = "Filter";
+         // 
+         // label7
+         // 
+         this.label7.AutoSize = true;
+         this.label7.Location = new System.Drawing.Point(7, 17);
+         this.label7.Name = "label7";
+         this.label7.Size = new System.Drawing.Size(40, 13);
+         this.label7.TabIndex = 13;
+         this.label7.Text = "Aircraft";
+         // 
+         // comboBoxMappingFilterAircraft
+         // 
+         this.comboBoxMappingFilterAircraft.FormattingEnabled = true;
+         this.comboBoxMappingFilterAircraft.Items.AddRange(new object[] {
+            "ANY"});
+         this.comboBoxMappingFilterAircraft.Location = new System.Drawing.Point(53, 14);
+         this.comboBoxMappingFilterAircraft.Name = "comboBoxMappingFilterAircraft";
+         this.comboBoxMappingFilterAircraft.Size = new System.Drawing.Size(149, 21);
+         this.comboBoxMappingFilterAircraft.TabIndex = 12;
+         this.comboBoxMappingFilterAircraft.Text = "ANY ";
+         this.comboBoxMappingFilterAircraft.SelectedIndexChanged += new System.EventHandler(this.comboBoxMappingFilterAircraft_SelectedIndexChanged);
+         // 
          // buttonMappingEdit
          // 
          this.buttonMappingEdit.Enabled = false;
-         this.buttonMappingEdit.Location = new System.Drawing.Point(494, 110);
+         this.buttonMappingEdit.Location = new System.Drawing.Point(555, 110);
          this.buttonMappingEdit.Name = "buttonMappingEdit";
          this.buttonMappingEdit.Size = new System.Drawing.Size(75, 23);
          this.buttonMappingEdit.TabIndex = 11;
@@ -860,7 +897,7 @@
          // buttonMappingRemove
          // 
          this.buttonMappingRemove.Enabled = false;
-         this.buttonMappingRemove.Location = new System.Drawing.Point(494, 81);
+         this.buttonMappingRemove.Location = new System.Drawing.Point(555, 81);
          this.buttonMappingRemove.Name = "buttonMappingRemove";
          this.buttonMappingRemove.Size = new System.Drawing.Size(75, 23);
          this.buttonMappingRemove.TabIndex = 10;
@@ -870,7 +907,7 @@
          // 
          // buttonMappingAdd
          // 
-         this.buttonMappingAdd.Location = new System.Drawing.Point(494, 52);
+         this.buttonMappingAdd.Location = new System.Drawing.Point(555, 52);
          this.buttonMappingAdd.Name = "buttonMappingAdd";
          this.buttonMappingAdd.Size = new System.Drawing.Size(75, 23);
          this.buttonMappingAdd.TabIndex = 9;
@@ -919,7 +956,7 @@
          this.listViewMapping.Location = new System.Drawing.Point(9, 52);
          this.listViewMapping.MultiSelect = false;
          this.listViewMapping.Name = "listViewMapping";
-         this.listViewMapping.Size = new System.Drawing.Size(479, 505);
+         this.listViewMapping.Size = new System.Drawing.Size(540, 505);
          this.listViewMapping.Sorting = System.Windows.Forms.SortOrder.Ascending;
          this.listViewMapping.TabIndex = 1;
          this.listViewMapping.UseCompatibleStateImageBehavior = false;
@@ -993,6 +1030,42 @@
          this.groupBox2.TabIndex = 24;
          this.groupBox2.TabStop = false;
          this.groupBox2.Text = "Statistics";
+         // 
+         // label4
+         // 
+         this.label4.AutoSize = true;
+         this.label4.Location = new System.Drawing.Point(393, 77);
+         this.label4.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+         this.label4.Name = "label4";
+         this.label4.Size = new System.Drawing.Size(17, 13);
+         this.label4.TabIndex = 10;
+         this.label4.Text = "/s";
+         // 
+         // textBoxNumberLedChangesPerSecond
+         // 
+         this.textBoxNumberLedChangesPerSecond.Location = new System.Drawing.Point(346, 74);
+         this.textBoxNumberLedChangesPerSecond.Name = "textBoxNumberLedChangesPerSecond";
+         this.textBoxNumberLedChangesPerSecond.ReadOnly = true;
+         this.textBoxNumberLedChangesPerSecond.Size = new System.Drawing.Size(44, 20);
+         this.textBoxNumberLedChangesPerSecond.TabIndex = 9;
+         // 
+         // label3
+         // 
+         this.label3.AutoSize = true;
+         this.label3.Location = new System.Drawing.Point(393, 51);
+         this.label3.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+         this.label3.Name = "label3";
+         this.label3.Size = new System.Drawing.Size(15, 13);
+         this.label3.TabIndex = 8;
+         this.label3.Text = "%";
+         // 
+         // textBoxTimeUsedLedCalcPercent
+         // 
+         this.textBoxTimeUsedLedCalcPercent.Location = new System.Drawing.Point(346, 48);
+         this.textBoxTimeUsedLedCalcPercent.Name = "textBoxTimeUsedLedCalcPercent";
+         this.textBoxTimeUsedLedCalcPercent.ReadOnly = true;
+         this.textBoxTimeUsedLedCalcPercent.Size = new System.Drawing.Size(44, 20);
+         this.textBoxTimeUsedLedCalcPercent.TabIndex = 7;
          // 
          // textBoxNumberLedChanges
          // 
@@ -1544,42 +1617,6 @@
          this.progressBarEngineStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
          this.progressBarEngineStatus.TabIndex = 12;
          // 
-         // textBoxTimeUsedLedCalcPercent
-         // 
-         this.textBoxTimeUsedLedCalcPercent.Location = new System.Drawing.Point(346, 48);
-         this.textBoxTimeUsedLedCalcPercent.Name = "textBoxTimeUsedLedCalcPercent";
-         this.textBoxTimeUsedLedCalcPercent.ReadOnly = true;
-         this.textBoxTimeUsedLedCalcPercent.Size = new System.Drawing.Size(44, 20);
-         this.textBoxTimeUsedLedCalcPercent.TabIndex = 7;
-         // 
-         // label3
-         // 
-         this.label3.AutoSize = true;
-         this.label3.Location = new System.Drawing.Point(393, 51);
-         this.label3.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-         this.label3.Name = "label3";
-         this.label3.Size = new System.Drawing.Size(15, 13);
-         this.label3.TabIndex = 8;
-         this.label3.Text = "%";
-         // 
-         // textBoxNumberLedChangesPerSecond
-         // 
-         this.textBoxNumberLedChangesPerSecond.Location = new System.Drawing.Point(346, 74);
-         this.textBoxNumberLedChangesPerSecond.Name = "textBoxNumberLedChangesPerSecond";
-         this.textBoxNumberLedChangesPerSecond.ReadOnly = true;
-         this.textBoxNumberLedChangesPerSecond.Size = new System.Drawing.Size(44, 20);
-         this.textBoxNumberLedChangesPerSecond.TabIndex = 9;
-         // 
-         // label4
-         // 
-         this.label4.AutoSize = true;
-         this.label4.Location = new System.Drawing.Point(393, 77);
-         this.label4.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-         this.label4.Name = "label4";
-         this.label4.Size = new System.Drawing.Size(17, 13);
-         this.label4.TabIndex = 10;
-         this.label4.Text = "/s";
-         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1613,12 +1650,14 @@
          this.panel2.PerformLayout();
          this.tabPageProfile.ResumeLayout(false);
          this.tabPageProfile.PerformLayout();
-         this.groupBoxFilter.ResumeLayout(false);
-         this.groupBoxFilter.PerformLayout();
+         this.groupBoxFilterProfile.ResumeLayout(false);
+         this.groupBoxFilterProfile.PerformLayout();
          this.panel3.ResumeLayout(false);
          this.panel3.PerformLayout();
          this.tabPageMapping.ResumeLayout(false);
          this.tabPageMapping.PerformLayout();
+         this.groupBoxFilterMapping.ResumeLayout(false);
+         this.groupBoxFilterMapping.PerformLayout();
          this.tabPageSettings.ResumeLayout(false);
          this.tabPageSettings.PerformLayout();
          this.groupBox2.ResumeLayout(false);
@@ -1763,7 +1802,7 @@
       internal System.Windows.Forms.TextBox textBoxNumberLedChanges;
       internal System.Windows.Forms.TextBox textBoxTimeUsedLedCalc;
       internal System.Windows.Forms.TextBox textBoxTimeRunning;
-      private System.Windows.Forms.GroupBox groupBoxFilter;
+      private System.Windows.Forms.GroupBox groupBoxFilterProfile;
       private System.Windows.Forms.Label label2;
       private System.Windows.Forms.Label label1;
       internal System.Windows.Forms.CheckBox checkBoxLiveDataEnabled;
@@ -1775,6 +1814,9 @@
       internal System.Windows.Forms.TextBox textBoxNumberLedChangesPerSecond;
       private System.Windows.Forms.Label label3;
       internal System.Windows.Forms.TextBox textBoxTimeUsedLedCalcPercent;
+      private System.Windows.Forms.GroupBox groupBoxFilterMapping;
+      internal System.Windows.Forms.ComboBox comboBoxMappingFilterAircraft;
+      private System.Windows.Forms.Label label7;
    }
 }
 

@@ -353,7 +353,7 @@ namespace VLEDCONTROL
                MainWindow.listViewProfileEvents.Items.Clear();
                foreach(Profile.ProfileEvent entry in profile.ProfileEvents)
                {
-                  if(ProfileFilterAccept(entry))
+                  if(ProfileFilterAccepted(entry))
                   {
                      System.Windows.Forms.ListViewItem item = MainWindow.listViewProfileEvents.Items.Add(entry.Id.ToString());
                      item.BackColor = System.Drawing.Color.Empty;
@@ -371,9 +371,12 @@ namespace VLEDCONTROL
                MainWindow.listViewMapping.Items.Clear();
                foreach (Profile.MappingEntry entry in profile.MappingEntries)
                {
-                  System.Windows.Forms.ListViewItem item = MainWindow.listViewMapping.Items.Add(entry.Id.ToString());
-                  item.SubItems.Add(entry.Aircraft);
-                  item.SubItems.Add(entry.Name);
+                  if (MappingFilterAccepted(entry))
+                  {
+                     System.Windows.Forms.ListViewItem item = MainWindow.listViewMapping.Items.Add(entry.Id.ToString());
+                     item.SubItems.Add(entry.Aircraft);
+                     item.SubItems.Add(entry.Name);
+                  }
                }
                MainWindow.listViewMapping.Sort();
             })
@@ -382,7 +385,7 @@ namespace VLEDCONTROL
          SetTextBoxText(MainWindow.textBoxMappingProfileName, profile.Name);
       }
 
-      private bool ProfileFilterAccept(Profile.ProfileEvent entry)
+      private bool ProfileFilterAccepted(Profile.ProfileEvent entry)
       {
          if (!MainWindow.checkBoxProfileFilterStatic.Checked && entry.IsStatic()) return false;
          if (!MainWindow.comboBoxProfileFilterAircraft.Text.Equals(PROFILE_FILTER_ANY_AIRCAFT) && !MainWindow.comboBoxProfileFilterAircraft.Text.Equals(entry.Aircraft)) return false;
@@ -392,6 +395,12 @@ namespace VLEDCONTROL
             return entry.DeviceId == id;
          }
 
+         return true;
+      }
+
+      private bool MappingFilterAccepted(Profile.MappingEntry entry)
+      {
+         if (!MainWindow.comboBoxMappingFilterAircraft.Text.Equals(PROFILE_FILTER_ANY_AIRCAFT) && !MainWindow.comboBoxMappingFilterAircraft.Text.Equals(entry.Aircraft)) return false;
          return true;
       }
 
@@ -566,6 +575,10 @@ namespace VLEDCONTROL
          MainWindow.comboBoxProfileFilterDevice.Items.Clear();
          MainWindow.comboBoxProfileFilterAircraft.Items.Add(PROFILE_FILTER_ANY_AIRCAFT);
          MainWindow.comboBoxProfileFilterDevice.Items.Add(PROFILE_FILTER_ANY_DEVICE);
+         //
+         MainWindow.comboBoxMappingFilterAircraft.Text = PROFILE_FILTER_ANY_AIRCAFT;
+         MainWindow.comboBoxMappingFilterAircraft.Items.Clear();
+         MainWindow.comboBoxMappingFilterAircraft.Items.Add(PROFILE_FILTER_ANY_AIRCAFT);
          SetProfile(VLED.Engine.CurrentProfile);
       }
 
@@ -581,6 +594,7 @@ namespace VLEDCONTROL
          foreach(String aircraft in aircrafts)
          {
             MainWindow.comboBoxProfileFilterAircraft.Items.Add(aircraft);
+            MainWindow.comboBoxMappingFilterAircraft.Items.Add(aircraft);
          }
       }
 
