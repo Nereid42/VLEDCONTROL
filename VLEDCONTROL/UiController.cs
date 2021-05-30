@@ -636,7 +636,7 @@ namespace VLEDCONTROL
          }
       }
 
-      public void AddNewProfileEvent()
+      public void AddNewProfileEvent(int index)
       {
          EditProfileEventDialog dialog = new EditProfileEventDialog();
          dialog.Profile = VLED.Engine.CurrentProfile;
@@ -656,12 +656,12 @@ namespace VLEDCONTROL
 
             Profile.ProfileEvent newEvent = VLED.Engine.CurrentProfile.AddProfileEvent(aircraft, eventId, condition1, value1, condition2, value2, deviceId, led, color1, color2, description);
 
-            int index = MainWindow.listViewProfileEvents.Items.Count;
+            index = MainWindow.listViewProfileEvents.Items.Count;
             if(MainWindow.listViewProfileEvents.SelectedIndices.Count>0)
             {
                if(MainWindow.radioButtonNewElementsInsertAfter.Checked)
                {
-                  index = MainWindow.listViewProfileEvents.SelectedIndices[0] +1;
+                  index = MainWindow.listViewProfileEvents.SelectedIndices[0] + 1;
                } 
                else if (MainWindow.radioButtonNewElementsInsertBefore.Checked && index>0)
                {
@@ -673,6 +673,7 @@ namespace VLEDCONTROL
                new Action(() =>
                {
                   System.Windows.Forms.ListViewItem item = MainWindow.listViewProfileEvents.Items.Insert(index,newEvent.Id.ToString());
+                  item.Tag = (int)VLED.Engine.CurrentProfile.ProfileEvents.Count - 1;
                   item.SubItems.Add(newEvent.Aircraft);
                   item.SubItems.Add(VLED.Engine.CurrentProfile.MapPropertyName(newEvent.Aircraft, newEvent.Id));
                   item.SubItems.Add(newEvent.GetConditionsAsString());

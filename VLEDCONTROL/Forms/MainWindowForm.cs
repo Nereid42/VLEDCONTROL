@@ -344,17 +344,24 @@ namespace VLEDCONTROL
          {
             VLED.Engine.CurrentProfile.InsertProfileEntry(index+1, duplicate);
             newItem = listViewProfileEvents.Items.Insert(selected + 1, item.Text);
+            newItem.Tag = index + 1;
          }
          else if(radioButtonNewElementsInsertBefore.Checked)
          {
             VLED.Engine.CurrentProfile.InsertProfileEntry(index,duplicate);
             newItem = listViewProfileEvents.Items.Insert(selected, item.Text);
+            newItem.Tag = index;
          }
          else if (radioButtonNewElementsAppend.Checked)
          {
             VLED.Engine.CurrentProfile.AddProfileEntry(duplicate);
             newItem = listViewProfileEvents.Items.Add(item.Text);
+            newItem.Tag = VLED.Engine.CurrentProfile.ProfileEvents.Count - 1;
          }
+         //for(int i=selected + 1; i < listViewProfileEvents.Items.Count; i++)
+         //{
+         //   listViewProfileEvents.Items[i].Tag = (int)listViewProfileEvents.Items[i].Tag + 1;
+         //}
          //
          for (int i = 1; i < item.SubItems.Count; i++)
          {
@@ -455,7 +462,13 @@ namespace VLEDCONTROL
 
       private void buttonProfileAdd_Click(object sender, EventArgs e)
       {
-         Controller.AddNewProfileEvent();
+         int index = -1;
+         if (this.listViewProfileEvents.SelectedItems.Count > 0)
+         {
+            System.Windows.Forms.ListViewItem item = this.listViewProfileEvents.SelectedItems[0];
+            index = (int)item.Tag;
+         }
+         Controller.AddNewProfileEvent(index);
       }
 
       private void buttonProfileEdit_Click(object sender, EventArgs e)
