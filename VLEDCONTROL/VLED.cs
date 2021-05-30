@@ -36,7 +36,7 @@ namespace VLEDCONTROL
       static public String Version;
 
       static public MainWindowForm MainWindow;
-      static public Engine Engine = new Engine();
+      static public Engine Engine;
 
       static public volatile bool IsFirstRun = false;
 
@@ -134,8 +134,25 @@ namespace VLEDCONTROL
       [STAThread]
       static void Main()
       {
-         // ======== Load Version´========
+         // ======== Load Version ========
          LoadVersion();
+
+         // ======== create Engine ========
+         try
+         {
+            VLED.Engine = new Engine();
+         }
+         catch(System.Net.Sockets.SocketException e)
+         {
+            Tools.ShowErrorDialog("Failed to start engine. Socket already in use. Is VLEDCONTROL already running?");
+         }
+         catch (Exception e)
+         {
+            Loggable.LogException("Failed to start engine",e);
+            Tools.ShowExceptionDialog(e);
+            Exit();
+         }
+         
 
          // ======== Setup´========
          // Add all missing files, if nessessary

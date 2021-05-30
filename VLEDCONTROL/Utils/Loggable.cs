@@ -87,7 +87,7 @@ namespace VLEDCONTROL
       }
       public static void LogException(String message, Exception e)
       {
-         Log(LEVEL.ERROR, message+" [EXCEPTION: " + e.GetType() + ": " + e.Message+"]");
+         Log(LEVEL.ERROR, message+" [EXCEPTION: " + e.GetType() + ": " + e.Message+ "]\n" + e.StackTrace);
       }
 
       public static bool IsLoggable(LEVEL level)

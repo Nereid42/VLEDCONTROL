@@ -170,6 +170,7 @@ namespace VLEDCONTROL
          return Process.Start(ProcessInfo);
       }
 
+
       public static bool IsInteger(String s)
       {
          try
@@ -200,6 +201,18 @@ namespace VLEDCONTROL
          {
             box.Text = box.Items[index].ToString();
          }
+      }
+
+      public static void ShowExceptionDialog(Exception e)
+      {
+         string message = e.GetType() + "\n\n" + e.Message;
+         MessageBox.Show(message, "Exception!", MessageBoxButtons.OK);
+      }
+
+      internal static void ShowErrorDialog(string message)
+      {
+         Loggable.LogError(message);
+         MessageBox.Show(message, "Error!", MessageBoxButtons.OK);
       }
 
    }
