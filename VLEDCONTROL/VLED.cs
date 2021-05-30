@@ -51,6 +51,7 @@ namespace VLEDCONTROL
 
       private static void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
       {
+         LogDebug("Window closing event detected");
          e.Cancel = true;
          Exit();
       }
@@ -94,6 +95,7 @@ namespace VLEDCONTROL
          InstallScriptsDialog dialog = new InstallScriptsDialog();
          if(isFirstInstallation)
          {
+            dialog.textBoxFirstInstallWarning.ForeColor = System.Drawing.Color.Red;
             dialog.textBoxFirstInstallWarning.Visible = true;
          }
          if (dialog.ShowDialog() == DialogResult.OK)
@@ -142,7 +144,7 @@ namespace VLEDCONTROL
          {
             VLED.Engine = new Engine();
          }
-         catch(System.Net.Sockets.SocketException e)
+         catch(System.Net.Sockets.SocketException)
          {
             Tools.ShowErrorDialog("Failed to start engine. Socket already in use. Is VLEDCONTROL already running?");
          }
@@ -151,8 +153,7 @@ namespace VLEDCONTROL
             Loggable.LogException("Failed to start engine",e);
             Tools.ShowExceptionDialog(e);
             Exit();
-         }
-         
+         }    
 
          // ======== Setup´========
          // Add all missing files, if nessessary
@@ -177,6 +178,7 @@ namespace VLEDCONTROL
          //
 
          // ======== Show Main Window ======== 
+         LogInfo("Opening main window");
          Application.Run(VLED.MainWindow);
       }
 

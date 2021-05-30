@@ -50,11 +50,13 @@ namespace VLEDCONTROL
 
       internal void Join(int timeoutInSeconds)
       {
+         LogDebug("Waiting for engine to stop...");
          int timeInSeconds = 0;
          while(IsRunning && timeInSeconds < timeoutInSeconds)
          {
             for(int i=0; i<10 && IsRunning;i++)
             {
+               if (IsLoggable(LEVEL.TRACE)) LogTrace("Sleeping (waiting for engine to stop)...");
                Thread.Sleep(100);
             }
             timeInSeconds++;

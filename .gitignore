@@ -3,3 +3,5 @@ VLEDCONTROL/obj/**
 .vs/**
 *.log
 build/build.txt
+build/build.txt
+/Documentation
