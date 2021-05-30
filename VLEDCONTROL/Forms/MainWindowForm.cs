@@ -98,6 +98,12 @@ namespace VLEDCONTROL
             buttonProfileEdit.Enabled = true;
             buttonProfileDown.Enabled = ( listViewProfileEvents.SelectedIndices[0] < listViewProfileEvents.Items.Count - 1 );
             buttonProfileUp.Enabled = ( listViewProfileEvents.SelectedIndices[0] > 0 );
+            //
+            // Debug
+            int index = listViewProfileEvents.SelectedIndices[0];
+            System.Windows.Forms.ListViewItem item = listViewProfileEvents.Items[index];
+            //Profile.ProfileEvent e = VLED.Engine.CurrentProfile.ProfileEvents[index]
+            Loggable.LogDebug("Selected: index="+index+", Tag="+item.Tag);
          }
       }
 
@@ -336,21 +342,30 @@ namespace VLEDCONTROL
          if (this.listViewProfileEvents.SelectedItems.Count == 0) return;
          System.Windows.Forms.ListViewItem item = this.listViewProfileEvents.SelectedItems[0];
          int index = (int)item.Tag;
+         int selected = this.listViewProfileEvents.SelectedIndices[0];
+         Loggable.LogDebug("DUPLICATE: index="+index+", selected="+selected);
          Profile.ProfileEvent entry = VLED.Engine.CurrentProfile.ProfileEvents.ElementAt(index);
          Profile.ProfileEvent duplicate = new Profile.ProfileEvent(entry);
          System.Windows.Forms.ListViewItem newItem = null;
-         int selected = this.listViewProfileEvents.SelectedIndices[0];
          if (radioButtonNewElementsInsertAfter.Checked)
          {
             VLED.Engine.CurrentProfile.InsertProfileEntry(index+1, duplicate);
             newItem = listViewProfileEvents.Items.Insert(selected + 1, item.Text);
             newItem.Tag = index + 1;
+            for(int i=selected + 2; i < listViewProfileEvents.Items.Count; i++)
+            {
+               listViewProfileEvents.Items[i].Tag = (int)listViewProfileEvents.Items[i].Tag + 1;
+            }
          }
          else if(radioButtonNewElementsInsertBefore.Checked)
          {
             VLED.Engine.CurrentProfile.InsertProfileEntry(index,duplicate);
             newItem = listViewProfileEvents.Items.Insert(selected, item.Text);
             newItem.Tag = index;
+            for (int i = selected + 1; i < listViewProfileEvents.Items.Count; i++)
+            {
+               listViewProfileEvents.Items[i].Tag = (int)listViewProfileEvents.Items[i].Tag + 1;
+            }
          }
          else if (radioButtonNewElementsAppend.Checked)
          {
@@ -358,10 +373,6 @@ namespace VLEDCONTROL
             newItem = listViewProfileEvents.Items.Add(item.Text);
             newItem.Tag = VLED.Engine.CurrentProfile.ProfileEvents.Count - 1;
          }
-         //for(int i=selected + 1; i < listViewProfileEvents.Items.Count; i++)
-         //{
-         //   listViewProfileEvents.Items[i].Tag = (int)listViewProfileEvents.Items[i].Tag + 1;
-         //}
          //
          for (int i = 1; i < item.SubItems.Count; i++)
          {
