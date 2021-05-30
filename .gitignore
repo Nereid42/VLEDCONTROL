@@ -2,3 +2,4 @@ VLEDCONTROL/bin/**
 VLEDCONTROL/obj/**
 .vs/**
 *.log
+build/build.txt
