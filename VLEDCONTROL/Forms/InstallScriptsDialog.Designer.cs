@@ -111,14 +111,15 @@
          this.textBoxFirstInstallWarning.BackColor = System.Drawing.SystemColors.Control;
          this.textBoxFirstInstallWarning.BorderStyle = System.Windows.Forms.BorderStyle.None;
          this.textBoxFirstInstallWarning.Cursor = System.Windows.Forms.Cursors.No;
-         this.textBoxFirstInstallWarning.Enabled = false;
          this.textBoxFirstInstallWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.textBoxFirstInstallWarning.ForeColor = System.Drawing.Color.Red;
          this.textBoxFirstInstallWarning.Location = new System.Drawing.Point(23, 154);
          this.textBoxFirstInstallWarning.Multiline = true;
          this.textBoxFirstInstallWarning.Name = "textBoxFirstInstallWarning";
+         this.textBoxFirstInstallWarning.ReadOnly = true;
          this.textBoxFirstInstallWarning.Size = new System.Drawing.Size(748, 38);
          this.textBoxFirstInstallWarning.TabIndex = 7;
+         this.textBoxFirstInstallWarning.TabStop = false;
          this.textBoxFirstInstallWarning.Text = "This is the first execution of VLEDCONTROL. If you skip this installation, VLEDCO" +
     "NTROL will not work unless you configure the DCS yourself later.\r\n";
          this.textBoxFirstInstallWarning.Visible = false;

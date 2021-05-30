@@ -39,14 +39,15 @@
          this.textBoxFirstInstallWarning.BackColor = System.Drawing.SystemColors.Control;
          this.textBoxFirstInstallWarning.BorderStyle = System.Windows.Forms.BorderStyle.None;
          this.textBoxFirstInstallWarning.Cursor = System.Windows.Forms.Cursors.No;
-         this.textBoxFirstInstallWarning.Enabled = false;
          this.textBoxFirstInstallWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.textBoxFirstInstallWarning.ForeColor = System.Drawing.Color.Red;
          this.textBoxFirstInstallWarning.Location = new System.Drawing.Point(12, 83);
          this.textBoxFirstInstallWarning.Multiline = true;
          this.textBoxFirstInstallWarning.Name = "textBoxFirstInstallWarning";
+         this.textBoxFirstInstallWarning.ReadOnly = true;
          this.textBoxFirstInstallWarning.Size = new System.Drawing.Size(564, 57);
          this.textBoxFirstInstallWarning.TabIndex = 8;
+         this.textBoxFirstInstallWarning.TabStop = false;
          this.textBoxFirstInstallWarning.Text = "This is the first execution of VLEDCONTROL. Please search for the file VPC_LED_Co" +
     "ntrol.exe on your computer. Without it, VLEDCONTROL will not work.\r\n";
          // 
@@ -58,7 +59,7 @@
          this.buttonAutomatic.Location = new System.Drawing.Point(12, 12);
          this.buttonAutomatic.Name = "buttonAutomatic";
          this.buttonAutomatic.Size = new System.Drawing.Size(184, 46);
-         this.buttonAutomatic.TabIndex = 9;
+         this.buttonAutomatic.TabIndex = 1;
          this.buttonAutomatic.Text = "Automatically";
          this.buttonAutomatic.UseVisualStyleBackColor = true;
          this.buttonAutomatic.Click += new System.EventHandler(this.buttonAutomatic_Click);
@@ -71,7 +72,7 @@
          this.buttonSkip.Location = new System.Drawing.Point(392, 12);
          this.buttonSkip.Name = "buttonSkip";
          this.buttonSkip.Size = new System.Drawing.Size(184, 46);
-         this.buttonSkip.TabIndex = 10;
+         this.buttonSkip.TabIndex = 3;
          this.buttonSkip.Text = "Skip";
          this.buttonSkip.UseVisualStyleBackColor = true;
          // 
@@ -82,7 +83,7 @@
          this.buttonChooseFolder.Location = new System.Drawing.Point(202, 12);
          this.buttonChooseFolder.Name = "buttonChooseFolder";
          this.buttonChooseFolder.Size = new System.Drawing.Size(184, 46);
-         this.buttonChooseFolder.TabIndex = 11;
+         this.buttonChooseFolder.TabIndex = 2;
          this.buttonChooseFolder.Text = "Choose Folder...";
          this.buttonChooseFolder.UseVisualStyleBackColor = true;
          this.buttonChooseFolder.Click += new System.EventHandler(this.buttonChooseFolder_Click);
