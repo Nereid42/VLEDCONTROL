@@ -648,7 +648,6 @@
          // radioButtonNewElementsInsertAfter
          // 
          this.radioButtonNewElementsInsertAfter.AutoSize = true;
-         this.radioButtonNewElementsInsertAfter.Enabled = false;
          this.radioButtonNewElementsInsertAfter.Location = new System.Drawing.Point(3, 26);
          this.radioButtonNewElementsInsertAfter.Name = "radioButtonNewElementsInsertAfter";
          this.radioButtonNewElementsInsertAfter.Size = new System.Drawing.Size(47, 17);
@@ -660,7 +659,6 @@
          // radioButtonNewElementsInsertBefore
          // 
          this.radioButtonNewElementsInsertBefore.AutoSize = true;
-         this.radioButtonNewElementsInsertBefore.Enabled = false;
          this.radioButtonNewElementsInsertBefore.Location = new System.Drawing.Point(3, 3);
          this.radioButtonNewElementsInsertBefore.Name = "radioButtonNewElementsInsertBefore";
          this.radioButtonNewElementsInsertBefore.Size = new System.Drawing.Size(56, 17);
