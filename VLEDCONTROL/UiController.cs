@@ -347,15 +347,17 @@ namespace VLEDCONTROL
 
       public void SetProfile(Profile profile)
       {
-         MainWindow.listViewProfileEvents.BeginInvoke(
+         MainWindow.listViewProfileEvents.Invoke(
             new Action(() =>
             {
                MainWindow.listViewProfileEvents.Items.Clear();
-               foreach(Profile.ProfileEvent entry in profile.ProfileEvents)
+               for(int index = 0; index < profile.ProfileEvents.Count; index++)               
                {
-                  if(ProfileFilterAccepted(entry))
+                  Profile.ProfileEvent entry = profile.ProfileEvents.ElementAt(index);
+                  if (ProfileFilterAccepted(entry))
                   {
                      System.Windows.Forms.ListViewItem item = MainWindow.listViewProfileEvents.Items.Add(entry.Id.ToString());
+                     item.Tag = index;
                      item.BackColor = System.Drawing.Color.Empty;
                      item.SubItems.Add(entry.Aircraft);
                      item.SubItems.Add(profile.MapPropertyName(entry.Aircraft, entry.Id));

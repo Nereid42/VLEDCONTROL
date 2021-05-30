@@ -313,6 +313,19 @@ namespace VLEDCONTROL
          return aircrafts;
       }
 
+      public override String ToString()
+      {
+         StringBuilder sb = new StringBuilder();
+         sb.Append("Profile: "+Name+"\n");
+         sb.Append("Events:\n");
+         foreach (ProfileEvent e in ProfileEvents)
+         {
+            sb.Append(e+"\n");
+         }
+
+         return sb.ToString();
+      }
+
       public class ProfileEvent
       {
          public int Id { get; set; }

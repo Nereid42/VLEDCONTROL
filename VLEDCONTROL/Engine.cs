@@ -119,8 +119,8 @@ namespace VLEDCONTROL
             Controller.Clear();
             Controller.SetAircraftName(CurrentAircraft);
             Controller.SetSettings(CurrentSettings);
-            Controller.SetProfile(CurrentProfile);
             Controller.SetProfileFilter(CurrentProfile);
+            Controller.SetProfile(CurrentProfile);
             ControlerInitDone = true;
          }
          else

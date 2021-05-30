@@ -277,57 +277,78 @@ namespace VLEDCONTROL
 
       private void buttonProfileUp_Click(object sender, EventArgs e)
       {
-         if (listViewProfileEvents.SelectedIndices.Count == 0) return;
-         int index = listViewProfileEvents.SelectedIndices[0];
-         if (index == 0) return;
+         Loggable.LogUrgend("BEFORE UP: "+ VLED.Engine.CurrentProfile);
+         if (this.listViewProfileEvents.SelectedItems.Count == 0) return;
+         System.Windows.Forms.ListViewItem item = this.listViewProfileEvents.SelectedItems[0];
+         int index = (int)item.Tag;
+         int selected = this.listViewProfileEvents.SelectedIndices[0];
+         if (index == 0 || selected == 0) return;
+         // Profile changes
          Profile.ProfileEvent entry = VLED.Engine.CurrentProfile.ProfileEvents.ElementAt(index);
-         Controller.Log("entry=" + entry);
          VLED.Engine.CurrentProfile.ProfileEvents.RemoveAt(index);
          VLED.Engine.CurrentProfile.ProfileEvents.Insert(index - 1, entry);
-         System.Windows.Forms.ListViewItem item = listViewProfileEvents.Items[index];
-         listViewProfileEvents.Items.RemoveAt(index);
-         listViewProfileEvents.Items.Insert(index - 1, item);
+         // List changes
+         listViewProfileEvents.Items[selected].Tag = index - 1;
+         listViewProfileEvents.Items[selected-1].Tag = index;
+         listViewProfileEvents.Items.RemoveAt(selected);
+         listViewProfileEvents.Items.Insert(selected - 1, item);
+
+         Loggable.LogUrgend("AFTER UP: " + VLED.Engine.CurrentProfile);
       }
 
       private void buttonProfileDown_Click(object sender, EventArgs e)
       {
-         if (listViewProfileEvents.SelectedIndices.Count == 0) return;
-         int index = listViewProfileEvents.SelectedIndices[0];
-         if (index == listViewProfileEvents.Items.Count - 1) return;
+         if (this.listViewProfileEvents.SelectedItems.Count == 0) return;
+         System.Windows.Forms.ListViewItem item = this.listViewProfileEvents.SelectedItems[0];
+         int index = (int)item.Tag;
+         int selected = this.listViewProfileEvents.SelectedIndices[0];
+         if (index == VLED.Engine.CurrentProfile.ProfileEvents.Count - 1 || selected == listViewProfileEvents.Items.Count) return;
+         // Profile changes
          Profile.ProfileEvent entry = VLED.Engine.CurrentProfile.ProfileEvents.ElementAt(index);
-         Controller.Log("entry=" + entry);
          VLED.Engine.CurrentProfile.ProfileEvents.RemoveAt(index);
          VLED.Engine.CurrentProfile.ProfileEvents.Insert(index + 1, entry);
-         System.Windows.Forms.ListViewItem item = listViewProfileEvents.Items[index];
-         listViewProfileEvents.Items.RemoveAt(index);
-         listViewProfileEvents.Items.Insert(index + 1, item);
+         // List changes
+         listViewProfileEvents.Items[selected].Tag = index + 1;
+         listViewProfileEvents.Items[selected + 1].Tag = index;
+         listViewProfileEvents.Items.RemoveAt(selected);
+         listViewProfileEvents.Items.Insert(selected + 1, item);
       }
+
 
       private void buttonProfileRemove_Click(object sender, EventArgs e)
       {
-         if (listViewProfileEvents.SelectedIndices.Count == 0) return;
-         int index = listViewProfileEvents.SelectedIndices[0];
+         if (this.listViewProfileEvents.SelectedItems.Count == 0) return;
+         System.Windows.Forms.ListViewItem item = this.listViewProfileEvents.SelectedItems[0];
+         int index = (int)item.Tag;
+         int selected = this.listViewProfileEvents.SelectedIndices[0];
+         // Profile changes
          VLED.Engine.CurrentProfile.ProfileEvents.RemoveAt(index);
-         listViewProfileEvents.Items.RemoveAt(index);
+         // List changes
+         listViewProfileEvents.Items.RemoveAt(selected);
+         for(int i=selected; i< listViewProfileEvents.Items.Count;i++)
+         {
+            listViewProfileEvents.Items[i].Tag = (int)listViewProfileEvents.Items[i].Tag - 1;
+         }
       }
 
       private void buttonProfileDuplicate_Click(object sender, EventArgs e)
       {
-         if (listViewProfileEvents.SelectedIndices.Count == 0) return;
-         int index = listViewProfileEvents.SelectedIndices[0];
+         if (this.listViewProfileEvents.SelectedItems.Count == 0) return;
+         System.Windows.Forms.ListViewItem item = this.listViewProfileEvents.SelectedItems[0];
+         int index = (int)item.Tag;
          Profile.ProfileEvent entry = VLED.Engine.CurrentProfile.ProfileEvents.ElementAt(index);
-         System.Windows.Forms.ListViewItem item = listViewProfileEvents.Items[index];
          Profile.ProfileEvent duplicate = new Profile.ProfileEvent(entry);
          System.Windows.Forms.ListViewItem newItem = null;
+         int selected = this.listViewProfileEvents.SelectedIndices[0];
          if (radioButtonNewElementsInsertAfter.Checked)
          {
             VLED.Engine.CurrentProfile.InsertProfileEntry(index+1, duplicate);
-            newItem = listViewProfileEvents.Items.Insert(index + 1, item.Text);
+            newItem = listViewProfileEvents.Items.Insert(selected + 1, item.Text);
          }
          else if(radioButtonNewElementsInsertBefore.Checked)
          {
             VLED.Engine.CurrentProfile.InsertProfileEntry(index,duplicate);
-            newItem = listViewProfileEvents.Items.Insert(index, item.Text);
+            newItem = listViewProfileEvents.Items.Insert(selected, item.Text);
          }
          else if (radioButtonNewElementsAppend.Checked)
          {
@@ -439,8 +460,9 @@ namespace VLEDCONTROL
 
       private void buttonProfileEdit_Click(object sender, EventArgs e)
       {
-         if (this.listViewProfileEvents.SelectedIndices.Count == 0) return;
-         int index = this.listViewProfileEvents.SelectedIndices[0];
+         if (this.listViewProfileEvents.SelectedItems.Count == 0) return;
+         System.Windows.Forms.ListViewItem item = this.listViewProfileEvents.SelectedItems[0];
+         int index = (int)item.Tag;
          Controller.EditProfileEvent(index);
       }
 
