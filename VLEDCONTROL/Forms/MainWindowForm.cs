@@ -626,5 +626,10 @@ namespace VLEDCONTROL
       {
          Controller.SetProfile(VLED.Engine.CurrentProfile);
       }
+
+      private void buttonImportFromProfile_Click(object sender, EventArgs e)
+      {
+         Controller.ImportMappingFromProfile();
+      }
    }
 }

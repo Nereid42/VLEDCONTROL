@@ -44,7 +44,6 @@ namespace VLEDCONTROL
          InitializeComponent();
          this.textBoxEventId.KeyPress += new KeyPressEventHandler(Tools.IntegerKeyPressed);
          this.comboBoxAircraft.TextChanged += new EventHandler(this.ComboBoxAircraftTextChanged);
-
       }
 
       public String GetAircraft()
@@ -86,6 +85,7 @@ namespace VLEDCONTROL
                this.textBoxEventId.Text = (lastEntry.Id + 1).ToString();
             }
          }
+         this.ActiveControl = textBoxName;
       }
 
       private void textBoxEventId_TextChanged(object sender, EventArgs e)

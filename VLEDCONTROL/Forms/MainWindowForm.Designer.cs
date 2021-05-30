@@ -172,6 +172,7 @@
          this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
+         this.buttonImportFromProfile = new System.Windows.Forms.Button();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -837,6 +838,7 @@
          // 
          // tabPageMapping
          // 
+         this.tabPageMapping.Controls.Add(this.buttonImportFromProfile);
          this.tabPageMapping.Controls.Add(this.groupBoxFilterMapping);
          this.tabPageMapping.Controls.Add(this.buttonMappingEdit);
          this.tabPageMapping.Controls.Add(this.buttonMappingRemove);
@@ -1619,6 +1621,16 @@
          this.progressBarEngineStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
          this.progressBarEngineStatus.TabIndex = 12;
          // 
+         // buttonImportFromProfile
+         // 
+         this.buttonImportFromProfile.Location = new System.Drawing.Point(555, 163);
+         this.buttonImportFromProfile.Name = "buttonImportFromProfile";
+         this.buttonImportFromProfile.Size = new System.Drawing.Size(75, 23);
+         this.buttonImportFromProfile.TabIndex = 14;
+         this.buttonImportFromProfile.Text = "Import ...";
+         this.buttonImportFromProfile.UseVisualStyleBackColor = true;
+         this.buttonImportFromProfile.Click += new System.EventHandler(this.buttonImportFromProfile_Click);
+         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1819,6 +1831,7 @@
       private System.Windows.Forms.GroupBox groupBoxFilterMapping;
       internal System.Windows.Forms.ComboBox comboBoxMappingFilterAircraft;
       private System.Windows.Forms.Label label7;
+      private System.Windows.Forms.Button buttonImportFromProfile;
    }
 }
 

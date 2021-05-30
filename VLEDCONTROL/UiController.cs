@@ -232,6 +232,26 @@ namespace VLEDCONTROL
          }
       }
 
+      internal void ImportMappingFromProfile()
+      {
+         using (OpenFileDialog chooser = new OpenFileDialog())
+         {
+
+            chooser.InitialDirectory = Tools.GetApplicationFolder();
+            chooser.Multiselect = false;
+            chooser.Filter = "Profile files (*.profile)|*.profile";
+            chooser.FilterIndex = 1;
+            chooser.RestoreDirectory = true;
+            if (chooser.ShowDialog() == DialogResult.OK)
+            {
+               Profile profile = Profile.Load(chooser.FileName);
+               VLED.Engine.CurrentProfile.ImportMapping(profile);
+               SetProfile(VLED.Engine.CurrentProfile);
+               SetProfileFilter(VLED.Engine.CurrentProfile);
+            }
+         }
+      }
+
       public void SetSettings(Settings settings)
       {
          SetSettings(settings, false);
@@ -565,6 +585,7 @@ namespace VLEDCONTROL
                })
                );
             }
+            UpdateProfileFilter(VLED.Engine.CurrentProfile);
          }
       }
 
@@ -575,25 +596,33 @@ namespace VLEDCONTROL
          MainWindow.comboBoxProfileFilterDevice.Text = PROFILE_FILTER_ANY_DEVICE;
          MainWindow.comboBoxProfileFilterAircraft.Items.Clear();
          MainWindow.comboBoxProfileFilterDevice.Items.Clear();
-         MainWindow.comboBoxProfileFilterAircraft.Items.Add(PROFILE_FILTER_ANY_AIRCAFT);
-         MainWindow.comboBoxProfileFilterDevice.Items.Add(PROFILE_FILTER_ANY_DEVICE);
          //
          MainWindow.comboBoxMappingFilterAircraft.Text = PROFILE_FILTER_ANY_AIRCAFT;
          MainWindow.comboBoxMappingFilterAircraft.Items.Clear();
-         MainWindow.comboBoxMappingFilterAircraft.Items.Add(PROFILE_FILTER_ANY_AIRCAFT);
          SetProfile(VLED.Engine.CurrentProfile);
       }
 
       internal void SetProfileFilter(Profile profile)
       {
          ClearProfileFilter();
-         for (int id=0; id < VLED.Engine.CurrentSettings.Devices.Count; id++)
+         UpdateProfileFilter(profile);
+      }
+
+      internal void UpdateProfileFilter(Profile profile)
+      {
+         MainWindow.comboBoxProfileFilterAircraft.Items.Clear();
+         MainWindow.comboBoxProfileFilterDevice.Items.Clear();
+         MainWindow.comboBoxMappingFilterAircraft.Items.Clear();
+         MainWindow.comboBoxProfileFilterAircraft.Items.Add(PROFILE_FILTER_ANY_AIRCAFT);
+         MainWindow.comboBoxProfileFilterDevice.Items.Add(PROFILE_FILTER_ANY_DEVICE);
+         MainWindow.comboBoxMappingFilterAircraft.Items.Add(PROFILE_FILTER_ANY_AIRCAFT);
+         for (int id = 0; id < VLED.Engine.CurrentSettings.Devices.Count; id++)
          {
             VirpilDevice device = VLED.Engine.CurrentSettings.Devices.ElementAt(id);
-            MainWindow.comboBoxProfileFilterDevice.Items.Add(id+": "+device.Name);
+            MainWindow.comboBoxProfileFilterDevice.Items.Add(id + ": " + device.Name);
          }
          IReadOnlyCollection<String> aircrafts = profile.GetAircraftList();
-         foreach(String aircraft in aircrafts)
+         foreach (String aircraft in aircrafts)
          {
             MainWindow.comboBoxProfileFilterAircraft.Items.Add(aircraft);
             MainWindow.comboBoxMappingFilterAircraft.Items.Add(aircraft);
@@ -684,6 +713,7 @@ namespace VLEDCONTROL
                   item.SubItems.Add(newEvent.Description);
                })
             );
+            UpdateProfileFilter(VLED.Engine.CurrentProfile);
          }
       }
 

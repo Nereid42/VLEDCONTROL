@@ -44,7 +44,7 @@
          this.buttonOk.Location = new System.Drawing.Point(166, 134);
          this.buttonOk.Name = "buttonOk";
          this.buttonOk.Size = new System.Drawing.Size(75, 23);
-         this.buttonOk.TabIndex = 0;
+         this.buttonOk.TabIndex = 4;
          this.buttonOk.Text = "OK";
          this.buttonOk.UseVisualStyleBackColor = true;
          // 
@@ -54,7 +54,7 @@
          this.buttonCancel.Location = new System.Drawing.Point(247, 134);
          this.buttonCancel.Name = "buttonCancel";
          this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-         this.buttonCancel.TabIndex = 1;
+         this.buttonCancel.TabIndex = 5;
          this.buttonCancel.Text = "Cancel";
          this.buttonCancel.UseVisualStyleBackColor = true;
          // 
@@ -63,7 +63,7 @@
          this.textBoxEventId.Location = new System.Drawing.Point(15, 37);
          this.textBoxEventId.Name = "textBoxEventId";
          this.textBoxEventId.Size = new System.Drawing.Size(68, 20);
-         this.textBoxEventId.TabIndex = 2;
+         this.textBoxEventId.TabIndex = 1;
          this.textBoxEventId.TextChanged += new System.EventHandler(this.textBoxEventId_TextChanged);
          // 
          // label1
@@ -81,7 +81,7 @@
          this.comboBoxAircraft.Location = new System.Drawing.Point(89, 37);
          this.comboBoxAircraft.Name = "comboBoxAircraft";
          this.comboBoxAircraft.Size = new System.Drawing.Size(233, 21);
-         this.comboBoxAircraft.TabIndex = 4;
+         this.comboBoxAircraft.TabIndex = 2;
          this.comboBoxAircraft.SelectedIndexChanged += new System.EventHandler(this.comboBoxAircraft_SelectedIndexChanged);
          // 
          // labelAircraft
@@ -98,7 +98,7 @@
          this.textBoxName.Location = new System.Drawing.Point(15, 92);
          this.textBoxName.Name = "textBoxName";
          this.textBoxName.Size = new System.Drawing.Size(307, 20);
-         this.textBoxName.TabIndex = 6;
+         this.textBoxName.TabIndex = 3;
          this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
          // 
          // labelName
