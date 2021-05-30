@@ -573,6 +573,8 @@ namespace VLEDCONTROL
          about += "\nThe above copyright notice and this permission notice shall be included";
          about += "\nin all copies or substantial portions of the Software.";
 
+         about += "\n\n\nSource: https://github.com/Nereid42/VLEDCONTROL";
+
          MessageBox.Show(about, "About", MessageBoxButtons.OK);
       }
 
