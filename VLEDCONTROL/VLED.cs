@@ -105,11 +105,25 @@ namespace VLEDCONTROL
       public static void ShowVpcLedControlSetupDialog()
       {
          VpcLedControlSetupDialog dialog = new VpcLedControlSetupDialog();
-         if (dialog.ShowDialog() == DialogResult.OK)
+         while (VLED.Engine.CurrentSettings.VirpilLedControl == null || VLED.Engine.CurrentSettings.VirpilLedControl.Length == 0)
          {
-            VLED.Engine.CurrentSettings.VirpilLedControl = dialog.VpcLedControlExePath;
-            VLED.Engine.CurrentSettings.SaveAsync();
-            VLED.MainWindow.Controller.SetSettings(VLED.Engine.CurrentSettings);
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+               VLED.Engine.CurrentSettings.VirpilLedControl = dialog.VpcLedControlExePath;
+               VLED.Engine.CurrentSettings.SaveAsync();
+               VLED.MainWindow.Controller.SetSettings(VLED.Engine.CurrentSettings);
+            }
+            if(VLED.Engine.CurrentSettings.VirpilLedControl == null || VLED.Engine.CurrentSettings.VirpilLedControl.Length == 0)
+            {
+               switch (MessageBox.Show("VPC_LED_COntrol.exe not found", "Setup incomplete", MessageBoxButtons.AbortRetryIgnore))
+               {
+                  case DialogResult.Abort:
+                     VLED.Exit();
+                     break;
+                  case DialogResult.Ignore:
+                     return;
+               }
+            }
          }
       }
 
