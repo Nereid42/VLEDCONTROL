@@ -633,5 +633,11 @@ namespace VLEDCONTROL
       {
          Controller.ImportMappingFromProfile();
       }
+
+      private void checkBoxDataShowUnknown_CheckedChanged(object sender, EventArgs e)
+      {
+         listViewData.Items.Clear();
+         Controller.MarkDataAsDirty(true);
+      }
    }
 }

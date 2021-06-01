@@ -42,10 +42,17 @@ namespace VLEDCONTROL
 
       static public void Exit()
       {
-         LogInfo("exiting VLED...");
+         System.Diagnostics.Process process = System.Diagnostics.Process.GetCurrentProcess();
+         LogInfo("exiting VLED (process id " + process.Id + ")... ");
          Engine.Stop();
          Engine.CurrentSettings.Save();
          Engine.Join(10);
+         if(Application.MessageLoop)
+         {
+            LogInfo("Calling Application.Exit()");
+            Application.Exit();
+         }
+         LogInfo("Calling Environment.Exit(0)");
          Environment.Exit(0);
       }
 
@@ -129,6 +136,35 @@ namespace VLEDCONTROL
          }
       }
 
+      private static void Startup()
+      {
+         // ======== Init Logging ======== 
+         Settings settings = new Settings();
+         settings.Load();
+         SetLogLevel(settings.LogLevel);
+
+         LogInfo("Startup");
+
+         // Log Process data
+         System.Diagnostics.Process process = System.Diagnostics.Process.GetCurrentProcess();
+         LogInfo("Process id: " + process.Id);
+
+         // ======== create Engine ========
+         try
+         {
+            VLED.Engine = new Engine();
+         }
+         catch (System.Net.Sockets.SocketException)
+         {
+            Tools.ShowErrorDialog("Failed to start engine. Socket already in use. Is VLEDCONTROL already running?");
+         }
+         catch (Exception e)
+         {
+            Loggable.LogException("Failed to start engine", e);
+            Tools.ShowExceptionDialog(e);
+            Exit();
+         }
+      }
 
       /// <summary>
       /// Main Entry Point
@@ -136,34 +172,16 @@ namespace VLEDCONTROL
       [STAThread]
       static void Main()
       {
+         // ======== Startup ========
+         Startup();
+
          // ======== Load Version ========
          LoadVersion();
 
-         // ======== create Engine ========
-         try
-         {
-            VLED.Engine = new Engine();
-         }
-         catch(System.Net.Sockets.SocketException)
-         {
-            Tools.ShowErrorDialog("Failed to start engine. Socket already in use. Is VLEDCONTROL already running?");
-         }
-         catch (Exception e)
-         {
-            Loggable.LogException("Failed to start engine",e);
-            Tools.ShowExceptionDialog(e);
-            Exit();
-         }    
-
-         // ======== Setup´========
+         // ======== Setup ========
          // Add all missing files, if nessessary
          EnvironmentSetup();
 
-         // ======== Init Logging ======== 
-         Settings settings = new Settings();
-         settings.Load();
-         SetLogLevel(settings.LogLevel);
-         LogInfo("starting VLED");
 
          // ======== Creating Main Window ======== 
          Application.EnableVisualStyles();
@@ -181,7 +199,6 @@ namespace VLEDCONTROL
          LogInfo("Opening main window");
          Application.Run(VLED.MainWindow);
       }
-
 
       public static void DEBUG(String msg)
       {

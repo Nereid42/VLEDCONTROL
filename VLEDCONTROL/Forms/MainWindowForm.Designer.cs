@@ -96,6 +96,7 @@
          this.columnHeaderColorFlashing = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabPageMapping = new System.Windows.Forms.TabPage();
+         this.buttonImportFromProfile = new System.Windows.Forms.Button();
          this.groupBoxFilterMapping = new System.Windows.Forms.GroupBox();
          this.label7 = new System.Windows.Forms.Label();
          this.comboBoxMappingFilterAircraft = new System.Windows.Forms.ComboBox();
@@ -172,7 +173,6 @@
          this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
-         this.buttonImportFromProfile = new System.Windows.Forms.Button();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -366,13 +366,13 @@
          this.checkBoxDataShowUnknown.AutoSize = true;
          this.checkBoxDataShowUnknown.Checked = true;
          this.checkBoxDataShowUnknown.CheckState = System.Windows.Forms.CheckState.Checked;
-         this.checkBoxDataShowUnknown.Enabled = false;
          this.checkBoxDataShowUnknown.Location = new System.Drawing.Point(142, 540);
          this.checkBoxDataShowUnknown.Name = "checkBoxDataShowUnknown";
          this.checkBoxDataShowUnknown.Size = new System.Drawing.Size(102, 17);
          this.checkBoxDataShowUnknown.TabIndex = 9;
          this.checkBoxDataShowUnknown.Text = "Show Unknown";
          this.checkBoxDataShowUnknown.UseVisualStyleBackColor = true;
+         this.checkBoxDataShowUnknown.CheckedChanged += new System.EventHandler(this.checkBoxDataShowUnknown_CheckedChanged);
          // 
          // buttonRegisterRemove
          // 
@@ -854,6 +854,16 @@
          this.tabPageMapping.TabIndex = 3;
          this.tabPageMapping.Text = "Mapping";
          this.tabPageMapping.UseVisualStyleBackColor = true;
+         // 
+         // buttonImportFromProfile
+         // 
+         this.buttonImportFromProfile.Location = new System.Drawing.Point(555, 163);
+         this.buttonImportFromProfile.Name = "buttonImportFromProfile";
+         this.buttonImportFromProfile.Size = new System.Drawing.Size(75, 23);
+         this.buttonImportFromProfile.TabIndex = 14;
+         this.buttonImportFromProfile.Text = "Import ...";
+         this.buttonImportFromProfile.UseVisualStyleBackColor = true;
+         this.buttonImportFromProfile.Click += new System.EventHandler(this.buttonImportFromProfile_Click);
          // 
          // groupBoxFilterMapping
          // 
@@ -1621,16 +1631,6 @@
          this.progressBarEngineStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
          this.progressBarEngineStatus.TabIndex = 12;
          // 
-         // buttonImportFromProfile
-         // 
-         this.buttonImportFromProfile.Location = new System.Drawing.Point(555, 163);
-         this.buttonImportFromProfile.Name = "buttonImportFromProfile";
-         this.buttonImportFromProfile.Size = new System.Drawing.Size(75, 23);
-         this.buttonImportFromProfile.TabIndex = 14;
-         this.buttonImportFromProfile.Text = "Import ...";
-         this.buttonImportFromProfile.UseVisualStyleBackColor = true;
-         this.buttonImportFromProfile.Click += new System.EventHandler(this.buttonImportFromProfile_Click);
-         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1741,7 +1741,6 @@
       private System.Windows.Forms.Label labelSettingsDataInterval;
       private System.Windows.Forms.Button buttonRegisterAdd;
       private System.Windows.Forms.Button buttonRegisterRemove;
-      private System.Windows.Forms.CheckBox checkBoxDataShowUnknown;
       private System.Windows.Forms.Label labelSettingsDevices;
       private System.Windows.Forms.Button buttonSettingsRemoveDevice;
       private System.Windows.Forms.Button buttonSettingsAddDevice;
@@ -1832,6 +1831,7 @@
       internal System.Windows.Forms.ComboBox comboBoxMappingFilterAircraft;
       private System.Windows.Forms.Label label7;
       private System.Windows.Forms.Button buttonImportFromProfile;
+      internal System.Windows.Forms.CheckBox checkBoxDataShowUnknown;
    }
 }
 

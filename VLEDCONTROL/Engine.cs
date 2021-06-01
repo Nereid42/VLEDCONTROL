@@ -48,21 +48,7 @@ namespace VLEDCONTROL
       private UiController Controller;
       private volatile bool ControlerInitDone;
 
-      internal void Join(int timeoutInSeconds)
-      {
-         LogDebug("Waiting for engine to stop...");
-         int timeInSeconds = 0;
-         while(IsRunning && timeInSeconds < timeoutInSeconds)
-         {
-            for(int i=0; i<10 && IsRunning;i++)
-            {
-               if (IsLoggable(LEVEL.TRACE)) LogTrace("Sleeping (waiting for engine to stop)...");
-               Thread.Sleep(100);
-            }
-            timeInSeconds++;
-         }
-      }
-
+      // Data
       private volatile String CurrentAircraft;
       private volatile double[] CurrentProperties = new double[VALUE_COUNT];
       private volatile DateTime[] CurrentTimestamps = new DateTime[VALUE_COUNT];
@@ -104,6 +90,22 @@ namespace VLEDCONTROL
 
       }
 
+      internal void Join(int timeoutInSeconds)
+      {
+         LogDebug("Waiting for engine to stop...");
+         int timeInSeconds = 0;
+         while (IsRunning && timeInSeconds < timeoutInSeconds)
+         {
+            for (int i = 0; i < 10 && IsRunning; i++)
+            {
+               if (IsLoggable(LEVEL.TRACE)) LogTrace("Sleeping (waiting for engine to stop)...");
+               Thread.Sleep(100);
+            }
+            timeInSeconds++;
+         }
+         LogDebug("Engine is stopped");
+      }
+
       private void ClearProperties()
       {
          for (int i = 0; i < VALUE_COUNT; i++)
@@ -127,7 +129,7 @@ namespace VLEDCONTROL
          }
          else
          {
-            LogTrace("UI not ready. Init delayed");
+            if(IsLoggable(LEVEL.TRACE)) LogTrace("UI not ready. Init delayed");
          }
       }
 
@@ -187,23 +189,6 @@ namespace VLEDCONTROL
          this.StopRequest = true;
       }
 
-      public void RemoveDevice(VirpilDevice device)
-      {
-         // TODO
-      }
-
-      public void RemoveDevice(int deviceId)
-      {
-         if(deviceId < CurrentSettings.Devices.Count)
-         {
-            CurrentSettings.Devices.RemoveAt(deviceId);
-         }
-         else
-         {
-            LogError("device id " + deviceId + " not found");
-         }
-      }
-
       internal void SetAirplane(String aircraft)
       {
          this.CurrentAircraft = aircraft;
@@ -238,9 +223,6 @@ namespace VLEDCONTROL
             }
          }
       }
-
-
-
 
       private void ExecuteLedCommand(VirpilDevice device, int ledNumber, LedColor color)
       {
@@ -404,7 +386,16 @@ namespace VLEDCONTROL
                         millis = swTotalRunning.ElapsedMilliseconds;
                         Controller.DisplayStatistics(swTotalRunning.ElapsedMilliseconds, swCalcLeds.ElapsedMilliseconds, Executes);
                      }
-                  }     
+                  } 
+                  // Is displayed data dirty?
+                  if(Controller.IsDataDirty)
+                  {
+                     // data is dirty, sending all properties to Controller if live data is enabled
+                     if (CurrentSettings.LiveDataEnabled)
+                     {
+                        ShowProperties();
+                     }
+                  }
                }
 
                CalculateLEDs();
@@ -434,7 +425,7 @@ namespace VLEDCONTROL
          }
 
          IsRunning = false;
-         LogInfo("engine stopped");
+         LogInfo("Engine stopped");
 
          LogInfo("Total time running: "+swTotalRunning.ElapsedMilliseconds+" ms");
          LogInfo("Calculating Leds: " + swCalcLeds.ElapsedMilliseconds + " ms");

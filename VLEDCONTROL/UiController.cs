@@ -42,7 +42,12 @@ namespace VLEDCONTROL
 
       private readonly ArrayList data = new ArrayList();
 
+      private volatile bool _IsDataDirty = false;
+
       public bool SettingsUpdating { get; private set; } = false;
+      public bool IsDataDirty { get { return _IsDataDirty; } set { _IsDataDirty = value; } }
+
+      private volatile bool IsAdjusting = false;
 
       public UiController(MainWindowForm mainWindow)
       {
@@ -123,68 +128,88 @@ namespace VLEDCONTROL
       {
          if (MainWindow.IsHandleCreated)
          {
-            MainWindow.listViewData.BeginInvoke(
-               new Action(() =>
-               {
-                  string sid = id.ToString("0000");
-                  System.Windows.Forms.ListViewItem[] items = MainWindow.listViewData.Items.Find(sid, false);
-                  if (items == null || items.Length == 0)
+            if(MainWindow.checkBoxDataShowUnknown.Checked || ( name != null && name.Length>0))
+            {
+               MainWindow.listViewData.BeginInvoke(
+                  new Action(() =>
                   {
-                     System.Windows.Forms.ListViewItem item = MainWindow.listViewData.Items.Add(sid);
-                     item.Name = sid;
-                     item.SubItems.Add(name);
-                     item.SubItems.Add(value.ToString("0.00000000"));
-                     item.SubItems.Add(lastChange.ToString("T"));
-                  }
-                  else
-                  {
-                     items[0].SubItems[1].Text = name;
-                     items[0].SubItems[2].Text = value.ToString("0.00000000");
-                     items[0].SubItems[3].Text = lastChange.ToString("T");
-                  }
-               })
-            );
-
+                     string sid = id.ToString("0000");
+                     System.Windows.Forms.ListViewItem[] items = MainWindow.listViewData.Items.Find(sid, false);
+                     if (items == null || items.Length == 0)
+                     {
+                        System.Windows.Forms.ListViewItem item = MainWindow.listViewData.Items.Add(sid);
+                        item.Name = sid;
+                        item.SubItems.Add(name);
+                        item.SubItems.Add(value.ToString("0.00000000"));
+                        item.SubItems.Add(lastChange.ToString("T"));
+                     }
+                     else
+                     {
+                        items[0].SubItems[1].Text = name;
+                        items[0].SubItems[2].Text = value.ToString("0.00000000");
+                        items[0].SubItems[3].Text = lastChange.ToString("T");
+                     }
+                  })
+               );
+            }
          }
+      }
+
+      public void MarkDataAsDirty(bool dirty)
+      {
+         IsDataDirty = dirty;
       }
 
       internal void StartStopEngine()
       {
-         Engine engine = VLED.Engine;
-         if (engine.IsRunning)
+         if(!this.IsAdjusting)
          {
-            VLED.Engine.Stop();
-         }
-         else
-         {
-            VLED.Engine.Start();
+            Engine engine = VLED.Engine;
+            if (engine.IsRunning)
+            {
+               VLED.Engine.Stop();
+            }
+            else
+            {
+               VLED.Engine.Start();
+            }
          }
       }
 
       internal void SetEngineStarted(bool started)
       {
-         if(started)
+         this.IsAdjusting = true;
+         try
          {
-            MainWindow.BeginInvoke(
-               new Action(() =>
-               {
-                  MainWindow.buttonMainStart.BackColor = System.Drawing.Color.GreenYellow;
-                  MainWindow.buttonMainStart.Text = "STOP";
-                  MainWindow.progressBarEngineStatus.MarqueeAnimationSpeed = 40;
-               })
-            );
+            if (started)
+            {
+               LogInfo("Set Engine started in UI");
+               MainWindow.BeginInvoke(
+                  new Action(() =>
+                  {
+                     MainWindow.buttonMainStart.BackColor = System.Drawing.Color.GreenYellow;
+                     MainWindow.buttonMainStart.Text = "STOP";
+                     MainWindow.progressBarEngineStatus.MarqueeAnimationSpeed = 40;
+                  })
+               );
+            }
+            else
+            {
+               LogInfo("Set Engine stopped in UI");
+               MainWindow.BeginInvoke(
+                  new Action(() =>
+                  {
+                     MainWindow.buttonMainStart.BackColor = System.Drawing.Color.Coral;
+                     MainWindow.buttonMainStart.Text = "START";
+                     MainWindow.progressBarEngineStatus.MarqueeAnimationSpeed = 0;
+                     MainWindow.progressBarEngineStatus.Value = 0;
+                  })
+               );
+            }
          }
-         else
+         finally
          {
-            MainWindow.BeginInvoke(
-               new Action(() =>
-               {
-                  MainWindow.buttonMainStart.BackColor = System.Drawing.Color.Coral;
-                  MainWindow.buttonMainStart.Text = "START";
-                  MainWindow.progressBarEngineStatus.MarqueeAnimationSpeed = 0;
-                  MainWindow.progressBarEngineStatus.Value = 0;
-               })
-            );
+            this.IsAdjusting = false;
          }
       }
 

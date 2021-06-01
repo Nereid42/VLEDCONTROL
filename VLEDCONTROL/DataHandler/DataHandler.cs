@@ -20,7 +20,7 @@ namespace VLEDCONTROL
 
       public void HandleData(String data)
       {
-         LogTrace("Handle data: " + data);
+         if(IsLoggable(LEVEL.TRACE)) LogTrace("Handle data: " + data);
          String[] dataComponents = data.Split('/');
          foreach (String component in dataComponents)
          {

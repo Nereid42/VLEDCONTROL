@@ -155,10 +155,12 @@ namespace VLEDCONTROL
 
       internal void Join()
       {
+         LogDebug("Waiting for receiver to stop...");
          while(IsRunning)
          {
             Thread.Sleep(100);
          }
+         LogDebug("Receiver is stopped");
       }
    }
 }

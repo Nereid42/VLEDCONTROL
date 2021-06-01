@@ -97,6 +97,7 @@ namespace VLEDCONTROL
             byte[] bytes = Encoding.ASCII.GetBytes(json);
             stream.Write(bytes,0,bytes.Length);
          }
+         LogInfo("Settings saved");
       }
 
       internal void AddDevice(VirpilDevice device)
