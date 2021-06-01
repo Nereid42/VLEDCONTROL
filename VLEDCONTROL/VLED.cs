@@ -136,14 +136,26 @@ namespace VLEDCONTROL
          }
       }
 
-      private static void Startup()
+      private static void InitLogging()
       {
          // ======== Init Logging ======== 
          Settings settings = new Settings();
-         settings.Load();
-         SetLogLevel(settings.LogLevel);
+         try
+         {
+            settings.Load();
+            SetLogLevel(settings.LogLevel);
+         } 
+         catch(System.IO.FileNotFoundException)
+         {
+            SetLogLevel(LEVEL.INFO);
+            LogWarning("Could not find ini file.");
+         }
+      }
 
-         LogInfo("Startup");
+
+      private static void CreateEngine()
+      {
+         LogInfo("Creating engine");
 
          // Log Process data
          System.Diagnostics.Process process = System.Diagnostics.Process.GetCurrentProcess();
@@ -172,37 +184,42 @@ namespace VLEDCONTROL
       [STAThread]
       static void Main()
       {
-         // ======== Startup ========
-         Startup();
+         try
+         {
+            // ======== Init Logging ========
+            InitLogging();
 
-         // ======== Load Version ========
-         LoadVersion();
+            // ======== Load Version ========
+            LoadVersion();
 
-         // ======== Setup ========
-         // Add all missing files, if nessessary
-         EnvironmentSetup();
+            // ======== Create Engine ========
+            CreateEngine();
 
+            // ======== Setup ========
+            // Add all missing files, if nessessary
+            EnvironmentSetup();
 
-         // ======== Creating Main Window ======== 
-         Application.EnableVisualStyles();
-         Application.SetCompatibleTextRenderingDefault(false);
-         VLED.MainWindow = new MainWindowForm();
-         // hanlde closing of window gracefully
-         VLED.MainWindow.FormClosing += VLED.WindowClosing;
+            // ======== Creating Main Window ======== 
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            VLED.MainWindow = new MainWindowForm();
+            // hanlde closing of window gracefully
+            VLED.MainWindow.FormClosing += VLED.WindowClosing;
 
-         // ======== Starting Main Engine ======== 
-         VLED.Engine.SetUiController(VLED.MainWindow.Controller);
-         VLED.Engine.Start();
-         //
+            // ======== Starting Main Engine ======== 
+            LogInfo("Starting engine");
+            VLED.Engine.SetUiController(VLED.MainWindow.Controller);
+            VLED.Engine.Start();
 
-         // ======== Show Main Window ======== 
-         LogInfo("Opening main window");
-         Application.Run(VLED.MainWindow);
-      }
+            // ======== Show Main Window ======== 
+            LogInfo("Opening main window");
+            Application.Run(VLED.MainWindow);
+         }
+         catch(Exception e)
+         {
+            LogException(e);
+         }
 
-      public static void DEBUG(String msg)
-      {
-         Loggable.LogUrgend(msg);
       }
    }
 
