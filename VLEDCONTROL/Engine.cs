@@ -149,7 +149,7 @@ namespace VLEDCONTROL
          this.StopRequest = false;
          Thread t = new Thread(new ThreadStart(this.Run));
          t.IsBackground = true;
-         LogInfo("Starting engine thread");
+         LogDebug("Starting engine thread");
          t.Start();
       }
 
@@ -185,7 +185,7 @@ namespace VLEDCONTROL
 
       public void Stop()
       {
-         LogInfo("Stoprequest for Engine");
+         LogDebug("Stoprequest for Engine");
          this.StopRequest = true;
       }
 
