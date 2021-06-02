@@ -668,12 +668,13 @@ namespace VLEDCONTROL
             dialog.MappingEntry = entry;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
+               // Remove 
+               VLED.Engine.CurrentProfile.RemoveMapping(entry);
+               // Change
                entry.Aircraft = dialog.GetAircraft();
                entry.Id = dialog.GetId();
                entry.Name = dialog.GetName();
-
                // Reinsert for correcct internal Mapping
-               VLED.Engine.CurrentProfile.RemoveMapping(entry);
                VLED.Engine.CurrentProfile.AddMapping(entry);
 
                MainWindow.listViewMapping.BeginInvoke(
