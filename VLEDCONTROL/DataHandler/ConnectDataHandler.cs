@@ -18,7 +18,7 @@ namespace VLEDCONTROL
          if (id == "9999")
          {
             LogDebug("CONNECTED");
-            engine.CommitDataUpdate();
+            engine.Connect();
          }
       }
 

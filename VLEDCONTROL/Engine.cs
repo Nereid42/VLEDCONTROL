@@ -434,6 +434,15 @@ namespace VLEDCONTROL
          swTotalRunning.Stop();
       }
 
+      internal void Connect()
+      {
+         LogInfo("Connection to DCS");
+         if (Controller != null)
+         {
+            Controller.ClearData();
+         }
 
+         CommitDataUpdate();
+      }
    }
 }

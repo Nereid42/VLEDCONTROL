@@ -160,6 +160,17 @@ namespace VLEDCONTROL
          IsDataDirty = dirty;
       }
 
+
+      internal void ClearData()
+      {
+         MainWindow.listViewData.BeginInvoke(
+            new Action(() =>
+            {
+               MainWindow.listViewData.Items.Clear();
+            })
+         );
+      }
+
       internal void StartStopEngine()
       {
          if(!this.IsAdjusting)
@@ -212,6 +223,7 @@ namespace VLEDCONTROL
             this.IsAdjusting = false;
          }
       }
+
 
       internal void LoadProfile()
       {
