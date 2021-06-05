@@ -58,6 +58,12 @@ namespace VLEDCONTROL
       private Stopwatch swCalcLeds = new Stopwatch();
       private Stopwatch swExecutes = new Stopwatch();
 
+      // Highlight single LED
+      private long HightlightEndCycle = 0;
+      private volatile int HightlightLedNr = -1;
+      private volatile int HighlightDeviceID = -1;
+      private LedColor HighlightColor = null;
+
       private long Cycle = 0;
 
       private long Executes = 0;
@@ -249,15 +255,36 @@ namespace VLEDCONTROL
       private void SetAllDeviceLeds()
       {
          if (IsLoggable(LEVEL.DEBUG)) LogDebug("Set all device LEDs");
-         foreach (VirpilDevice device in CurrentSettings.Devices)
+         for(int deviceId =0; deviceId < CurrentSettings.Devices.Count; deviceId++)
          {
+            VirpilDevice device = CurrentSettings.Devices[deviceId];
+            //
             if (IsLoggable(LEVEL.DEBUG)) LogDebug("Set LEDs for device " + device.Name);
+            //
             for (int ledNumber = device.MinLedNumber; ledNumber <= device.MaxLedNumber; ledNumber++)
             {
+               // is led highlighted?
+               if (ledNumber == this.HightlightLedNr && deviceId == this.HighlightDeviceID)
+               {
+                  LogUrgend("HIGHLIGHT #"+ledNumber+" end:"+HightlightEndCycle+", Cycle:"+Cycle);
+                  if(HightlightEndCycle > Cycle)
+                  {
+                     device.PrepareColor(ledNumber, HighlightColor);
+                     LogUrgend("HIGHLIGHT ON");
+                  }
+                  else
+                  {
+                     LogUrgend("HIGHLIGHT OFF");
+                     device.PrepareColor(ledNumber, LedColor.BLACK);
+                     this.HightlightLedNr = -1;
+                     this.HighlightDeviceID = -1;
+                  }
+               }
+               //
                LedColor color = device.SetCurrentColor(ledNumber);
                if (color != null)
                {
-                  if(IsLoggable(LEVEL.DEBUG))
+                  if (IsLoggable(LEVEL.DEBUG))
                   {
                      LogDebug("LED " + ledNumber + " is " + color);
                      LogTrace("Set color for led " + ledNumber + " on device " + device.Name + " to " + color);
@@ -266,6 +293,14 @@ namespace VLEDCONTROL
                }
             }
          }
+      }
+
+      public void HighlightLed(int deviceId, int lednumber, LedColor color)
+      {
+         Interlocked.Exchange( ref this.HightlightEndCycle ,Interlocked.Read(ref Cycle) + CurrentSettings.FlashingCycles);
+         HighlightDeviceID = deviceId;
+         HightlightLedNr = lednumber;
+         HighlightColor = color;
       }
 
       private void CalculateLEDs()

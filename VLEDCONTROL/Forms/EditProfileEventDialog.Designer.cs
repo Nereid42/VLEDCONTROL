@@ -51,13 +51,13 @@
          this.buttonOk = new System.Windows.Forms.Button();
          this.buttonCancel = new System.Windows.Forms.Button();
          this.groupBoxTestLed = new System.Windows.Forms.GroupBox();
+         this.buttonSetDefault = new System.Windows.Forms.Button();
          this.label6 = new System.Windows.Forms.Label();
          this.textBoxCommand = new System.Windows.Forms.TextBox();
          this.buttonTestColor2 = new System.Windows.Forms.Button();
          this.buttonTestColor1 = new System.Windows.Forms.Button();
          this.groupBoxDescription = new System.Windows.Forms.GroupBox();
          this.textBoxDescription = new System.Windows.Forms.TextBox();
-         this.buttonSetDefault = new System.Windows.Forms.Button();
          this.groupBoxEvent.SuspendLayout();
          this.groupBoxCondition.SuspendLayout();
          this.groupBoxLed.SuspendLayout();
@@ -298,6 +298,7 @@
          this.comboBoxLed.Name = "comboBoxLed";
          this.comboBoxLed.Size = new System.Drawing.Size(157, 21);
          this.comboBoxLed.TabIndex = 14;
+         this.comboBoxLed.SelectedIndexChanged += new System.EventHandler(this.comboBoxLed_SelectedIndexChanged);
          // 
          // buttonColor2
          // 
@@ -356,6 +357,18 @@
          this.groupBoxTestLed.TabIndex = 17;
          this.groupBoxTestLed.TabStop = false;
          this.groupBoxTestLed.Text = "Test LED";
+         // 
+         // buttonSetDefault
+         // 
+         this.buttonSetDefault.BackColor = System.Drawing.Color.Silver;
+         this.buttonSetDefault.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+         this.buttonSetDefault.Location = new System.Drawing.Point(170, 18);
+         this.buttonSetDefault.Name = "buttonSetDefault";
+         this.buttonSetDefault.Size = new System.Drawing.Size(123, 23);
+         this.buttonSetDefault.TabIndex = 4;
+         this.buttonSetDefault.Text = "Set Default";
+         this.buttonSetDefault.UseVisualStyleBackColor = false;
+         this.buttonSetDefault.Click += new System.EventHandler(this.buttonSetDefault_Click);
          // 
          // label6
          // 
@@ -418,18 +431,6 @@
          this.textBoxDescription.Size = new System.Drawing.Size(315, 37);
          this.textBoxDescription.TabIndex = 0;
          this.textBoxDescription.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-         // 
-         // buttonSetDefault
-         // 
-         this.buttonSetDefault.BackColor = System.Drawing.Color.Silver;
-         this.buttonSetDefault.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-         this.buttonSetDefault.Location = new System.Drawing.Point(170, 18);
-         this.buttonSetDefault.Name = "buttonSetDefault";
-         this.buttonSetDefault.Size = new System.Drawing.Size(123, 23);
-         this.buttonSetDefault.TabIndex = 4;
-         this.buttonSetDefault.Text = "Set Default";
-         this.buttonSetDefault.UseVisualStyleBackColor = false;
-         this.buttonSetDefault.Click += new System.EventHandler(this.buttonSetDefault_Click);
          // 
          // EditProfileEventDialog
          // 

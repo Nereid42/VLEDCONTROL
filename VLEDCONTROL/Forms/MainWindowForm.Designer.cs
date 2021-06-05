@@ -173,6 +173,7 @@
          this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
+         this.buttonQuickAdd = new System.Windows.Forms.Button();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -511,6 +512,7 @@
          // 
          // tabPageProfile
          // 
+         this.tabPageProfile.Controls.Add(this.buttonQuickAdd);
          this.tabPageProfile.Controls.Add(this.groupBoxFilterProfile);
          this.tabPageProfile.Controls.Add(this.buttonProfilesClear);
          this.tabPageProfile.Controls.Add(this.label6);
@@ -605,7 +607,7 @@
          // buttonProfilesClear
          // 
          this.buttonProfilesClear.ForeColor = System.Drawing.Color.Maroon;
-         this.buttonProfilesClear.Location = new System.Drawing.Point(902, 256);
+         this.buttonProfilesClear.Location = new System.Drawing.Point(901, 306);
          this.buttonProfilesClear.Name = "buttonProfilesClear";
          this.buttonProfilesClear.Size = new System.Drawing.Size(75, 23);
          this.buttonProfilesClear.TabIndex = 14;
@@ -616,7 +618,7 @@
          // label6
          // 
          this.label6.AutoSize = true;
-         this.label6.Location = new System.Drawing.Point(901, 293);
+         this.label6.Location = new System.Drawing.Point(900, 343);
          this.label6.Name = "label6";
          this.label6.Size = new System.Drawing.Size(65, 13);
          this.label6.TabIndex = 13;
@@ -628,7 +630,7 @@
          this.panel3.Controls.Add(this.radioButtonNewElementsAppend);
          this.panel3.Controls.Add(this.radioButtonNewElementsInsertAfter);
          this.panel3.Controls.Add(this.radioButtonNewElementsInsertBefore);
-         this.panel3.Location = new System.Drawing.Point(902, 309);
+         this.panel3.Location = new System.Drawing.Point(901, 359);
          this.panel3.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
          this.panel3.Name = "panel3";
          this.panel3.Size = new System.Drawing.Size(75, 75);
@@ -671,7 +673,7 @@
          // buttonProfileDuplicate
          // 
          this.buttonProfileDuplicate.Enabled = false;
-         this.buttonProfileDuplicate.Location = new System.Drawing.Point(902, 83);
+         this.buttonProfileDuplicate.Location = new System.Drawing.Point(901, 133);
          this.buttonProfileDuplicate.Name = "buttonProfileDuplicate";
          this.buttonProfileDuplicate.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileDuplicate.TabIndex = 11;
@@ -682,7 +684,7 @@
          // buttonProfileDown
          // 
          this.buttonProfileDown.Enabled = false;
-         this.buttonProfileDown.Location = new System.Drawing.Point(902, 213);
+         this.buttonProfileDown.Location = new System.Drawing.Point(901, 263);
          this.buttonProfileDown.Name = "buttonProfileDown";
          this.buttonProfileDown.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileDown.TabIndex = 10;
@@ -693,7 +695,7 @@
          // buttonProfileUp
          // 
          this.buttonProfileUp.Enabled = false;
-         this.buttonProfileUp.Location = new System.Drawing.Point(902, 184);
+         this.buttonProfileUp.Location = new System.Drawing.Point(901, 234);
          this.buttonProfileUp.Name = "buttonProfileUp";
          this.buttonProfileUp.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileUp.TabIndex = 9;
@@ -704,7 +706,7 @@
          // buttonProfileEdit
          // 
          this.buttonProfileEdit.Enabled = false;
-         this.buttonProfileEdit.Location = new System.Drawing.Point(902, 141);
+         this.buttonProfileEdit.Location = new System.Drawing.Point(901, 191);
          this.buttonProfileEdit.Name = "buttonProfileEdit";
          this.buttonProfileEdit.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileEdit.TabIndex = 8;
@@ -715,7 +717,7 @@
          // buttonProfileRemove
          // 
          this.buttonProfileRemove.Enabled = false;
-         this.buttonProfileRemove.Location = new System.Drawing.Point(902, 112);
+         this.buttonProfileRemove.Location = new System.Drawing.Point(901, 162);
          this.buttonProfileRemove.Name = "buttonProfileRemove";
          this.buttonProfileRemove.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileRemove.TabIndex = 7;
@@ -725,7 +727,7 @@
          // 
          // buttonProfileAdd
          // 
-         this.buttonProfileAdd.Location = new System.Drawing.Point(902, 54);
+         this.buttonProfileAdd.Location = new System.Drawing.Point(901, 104);
          this.buttonProfileAdd.Name = "buttonProfileAdd";
          this.buttonProfileAdd.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileAdd.TabIndex = 6;
@@ -1631,6 +1633,18 @@
          this.progressBarEngineStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
          this.progressBarEngineStatus.TabIndex = 12;
          // 
+         // buttonQuickAdd
+         // 
+         this.buttonQuickAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.buttonQuickAdd.ForeColor = System.Drawing.Color.SeaGreen;
+         this.buttonQuickAdd.Location = new System.Drawing.Point(901, 52);
+         this.buttonQuickAdd.Name = "buttonQuickAdd";
+         this.buttonQuickAdd.Size = new System.Drawing.Size(75, 46);
+         this.buttonQuickAdd.TabIndex = 16;
+         this.buttonQuickAdd.Text = "Quick Add";
+         this.buttonQuickAdd.UseVisualStyleBackColor = true;
+         this.buttonQuickAdd.Click += new System.EventHandler(this.buttonQuickAdd_Click);
+         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1832,6 +1846,7 @@
       private System.Windows.Forms.Label label7;
       private System.Windows.Forms.Button buttonImportFromProfile;
       internal System.Windows.Forms.CheckBox checkBoxDataShowUnknown;
+      private System.Windows.Forms.Button buttonQuickAdd;
    }
 }
 

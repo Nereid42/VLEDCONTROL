@@ -40,7 +40,7 @@ namespace VLEDCONTROL
 
       private bool IsAdjusting = false;
 
-      ColorChooserDialog colorChooser = new ColorChooserDialog();
+      private readonly ColorChooserDialog colorChooser = new ColorChooserDialog();
 
       public EditProfileEventDialog()
       {
@@ -270,6 +270,7 @@ namespace VLEDCONTROL
          if (OpenColorChooserAtButton(buttonColor1) == DialogResult.OK)
          {
             buttonColor1.BackColor = colorChooser.ResultColor;
+            buttonColor1.ForeColor = Tools.GetBestForegroundColor(buttonColor1.BackColor);
          }
       }
 
@@ -278,6 +279,7 @@ namespace VLEDCONTROL
          if (OpenColorChooserAtButton(buttonColor2) == DialogResult.OK)
          {
             buttonColor2.BackColor = colorChooser.ResultColor;
+            buttonColor2.ForeColor = Tools.GetBestForegroundColor(buttonColor2.BackColor);
          }
       }
 
@@ -406,6 +408,11 @@ namespace VLEDCONTROL
             this.textBoxCommand.Select(this.textBoxCommand.Text.Length, 0);
             Tools.ExecuteCommand(command, arguments);
          }
+      }
+
+      private void comboBoxLed_SelectedIndexChanged(object sender, EventArgs e)
+      {
+
       }
    }
 }

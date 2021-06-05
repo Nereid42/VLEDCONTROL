@@ -246,21 +246,21 @@ namespace VLEDCONTROL
       public ProfileEvent AddProfileEvent(String aircraft, int id, String condition1, double value1, String condition2, double value2, int deviceId, int ledNumber, LedColor colorOn, LedColor colorFlashing, String description)
       {
          ProfileEvent entry = new ProfileEvent(aircraft, id, condition1, value1, condition2, value2, deviceId, ledNumber, colorOn, colorFlashing, description);
-         AddProfileEntry(entry);
+         AddProfileEvent(entry);
          return entry;
       }
 
-      public void AddProfileEntry(ProfileEvent entry)
+      public void AddProfileEvent(ProfileEvent entry)
       {
          ProfileEvents.Add(entry);
       }
 
-      public void InsertProfileEntry(int index, ProfileEvent entry)
+      public void InsertProfileEvent(int index, ProfileEvent entry)
       {
          ProfileEvents.Insert(index,entry);
       }
 
-      public void RemoveProfileEntryAt(int index)
+      public void RemoveProfileEventAt(int index)
       {
          ProfileEvents.RemoveAt(index);
       }

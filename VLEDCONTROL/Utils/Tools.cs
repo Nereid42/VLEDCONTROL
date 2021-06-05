@@ -215,5 +215,20 @@ namespace VLEDCONTROL
          MessageBox.Show(message, "Error!", MessageBoxButtons.OK);
       }
 
+      internal static double Distance(int x1, int y1, int x2, int y2)
+      {
+         return Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+      }
+
+      public static System.Drawing.Color GetBestForegroundColor(System.Drawing.Color background)
+      {
+         int sum = background.R + background.G + background.B;
+         Loggable.LogUrgend("SUM="+sum);
+         if (sum<=256)
+         {
+            return System.Drawing.Color.LightGray;
+         }
+         return System.Drawing.Color.Black;
+      }
    }
 }

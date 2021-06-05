@@ -39,6 +39,7 @@ namespace VLEDCONTROL
       public static readonly LedColor BLACK = new LedColor(0, 0, 0);
       public static readonly LedColor GRAY = new LedColor(128, 128, 128);
       public static readonly LedColor WHITE = new LedColor(255, 255, 255);
+      public static readonly LedColor DARKGREEN = new LedColor(0, 64, 0);
 
       public LedColor()
       {
