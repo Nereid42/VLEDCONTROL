@@ -58,6 +58,22 @@ namespace VLEDCONTROL
          this.buttonColorOff.ForeColor = Tools.GetBestForegroundColor(this.buttonColorOff.BackColor);
       }
 
+      private bool IsValid()
+      {
+         if (comboBoxAircraft.Text == null | comboBoxAircraft.Text.Length == 0) return false;
+         if (comboBoxDeviceName.Text == null | comboBoxDeviceName.Text.Length == 0) return false;
+         int deviceId = Tools.IndexOfSelectedComboBoxItem(comboBoxDeviceName);
+         if (deviceId >= VLED.Engine.CurrentSettings.Devices.Count) return false;
+         if(comboBoxEventNames.Text == null | comboBoxEventNames.Text.Length == 0) return false;
+         if (Tools.IndexOfSelectedComboBoxItem(comboBoxEventNames)<0) return false;
+         return true;
+      }
+
+      private void Validate()
+      {
+         buttonOk.Enabled = IsValid();
+      }
+
       public int GetEventId()
       {
          return Profile.MapPropertyId(comboBoxAircraft.Text, comboBoxEventNames.Text);
@@ -121,6 +137,10 @@ namespace VLEDCONTROL
          }
          this.comboBoxDeviceName.Text = LastDeviceName;
 
+         Tools.SelectComboBoxItem(comboBoxLed, 0);
+
+         Validate();
+
          IsAdjusting = false;
       }
 
@@ -153,6 +173,7 @@ namespace VLEDCONTROL
                //Loggable.LogUrgend("CLICK :" + x + "/" + y + " => " + id);
                VLED.Engine.HighlightLed(0, id + 5, LedColor.WHITE);
                Tools.SelectComboBoxItem(comboBoxLed,id+5);
+               Validate();
             }
          }
       }
@@ -172,21 +193,52 @@ namespace VLEDCONTROL
 
       private void comboBoxAircraft_SelectedIndexChanged(object sender, EventArgs e)
       {
-         IReadOnlyCollection<String> eventNames = Profile.GetEventNamesForAircraft(comboBoxAircraft.Text);
-         this.comboBoxEventNames.Items.Clear();
-         foreach (String name in eventNames)
+         if(!IsAdjusting)
          {
-            this.comboBoxEventNames.Items.Add(name);
+            IsAdjusting = true;
+            IReadOnlyCollection<String> eventNames = Profile.GetEventNamesForAircraft(comboBoxAircraft.Text);
+            this.comboBoxEventNames.Items.Clear();
+            foreach (String name in eventNames)
+            {
+               this.comboBoxEventNames.Items.Add(name);
+            }
+            QuickAddDialog.LastAircraft = comboBoxAircraft.Text;
+            Validate();
+            IsAdjusting = false;
          }
-         QuickAddDialog.LastAircraft = comboBoxAircraft.Text;
+      }
+
+      private void TestColor(Button button)
+      {
+         int deviceID = Tools.IndexOfSelectedComboBoxItem(comboBoxDeviceName);
+         if (comboBoxEventNames.Text != null && comboBoxEventNames.Text.Length>0 && deviceID >= 0 )
+         {
+            Settings settings = VLED.Engine.CurrentSettings;
+            VirpilDevice device = settings.GetDevice(deviceID);
+            if (device != null)
+            {
+               int led = Tools.IndexOfSelectedComboBoxItem(this.comboBoxLed);
+
+               String command = settings.VirpilLedControl;
+               String r = button.BackColor.R.ToString("X2");
+               String g = button.BackColor.G.ToString("X2");
+               String b = button.BackColor.B.ToString("X2");
+
+               String arguments = device.USB_VID + " " + device.USB_PID + " " + led + " " + r + " " + g + " " + b;
+
+               Tools.ExecuteCommand(command, arguments);
+            }
+         }
       }
 
       private void buttonTestColorOn_Click(object sender, EventArgs e)
       {
+         TestColor(buttonColorOn);
       }
 
       private void buttonTestColorOff_Click(object sender, EventArgs e)
       {
+         TestColor(buttonColorOff);
       }
 
       private void buttonColorOff_Click(object sender, EventArgs e)
@@ -207,6 +259,23 @@ namespace VLEDCONTROL
          }
       }
 
+      private void comboBoxEventNames_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         if(!IsAdjusting)
+         {
+            Validate();
+         }
+      }
 
+      private void comboBoxDeviceName_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         if (!IsAdjusting)
+         {
+            IsAdjusting = true;
+            QuickAddDialog.LastDeviceName = comboBoxDeviceName.Text;
+            Validate();
+            IsAdjusting = false;
+         }
+      }
    }
 }

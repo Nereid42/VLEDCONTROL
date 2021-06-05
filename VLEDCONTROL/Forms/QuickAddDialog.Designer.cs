@@ -111,6 +111,7 @@
          this.comboBoxEventNames.Name = "comboBoxEventNames";
          this.comboBoxEventNames.Size = new System.Drawing.Size(249, 21);
          this.comboBoxEventNames.TabIndex = 3;
+         this.comboBoxEventNames.SelectedIndexChanged += new System.EventHandler(this.comboBoxEventNames_SelectedIndexChanged);
          // 
          // groupBoxTestLed
          // 
@@ -196,6 +197,7 @@
          this.comboBoxDeviceName.Name = "comboBoxDeviceName";
          this.comboBoxDeviceName.Size = new System.Drawing.Size(146, 21);
          this.comboBoxDeviceName.TabIndex = 15;
+         this.comboBoxDeviceName.SelectedIndexChanged += new System.EventHandler(this.comboBoxDeviceName_SelectedIndexChanged);
          // 
          // comboBoxLed
          // 

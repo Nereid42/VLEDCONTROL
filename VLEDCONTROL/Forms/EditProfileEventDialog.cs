@@ -58,6 +58,21 @@ namespace VLEDCONTROL
          this.comboBoxAircraft.TextChanged += new EventHandler(this.ComboBoxAircraftTextChanged);
       }
 
+      private bool IsValid()
+      {
+         if (comboBoxAircraft.Text == null | comboBoxAircraft.Text.Length == 0) return false;
+         if (!Tools.IsInteger(textBoxEventId.Text)) return false;
+         if (!Tools.IsInteger(textBoxDeviceId.Text)) return false;
+         if (Tools.ToInt(textBoxDeviceId.Text) >= VLED.Engine.CurrentSettings.Devices.Count) return false;
+         return true;
+      }
+
+
+      private void Validate()
+      {
+         buttonOk.Enabled = IsValid();
+      }
+
       public int GetEventId()
       {
          return Tools.ToInt(this.textBoxEventId.Text);
@@ -220,6 +235,9 @@ namespace VLEDCONTROL
             //
             this.textBoxDescription.Text = "";
          }
+
+         Validate();
+
          IsAdjusting = false;
       }
 
@@ -252,6 +270,7 @@ namespace VLEDCONTROL
             {
                this.comboBoxEventNames.Text = "";
             }
+            Validate();
             IsAdjusting = false;
          }
       }
@@ -338,7 +357,7 @@ namespace VLEDCONTROL
             {
                this.comboBoxDeviceName.Text = "";
             }
-
+            Validate();
             IsAdjusting = false;
          }
       }
@@ -380,6 +399,8 @@ namespace VLEDCONTROL
             comboBoxEventNames.Text = Profile.MapPropertyName(this.comboBoxAircraft.Text, id);
 
             IsAdjusting = false;
+
+            Validate();
          }
       }
 
