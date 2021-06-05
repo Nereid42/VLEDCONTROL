@@ -45,6 +45,16 @@ namespace VLEDCONTROL
          new Point(116,113) // 16
       };
 
+      private Point[] T50CM3_Locations =
+      {
+         new Point(50,111), // 1
+         new Point(74,111), // 2
+         new Point(98,111), // 3
+         new Point(50,137), // 4
+         new Point(74,137), // 5
+         new Point(98,137)  // 6
+      };
+
       public QuickAddDialog()
       {
          InitializeComponent();
@@ -69,7 +79,7 @@ namespace VLEDCONTROL
          return true;
       }
 
-      private void Validate()
+      private void ValidateInput()
       {
          buttonOk.Enabled = IsValid();
       }
@@ -139,7 +149,7 @@ namespace VLEDCONTROL
 
          Tools.SelectComboBoxItem(comboBoxLed, 0);
 
-         Validate();
+         ValidateInput();
 
          IsAdjusting = false;
       }
@@ -168,12 +178,12 @@ namespace VLEDCONTROL
             int x = mouseEvent.X;
             int y = mouseEvent.Y;
             int id = FindBestMatch(CP2_Locations, x, y);
-            if(id>=0)
+            int deviceId = Tools.IndexOfSelectedComboBoxItem(comboBoxDeviceName);
+            if (id>=0 && deviceId >= 0 && deviceId < VLED.Engine.CurrentSettings.Devices.Count)
             {
-               //Loggable.LogUrgend("CLICK :" + x + "/" + y + " => " + id);
-               VLED.Engine.HighlightLed(0, id + 5, LedColor.WHITE);
+               VLED.Engine.HighlightLed(deviceId, id + 5, LedColor.WHITE);
                Tools.SelectComboBoxItem(comboBoxLed,id+5);
-               Validate();
+               ValidateInput();
             }
          }
       }
@@ -188,7 +198,20 @@ namespace VLEDCONTROL
 
       private void tabPageT50CM3_Click(object sender, EventArgs e)
       {
-
+         if (e is System.Windows.Forms.MouseEventArgs)
+         {
+            System.Windows.Forms.MouseEventArgs mouseEvent = (MouseEventArgs)e;
+            int x = mouseEvent.X;
+            int y = mouseEvent.Y;
+            int id = FindBestMatch(T50CM3_Locations, x, y);
+            int deviceId = Tools.IndexOfSelectedComboBoxItem(comboBoxDeviceName);
+            if (id >= 0 && deviceId >= 0 && deviceId < VLED.Engine.CurrentSettings.Devices.Count)
+            {
+               VLED.Engine.HighlightLed(deviceId, id + 5, LedColor.WHITE);
+               Tools.SelectComboBoxItem(comboBoxLed, id + 5);
+               ValidateInput();
+            }
+         }
       }
 
       private void comboBoxAircraft_SelectedIndexChanged(object sender, EventArgs e)
@@ -203,7 +226,7 @@ namespace VLEDCONTROL
                this.comboBoxEventNames.Items.Add(name);
             }
             QuickAddDialog.LastAircraft = comboBoxAircraft.Text;
-            Validate();
+            ValidateInput();
             IsAdjusting = false;
          }
       }
@@ -211,7 +234,7 @@ namespace VLEDCONTROL
       private void TestColor(Button button)
       {
          int deviceID = Tools.IndexOfSelectedComboBoxItem(comboBoxDeviceName);
-         if (comboBoxEventNames.Text != null && comboBoxEventNames.Text.Length>0 && deviceID >= 0 )
+         if (deviceID >= 0 )
          {
             Settings settings = VLED.Engine.CurrentSettings;
             VirpilDevice device = settings.GetDevice(deviceID);
@@ -263,7 +286,7 @@ namespace VLEDCONTROL
       {
          if(!IsAdjusting)
          {
-            Validate();
+            ValidateInput();
          }
       }
 
@@ -273,7 +296,7 @@ namespace VLEDCONTROL
          {
             IsAdjusting = true;
             QuickAddDialog.LastDeviceName = comboBoxDeviceName.Text;
-            Validate();
+            ValidateInput();
             IsAdjusting = false;
          }
       }

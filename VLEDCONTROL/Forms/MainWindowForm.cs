@@ -100,10 +100,10 @@ namespace VLEDCONTROL
             buttonProfileUp.Enabled = ( listViewProfileEvents.SelectedIndices[0] > 0 );
             //
             // Debug
-            int index = listViewProfileEvents.SelectedIndices[0];
-            System.Windows.Forms.ListViewItem item = listViewProfileEvents.Items[index];
+            //int index = listViewProfileEvents.SelectedIndices[0];
+            //System.Windows.Forms.ListViewItem item = listViewProfileEvents.Items[index];
             //Profile.ProfileEvent e = VLED.Engine.CurrentProfile.ProfileEvents[index]
-            Loggable.LogUrgend("Selected: index="+index+", Tag="+item.Tag);
+            //Loggable.Debug("Selected: index="+index+", Tag="+item.Tag);
          }
       }
 
@@ -283,7 +283,6 @@ namespace VLEDCONTROL
 
       private void buttonProfileUp_Click(object sender, EventArgs e)
       {
-         Loggable.LogUrgend("BEFORE UP: "+ VLED.Engine.CurrentProfile);
          if (this.listViewProfileEvents.SelectedItems.Count == 0) return;
          System.Windows.Forms.ListViewItem item = this.listViewProfileEvents.SelectedItems[0];
          int index = (int)item.Tag;
@@ -298,8 +297,6 @@ namespace VLEDCONTROL
          listViewProfileEvents.Items[selected-1].Tag = index;
          listViewProfileEvents.Items.RemoveAt(selected);
          listViewProfileEvents.Items.Insert(selected - 1, item);
-
-         Loggable.LogUrgend("AFTER UP: " + VLED.Engine.CurrentProfile);
       }
 
       private void buttonProfileDown_Click(object sender, EventArgs e)

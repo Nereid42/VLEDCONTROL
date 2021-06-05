@@ -357,6 +357,7 @@
          this.groupBoxTestLed.TabIndex = 17;
          this.groupBoxTestLed.TabStop = false;
          this.groupBoxTestLed.Text = "Test LED";
+         this.groupBoxTestLed.Enter += new System.EventHandler(this.groupBoxTestLed_Enter);
          // 
          // buttonSetDefault
          // 

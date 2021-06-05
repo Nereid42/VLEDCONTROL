@@ -266,15 +266,12 @@ namespace VLEDCONTROL
                // is led highlighted?
                if (ledNumber == this.HightlightLedNr && deviceId == this.HighlightDeviceID)
                {
-                  LogUrgend("HIGHLIGHT #"+ledNumber+" end:"+HightlightEndCycle+", Cycle:"+Cycle);
                   if(HightlightEndCycle > Cycle)
                   {
                      device.PrepareColor(ledNumber, HighlightColor);
-                     LogUrgend("HIGHLIGHT ON");
                   }
                   else
                   {
-                     LogUrgend("HIGHLIGHT OFF");
                      device.PrepareColor(ledNumber, LedColor.BLACK);
                      this.HightlightLedNr = -1;
                      this.HighlightDeviceID = -1;

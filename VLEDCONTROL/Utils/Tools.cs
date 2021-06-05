@@ -223,7 +223,6 @@ namespace VLEDCONTROL
       public static System.Drawing.Color GetBestForegroundColor(System.Drawing.Color background)
       {
          int sum = background.R + background.G + background.B;
-         Loggable.LogUrgend("SUM="+sum);
          if (sum<=256)
          {
             return System.Drawing.Color.LightGray;

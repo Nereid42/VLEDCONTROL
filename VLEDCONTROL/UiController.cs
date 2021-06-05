@@ -745,7 +745,7 @@ namespace VLEDCONTROL
             MainWindow.listViewProfileEvents.BeginInvoke(
                new Action(() =>
                {
-                  System.Windows.Forms.ListViewItem item = MainWindow.listViewProfileEvents.Items.Insert(index,newEvent.Id.ToString());
+                  System.Windows.Forms.ListViewItem item = MainWindow.listViewProfileEvents.Items.Insert(selected,newEvent.Id.ToString());
                   item.Tag = (int)index;
                   item.SubItems.Add(newEvent.Aircraft);
                   item.SubItems.Add(VLED.Engine.CurrentProfile.MapPropertyName(newEvent.Aircraft, newEvent.Id));
@@ -755,6 +755,12 @@ namespace VLEDCONTROL
                   item.SubItems.Add(newEvent.ColorOn.AsString());
                   item.SubItems.Add(newEvent.ColorFlashing.AsString());
                   item.SubItems.Add(newEvent.Description);
+                  //
+                  for (int i = selected + 1; i < MainWindow.listViewProfileEvents.Items.Count; i++)
+                  {
+                     item = MainWindow.listViewProfileEvents.Items[i];
+                     item.Tag = (int)item.Tag + 1;
+                  }
                })
             );
             UpdateProfileFilter(VLED.Engine.CurrentProfile);

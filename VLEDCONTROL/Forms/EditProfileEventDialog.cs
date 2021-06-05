@@ -68,7 +68,7 @@ namespace VLEDCONTROL
       }
 
 
-      private void Validate()
+      private void ValidateInput()
       {
          buttonOk.Enabled = IsValid();
       }
@@ -236,7 +236,7 @@ namespace VLEDCONTROL
             this.textBoxDescription.Text = "";
          }
 
-         Validate();
+         ValidateInput();
 
          IsAdjusting = false;
       }
@@ -270,7 +270,7 @@ namespace VLEDCONTROL
             {
                this.comboBoxEventNames.Text = "";
             }
-            Validate();
+            ValidateInput();
             IsAdjusting = false;
          }
       }
@@ -357,7 +357,7 @@ namespace VLEDCONTROL
             {
                this.comboBoxDeviceName.Text = "";
             }
-            Validate();
+            ValidateInput();
             IsAdjusting = false;
          }
       }
@@ -400,7 +400,7 @@ namespace VLEDCONTROL
 
             IsAdjusting = false;
 
-            Validate();
+            ValidateInput();
          }
       }
 
@@ -432,6 +432,11 @@ namespace VLEDCONTROL
       }
 
       private void comboBoxLed_SelectedIndexChanged(object sender, EventArgs e)
+      {
+
+      }
+
+      private void groupBoxTestLed_Enter(object sender, EventArgs e)
       {
 
       }

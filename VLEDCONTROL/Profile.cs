@@ -257,7 +257,14 @@ namespace VLEDCONTROL
 
       public void InsertProfileEvent(int index, ProfileEvent entry)
       {
-         ProfileEvents.Insert(index,entry);
+         if(index < ProfileEvents.Count)
+         {
+            ProfileEvents.Insert(index, entry);
+         }
+         else
+         {
+            ProfileEvents.Add(entry);
+         }
       }
 
       public void RemoveProfileEventAt(int index)
