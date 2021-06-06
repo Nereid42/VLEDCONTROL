@@ -147,6 +147,8 @@ namespace VLEDCONTROL
                int id = Tools.ToInt(this.textBoxEventId.Text);
                comboBoxEventNames.Text = Profile.MapPropertyName(aircraft, id);
 
+               ValidateInput();
+
                IsAdjusting = false;
             }
             else
