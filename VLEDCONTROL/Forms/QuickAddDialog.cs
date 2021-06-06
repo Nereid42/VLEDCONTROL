@@ -62,6 +62,7 @@ namespace VLEDCONTROL
          this.comboBoxLed.KeyPress += new KeyPressEventHandler(Tools.NoKeyPressed);
          this.comboBoxAircraft.KeyPress += new KeyPressEventHandler(Tools.NoKeyPressed);
          this.comboBoxDeviceName.KeyPress += new KeyPressEventHandler(Tools.NoKeyPressed);
+         this.comboBoxEventNames.KeyPress += new KeyPressEventHandler(Tools.NoKeyPressed);
          this.buttonColorOn.BackColor = LedColor.DARKGREEN.ToSystemColor();
          this.buttonColorOn.ForeColor = Tools.GetBestForegroundColor(this.buttonColorOn.BackColor);
          this.buttonColorOff.BackColor = LedColor.BLACK.ToSystemColor();
