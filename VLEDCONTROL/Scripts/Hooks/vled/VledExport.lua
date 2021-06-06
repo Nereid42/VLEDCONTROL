@@ -24,13 +24,13 @@ currentData = {}
 
 
 function ReceiveData()
-	log.write('VLED.EXPORT', log.INFO, 'Receive data...');
+	--log.write('VLED.EXPORT', log.INFO, 'Receive data...');
 	local data = udpin:receive();
 	if (data==nil) then
-		log.write('VLED.EXPORT', log.INFO, 'no data received');
+		--log.write('VLED.EXPORT', log.INFO, 'no data received');
 		return nil;
 	else
-		log.write('VLED.EXPORT', log.INFO, 'data received: '..data);
+		--log.write('VLED.EXPORT', log.INFO, 'data received: '..data);
 		return data;
 	end
 end
@@ -74,12 +74,12 @@ function ExecuteCommand(command)
 end
 
 function PrepareData()
-	log.write('VLED.EXPORT', log.INFO, 'Prepare data...');
+	--log.write('VLED.EXPORT', log.INFO, 'Prepare data...');
 	
 	local MyAircraft = LoGetSelfData();
 	
 	if (MyAircraft == nil) then	
-		log.write('VLED.EXPORT', log.INFO, 'NO aircraft');		
+		--log.write('VLED.EXPORT', log.INFO, 'NO aircraft');		
 		return nil;
 	end
 	
@@ -94,7 +94,7 @@ function PrepareData()
 	local changeInData = false;
 
 	local data = {}
-	log.write('VLED.EXPORT', log.INFO, 'creating data');		
+	--log.write('VLED.EXPORT', log.INFO, 'creating data');		
 	if ( currentData[9999] ~= aircraft ) then
 		--log.write('VLED.EXPORT', log.INFO, 'NEW AIRCRAFT');		
 		changeInData = true;
@@ -113,7 +113,7 @@ function PrepareData()
 			end
 		end
 	else
-		log.write('VLED.EXPORT', log.INFO, 'no new aircraft');			
+		--log.write('VLED.EXPORT', log.INFO, 'no new aircraft');			
 		local panel = GetDevice(0);
 		for i=1,1000 do
 			arg = panel:get_argument_value(i);
@@ -126,7 +126,7 @@ function PrepareData()
 			end
 		end	
 	end	
-	log.write('VLED.EXPORT', log.INFO, 'data created');		
+	--log.write('VLED.EXPORT', log.INFO, 'data created');		
 	
 	if (changeInData) then
 		return data;
@@ -135,7 +135,7 @@ function PrepareData()
 end
 
 function LuaExportActivityNextEvent(t)
-	log.write('VLED.EXPORT', log.INFO, 'VLED export '..tostring(t));
+	--log.write('VLED.EXPORT', log.INFO, 'VLED export '..tostring(t));
 	
 	local command = ReceiveData();
 	
