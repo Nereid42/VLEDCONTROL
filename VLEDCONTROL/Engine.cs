@@ -220,13 +220,17 @@ namespace VLEDCONTROL
 
       internal void ShowProperties()
       {
-         for(int id=0; id<CurrentProperties.Length; id++)
+         if(Controller!=null)
          {
-            if(CurrentTimestamps[id] != null && CurrentTimestamps[id]!=DateTime.MinValue)
+            for (int id = 0; id < CurrentProperties.Length; id++)
             {
-               String name = CurrentProfile.MapPropertyName(CurrentAircraft, id);
-               Controller.SetData(id, name, CurrentProperties[id], CurrentTimestamps[id]);
+               if (CurrentTimestamps[id] != null && CurrentTimestamps[id] != DateTime.MinValue)
+               {
+                  String name = CurrentProfile.MapPropertyName(CurrentAircraft, id);
+                  Controller.SetData(id, name, CurrentProperties[id], CurrentTimestamps[id]);
+               }
             }
+            Controller.MarkDataAsDirty(false);
          }
       }
 

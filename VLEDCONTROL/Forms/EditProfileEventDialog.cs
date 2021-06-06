@@ -213,7 +213,9 @@ namespace VLEDCONTROL
             this.comboBoxLed.Text = this.comboBoxLed.Items[Event.LedNumber].ToString();
             // Colors
             this.buttonColor1.BackColor = Event.ColorOn.ToSystemColor();
+            this.buttonColor1.ForeColor = Tools.GetBestForegroundColor(this.buttonColor1.BackColor);
             this.buttonColor2.BackColor = Event.ColorFlashing.ToSystemColor();
+            this.buttonColor2.ForeColor = Tools.GetBestForegroundColor(this.buttonColor2.BackColor);
             //
             this.textBoxDescription.Text = Event.Description;
          }

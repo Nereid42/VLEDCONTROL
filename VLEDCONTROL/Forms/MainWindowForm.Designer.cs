@@ -51,7 +51,7 @@
          this.checkBoxDataShowUnknown = new System.Windows.Forms.CheckBox();
          this.buttonRegisterRemove = new System.Windows.Forms.Button();
          this.buttonRegisterAdd = new System.Windows.Forms.Button();
-         this.checkBoxDataShowUnregistered = new System.Windows.Forms.CheckBox();
+         this.checkBoxData10Only = new System.Windows.Forms.CheckBox();
          this.listViewRegistered = new System.Windows.Forms.ListView();
          this.columnRegisteredId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnRegisteredName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -306,7 +306,7 @@
          this.tabPageData.Controls.Add(this.checkBoxDataShowUnknown);
          this.tabPageData.Controls.Add(this.buttonRegisterRemove);
          this.tabPageData.Controls.Add(this.buttonRegisterAdd);
-         this.tabPageData.Controls.Add(this.checkBoxDataShowUnregistered);
+         this.tabPageData.Controls.Add(this.checkBoxData10Only);
          this.tabPageData.Controls.Add(this.listViewRegistered);
          this.tabPageData.Controls.Add(this.labelDataRegistered);
          this.tabPageData.Controls.Add(this.textBoxAircraft);
@@ -368,7 +368,7 @@
          this.checkBoxDataShowUnknown.AutoSize = true;
          this.checkBoxDataShowUnknown.Checked = true;
          this.checkBoxDataShowUnknown.CheckState = System.Windows.Forms.CheckState.Checked;
-         this.checkBoxDataShowUnknown.Location = new System.Drawing.Point(142, 540);
+         this.checkBoxDataShowUnknown.Location = new System.Drawing.Point(98, 540);
          this.checkBoxDataShowUnknown.Name = "checkBoxDataShowUnknown";
          this.checkBoxDataShowUnknown.Size = new System.Drawing.Size(102, 17);
          this.checkBoxDataShowUnknown.TabIndex = 9;
@@ -397,18 +397,16 @@
          this.buttonRegisterAdd.Visible = false;
          this.buttonRegisterAdd.Click += new System.EventHandler(this.button1_Click_1);
          // 
-         // checkBoxDataShowUnregistered
+         // checkBoxData10Only
          // 
-         this.checkBoxDataShowUnregistered.AutoSize = true;
-         this.checkBoxDataShowUnregistered.Checked = true;
-         this.checkBoxDataShowUnregistered.CheckState = System.Windows.Forms.CheckState.Checked;
-         this.checkBoxDataShowUnregistered.Enabled = false;
-         this.checkBoxDataShowUnregistered.Location = new System.Drawing.Point(9, 540);
-         this.checkBoxDataShowUnregistered.Name = "checkBoxDataShowUnregistered";
-         this.checkBoxDataShowUnregistered.Size = new System.Drawing.Size(116, 17);
-         this.checkBoxDataShowUnregistered.TabIndex = 6;
-         this.checkBoxDataShowUnregistered.Text = "Show Unregistered";
-         this.checkBoxDataShowUnregistered.UseVisualStyleBackColor = true;
+         this.checkBoxData10Only.AutoSize = true;
+         this.checkBoxData10Only.Location = new System.Drawing.Point(9, 540);
+         this.checkBoxData10Only.Name = "checkBoxData10Only";
+         this.checkBoxData10Only.Size = new System.Drawing.Size(83, 17);
+         this.checkBoxData10Only.TabIndex = 6;
+         this.checkBoxData10Only.Text = "0.0/1.0 only";
+         this.checkBoxData10Only.UseVisualStyleBackColor = true;
+         this.checkBoxData10Only.CheckedChanged += new System.EventHandler(this.checkBoxData10Only_CheckedChanged);
          // 
          // listViewRegistered
          // 
@@ -1751,7 +1749,6 @@
       private System.Windows.Forms.Label labelProfileName;
       public System.Windows.Forms.TextBox textBoxAircraft;
       private System.Windows.Forms.Label labelDataRegistered;
-      private System.Windows.Forms.CheckBox checkBoxDataShowUnregistered;
       private System.Windows.Forms.ListView listViewRegistered;
       private System.Windows.Forms.ColumnHeader columnRegisteredId;
       private System.Windows.Forms.ColumnHeader columnRegisteredName;
@@ -1859,6 +1856,7 @@
       internal System.Windows.Forms.CheckBox checkBoxDataShowUnknown;
       private System.Windows.Forms.Button buttonQuickAdd;
       private System.Windows.Forms.Button buttonMainResetLeds;
+      internal System.Windows.Forms.CheckBox checkBoxData10Only;
    }
 }
 

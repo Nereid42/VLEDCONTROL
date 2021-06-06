@@ -476,9 +476,7 @@ namespace VLEDCONTROL
       private void buttonProfileEdit_Click(object sender, EventArgs e)
       {
          if (this.listViewProfileEvents.SelectedItems.Count == 0) return;
-         System.Windows.Forms.ListViewItem item = this.listViewProfileEvents.SelectedItems[0];
-         int index = (int)item.Tag;
-         Controller.EditProfileEvent(index);
+         Controller.EditProfileEvent();
       }
 
       private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -640,6 +638,12 @@ namespace VLEDCONTROL
       private void buttonMainResetLed_Click_4(object sender, EventArgs e)
       {
          VLED.Engine.ResetAllDeviceLeds();
+      }
+
+      private void checkBoxData10Only_CheckedChanged(object sender, EventArgs e)
+      {
+         listViewData.Items.Clear();
+         Controller.MarkDataAsDirty(true);
       }
    }
 }

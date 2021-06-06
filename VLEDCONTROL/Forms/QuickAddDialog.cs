@@ -142,6 +142,17 @@ namespace VLEDCONTROL
          }
          this.comboBoxAircraft.Text = LastAircraft;
 
+         if(this.comboBoxAircraft.Text!=null && this.comboBoxAircraft.Text.Length>0)
+         {
+            IsAdjusting = true;
+            IReadOnlyCollection<String> eventNames = Profile.GetEventNamesForAircraft(comboBoxAircraft.Text);
+            this.comboBoxEventNames.Items.Clear();
+            foreach (String name in eventNames)
+            {
+               this.comboBoxEventNames.Items.Add(name);
+            }
+         }
+
          foreach (VirpilDevice device in VLED.Engine.CurrentSettings.Devices)
          {
             this.comboBoxDeviceName.Items.Add(device.Name);

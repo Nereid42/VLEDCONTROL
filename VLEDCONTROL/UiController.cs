@@ -128,7 +128,8 @@ namespace VLEDCONTROL
       {
          if (MainWindow.IsHandleCreated)
          {
-            if(MainWindow.checkBoxDataShowUnknown.Checked || ( name != null && name.Length>0))
+            if( (MainWindow.checkBoxDataShowUnknown.Checked || ( name != null && name.Length>0))
+            && (!MainWindow.checkBoxData10Only.Checked || value==1.0 || value==0.0) )
             {
                MainWindow.listViewData.BeginInvoke(
                   new Action(() =>
@@ -838,8 +839,14 @@ namespace VLEDCONTROL
          }
       }
 
-      internal void EditProfileEvent(int index)
+      internal void EditProfileEvent()
       {
+         if (MainWindow.listViewProfileEvents.SelectedIndices.Count == 0) return;
+         System.Windows.Forms.ListViewItem item = MainWindow.listViewProfileEvents.SelectedItems[0];
+
+         int index = (int)item.Tag;
+         int selected = MainWindow.listViewProfileEvents.SelectedIndices[0];
+
          if (index < VLED.Engine.CurrentProfile.ProfileEvents.Count)
          {
             EditProfileEventDialog dialog = new EditProfileEventDialog();
@@ -863,7 +870,6 @@ namespace VLEDCONTROL
                MainWindow.listViewProfileEvents.BeginInvoke(
                   new Action(() =>
                   {
-                     System.Windows.Forms.ListViewItem item = MainWindow.listViewProfileEvents.Items[index];
                      item.Text = edit.Id.ToString();
                      item.SubItems[1].Text = edit.Aircraft;
                      item.SubItems[2].Text = VLED.Engine.CurrentProfile.MapPropertyName(edit.Aircraft, edit.Id);
