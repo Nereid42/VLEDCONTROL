@@ -37,16 +37,17 @@ namespace VLEDCONTROL
    {
       public volatile bool IsRunning = false;
 
-      readonly UdpClient Client;
+      private UdpClient Client;
       private volatile bool StopRequest;
       private readonly List<DataHandler> handler;
+
+      private readonly int Port;
 
 
       public Receiver(int port)
       {
          LogInfo("Creating UDP receiver for Port " + port);
-         this.Client = new UdpClient(port);
-         this.Client.Client.ReceiveTimeout = 200;
+         this.Port = port;
          this.StopRequest = false;
          this.handler = new List<DataHandler>();
       }
@@ -125,6 +126,19 @@ namespace VLEDCONTROL
       private void Run()
       {
          LogInfo("starting UDP receiver...");
+         //
+         try
+         {
+            this.Client = new UdpClient(Port);
+            this.Client.Client.ReceiveTimeout = 200;
+         }
+         catch(Exception e)
+         {
+            LogError("failed to create UDP Client");
+            LogException(e);
+            return;
+         }
+
          IsRunning = true;
 
          IPEndPoint RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, 0);
