@@ -33,6 +33,15 @@ namespace VLEDCONTROL
          this.USB_PID = pid;
       }
 
+      public void Reset()
+      {
+         for(int i=0; i < MAX_LED_CNT; i++)
+         {
+            CurrentLedColors[i] = null;
+            PreparedLedColors[i] = null;
+         }
+      }
+
 
       public void PrepareColor(int ledNumber, LedColor color)
       {

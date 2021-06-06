@@ -72,19 +72,22 @@ namespace VLEDCONTROL
 
       public void CopySettings(Settings settings)
       {
-         this.Devices.Clear();
-         foreach (VirpilDevice device in settings.Devices)
+         lock(this)
          {
-            Devices.Add(device);
+            this.Devices.Clear();
+            foreach (VirpilDevice device in settings.Devices)
+            {
+               Devices.Add(device);
+            }
+            this.VirpilLedControl = settings.VirpilLedControl;
+            this.DefaultProfile = settings.DefaultProfile;
+            this.UpdateInterval = settings.UpdateInterval;
+            this.DataInterval = settings.DataInterval;
+            this.LogLevel = settings.LogLevel;
+            this.StatisticsEnabled = settings.StatisticsEnabled;
+            this.FlashingCycles = settings.FlashingCycles;
+            this.LiveDataEnabled = settings.LiveDataEnabled;
          }
-         this.VirpilLedControl = settings.VirpilLedControl;
-         this.DefaultProfile = settings.DefaultProfile;
-         this.UpdateInterval =settings.UpdateInterval;
-         this.DataInterval = settings.DataInterval;
-         this.LogLevel = settings.LogLevel;
-         this.StatisticsEnabled = settings.StatisticsEnabled;
-         this.FlashingCycles = settings.FlashingCycles;
-         this.LiveDataEnabled = settings.LiveDataEnabled;
       }
 
       public void Save()

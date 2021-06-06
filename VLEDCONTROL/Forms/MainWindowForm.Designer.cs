@@ -64,6 +64,7 @@
          this.columnHeaderDataValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderLastChange = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabPageProfile = new System.Windows.Forms.TabPage();
+         this.buttonQuickAdd = new System.Windows.Forms.Button();
          this.groupBoxFilterProfile = new System.Windows.Forms.GroupBox();
          this.comboBoxProfileFilterDevice = new System.Windows.Forms.ComboBox();
          this.label2 = new System.Windows.Forms.Label();
@@ -159,7 +160,7 @@
          this.buttonMainStart = new System.Windows.Forms.Button();
          this.buttonMainLoad = new System.Windows.Forms.Button();
          this.buttonMainSave = new System.Windows.Forms.Button();
-         this.buttonMainSetLed = new System.Windows.Forms.Button();
+         this.buttonMainSetLeds = new System.Windows.Forms.Button();
          this.buttonDataQuery = new System.Windows.Forms.Button();
          this.radioButtonAll = new System.Windows.Forms.RadioButton();
          this.radioRegistered = new System.Windows.Forms.RadioButton();
@@ -173,7 +174,7 @@
          this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
-         this.buttonQuickAdd = new System.Windows.Forms.Button();
+         this.buttonMainResetLeds = new System.Windows.Forms.Button();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -534,6 +535,18 @@
          this.tabPageProfile.TabIndex = 1;
          this.tabPageProfile.Text = "Profile";
          this.tabPageProfile.UseVisualStyleBackColor = true;
+         // 
+         // buttonQuickAdd
+         // 
+         this.buttonQuickAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.buttonQuickAdd.ForeColor = System.Drawing.Color.SeaGreen;
+         this.buttonQuickAdd.Location = new System.Drawing.Point(901, 52);
+         this.buttonQuickAdd.Name = "buttonQuickAdd";
+         this.buttonQuickAdd.Size = new System.Drawing.Size(75, 46);
+         this.buttonQuickAdd.TabIndex = 16;
+         this.buttonQuickAdd.Text = "Quick Add";
+         this.buttonQuickAdd.UseVisualStyleBackColor = true;
+         this.buttonQuickAdd.Click += new System.EventHandler(this.buttonQuickAdd_Click);
          // 
          // groupBoxFilterProfile
          // 
@@ -1499,20 +1512,19 @@
          this.buttonMainSave.UseVisualStyleBackColor = true;
          this.buttonMainSave.Click += new System.EventHandler(this.buttonMainSaveProfile_Click);
          // 
-         // buttonMainSetLed
+         // buttonMainSetLeds
          // 
-         this.buttonMainSetLed.Enabled = false;
-         this.buttonMainSetLed.Location = new System.Drawing.Point(12, 117);
-         this.buttonMainSetLed.Name = "buttonMainSetLed";
-         this.buttonMainSetLed.Size = new System.Drawing.Size(81, 23);
-         this.buttonMainSetLed.TabIndex = 5;
-         this.buttonMainSetLed.Text = "Set LED";
-         this.buttonMainSetLed.UseVisualStyleBackColor = true;
-         this.buttonMainSetLed.Click += new System.EventHandler(this.buttonMainSetLed_Click);
+         this.buttonMainSetLeds.Location = new System.Drawing.Point(12, 117);
+         this.buttonMainSetLeds.Name = "buttonMainSetLeds";
+         this.buttonMainSetLeds.Size = new System.Drawing.Size(81, 23);
+         this.buttonMainSetLeds.TabIndex = 5;
+         this.buttonMainSetLeds.Text = "Set LEDs";
+         this.buttonMainSetLeds.UseVisualStyleBackColor = true;
+         this.buttonMainSetLeds.Click += new System.EventHandler(this.buttonMainSetLed_Click);
          // 
          // buttonDataQuery
          // 
-         this.buttonDataQuery.Location = new System.Drawing.Point(12, 146);
+         this.buttonDataQuery.Location = new System.Drawing.Point(12, 175);
          this.buttonDataQuery.Name = "buttonDataQuery";
          this.buttonDataQuery.Size = new System.Drawing.Size(81, 23);
          this.buttonDataQuery.TabIndex = 6;
@@ -1547,16 +1559,16 @@
          this.panelMode.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.panelMode.Controls.Add(this.radioRegistered);
          this.panelMode.Controls.Add(this.radioButtonAll);
-         this.panelMode.Location = new System.Drawing.Point(12, 291);
+         this.panelMode.Location = new System.Drawing.Point(12, 315);
          this.panelMode.Name = "panelMode";
-         this.panelMode.Size = new System.Drawing.Size(83, 56);
+         this.panelMode.Size = new System.Drawing.Size(81, 56);
          this.panelMode.TabIndex = 9;
          this.panelMode.Visible = false;
          // 
          // labelMode
          // 
          this.labelMode.AutoSize = true;
-         this.labelMode.Location = new System.Drawing.Point(12, 213);
+         this.labelMode.Location = new System.Drawing.Point(12, 237);
          this.labelMode.Name = "labelMode";
          this.labelMode.Size = new System.Drawing.Size(37, 13);
          this.labelMode.TabIndex = 9;
@@ -1568,10 +1580,10 @@
          this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.panel1.Controls.Add(this.radioButtonFull);
          this.panel1.Controls.Add(this.radioButtonChanges);
-         this.panel1.Location = new System.Drawing.Point(12, 229);
+         this.panel1.Location = new System.Drawing.Point(12, 253);
          this.panel1.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
          this.panel1.Name = "panel1";
-         this.panel1.Size = new System.Drawing.Size(83, 56);
+         this.panel1.Size = new System.Drawing.Size(81, 56);
          this.panel1.TabIndex = 10;
          this.panel1.Visible = false;
          // 
@@ -1601,7 +1613,7 @@
          // 
          // buttonRegister
          // 
-         this.buttonRegister.Location = new System.Drawing.Point(12, 175);
+         this.buttonRegister.Location = new System.Drawing.Point(12, 204);
          this.buttonRegister.Name = "buttonRegister";
          this.buttonRegister.Size = new System.Drawing.Size(81, 23);
          this.buttonRegister.TabIndex = 11;
@@ -1633,17 +1645,15 @@
          this.progressBarEngineStatus.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
          this.progressBarEngineStatus.TabIndex = 12;
          // 
-         // buttonQuickAdd
+         // buttonMainResetLeds
          // 
-         this.buttonQuickAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.buttonQuickAdd.ForeColor = System.Drawing.Color.SeaGreen;
-         this.buttonQuickAdd.Location = new System.Drawing.Point(901, 52);
-         this.buttonQuickAdd.Name = "buttonQuickAdd";
-         this.buttonQuickAdd.Size = new System.Drawing.Size(75, 46);
-         this.buttonQuickAdd.TabIndex = 16;
-         this.buttonQuickAdd.Text = "Quick Add";
-         this.buttonQuickAdd.UseVisualStyleBackColor = true;
-         this.buttonQuickAdd.Click += new System.EventHandler(this.buttonQuickAdd_Click);
+         this.buttonMainResetLeds.Location = new System.Drawing.Point(12, 146);
+         this.buttonMainResetLeds.Name = "buttonMainResetLeds";
+         this.buttonMainResetLeds.Size = new System.Drawing.Size(81, 23);
+         this.buttonMainResetLeds.TabIndex = 13;
+         this.buttonMainResetLeds.Text = "Reset LEDs";
+         this.buttonMainResetLeds.UseVisualStyleBackColor = true;
+         this.buttonMainResetLeds.Click += new System.EventHandler(this.buttonMainResetLed_Click_4);
          // 
          // MainWindowForm
          // 
@@ -1651,12 +1661,13 @@
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.BackColor = System.Drawing.SystemColors.ControlLightLight;
          this.ClientSize = new System.Drawing.Size(1170, 629);
+         this.Controls.Add(this.buttonMainResetLeds);
          this.Controls.Add(this.progressBarEngineStatus);
          this.Controls.Add(this.buttonRegister);
          this.Controls.Add(this.panel1);
          this.Controls.Add(this.labelMode);
          this.Controls.Add(this.panelMode);
-         this.Controls.Add(this.buttonMainSetLed);
+         this.Controls.Add(this.buttonMainSetLeds);
          this.Controls.Add(this.buttonDataQuery);
          this.Controls.Add(this.buttonMainSave);
          this.Controls.Add(this.buttonMainLoad);
@@ -1728,7 +1739,7 @@
       private System.Windows.Forms.ColumnHeader columnHeaderDataName;
       private System.Windows.Forms.Button buttonMainLoad;
       private System.Windows.Forms.Button buttonMainSave;
-      private System.Windows.Forms.Button buttonMainSetLed;
+      private System.Windows.Forms.Button buttonMainSetLeds;
       private System.Windows.Forms.Button buttonDataQuery;
       private System.Windows.Forms.RadioButton radioRegistered;
       private System.Windows.Forms.RadioButton radioButtonAll;
@@ -1847,6 +1858,7 @@
       private System.Windows.Forms.Button buttonImportFromProfile;
       internal System.Windows.Forms.CheckBox checkBoxDataShowUnknown;
       private System.Windows.Forms.Button buttonQuickAdd;
+      private System.Windows.Forms.Button buttonMainResetLeds;
    }
 }
 

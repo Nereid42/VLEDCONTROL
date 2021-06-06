@@ -300,51 +300,57 @@ namespace VLEDCONTROL
          HighlightColor = color;
       }
 
-      private void CalculateLEDs()
+      public void CalculateLEDs()
       {
-         swCalcLeds.Start();
-
-         if (IsLoggable(LEVEL.DEBUG)) LogDebug("calculating all LEDs");
-
-         foreach (Profile.ProfileEvent entry in CurrentProfile.ProfileEvents)
+         lock(CurrentSettings)
          {
-            if (IsLoggable(LEVEL.DEBUG)) LogDebug("calculating LED for "+entry);
-            if(CurrentAircraft == entry.Aircraft)
+            swCalcLeds.Start();
+
+            if (IsLoggable(LEVEL.DEBUG)) LogDebug("calculating all LEDs");
+
+            foreach (Profile.ProfileEvent entry in CurrentProfile.ProfileEvents)
             {
-               int id = entry.Id;
-               double currentValue = CurrentProperties[id];
-               double primaryValue = entry.PrimaryValue;
-               double secondaryValue = entry.SecondaryValue;
-               if ( CheckCondition(currentValue, primaryValue, entry.PrimaryCondition) 
-               && ( CheckCondition(currentValue, secondaryValue, entry.SecondaryCondition)) )
+               if (IsLoggable(LEVEL.DEBUG)) LogDebug("calculating LED for " + entry);
+               if (CurrentAircraft == entry.Aircraft)
                {
-                  if (IsLoggable(LEVEL.DEBUG)) LogDebug("-> Condition true");
-                  VirpilDevice device = CurrentSettings.GetDevice(entry.DeviceId);
-                  if (device != null)
+                  int id = entry.Id;
+                  double currentValue = CurrentProperties[id];
+                  double primaryValue = entry.PrimaryValue;
+                  double secondaryValue = entry.SecondaryValue;
+                  if (CheckCondition(currentValue, primaryValue, entry.PrimaryCondition)
+                  && (CheckCondition(currentValue, secondaryValue, entry.SecondaryCondition)))
                   {
-                     if(IsFlashCycle())
+                     if (IsLoggable(LEVEL.DEBUG)) LogDebug("-> Condition true");
+                     VirpilDevice device = CurrentSettings.GetDevice(entry.DeviceId);
+                     if (device != null)
                      {
-                        if (IsLoggable(LEVEL.DEBUG)) LogDebug("-> LED Color FLASH " + entry.ColorFlashing);
-                        device.PrepareColor(entry.LedNumber, entry.ColorFlashing);
-                     }
-                     else
-                     {
-                        if (IsLoggable(LEVEL.DEBUG)) LogDebug("-> LED Color ON " + entry.ColorOn);
-                        device.PrepareColor(entry.LedNumber, entry.ColorOn);
+                        if (IsFlashCycle())
+                        {
+                           if (IsLoggable(LEVEL.DEBUG)) LogDebug("-> LED Color FLASH " + entry.ColorFlashing);
+                           device.PrepareColor(entry.LedNumber, entry.ColorFlashing);
+                        }
+                        else
+                        {
+                           if (IsLoggable(LEVEL.DEBUG)) LogDebug("-> LED Color ON " + entry.ColorOn);
+                           device.PrepareColor(entry.LedNumber, entry.ColorOn);
+                        }
                      }
                   }
                }
             }
-         }
-         SetAllDeviceLeds();
 
-         swCalcLeds.Stop();
+            SetAllDeviceLeds();
+
+            swCalcLeds.Stop();
+         }
       }
 
-      private void ResetAllDeviceLeds()
+      public void ResetAllDeviceLeds()
       {
          foreach(VirpilDevice device in CurrentSettings.Devices)
          {
+            if (IsLoggable(LEVEL.DEBUG)) LogDebug("Init device " + device.Name);
+            device.Reset();
             ExecuteLedCommand(device,0, LedColor.BLACK);
          }
       }
@@ -474,7 +480,20 @@ namespace VLEDCONTROL
             Controller.ClearData();
          }
 
+         ResetAllDeviceLeds();
+
+         ResetAllProperties();
+
          CommitDataUpdate();
+      }
+
+      private void ResetAllProperties()
+      {
+         for(int i=0; i<CurrentProperties.Length; i++)
+         {
+            CurrentProperties[i] = 0.0;
+            CurrentTimestamps[i] = DateTime.MinValue;
+         }
       }
    }
 }

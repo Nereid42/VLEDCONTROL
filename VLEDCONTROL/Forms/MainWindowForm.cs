@@ -139,7 +139,7 @@ namespace VLEDCONTROL
 
       private void buttonMainSetLed_Click(object sender, EventArgs e)
       {
-
+         VLED.Engine.CalculateLEDs();
       }
 
       private void button1_Click_2(object sender, EventArgs e)
@@ -635,6 +635,11 @@ namespace VLEDCONTROL
       {
 
          Controller.AddQuickProfileEvent();
+      }
+
+      private void buttonMainResetLed_Click_4(object sender, EventArgs e)
+      {
+         VLED.Engine.ResetAllDeviceLeds();
       }
    }
 }
