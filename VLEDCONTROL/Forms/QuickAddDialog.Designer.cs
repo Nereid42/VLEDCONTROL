@@ -52,10 +52,10 @@
          this.buttonCancel = new System.Windows.Forms.Button();
          this.buttonOk = new System.Windows.Forms.Button();
          this.groupBox2 = new System.Windows.Forms.GroupBox();
+         this.label6 = new System.Windows.Forms.Label();
          this.tabControl1 = new System.Windows.Forms.TabControl();
          this.tabPage1 = new System.Windows.Forms.TabPage();
          this.tabPageDeviceCP2 = new System.Windows.Forms.TabPage();
-         this.label6 = new System.Windows.Forms.Label();
          this.groupBoxEvent.SuspendLayout();
          this.groupBoxTestLed.SuspendLayout();
          this.groupBoxDescription.SuspendLayout();
@@ -348,6 +348,16 @@
          this.groupBox2.TabStop = false;
          this.groupBox2.Text = "Devcie";
          // 
+         // label6
+         // 
+         this.label6.AutoSize = true;
+         this.label6.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+         this.label6.Location = new System.Drawing.Point(14, 232);
+         this.label6.Name = "label6";
+         this.label6.Size = new System.Drawing.Size(97, 13);
+         this.label6.TabIndex = 1;
+         this.label6.Text = "Click to select LED";
+         // 
          // tabControl1
          // 
          this.tabControl1.Controls.Add(this.tabPage1);
@@ -384,16 +394,6 @@
          this.tabPageDeviceCP2.UseVisualStyleBackColor = true;
          this.tabPageDeviceCP2.Click += new System.EventHandler(this.tabPageDeviceCP2_Click);
          // 
-         // label6
-         // 
-         this.label6.AutoSize = true;
-         this.label6.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-         this.label6.Location = new System.Drawing.Point(14, 232);
-         this.label6.Name = "label6";
-         this.label6.Size = new System.Drawing.Size(97, 13);
-         this.label6.TabIndex = 1;
-         this.label6.Text = "Click to select LED";
-         // 
          // QuickAddDialog
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,6 +410,7 @@
          this.Controls.Add(this.groupBoxEvent);
          this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
          this.Name = "QuickAddDialog";
+         this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
          this.Text = "Add Profile Event";
          this.TopMost = true;
          this.Load += new System.EventHandler(this.QickAddDialog_Load);
