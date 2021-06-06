@@ -35,9 +35,12 @@ namespace VLEDCONTROL
 {
    public class Receiver : Loggable
    {
-      public volatile bool IsRunning = false;
+      public volatile bool _IsRunning = false;
 
-      private UdpClient Client;
+      public bool IsRunning { get { return _IsRunning; } set { _IsRunning = value; } }
+
+
+   private UdpClient Client;
       private volatile bool StopRequest;
       private readonly List<DataHandler> handler;
 

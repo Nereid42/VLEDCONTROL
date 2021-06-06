@@ -406,6 +406,13 @@ namespace VLEDCONTROL
             {
                if (IsLoggable(LEVEL.TRACE)) LogTrace("main loop cycle " + Cycle);
 
+               // Check if receiver is running
+               if(!Receiver.IsRunning)
+               {
+                  LogError("Receiver is not running anymore! Enigne stopped.");
+                  break;
+               }
+
                // Update UI
                if (Controller != null)
                {
