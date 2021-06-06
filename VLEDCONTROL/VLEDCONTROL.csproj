@@ -206,6 +206,22 @@ set /p build=&lt;..\..\..\build\build.txt
 set /a build=%25build%25+1
 echo %25build%25 &gt;..\..\..\build\build.txt
 type ..\..\..\build\version.txt &gt;version
-echo -%25build%25 &gt;&gt;version</PostBuildEvent>
+echo -%25build%25 &gt;&gt;version
+
+if not exist ..\VLEDCONTROL  mkdir ..\VLEDCONTROL
+if not exist ..\VLEDCONTROL-TEST mkdir ..\VLEDCONTROL-TEST
+
+del /Q ..\VLEDCONTROL\*
+xcopy /Y/S ..\Debug ..\VLEDCONTROL
+
+del ..\VLEDCONTROL\*.log
+del ..\VLEDCONTROL\*.profile
+del ..\VLEDCONTROL\*.ini
+del ..\VLEDCONTROL\*.zip
+copy /Y ..\..\..\Files\*.profile ..\VLEDCONTROL
+
+del /Q ..\VLEDCONTROL-TEST\*
+xcopy /Y/S ..\VLEDCONTROL ..\VLEDCONTROL-TEST
+</PostBuildEvent>
   </PropertyGroup>
 </Project>
