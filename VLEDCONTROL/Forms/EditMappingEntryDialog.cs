@@ -90,10 +90,12 @@ namespace VLEDCONTROL
 
       private void textBoxEventId_TextChanged(object sender, EventArgs e)
       {
+         string nameOk = (MappingEntry != null) ? MappingEntry.Name : "";
          int idOk = (MappingEntry != null) ? MappingEntry.Id : -1;
          String name = textBoxName.Text;
          int id = Tools.ToInt(textBoxEventId.Text);
-         if ((id == idOk && VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, name)) || VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, id) )
+         if ( (id != idOk && VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, id)) 
+         ||   (name != nameOk && VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, name)) )
          {
             buttonOk.Enabled = false;
          }
@@ -106,9 +108,11 @@ namespace VLEDCONTROL
       private void textBoxName_TextChanged(object sender, EventArgs e)
       {
          string nameOk = (MappingEntry != null) ? MappingEntry.Name : "";
+         int idOk = (MappingEntry != null) ? MappingEntry.Id : -1;
          String name = textBoxName.Text;
          int id = Tools.ToInt(textBoxEventId.Text);
-         if ((name == nameOk && VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, name)) || VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, id))
+         if ((id != idOk && VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, id))
+         || (name != nameOk && VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, name)) )
          {
             buttonOk.Enabled = false;
          }
