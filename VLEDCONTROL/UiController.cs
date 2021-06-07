@@ -270,6 +270,12 @@ namespace VLEDCONTROL
          }
       }
 
+      internal void SetAutostartEndabled(bool enabled)
+      {
+         DisplayedSettings.AutostartEnabled = enabled;
+         SetSettingsModified(true);
+      }
+
       internal void ImportMappingFromProfile()
       {
          using (OpenFileDialog chooser = new OpenFileDialog())
@@ -328,6 +334,7 @@ namespace VLEDCONTROL
          // Checkboxes
          SetCheckBoxChecked(MainWindow.checkBoxEnableStatistics, settings.StatisticsEnabled);
          SetCheckBoxChecked(MainWindow.checkBoxLiveDataEnabled, settings.LiveDataEnabled);
+         SetCheckBoxChecked(MainWindow.checkBoxAutostartEnabled, settings.AutostartEnabled);
 
          // Buttons
          SetSettingsModified(modified);
@@ -349,6 +356,7 @@ namespace VLEDCONTROL
          try
          {
             DisplayedSettings.UpdateInterval = double.Parse(interval);
+            SetSettingsModified(true);
          }
          catch { /* nothing */  }
          SetTextBoxText(MainWindow.textBoxSettingsUpdateInterval, interval.ToString(), false);
@@ -369,6 +377,7 @@ namespace VLEDCONTROL
          try
          {
             DisplayedSettings.FlashingCycles = int.Parse(cycles);
+            SetSettingsModified(true);
          }
          catch { /* nothing */  }
          SetTextBoxText(MainWindow.textBoxSettingsFlashingCycles, cycles.ToString(), false);
@@ -389,6 +398,7 @@ namespace VLEDCONTROL
          try
          {
             DisplayedSettings.DataInterval = double.Parse(interval);
+            SetSettingsModified(true);
          }
          catch { /* nothing */  }
          SetTextBoxText(MainWindow.textBoxSettingsDataInterval, interval.ToString(), false);
@@ -400,6 +410,7 @@ namespace VLEDCONTROL
          SettingsUpdating = true;
          this.DisplayedSettings.StatisticsEnabled = enabled;
          MainWindow.checkBoxEnableStatistics.Checked = enabled;
+         SetSettingsModified(true);
          SettingsUpdating = false;
       }
 
@@ -934,7 +945,7 @@ namespace VLEDCONTROL
          SetSettingsModified(modified);
       }
 
-      public void SetSettingsModified(bool modified)
+      private void SetSettingsModified(bool modified)
       {
          SetControlEnabled(MainWindow.buttonSettingsSave, modified);
          SetControlEnabled(MainWindow.buttonSettingsCancel, modified);

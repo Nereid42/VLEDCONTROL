@@ -97,6 +97,8 @@
          this.columnHeaderColorFlashing = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabPageMapping = new System.Windows.Forms.TabPage();
+         this.labelMappingNumberOfAircrafts = new System.Windows.Forms.Label();
+         this.labelMappingNumberOfMappings = new System.Windows.Forms.Label();
          this.buttonImportFromProfile = new System.Windows.Forms.Button();
          this.groupBoxFilterMapping = new System.Windows.Forms.GroupBox();
          this.label7 = new System.Windows.Forms.Label();
@@ -129,8 +131,7 @@
          this.labelLogLevel = new System.Windows.Forms.Label();
          this.checkBox3 = new System.Windows.Forms.CheckBox();
          this.checkBox2 = new System.Windows.Forms.CheckBox();
-         this.checkBox1 = new System.Windows.Forms.CheckBox();
-         this.checkBoxAutostart = new System.Windows.Forms.CheckBox();
+         this.checkBoxAutostartEnabled = new System.Windows.Forms.CheckBox();
          this.labelSettingsDescriptionFlashingCycles = new System.Windows.Forms.Label();
          this.textBoxSettingsFlashingCycles = new System.Windows.Forms.TextBox();
          this.labelSettings = new System.Windows.Forms.Label();
@@ -175,8 +176,6 @@
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
          this.buttonMainResetLeds = new System.Windows.Forms.Button();
-         this.labelMappingNumberOfMappings = new System.Windows.Forms.Label();
-         this.labelMappingNumberOfAircrafts = new System.Windows.Forms.Label();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -872,6 +871,22 @@
          this.tabPageMapping.Text = "Mapping";
          this.tabPageMapping.UseVisualStyleBackColor = true;
          // 
+         // labelMappingNumberOfAircrafts
+         // 
+         this.labelMappingNumberOfAircrafts.Location = new System.Drawing.Point(552, 544);
+         this.labelMappingNumberOfAircrafts.Name = "labelMappingNumberOfAircrafts";
+         this.labelMappingNumberOfAircrafts.Size = new System.Drawing.Size(250, 14);
+         this.labelMappingNumberOfAircrafts.TabIndex = 16;
+         this.labelMappingNumberOfAircrafts.Text = "0 Aircrafts";
+         // 
+         // labelMappingNumberOfMappings
+         // 
+         this.labelMappingNumberOfMappings.Location = new System.Drawing.Point(552, 520);
+         this.labelMappingNumberOfMappings.Name = "labelMappingNumberOfMappings";
+         this.labelMappingNumberOfMappings.Size = new System.Drawing.Size(250, 14);
+         this.labelMappingNumberOfMappings.TabIndex = 15;
+         this.labelMappingNumberOfMappings.Text = "0 Mappings";
+         // 
          // buttonImportFromProfile
          // 
          this.buttonImportFromProfile.Location = new System.Drawing.Point(555, 163);
@@ -1156,8 +1171,7 @@
          this.groupBox1.Controls.Add(this.labelLogLevel);
          this.groupBox1.Controls.Add(this.checkBox3);
          this.groupBox1.Controls.Add(this.checkBox2);
-         this.groupBox1.Controls.Add(this.checkBox1);
-         this.groupBox1.Controls.Add(this.checkBoxAutostart);
+         this.groupBox1.Controls.Add(this.checkBoxAutostartEnabled);
          this.groupBox1.Location = new System.Drawing.Point(563, 36);
          this.groupBox1.Name = "groupBox1";
          this.groupBox1.Size = new System.Drawing.Size(414, 365);
@@ -1170,7 +1184,7 @@
          this.checkBoxEnableStatistics.AutoSize = true;
          this.checkBoxEnableStatistics.Checked = true;
          this.checkBoxEnableStatistics.CheckState = System.Windows.Forms.CheckState.Checked;
-         this.checkBoxEnableStatistics.Location = new System.Drawing.Point(6, 110);
+         this.checkBoxEnableStatistics.Location = new System.Drawing.Point(6, 87);
          this.checkBoxEnableStatistics.Name = "checkBoxEnableStatistics";
          this.checkBoxEnableStatistics.Size = new System.Drawing.Size(104, 17);
          this.checkBoxEnableStatistics.TabIndex = 28;
@@ -1207,7 +1221,7 @@
          // 
          this.checkBox3.AutoSize = true;
          this.checkBox3.Enabled = false;
-         this.checkBox3.Location = new System.Drawing.Point(6, 65);
+         this.checkBox3.Location = new System.Drawing.Point(6, 42);
          this.checkBox3.Name = "checkBox3";
          this.checkBox3.Size = new System.Drawing.Size(187, 17);
          this.checkBox3.TabIndex = 25;
@@ -1218,7 +1232,7 @@
          // 
          this.checkBox2.AutoSize = true;
          this.checkBox2.Enabled = false;
-         this.checkBox2.Location = new System.Drawing.Point(6, 88);
+         this.checkBox2.Location = new System.Drawing.Point(6, 65);
          this.checkBox2.Name = "checkBox2";
          this.checkBox2.Size = new System.Drawing.Size(204, 17);
          this.checkBox2.TabIndex = 24;
@@ -1226,30 +1240,18 @@
          this.checkBox2.UseVisualStyleBackColor = true;
          this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
          // 
-         // checkBox1
+         // checkBoxAutostartEnabled
          // 
-         this.checkBox1.AutoSize = true;
-         this.checkBox1.Enabled = false;
-         this.checkBox1.Location = new System.Drawing.Point(6, 42);
-         this.checkBox1.Name = "checkBox1";
-         this.checkBox1.Size = new System.Drawing.Size(94, 17);
-         this.checkBox1.TabIndex = 23;
-         this.checkBox1.Text = "Query on Start";
-         this.checkBox1.UseVisualStyleBackColor = true;
-         // 
-         // checkBoxAutostart
-         // 
-         this.checkBoxAutostart.AutoSize = true;
-         this.checkBoxAutostart.Checked = true;
-         this.checkBoxAutostart.CheckState = System.Windows.Forms.CheckState.Checked;
-         this.checkBoxAutostart.Enabled = false;
-         this.checkBoxAutostart.Location = new System.Drawing.Point(6, 19);
-         this.checkBoxAutostart.Name = "checkBoxAutostart";
-         this.checkBoxAutostart.Size = new System.Drawing.Size(113, 17);
-         this.checkBoxAutostart.TabIndex = 22;
-         this.checkBoxAutostart.Text = "Start Automatically";
-         this.checkBoxAutostart.UseVisualStyleBackColor = true;
-         this.checkBoxAutostart.CheckedChanged += new System.EventHandler(this.checkBoxAutostart_CheckedChanged);
+         this.checkBoxAutostartEnabled.AutoSize = true;
+         this.checkBoxAutostartEnabled.Checked = true;
+         this.checkBoxAutostartEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
+         this.checkBoxAutostartEnabled.Location = new System.Drawing.Point(6, 19);
+         this.checkBoxAutostartEnabled.Name = "checkBoxAutostartEnabled";
+         this.checkBoxAutostartEnabled.Size = new System.Drawing.Size(113, 17);
+         this.checkBoxAutostartEnabled.TabIndex = 22;
+         this.checkBoxAutostartEnabled.Text = "Start Automatically";
+         this.checkBoxAutostartEnabled.UseVisualStyleBackColor = true;
+         this.checkBoxAutostartEnabled.CheckedChanged += new System.EventHandler(this.checkBoxAutostart_CheckedChanged);
          // 
          // labelSettingsDescriptionFlashingCycles
          // 
@@ -1657,22 +1659,6 @@
          this.buttonMainResetLeds.UseVisualStyleBackColor = true;
          this.buttonMainResetLeds.Click += new System.EventHandler(this.buttonMainResetLed_Click_4);
          // 
-         // labelMappingNumberOfMappings
-         // 
-         this.labelMappingNumberOfMappings.Location = new System.Drawing.Point(552, 520);
-         this.labelMappingNumberOfMappings.Name = "labelMappingNumberOfMappings";
-         this.labelMappingNumberOfMappings.Size = new System.Drawing.Size(250, 14);
-         this.labelMappingNumberOfMappings.TabIndex = 15;
-         this.labelMappingNumberOfMappings.Text = "0 Mappings";
-         // 
-         // labelMappingNumberOfAircrafts
-         // 
-         this.labelMappingNumberOfAircrafts.Location = new System.Drawing.Point(552, 544);
-         this.labelMappingNumberOfAircrafts.Name = "labelMappingNumberOfAircrafts";
-         this.labelMappingNumberOfAircrafts.Size = new System.Drawing.Size(250, 14);
-         this.labelMappingNumberOfAircrafts.TabIndex = 16;
-         this.labelMappingNumberOfAircrafts.Text = "0 Aircrafts";
-         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1820,14 +1806,13 @@
       internal System.Windows.Forms.ListView listViewProfileEvents;
       internal System.Windows.Forms.TextBox textBoxProfileName;
       private System.Windows.Forms.GroupBox groupBox1;
-      internal System.Windows.Forms.CheckBox checkBoxAutostart;
+      internal System.Windows.Forms.CheckBox checkBoxAutostartEnabled;
       private System.Windows.Forms.OpenFileDialog openFileDialog1;
       private System.Windows.Forms.OpenFileDialog openFileDialog2;
       private System.Windows.Forms.OpenFileDialog openFileDialog3;
       private System.Windows.Forms.GroupBox groupBox2;
       private System.Windows.Forms.Label labelNumberLedChanges;
       internal System.Windows.Forms.CheckBox checkBox2;
-      internal System.Windows.Forms.CheckBox checkBox1;
       private System.Windows.Forms.Label labelMappingProfileName;
       internal System.Windows.Forms.TextBox textBoxMappingProfileName;
       private System.Windows.Forms.Label labelTimeUsedLedCalc;

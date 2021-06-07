@@ -207,9 +207,12 @@ namespace VLEDCONTROL
             VLED.MainWindow.FormClosing += VLED.WindowClosing;
 
             // ======== Starting Main Engine ======== 
-            LogInfo("Starting engine");
             VLED.Engine.SetUiController(VLED.MainWindow.Controller);
-            VLED.Engine.Start();
+            if(VLED.Engine.CurrentSettings.AutostartEnabled)
+            {
+               LogInfo("Starting engine");
+               VLED.Engine.Start();
+            }
 
             // ======== Show Main Window ======== 
             LogInfo("Opening main window");

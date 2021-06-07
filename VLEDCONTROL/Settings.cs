@@ -38,6 +38,7 @@ namespace VLEDCONTROL
 
       private const Loggable.LEVEL DEFAULT_LOGLEVEL = Loggable.LEVEL.INFO;
 
+      private volatile bool _AutostartEnabled = true;
       private volatile bool _StatisticsEnabled = true;
       private volatile bool _LiveDataEnabled = true;
       private volatile List<VirpilDevice> _Devices = new List<VirpilDevice>();
@@ -57,6 +58,7 @@ namespace VLEDCONTROL
       public Loggable.LEVEL LogLevel { get { return _LogLevel; } set { _LogLevel = value; } }
       public bool StatisticsEnabled { get { return _StatisticsEnabled; } set { _StatisticsEnabled = value; } } 
       public bool LiveDataEnabled { get { return _LiveDataEnabled; } set { _LiveDataEnabled = value; } }
+      public bool AutostartEnabled { get { return _AutostartEnabled; } set { _AutostartEnabled = value; } }
 
       public static bool FileExists()
       {
@@ -87,6 +89,7 @@ namespace VLEDCONTROL
             this.StatisticsEnabled = settings.StatisticsEnabled;
             this.FlashingCycles = settings.FlashingCycles;
             this.LiveDataEnabled = settings.LiveDataEnabled;
+            this.AutostartEnabled = settings.AutostartEnabled;
          }
       }
 

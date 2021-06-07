@@ -79,6 +79,9 @@ namespace VLEDCONTROL
             VLED.ShowVpcLedControlSetupDialog();
          }
          UpdateMappingStatistics();
+
+         // status of engine
+         Controller.SetEngineStarted(VLED.Engine.IsRunning);
       }
 
       public void UpdateMappingStatistics()
@@ -276,7 +279,10 @@ namespace VLEDCONTROL
 
       private void checkBoxAutostart_CheckedChanged(object sender, EventArgs e)
       {
-
+         if (!Controller.SettingsUpdating)
+         {
+            Controller.SetAutostartEndabled(checkBoxAutostartEnabled.Checked);
+         }
       }
 
       private void label2_Click_1(object sender, EventArgs e)
@@ -413,7 +419,6 @@ namespace VLEDCONTROL
          if(!Controller.SettingsUpdating)
          {
             Controller.SetUpdateInterval(textBoxSettingsUpdateInterval.Text);
-            Controller.SetSettingsModified(true);
          }
       }
 
@@ -422,7 +427,6 @@ namespace VLEDCONTROL
          if (!Controller.SettingsUpdating)
          {
             Controller.SetFlashingCycles(textBoxSettingsFlashingCycles.Text);
-            Controller.SetSettingsModified(true);
          }
       }
 
@@ -431,7 +435,6 @@ namespace VLEDCONTROL
          if (!Controller.SettingsUpdating)
          {
             Controller.SetDataInterval(textBoxSettingsDataInterval.Text);
-            Controller.SetSettingsModified(true);
          }
       }
 
@@ -595,7 +598,6 @@ namespace VLEDCONTROL
       private void checkBoxEnableStatistics_CheckedChanged(object sender, EventArgs e)
       {
          Controller.SetStatisticsEnabled(this.checkBoxEnableStatistics.Checked);
-         Controller.SetSettingsModified(true);
       }
 
       private void checkBoxLiveDataEnabled_CheckedChanged(object sender, EventArgs e)

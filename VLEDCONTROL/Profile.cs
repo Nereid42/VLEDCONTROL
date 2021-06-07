@@ -83,7 +83,7 @@ namespace VLEDCONTROL
                   }
                   eventsForAircraft.Add(entry.Name);
                }
-               catch(Exception e)
+               catch(Exception)
                {
                   LogError("Failed add mapping entry "+entry);
                }
