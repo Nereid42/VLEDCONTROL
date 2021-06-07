@@ -91,8 +91,10 @@ namespace VLEDCONTROL
       private void textBoxEventId_TextChanged(object sender, EventArgs e)
       {
          int idOk = (MappingEntry != null) ? MappingEntry.Id : -1;
+         String name = textBoxName.Text;
          int id = Tools.ToInt(textBoxEventId.Text);
-         if ( id != idOk && VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, id) )
+         Loggable.LogUrgend("idOK0"+idOk+", id="+id);
+         if ((id == idOk && VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, name)) || VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, id) )
          {
             buttonOk.Enabled = false;
          }
@@ -106,7 +108,8 @@ namespace VLEDCONTROL
       {
          string nameOk = (MappingEntry != null) ? MappingEntry.Name : "";
          String name = textBoxName.Text;
-         if (name != nameOk && VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, name) )
+         int id = Tools.ToInt(textBoxEventId.Text);
+         if ((name == nameOk && VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, name)) || VLED.Engine.CurrentProfile.ContainsMapping(comboBoxAircraft.Text, id))
          {
             buttonOk.Enabled = false;
          }
