@@ -175,6 +175,8 @@
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
          this.buttonMainResetLeds = new System.Windows.Forms.Button();
+         this.labelMappingNumberOfMappings = new System.Windows.Forms.Label();
+         this.labelMappingNumberOfAircrafts = new System.Windows.Forms.Label();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -851,6 +853,8 @@
          // 
          // tabPageMapping
          // 
+         this.tabPageMapping.Controls.Add(this.labelMappingNumberOfAircrafts);
+         this.tabPageMapping.Controls.Add(this.labelMappingNumberOfMappings);
          this.tabPageMapping.Controls.Add(this.buttonImportFromProfile);
          this.tabPageMapping.Controls.Add(this.groupBoxFilterMapping);
          this.tabPageMapping.Controls.Add(this.buttonMappingEdit);
@@ -1653,6 +1657,22 @@
          this.buttonMainResetLeds.UseVisualStyleBackColor = true;
          this.buttonMainResetLeds.Click += new System.EventHandler(this.buttonMainResetLed_Click_4);
          // 
+         // labelMappingNumberOfMappings
+         // 
+         this.labelMappingNumberOfMappings.Location = new System.Drawing.Point(552, 520);
+         this.labelMappingNumberOfMappings.Name = "labelMappingNumberOfMappings";
+         this.labelMappingNumberOfMappings.Size = new System.Drawing.Size(250, 14);
+         this.labelMappingNumberOfMappings.TabIndex = 15;
+         this.labelMappingNumberOfMappings.Text = "0 Mappings";
+         // 
+         // labelMappingNumberOfAircrafts
+         // 
+         this.labelMappingNumberOfAircrafts.Location = new System.Drawing.Point(552, 544);
+         this.labelMappingNumberOfAircrafts.Name = "labelMappingNumberOfAircrafts";
+         this.labelMappingNumberOfAircrafts.Size = new System.Drawing.Size(250, 14);
+         this.labelMappingNumberOfAircrafts.TabIndex = 16;
+         this.labelMappingNumberOfAircrafts.Text = "0 Aircrafts";
+         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1857,6 +1877,8 @@
       private System.Windows.Forms.Button buttonQuickAdd;
       private System.Windows.Forms.Button buttonMainResetLeds;
       internal System.Windows.Forms.CheckBox checkBoxData10Only;
+      private System.Windows.Forms.Label labelMappingNumberOfAircrafts;
+      private System.Windows.Forms.Label labelMappingNumberOfMappings;
    }
 }
 

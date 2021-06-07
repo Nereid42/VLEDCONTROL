@@ -78,7 +78,13 @@ namespace VLEDCONTROL
          {
             VLED.ShowVpcLedControlSetupDialog();
          }
+         UpdateMappingStatistics();
+      }
 
+      public void UpdateMappingStatistics()
+      {
+         labelMappingNumberOfMappings.Text = VLED.Engine.CurrentProfile.MappingEntries.Count + " Mappings";
+         labelMappingNumberOfAircrafts.Text = VLED.Engine.CurrentProfile.GetAircraftList().Count + " Aircrafts";
       }
 
       private void listViewProfileEvents_SelectedIndexChanged(object sender, EventArgs e)
@@ -135,6 +141,7 @@ namespace VLEDCONTROL
       private void buttonMainLoadProfile_Click(object sender, EventArgs e)
       {
          Controller.LoadProfile();
+         UpdateMappingStatistics();
       }
 
       private void buttonMainSetLed_Click(object sender, EventArgs e)
@@ -180,6 +187,7 @@ namespace VLEDCONTROL
       private void MenuItemLoadProfile_Click(object sender, EventArgs e)
       {
          Controller.LoadProfile();
+         UpdateMappingStatistics();
       }
 
       private void listViewData_SelectedIndexChanged(object sender, EventArgs e)
@@ -497,6 +505,7 @@ namespace VLEDCONTROL
       private void buttonMappingAdd_Click(object sender, EventArgs e)
       {
          Controller.AddNewMapping();
+         UpdateMappingStatistics();
       }
 
       private void buttonMappingRemove_Click(object sender, EventArgs e)
@@ -505,6 +514,7 @@ namespace VLEDCONTROL
          int index = this.listViewMapping.SelectedIndices[0];
 
          Controller.RemoveMapping(index);
+         UpdateMappingStatistics();
       }
 
       private void buttonMappingEdit_Click(object sender, EventArgs e)
@@ -573,6 +583,7 @@ namespace VLEDCONTROL
          {
             VLED.Engine.CurrentProfile.ClearProfileEvents();
             this.listViewProfileEvents.Items.Clear();
+            UpdateMappingStatistics();
          }
       }
 
@@ -621,6 +632,7 @@ namespace VLEDCONTROL
       private void buttonImportFromProfile_Click(object sender, EventArgs e)
       {
          Controller.ImportMappingFromProfile();
+         UpdateMappingStatistics();
       }
 
       private void checkBoxDataShowUnknown_CheckedChanged(object sender, EventArgs e)
