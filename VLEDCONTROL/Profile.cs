@@ -59,28 +59,44 @@ namespace VLEDCONTROL
 
       public static Profile Load(String filename)
       {
-         LogDebug("loading profile "+filename);
-         String json = File.ReadAllText(filename);
-         Profile profile = JsonSerializer.Deserialize<Profile>(json);
-
-         foreach(MappingEntry entry in profile.MappingEntries)
+         LogDebug("Loading profile "+filename);
+         try
          {
-            LogDebug("adding entry "+entry);
-            Tuple<String, int> mapid = new Tuple<String, int>(entry.Aircraft, entry.Id);
-            profile.MapNameEntries.Add(mapid, entry);
-            Tuple<String, String> nameid = new Tuple<String, String>(entry.Aircraft, entry.Name);
-            profile.MapNameEventId.Add(nameid,entry);
-            // Setup Aircraft-Events Map
-            List<String> eventsForAircraft;
-            if (! profile.MapAircraftEvents.TryGetValue(entry.Aircraft, out eventsForAircraft))
-            {
-               eventsForAircraft = new List<String>();
-               profile.MapAircraftEvents.Add(entry.Aircraft, eventsForAircraft);
-            }
-            eventsForAircraft.Add(entry.Name);
-         }
+            String json = File.ReadAllText(filename);
+            Profile profile = JsonSerializer.Deserialize<Profile>(json);
 
-         return profile;
+            foreach (MappingEntry entry in profile.MappingEntries)
+            {
+               try
+               {
+                  LogDebug("Adding entry " + entry);
+                  Tuple<String, int> mapid = new Tuple<String, int>(entry.Aircraft, entry.Id);
+                  profile.MapNameEntries.Add(mapid, entry);
+                  Tuple<String, String> nameid = new Tuple<String, String>(entry.Aircraft, entry.Name);
+                  profile.MapNameEventId.Add(nameid, entry);
+                  // Setup Aircraft-Events Map
+                  List<String> eventsForAircraft;
+                  if (!profile.MapAircraftEvents.TryGetValue(entry.Aircraft, out eventsForAircraft))
+                  {
+                     eventsForAircraft = new List<String>();
+                     profile.MapAircraftEvents.Add(entry.Aircraft, eventsForAircraft);
+                  }
+                  eventsForAircraft.Add(entry.Name);
+               }
+               catch(Exception e)
+               {
+                  LogError("Failed add mapping entry "+entry);
+               }
+            }
+
+            return profile;
+         }
+         catch(Exception e)
+         {
+            LogError("Failed to load profile from '" + filename + "'");
+            LogException(e);
+            throw e;
+         }
       }
 
       public void Save()
@@ -233,13 +249,25 @@ namespace VLEDCONTROL
 
       internal void ImportMapping(Profile profile)
       {
+         LogInfo("Importing mapping entries from prfile '"+profile.Name+"'");
          foreach (MappingEntry entry in profile.MappingEntries)
          {
-            if(ContainsMapping(entry.Aircraft,entry.Id))
+            try
             {
-               RemoveMapping(entry.Aircraft, entry.Id);
+               LogDebug("Importing mapping entry "+entry);
+               if (ContainsMapping(entry.Aircraft, entry.Id))
+               {
+                  LogDebug("Mapping entry is to be replaced");
+                  RemoveMapping(entry.Aircraft, entry.Id);
+               }
+               AddMapping(entry);
             }
-            AddMapping(entry);
+            catch(Exception e)
+            {
+               LogError("failed to import mapping entry "+entry);
+               LogException(e);
+               throw e;
+            }
          }
       }
 
