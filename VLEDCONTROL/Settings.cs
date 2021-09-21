@@ -32,7 +32,6 @@ namespace VLEDCONTROL
       private volatile bool _StatisticsEnabled = true;
       private volatile bool _LiveDataEnabled = true;
       private volatile List<VirpilDevice> _Devices = new List<VirpilDevice>();
-      private volatile String _VirpilLedControl = "";
       private volatile String _DefaultProfile = "Default.profile";
       private volatile int _FlashingCycles = 2;
       private volatile Loggable.LEVEL _LogLevel = DEFAULT_LOGLEVEL;
@@ -40,7 +39,6 @@ namespace VLEDCONTROL
       public volatile float _DataInterval = 0.3f;
 
       public List<VirpilDevice> Devices { get { return _Devices; } set { _Devices = value; } }
-      public String VirpilLedControl { get { return _VirpilLedControl; } set { _VirpilLedControl = value; } }
       public String DefaultProfile { get { return _DefaultProfile; } set { _DefaultProfile = value; } }
       public double UpdateInterval { get { return _UpdateInterval; } set { _UpdateInterval = (float)value; } }
       public double DataInterval { get { return _DataInterval; } set { _DataInterval = (float)value; } }
@@ -71,7 +69,6 @@ namespace VLEDCONTROL
             {
                Devices.Add(device);
             }
-            this.VirpilLedControl = settings.VirpilLedControl;
             this.DefaultProfile = settings.DefaultProfile;
             this.UpdateInterval = settings.UpdateInterval;
             this.DataInterval = settings.DataInterval;

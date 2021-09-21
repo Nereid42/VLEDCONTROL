@@ -210,6 +210,13 @@ namespace VLEDCONTROL
          return Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
       }
 
+      internal static int LedIndexToLednr(int index)
+      {
+         if (index < 4) return index;
+         if (index < 25) return index - 4;
+         return index-24;
+      }
+
       public static System.Drawing.Color GetBestForegroundColor(System.Drawing.Color background)
       {
          int sum = background.R + background.G + background.B;

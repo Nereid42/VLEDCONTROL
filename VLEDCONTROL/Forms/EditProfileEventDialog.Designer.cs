@@ -52,8 +52,6 @@
          this.buttonCancel = new System.Windows.Forms.Button();
          this.groupBoxTestLed = new System.Windows.Forms.GroupBox();
          this.buttonSetDefault = new System.Windows.Forms.Button();
-         this.label6 = new System.Windows.Forms.Label();
-         this.textBoxCommand = new System.Windows.Forms.TextBox();
          this.buttonTestColor2 = new System.Windows.Forms.Button();
          this.buttonTestColor1 = new System.Windows.Forms.Button();
          this.groupBoxDescription = new System.Windows.Forms.GroupBox();
@@ -347,8 +345,6 @@
          // 
          this.groupBoxTestLed.BackColor = System.Drawing.SystemColors.ControlLight;
          this.groupBoxTestLed.Controls.Add(this.buttonSetDefault);
-         this.groupBoxTestLed.Controls.Add(this.label6);
-         this.groupBoxTestLed.Controls.Add(this.textBoxCommand);
          this.groupBoxTestLed.Controls.Add(this.buttonTestColor2);
          this.groupBoxTestLed.Controls.Add(this.buttonTestColor1);
          this.groupBoxTestLed.Location = new System.Drawing.Point(351, 13);
@@ -370,25 +366,6 @@
          this.buttonSetDefault.Text = "Set Default";
          this.buttonSetDefault.UseVisualStyleBackColor = false;
          this.buttonSetDefault.Click += new System.EventHandler(this.buttonSetDefault_Click);
-         // 
-         // label6
-         // 
-         this.label6.AutoSize = true;
-         this.label6.Location = new System.Drawing.Point(5, 59);
-         this.label6.Name = "label6";
-         this.label6.Size = new System.Drawing.Size(54, 13);
-         this.label6.TabIndex = 3;
-         this.label6.Text = "Command";
-         this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-         // 
-         // textBoxCommand
-         // 
-         this.textBoxCommand.BackColor = System.Drawing.SystemColors.ScrollBar;
-         this.textBoxCommand.Location = new System.Drawing.Point(5, 75);
-         this.textBoxCommand.Name = "textBoxCommand";
-         this.textBoxCommand.Size = new System.Drawing.Size(288, 20);
-         this.textBoxCommand.TabIndex = 2;
-         this.textBoxCommand.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
          // 
          // buttonTestColor2
          // 
@@ -460,7 +437,6 @@
          this.groupBoxLed.ResumeLayout(false);
          this.groupBoxLed.PerformLayout();
          this.groupBoxTestLed.ResumeLayout(false);
-         this.groupBoxTestLed.PerformLayout();
          this.groupBoxDescription.ResumeLayout(false);
          this.groupBoxDescription.PerformLayout();
          this.ResumeLayout(false);
@@ -492,8 +468,6 @@
       private System.Windows.Forms.Button buttonCancel;
       private System.Windows.Forms.ComboBox comboBoxDeviceName;
       private System.Windows.Forms.GroupBox groupBoxTestLed;
-      private System.Windows.Forms.Label label6;
-      private System.Windows.Forms.TextBox textBoxCommand;
       private System.Windows.Forms.Button buttonTestColor2;
       private System.Windows.Forms.Button buttonTestColor1;
       private System.Windows.Forms.GroupBox groupBoxDescription;

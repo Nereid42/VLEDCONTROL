@@ -232,8 +232,8 @@ namespace VLEDCONTROL
             int deviceId = Tools.IndexOfSelectedComboBoxItem(comboBoxDeviceName);
             if (id >= 0 && deviceId >= 0 && deviceId < VLED.Engine.CurrentSettings.Devices.Count)
             {
-               VLED.Engine.HighlightLed(deviceId, id + 5, LedColor.WHITE);
-               Tools.SelectComboBoxItem(comboBoxLed, id + 5);
+               VLED.Engine.HighlightLed(deviceId, id+5, LedColor.WHITE);
+               Tools.SelectComboBoxItem(comboBoxLed, id+5 );
                ValidateInput();
             }
          }
@@ -267,14 +267,7 @@ namespace VLEDCONTROL
             {
                int led = Tools.IndexOfSelectedComboBoxItem(this.comboBoxLed);
 
-               String command = settings.VirpilLedControl;
-               String r = button.BackColor.R.ToString("X2");
-               String g = button.BackColor.G.ToString("X2");
-               String b = button.BackColor.B.ToString("X2");
-
-               String arguments = device.USB_VID + " " + device.USB_PID + " " + led + " " + r + " " + g + " " + b;
-
-               Tools.ExecuteCommand(command, arguments);
+               device.SendCommand(led, LedColor.FromSystemColor(button.BackColor));
             }
          }
       }

@@ -101,30 +101,6 @@ namespace VLEDCONTROL
          }
       }
 
-      public static void ShowVpcLedControlSetupDialog()
-      {
-         VpcLedControlSetupDialog dialog = new VpcLedControlSetupDialog();
-         while (VLED.Engine.CurrentSettings.VirpilLedControl == null || VLED.Engine.CurrentSettings.VirpilLedControl.Length == 0)
-         {
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-               VLED.Engine.CurrentSettings.VirpilLedControl = dialog.VpcLedControlExePath;
-               VLED.Engine.CurrentSettings.SaveAsync();
-               VLED.MainWindow.Controller.SetSettings(VLED.Engine.CurrentSettings);
-            }
-            if(VLED.Engine.CurrentSettings.VirpilLedControl == null || VLED.Engine.CurrentSettings.VirpilLedControl.Length == 0)
-            {
-               switch (MessageBox.Show("VPC_LED_COntrol.exe not found", "Setup incomplete", MessageBoxButtons.AbortRetryIgnore))
-               {
-                  case DialogResult.Abort:
-                     VLED.Exit();
-                     break;
-                  case DialogResult.Ignore:
-                     return;
-               }
-            }
-         }
-      }
 
       private static void InitLogging()
       {

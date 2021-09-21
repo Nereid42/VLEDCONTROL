@@ -297,7 +297,6 @@ namespace VLEDCONTROL
          SettingsUpdating = true;
          DisplayedSettings.CopySettings(settings);
 
-         SetTextBoxText(MainWindow.textBoxSettingsVirpilLedControl, settings.VirpilLedControl,false);
          SetTextBoxText(MainWindow.textBoxSettingsDefaultProfile, settings.DefaultProfile, false);
          // Intervals
          SetTextBoxText(MainWindow.textBoxSettingsDataInterval, settings.DataInterval.ToString("N2"), false);
@@ -552,8 +551,8 @@ namespace VLEDCONTROL
          if (dialog.ShowDialog() == DialogResult.OK)
          {
             device.Name = dialog.GetDeviceName();
-            device.USB_VID = dialog.GetUsbVid();
-            device.USB_PID = dialog.GetUsbPid();
+            device.SetVID( dialog.GetUsbVid() );
+            device.SetPID( dialog.GetUsbPid() );
             MainWindow.listViewSettingsDevices.BeginInvoke(
             new Action(() =>
             {
@@ -940,41 +939,6 @@ namespace VLEDCONTROL
          SetControlEnabled(MainWindow.buttonSettingsSave, modified);
          SetControlEnabled(MainWindow.buttonSettingsCancel, modified);
       }
-
-
-      public String ChooseVirpilLedControl()
-      {
-         using (OpenFileDialog chooser = new OpenFileDialog())
-         {
-            String path = VLED.Engine.CurrentSettings.VirpilLedControl;
-            if (path != null && path.Length > 0 && !path.EndsWith("/"))
-            {
-               int p = path.LastIndexOf('/');
-               if (p >= 0)
-               {
-                  path = path.Remove(p);
-               }
-            }
-            else
-            {
-               path = "C:/";
-            }
-
-            chooser.InitialDirectory = path.Replace('/', '\\');
-            chooser.Multiselect = false;
-            chooser.Filter = "exe files (*.exe)|*.exe";
-            chooser.FilterIndex = 1;
-            chooser.RestoreDirectory = true;
-            if (chooser.ShowDialog() == DialogResult.OK)
-            {
-               DisplayedSettings.VirpilLedControl = chooser.FileName;
-               SetSettingsModified(true);
-               return chooser.FileName;
-            }
-            return null;
-         }
-      }
-
 
 
       public String ChooseDefaultProfile()

@@ -38,7 +38,6 @@
          this.setupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.installExportScrriptsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.removeExportScriptsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.setLEDCOntrolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
          this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -155,9 +154,6 @@
          this.buttonChooseDefaultProfile = new System.Windows.Forms.Button();
          this.textBoxSettingsDefaultProfile = new System.Windows.Forms.TextBox();
          this.labelSettingsDefaultProfile = new System.Windows.Forms.Label();
-         this.buttonChooseVirpilLedControl = new System.Windows.Forms.Button();
-         this.textBoxSettingsVirpilLedControl = new System.Windows.Forms.TextBox();
-         this.labelSettingsVirpilLEDControl = new System.Windows.Forms.Label();
          this.buttonMainStart = new System.Windows.Forms.Button();
          this.buttonMainLoad = new System.Windows.Forms.Button();
          this.buttonMainSave = new System.Windows.Forms.Button();
@@ -239,8 +235,7 @@
          // 
          this.setupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.installExportScrriptsToolStripMenuItem,
-            this.removeExportScriptsToolStripMenuItem,
-            this.setLEDCOntrolToolStripMenuItem});
+            this.removeExportScriptsToolStripMenuItem});
          this.setupToolStripMenuItem.Name = "setupToolStripMenuItem";
          this.setupToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
          this.setupToolStripMenuItem.Text = "Setup";
@@ -248,23 +243,16 @@
          // installExportScrriptsToolStripMenuItem
          // 
          this.installExportScrriptsToolStripMenuItem.Name = "installExportScrriptsToolStripMenuItem";
-         this.installExportScrriptsToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+         this.installExportScrriptsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
          this.installExportScrriptsToolStripMenuItem.Text = "Install Export Scrripts";
          this.installExportScrriptsToolStripMenuItem.Click += new System.EventHandler(this.installExportScrriptsToolStripMenuItem_Click);
          // 
          // removeExportScriptsToolStripMenuItem
          // 
          this.removeExportScriptsToolStripMenuItem.Name = "removeExportScriptsToolStripMenuItem";
-         this.removeExportScriptsToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+         this.removeExportScriptsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
          this.removeExportScriptsToolStripMenuItem.Text = "Remove Export Scripts";
          this.removeExportScriptsToolStripMenuItem.Click += new System.EventHandler(this.removeExportScriptsToolStripMenuItem_Click);
-         // 
-         // setLEDCOntrolToolStripMenuItem
-         // 
-         this.setLEDCOntrolToolStripMenuItem.Name = "setLEDCOntrolToolStripMenuItem";
-         this.setLEDCOntrolToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-         this.setLEDCOntrolToolStripMenuItem.Text = "Set LED Control Command";
-         this.setLEDCOntrolToolStripMenuItem.Click += new System.EventHandler(this.setLEDCOntrolToolStripMenuItem_Click);
          // 
          // aboutToolStripMenuItem
          // 
@@ -1047,9 +1035,6 @@
          this.tabPageSettings.Controls.Add(this.buttonChooseDefaultProfile);
          this.tabPageSettings.Controls.Add(this.textBoxSettingsDefaultProfile);
          this.tabPageSettings.Controls.Add(this.labelSettingsDefaultProfile);
-         this.tabPageSettings.Controls.Add(this.buttonChooseVirpilLedControl);
-         this.tabPageSettings.Controls.Add(this.textBoxSettingsVirpilLedControl);
-         this.tabPageSettings.Controls.Add(this.labelSettingsVirpilLEDControl);
          this.tabPageSettings.Location = new System.Drawing.Point(4, 22);
          this.tabPageSettings.Name = "tabPageSettings";
          this.tabPageSettings.Padding = new System.Windows.Forms.Padding(3);
@@ -1257,7 +1242,7 @@
          // 
          this.labelSettingsDescriptionFlashingCycles.AutoSize = true;
          this.labelSettingsDescriptionFlashingCycles.ForeColor = System.Drawing.Color.DimGray;
-         this.labelSettingsDescriptionFlashingCycles.Location = new System.Drawing.Point(173, 147);
+         this.labelSettingsDescriptionFlashingCycles.Location = new System.Drawing.Point(173, 123);
          this.labelSettingsDescriptionFlashingCycles.Name = "labelSettingsDescriptionFlashingCycles";
          this.labelSettingsDescriptionFlashingCycles.Size = new System.Drawing.Size(162, 13);
          this.labelSettingsDescriptionFlashingCycles.TabIndex = 21;
@@ -1265,7 +1250,7 @@
          // 
          // textBoxSettingsFlashingCycles
          // 
-         this.textBoxSettingsFlashingCycles.Location = new System.Drawing.Point(114, 144);
+         this.textBoxSettingsFlashingCycles.Location = new System.Drawing.Point(114, 120);
          this.textBoxSettingsFlashingCycles.Name = "textBoxSettingsFlashingCycles";
          this.textBoxSettingsFlashingCycles.Size = new System.Drawing.Size(52, 20);
          this.textBoxSettingsFlashingCycles.TabIndex = 20;
@@ -1273,7 +1258,7 @@
          // 
          // labelSettings
          // 
-         this.labelSettings.Location = new System.Drawing.Point(8, 147);
+         this.labelSettings.Location = new System.Drawing.Point(8, 123);
          this.labelSettings.Name = "labelSettings";
          this.labelSettings.Size = new System.Drawing.Size(100, 13);
          this.labelSettings.TabIndex = 19;
@@ -1383,7 +1368,7 @@
          // 
          this.labelSettingsDescriptionUpdateInterval.AutoSize = true;
          this.labelSettingsDescriptionUpdateInterval.ForeColor = System.Drawing.Color.DimGray;
-         this.labelSettingsDescriptionUpdateInterval.Location = new System.Drawing.Point(173, 113);
+         this.labelSettingsDescriptionUpdateInterval.Location = new System.Drawing.Point(173, 89);
          this.labelSettingsDescriptionUpdateInterval.Name = "labelSettingsDescriptionUpdateInterval";
          this.labelSettingsDescriptionUpdateInterval.Size = new System.Drawing.Size(184, 13);
          this.labelSettingsDescriptionUpdateInterval.TabIndex = 11;
@@ -1394,7 +1379,7 @@
          // 
          this.labelSettingsDescriptionDataInterval.AutoSize = true;
          this.labelSettingsDescriptionDataInterval.ForeColor = System.Drawing.Color.DimGray;
-         this.labelSettingsDescriptionDataInterval.Location = new System.Drawing.Point(173, 181);
+         this.labelSettingsDescriptionDataInterval.Location = new System.Drawing.Point(173, 157);
          this.labelSettingsDescriptionDataInterval.Name = "labelSettingsDescriptionDataInterval";
          this.labelSettingsDescriptionDataInterval.Size = new System.Drawing.Size(181, 13);
          this.labelSettingsDescriptionDataInterval.TabIndex = 10;
@@ -1402,7 +1387,7 @@
          // 
          // textBoxSettingsDataInterval
          // 
-         this.textBoxSettingsDataInterval.Location = new System.Drawing.Point(114, 178);
+         this.textBoxSettingsDataInterval.Location = new System.Drawing.Point(114, 154);
          this.textBoxSettingsDataInterval.Name = "textBoxSettingsDataInterval";
          this.textBoxSettingsDataInterval.Size = new System.Drawing.Size(52, 20);
          this.textBoxSettingsDataInterval.TabIndex = 9;
@@ -1410,7 +1395,7 @@
          // 
          // labelSettingsDataInterval
          // 
-         this.labelSettingsDataInterval.Location = new System.Drawing.Point(8, 181);
+         this.labelSettingsDataInterval.Location = new System.Drawing.Point(8, 157);
          this.labelSettingsDataInterval.Name = "labelSettingsDataInterval";
          this.labelSettingsDataInterval.Size = new System.Drawing.Size(100, 13);
          this.labelSettingsDataInterval.TabIndex = 8;
@@ -1418,7 +1403,7 @@
          // 
          // textBoxSettingsUpdateInterval
          // 
-         this.textBoxSettingsUpdateInterval.Location = new System.Drawing.Point(114, 110);
+         this.textBoxSettingsUpdateInterval.Location = new System.Drawing.Point(114, 86);
          this.textBoxSettingsUpdateInterval.Name = "textBoxSettingsUpdateInterval";
          this.textBoxSettingsUpdateInterval.Size = new System.Drawing.Size(52, 20);
          this.textBoxSettingsUpdateInterval.TabIndex = 7;
@@ -1426,7 +1411,7 @@
          // 
          // labelSettingsUpdateInterval
          // 
-         this.labelSettingsUpdateInterval.Location = new System.Drawing.Point(8, 113);
+         this.labelSettingsUpdateInterval.Location = new System.Drawing.Point(8, 89);
          this.labelSettingsUpdateInterval.Name = "labelSettingsUpdateInterval";
          this.labelSettingsUpdateInterval.Size = new System.Drawing.Size(100, 13);
          this.labelSettingsUpdateInterval.TabIndex = 6;
@@ -1435,7 +1420,7 @@
          // 
          // buttonChooseDefaultProfile
          // 
-         this.buttonChooseDefaultProfile.Location = new System.Drawing.Point(481, 73);
+         this.buttonChooseDefaultProfile.Location = new System.Drawing.Point(481, 49);
          this.buttonChooseDefaultProfile.Name = "buttonChooseDefaultProfile";
          this.buttonChooseDefaultProfile.Size = new System.Drawing.Size(31, 22);
          this.buttonChooseDefaultProfile.TabIndex = 5;
@@ -1445,7 +1430,7 @@
          // 
          // textBoxSettingsDefaultProfile
          // 
-         this.textBoxSettingsDefaultProfile.Location = new System.Drawing.Point(114, 74);
+         this.textBoxSettingsDefaultProfile.Location = new System.Drawing.Point(114, 50);
          this.textBoxSettingsDefaultProfile.Name = "textBoxSettingsDefaultProfile";
          this.textBoxSettingsDefaultProfile.ReadOnly = true;
          this.textBoxSettingsDefaultProfile.Size = new System.Drawing.Size(361, 20);
@@ -1453,37 +1438,11 @@
          // 
          // labelSettingsDefaultProfile
          // 
-         this.labelSettingsDefaultProfile.Location = new System.Drawing.Point(8, 77);
+         this.labelSettingsDefaultProfile.Location = new System.Drawing.Point(8, 53);
          this.labelSettingsDefaultProfile.Name = "labelSettingsDefaultProfile";
          this.labelSettingsDefaultProfile.Size = new System.Drawing.Size(100, 13);
          this.labelSettingsDefaultProfile.TabIndex = 3;
          this.labelSettingsDefaultProfile.Text = "Default Profile:";
-         // 
-         // buttonChooseVirpilLedControl
-         // 
-         this.buttonChooseVirpilLedControl.Location = new System.Drawing.Point(481, 36);
-         this.buttonChooseVirpilLedControl.Name = "buttonChooseVirpilLedControl";
-         this.buttonChooseVirpilLedControl.Size = new System.Drawing.Size(31, 22);
-         this.buttonChooseVirpilLedControl.TabIndex = 2;
-         this.buttonChooseVirpilLedControl.Text = "...";
-         this.buttonChooseVirpilLedControl.UseVisualStyleBackColor = true;
-         this.buttonChooseVirpilLedControl.Click += new System.EventHandler(this.buttonChooseVirpilLedControl_Click);
-         // 
-         // textBoxSettingsVirpilLedControl
-         // 
-         this.textBoxSettingsVirpilLedControl.Location = new System.Drawing.Point(114, 37);
-         this.textBoxSettingsVirpilLedControl.Name = "textBoxSettingsVirpilLedControl";
-         this.textBoxSettingsVirpilLedControl.ReadOnly = true;
-         this.textBoxSettingsVirpilLedControl.Size = new System.Drawing.Size(361, 20);
-         this.textBoxSettingsVirpilLedControl.TabIndex = 1;
-         // 
-         // labelSettingsVirpilLEDControl
-         // 
-         this.labelSettingsVirpilLEDControl.Location = new System.Drawing.Point(8, 41);
-         this.labelSettingsVirpilLEDControl.Name = "labelSettingsVirpilLEDControl";
-         this.labelSettingsVirpilLEDControl.Size = new System.Drawing.Size(100, 13);
-         this.labelSettingsVirpilLEDControl.TabIndex = 0;
-         this.labelSettingsVirpilLEDControl.Text = "Virpil LED Control:";
          // 
          // buttonMainStart
          // 
@@ -1763,7 +1722,6 @@
       private System.Windows.Forms.ColumnHeader columnHeaderLastChange;
       private System.Windows.Forms.Label labelSettingsUpdateInterval;
       private System.Windows.Forms.Label labelSettingsDefaultProfile;
-      private System.Windows.Forms.Label labelSettingsVirpilLEDControl;
       private System.Windows.Forms.Label labelSettingsDescriptionUpdateInterval;
       private System.Windows.Forms.Label labelSettingsDescriptionDataInterval;
       private System.Windows.Forms.Label labelSettingsDataInterval;
@@ -1779,8 +1737,6 @@
       private System.Windows.Forms.ColumnHeader columnId;
       private System.Windows.Forms.Label labelSettingsDescriptionFlashingCycles;
       private System.Windows.Forms.Label labelSettings;
-      public System.Windows.Forms.Button buttonChooseVirpilLedControl;
-      public System.Windows.Forms.TextBox textBoxSettingsVirpilLedControl;
       public System.Windows.Forms.Button buttonChooseDefaultProfile;
       public System.Windows.Forms.TextBox textBoxSettingsDefaultProfile;
       public System.Windows.Forms.Button buttonSettingsCancel;
@@ -1791,7 +1747,6 @@
       internal System.Windows.Forms.ListView listViewSettingsDevices;
       private System.Windows.Forms.ToolStripMenuItem setupToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem installExportScrriptsToolStripMenuItem;
-      private System.Windows.Forms.ToolStripMenuItem setLEDCOntrolToolStripMenuItem;
       private System.Windows.Forms.Button buttonProfileDown;
       private System.Windows.Forms.Button buttonProfileUp;
       private System.Windows.Forms.Button buttonProfileEdit;

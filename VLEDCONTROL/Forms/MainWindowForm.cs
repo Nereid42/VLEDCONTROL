@@ -63,11 +63,6 @@ namespace VLEDCONTROL
          {
             VLED.ShowInstallScriptsDialog(true);
          }
-         // check if VpcLedControlExe is set
-         if(VLED.Engine.CurrentSettings.VirpilLedControl==null || VLED.Engine.CurrentSettings.VirpilLedControl.Length==0)
-         {
-            VLED.ShowVpcLedControlSetupDialog();
-         }
          UpdateMappingStatistics();
 
          // status of engine
@@ -253,14 +248,6 @@ namespace VLEDCONTROL
 
       }
 
-      private void setLEDCOntrolToolStripMenuItem_Click(object sender, EventArgs e)
-      {
-         String path = Controller.ChooseVirpilLedControl();
-         if (path != null)
-         {
-            textBoxSettingsVirpilLedControl.Text = path;
-         }
-      }
 
       private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
       {
@@ -385,14 +372,6 @@ namespace VLEDCONTROL
 
       }
 
-      private void buttonChooseVirpilLedControl_Click(object sender, EventArgs e)
-      {
-         String path = Controller.ChooseVirpilLedControl();
-         if(path!=null)
-         {
-            textBoxSettingsVirpilLedControl.Text = path;
-         }
-      }
 
       private void buttonChooseDefaultProfile_Click(object sender, EventArgs e)
       {

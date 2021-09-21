@@ -306,21 +306,8 @@ namespace VLEDCONTROL
             {
                int led = Tools.IndexOfSelectedComboBoxItem(this.comboBoxLed);
 
-               String command = settings.VirpilLedControl;
-               String r = button.BackColor.R.ToString("X2");
-               String g = button.BackColor.G.ToString("X2");
-               String b = button.BackColor.B.ToString("X2");
-
-               String arguments = device.USB_VID + " " + device.USB_PID + " " + led + " " + r + " " + g + " " + b;
-
-               this.textBoxCommand.Text = command + " " + arguments;
-               this.textBoxCommand.Select(this.textBoxCommand.Text.Length, 0);
-               Tools.ExecuteCommand(command, arguments);
+               device.SendCommand(led, LedColor.FromSystemColor(button.BackColor));
             }
-         }
-         else
-         {
-            textBoxCommand.Text = "no device";
          }
       }
 
@@ -414,14 +401,7 @@ namespace VLEDCONTROL
          VirpilDevice device = settings.GetDevice(Tools.ToInt(this.textBoxDeviceId.Text));
          if (device != null)
          {
-
-            String command = settings.VirpilLedControl;
-
-            String arguments = device.USB_VID + " " + device.USB_PID + " 0 00 00 00";
-
-            this.textBoxCommand.Text = command + " " + arguments;
-            this.textBoxCommand.Select(this.textBoxCommand.Text.Length, 0);
-            Tools.ExecuteCommand(command, arguments);
+            device.SendResetCommand();
          }
       }
 

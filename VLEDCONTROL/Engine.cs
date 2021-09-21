@@ -224,28 +224,6 @@ namespace VLEDCONTROL
          }
       }
 
-      private void ExecuteLedCommand(VirpilDevice device, int ledNumber, LedColor color)
-      {
-         String command = CurrentSettings.VirpilLedControl;
-         if(command==null || command.Length==0)
-         {
-            LogWarning("No Virpil LED Control path set");
-            return;
-         }
-
-         String r = color.red.ToString("X2");
-         String g = color.green.ToString("X2");
-         String b = color.blue.ToString("X2");
-
-         String arguments = device.USB_VID + " " + device.USB_PID + " " + ledNumber + " " + r + " " + g + " " + b;
-         if(IsLoggable(LEVEL.TRACE)) LogTrace("EXECUTE COMMAND: "+ command+" "+ arguments);
-         swExecutes.Start();
-         Tools.ExecuteCommand(command, arguments);
-         swExecutes.Stop();
-         Interlocked.Increment(ref Executes);
-      }
-
-
       private void SetAllDeviceLeds()
       {
          if (IsLoggable(LEVEL.DEBUG)) LogDebug("Set all device LEDs");
@@ -280,7 +258,7 @@ namespace VLEDCONTROL
                      LogDebug("LED " + ledNumber + " is " + color);
                      LogTrace("Set color for led " + ledNumber + " on device " + device.Name + " to " + color);
                   }
-                  ExecuteLedCommand(device, ledNumber, color);
+                  device.SendCommand(ledNumber, color);
                }
             }
          }
@@ -345,7 +323,7 @@ namespace VLEDCONTROL
          {
             if (IsLoggable(LEVEL.DEBUG)) LogDebug("Init device " + device.Name);
             device.Reset();
-            ExecuteLedCommand(device,0, LedColor.BLACK);
+            device.SendResetCommand();
          }
       }
 
