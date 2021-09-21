@@ -1,4 +1,4 @@
-﻿/* written 2021 byNereid
+﻿/* written 2021 by Nereid
   
  Apache 2.0 License
  (see LICENSE file)
