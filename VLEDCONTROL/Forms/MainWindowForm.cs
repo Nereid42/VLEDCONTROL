@@ -1,17 +1,7 @@
-﻿/*
- * MIT License
-
-Copyright (c) 2021 Nereid
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+﻿/* written 2021 byNereid
+  
+ Apache 2.0 License
+ (see LICENSE file)
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -563,17 +553,9 @@ namespace VLEDCONTROL
          about += "\n\n";
          about += "Written by André Kolster";
          about += "\n\n\n";
-         about += "MIT License";
+         about += "Apache 2.0 License";
          about += "\n";
-         about += "\nPermission is hereby granted, free of charge, to any person obtaining a ";
-         about += "\ncopy of this software and associated documentation files (the";
-         about += "\n\"Software\"), to deal in the Software without restriction, including";
-         about += "\nwithout limitation the rights to use, copy, modify, merge, publish,";
-         about += "\ndistribute, sublicense, and/ or sell copies of the Software, and to permit";
-         about += "\npersons to whom the Software is furnished to do so, subject to the following conditions:\n";
-
-         about += "\nThe above copyright notice and this permission notice shall be included";
-         about += "\nin all copies or substantial portions of the Software.";
+         about += "(see LICENSE file)";
 
          about += "\n\n\nSource: https://github.com/Nereid42/VLEDCONTROL";
 
