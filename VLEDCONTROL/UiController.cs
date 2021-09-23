@@ -144,6 +144,8 @@ namespace VLEDCONTROL
          }
       }
 
+
+
       public void MarkDataAsDirty(bool dirty)
       {
          IsDataDirty = dirty;
@@ -218,7 +220,6 @@ namespace VLEDCONTROL
       {
          using (OpenFileDialog chooser = new OpenFileDialog())
          {
-
             chooser.InitialDirectory = Tools.GetApplicationFolder();
             chooser.Multiselect = false;
             chooser.Filter = "Profile files (*.profile)|*.profile";
@@ -227,6 +228,25 @@ namespace VLEDCONTROL
             if (chooser.ShowDialog() == DialogResult.OK)
             {
                VLED.Engine.CurrentProfile = Profile.Load(chooser.FileName);
+               SetProfile(VLED.Engine.CurrentProfile);
+               SetProfileFilter(VLED.Engine.CurrentProfile);
+            }
+         }
+      }
+
+      internal void MergeProfile()
+      {
+         using (OpenFileDialog chooser = new OpenFileDialog())
+         {
+            chooser.InitialDirectory = Tools.GetApplicationFolder();
+            chooser.Multiselect = false;
+            chooser.Filter = "Profile files (*.profile)|*.profile";
+            chooser.FilterIndex = 1;
+            chooser.RestoreDirectory = true;
+            if (chooser.ShowDialog() == DialogResult.OK)
+            {
+               Profile profile = Profile.Load(chooser.FileName);
+               VLED.Engine.CurrentProfile.Merge(profile);
                SetProfile(VLED.Engine.CurrentProfile);
                SetProfileFilter(VLED.Engine.CurrentProfile);
             }

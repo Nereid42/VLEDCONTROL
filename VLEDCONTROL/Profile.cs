@@ -46,6 +46,26 @@ namespace VLEDCONTROL
       {
       }
 
+      public Profile Merge(Profile profile)
+      {
+         try
+         {
+            foreach (ProfileEvent entry in profile.ProfileEvents)
+            {
+               ProfileEvents.Add(entry);
+            }
+
+            ImportMapping(profile);
+
+            return this;
+         }
+         catch (Exception e)
+         {
+            LogError("Failed to merge profile");
+            LogException(e);
+            throw e;
+         }
+      }
 
       public static Profile Load(String filename)
       {
@@ -223,6 +243,8 @@ namespace VLEDCONTROL
          }
          return 0;
       }
+
+
 
       internal MappingEntry GetMapingEntry(string aircraft, int id)
       {

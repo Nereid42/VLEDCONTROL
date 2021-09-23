@@ -172,6 +172,7 @@
          this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
          this.buttonMainResetLeds = new System.Windows.Forms.Button();
+         this.buttonMainMerge = new System.Windows.Forms.Button();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -1467,7 +1468,7 @@
          // 
          // buttonMainSave
          // 
-         this.buttonMainSave.Location = new System.Drawing.Point(12, 88);
+         this.buttonMainSave.Location = new System.Drawing.Point(12, 115);
          this.buttonMainSave.Name = "buttonMainSave";
          this.buttonMainSave.Size = new System.Drawing.Size(81, 23);
          this.buttonMainSave.TabIndex = 4;
@@ -1477,7 +1478,7 @@
          // 
          // buttonMainSetLeds
          // 
-         this.buttonMainSetLeds.Location = new System.Drawing.Point(12, 117);
+         this.buttonMainSetLeds.Location = new System.Drawing.Point(12, 144);
          this.buttonMainSetLeds.Name = "buttonMainSetLeds";
          this.buttonMainSetLeds.Size = new System.Drawing.Size(81, 23);
          this.buttonMainSetLeds.TabIndex = 5;
@@ -1487,7 +1488,7 @@
          // 
          // buttonDataQuery
          // 
-         this.buttonDataQuery.Location = new System.Drawing.Point(12, 175);
+         this.buttonDataQuery.Location = new System.Drawing.Point(12, 202);
          this.buttonDataQuery.Name = "buttonDataQuery";
          this.buttonDataQuery.Size = new System.Drawing.Size(81, 23);
          this.buttonDataQuery.TabIndex = 6;
@@ -1522,7 +1523,7 @@
          this.panelMode.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.panelMode.Controls.Add(this.radioRegistered);
          this.panelMode.Controls.Add(this.radioButtonAll);
-         this.panelMode.Location = new System.Drawing.Point(12, 315);
+         this.panelMode.Location = new System.Drawing.Point(12, 342);
          this.panelMode.Name = "panelMode";
          this.panelMode.Size = new System.Drawing.Size(81, 56);
          this.panelMode.TabIndex = 9;
@@ -1531,7 +1532,7 @@
          // labelMode
          // 
          this.labelMode.AutoSize = true;
-         this.labelMode.Location = new System.Drawing.Point(12, 237);
+         this.labelMode.Location = new System.Drawing.Point(12, 264);
          this.labelMode.Name = "labelMode";
          this.labelMode.Size = new System.Drawing.Size(37, 13);
          this.labelMode.TabIndex = 9;
@@ -1543,7 +1544,7 @@
          this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
          this.panel1.Controls.Add(this.radioButtonFull);
          this.panel1.Controls.Add(this.radioButtonChanges);
-         this.panel1.Location = new System.Drawing.Point(12, 253);
+         this.panel1.Location = new System.Drawing.Point(12, 280);
          this.panel1.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
          this.panel1.Name = "panel1";
          this.panel1.Size = new System.Drawing.Size(81, 56);
@@ -1576,7 +1577,7 @@
          // 
          // buttonRegister
          // 
-         this.buttonRegister.Location = new System.Drawing.Point(12, 204);
+         this.buttonRegister.Location = new System.Drawing.Point(12, 231);
          this.buttonRegister.Name = "buttonRegister";
          this.buttonRegister.Size = new System.Drawing.Size(81, 23);
          this.buttonRegister.TabIndex = 11;
@@ -1610,7 +1611,7 @@
          // 
          // buttonMainResetLeds
          // 
-         this.buttonMainResetLeds.Location = new System.Drawing.Point(12, 146);
+         this.buttonMainResetLeds.Location = new System.Drawing.Point(12, 173);
          this.buttonMainResetLeds.Name = "buttonMainResetLeds";
          this.buttonMainResetLeds.Size = new System.Drawing.Size(81, 23);
          this.buttonMainResetLeds.TabIndex = 13;
@@ -1618,12 +1619,23 @@
          this.buttonMainResetLeds.UseVisualStyleBackColor = true;
          this.buttonMainResetLeds.Click += new System.EventHandler(this.buttonMainResetLed_Click_4);
          // 
+         // buttonMainMerge
+         // 
+         this.buttonMainMerge.Location = new System.Drawing.Point(12, 86);
+         this.buttonMainMerge.Name = "buttonMainMerge";
+         this.buttonMainMerge.Size = new System.Drawing.Size(81, 23);
+         this.buttonMainMerge.TabIndex = 14;
+         this.buttonMainMerge.Text = "Merge Profile";
+         this.buttonMainMerge.UseVisualStyleBackColor = true;
+         this.buttonMainMerge.Click += new System.EventHandler(this.buttonMainMerge_Click);
+         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.BackColor = System.Drawing.SystemColors.ControlLightLight;
          this.ClientSize = new System.Drawing.Size(1170, 629);
+         this.Controls.Add(this.buttonMainMerge);
          this.Controls.Add(this.buttonMainResetLeds);
          this.Controls.Add(this.progressBarEngineStatus);
          this.Controls.Add(this.buttonRegister);
@@ -1819,6 +1831,7 @@
       internal System.Windows.Forms.CheckBox checkBoxData10Only;
       private System.Windows.Forms.Label labelMappingNumberOfAircrafts;
       private System.Windows.Forms.Label labelMappingNumberOfMappings;
+      private System.Windows.Forms.Button buttonMainMerge;
    }
 }
 

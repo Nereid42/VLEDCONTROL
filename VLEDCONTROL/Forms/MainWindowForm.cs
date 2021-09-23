@@ -132,6 +132,12 @@ namespace VLEDCONTROL
          UpdateMappingStatistics();
       }
 
+      private void buttonMainMerge_Click(object sender, EventArgs e)
+      {
+         Controller.MergeProfile();
+         UpdateMappingStatistics();
+      }
+
       private void buttonMainSetLed_Click(object sender, EventArgs e)
       {
          VLED.Engine.CalculateLEDs();
@@ -620,5 +626,6 @@ namespace VLEDCONTROL
          listViewData.Items.Clear();
          Controller.MarkDataAsDirty(true);
       }
+
    }
 }
