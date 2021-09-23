@@ -4,6 +4,8 @@ local INGOING_PORT = 5556;
 
 local EXPORT_INTERVAL = 0.3;
 
+local MAX_PANEL_INDEX=1000;
+
 statistics = {}
 
 log.write('VLED.EXPORT', log.INFO, 'Starting VLED export script');
@@ -103,7 +105,7 @@ function PrepareData()
 		
 		local panel = GetDevice(0);
 		if (panel ~= nil) then
-			for i=1,1000,1 do
+			for i=1,MAX_PANEL_INDEX,1 do
 				arg = panel:get_argument_value(i);
 				currentData[i] = arg;
 				if ( arg ~= nil and arg ~= 0 ) then
@@ -115,7 +117,7 @@ function PrepareData()
 	else
 		--log.write('VLED.EXPORT', log.INFO, 'no new aircraft');			
 		local panel = GetDevice(0);
-		for i=1,1000 do
+		for i=1,MAX_PANEL_INDEX,1 do
 			arg = panel:get_argument_value(i);
 			if ( arg ~= nil and currentData[i] ~= arg ) then
 				changeInData = true;
