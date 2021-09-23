@@ -28,9 +28,7 @@ namespace VLEDCONTROL
       private const String PROFILE_FILTER_ANY_DEVICE = "ANY";
 
       private readonly MainWindowForm MainWindow;
-      private Settings DisplayedSettings = new Settings();
-
-      private readonly ArrayList data = new ArrayList();
+      private readonly Settings DisplayedSettings = new Settings();
 
       private volatile bool _IsDataDirty = false;
 
@@ -520,8 +518,7 @@ namespace VLEDCONTROL
 
       internal void AddNewDevice()
       {
-         EditDeviceDialog dialog = new EditDeviceDialog();
-         dialog.Id = MainWindow.listViewSettingsDevices.Items.Count;
+         EditDeviceDialog dialog = new EditDeviceDialog() { Id = MainWindow.listViewSettingsDevices.Items.Count };
          if (dialog.ShowDialog() == DialogResult.OK)
          {
             String name = dialog.GetDeviceName();
@@ -603,8 +600,7 @@ namespace VLEDCONTROL
 
       internal void AddNewMapping()
       {
-         EditMappingEntryDialog dialog = new EditMappingEntryDialog();
-         dialog.Profile = VLED.Engine.CurrentProfile;
+         EditMappingEntryDialog dialog = new EditMappingEntryDialog() { Profile = VLED.Engine.CurrentProfile };
 
          if (dialog.ShowDialog() == DialogResult.OK)
          {
@@ -706,8 +702,7 @@ namespace VLEDCONTROL
 
       public void AddNewProfileEvent()
       {
-         EditProfileEventDialog dialog = new EditProfileEventDialog();
-         dialog.Profile = VLED.Engine.CurrentProfile;
+         EditProfileEventDialog dialog = new EditProfileEventDialog() { Profile = VLED.Engine.CurrentProfile };
          if (dialog.ShowDialog() == DialogResult.OK)
          {
             int eventId = dialog.GetEventId();
@@ -770,8 +765,7 @@ namespace VLEDCONTROL
 
       public void AddQuickProfileEvent()
       {
-         QuickAddDialog dialog = new QuickAddDialog();
-         dialog.Profile = VLED.Engine.CurrentProfile;
+         QuickAddDialog dialog = new QuickAddDialog() { Profile = VLED.Engine.CurrentProfile };
          if (dialog.ShowDialog() == DialogResult.OK)
          {
             // String aircraft, int id, String primaryCondition, double primaryValue, String secondaryCondition, double secondaryValue,  int deviceId, int ledNumber, LedColor colorOn, LedColor colorFlashing, String description
@@ -818,7 +812,7 @@ namespace VLEDCONTROL
                   offItem.SubItems.Add(off.Description);
 
                   System.Windows.Forms.ListViewItem onItem = MainWindow.listViewProfileEvents.Items.Insert(selected+1, off.Id.ToString());
-                  onItem.Tag = index;
+                  onItem.Tag = index+1;
                   onItem.SubItems.Add(on.Aircraft);
                   onItem.SubItems.Add(VLED.Engine.CurrentProfile.MapPropertyName(on.Aircraft, on.Id));
                   onItem.SubItems.Add(on.GetConditionsAsString());
@@ -846,11 +840,11 @@ namespace VLEDCONTROL
 
          int index = (int)item.Tag;
          int selected = MainWindow.listViewProfileEvents.SelectedIndices[0];
+         LogDebug("profile edit: index="+index+", selected="+selected);
 
          if (index < VLED.Engine.CurrentProfile.ProfileEvents.Count)
          {
-            EditProfileEventDialog dialog = new EditProfileEventDialog();
-            dialog.Profile = VLED.Engine.CurrentProfile;
+            EditProfileEventDialog dialog = new EditProfileEventDialog() { Profile = VLED.Engine.CurrentProfile };
             Profile.ProfileEvent edit = VLED.Engine.CurrentProfile.ProfileEvents[index];
             dialog.Event = edit;
             if (dialog.ShowDialog() == DialogResult.OK)
