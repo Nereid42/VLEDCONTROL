@@ -173,6 +173,7 @@
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
          this.buttonMainResetLeds = new System.Windows.Forms.Button();
          this.buttonMainMerge = new System.Windows.Forms.Button();
+         this.buttonCurrentAircraft = new System.Windows.Forms.Button();
          this.menuStrip1.SuspendLayout();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
@@ -878,7 +879,7 @@
          // 
          // buttonImportFromProfile
          // 
-         this.buttonImportFromProfile.Location = new System.Drawing.Point(555, 163);
+         this.buttonImportFromProfile.Location = new System.Drawing.Point(560, 164);
          this.buttonImportFromProfile.Name = "buttonImportFromProfile";
          this.buttonImportFromProfile.Size = new System.Drawing.Size(75, 23);
          this.buttonImportFromProfile.TabIndex = 14;
@@ -888,11 +889,12 @@
          // 
          // groupBoxFilterMapping
          // 
+         this.groupBoxFilterMapping.Controls.Add(this.buttonCurrentAircraft);
          this.groupBoxFilterMapping.Controls.Add(this.label7);
          this.groupBoxFilterMapping.Controls.Add(this.comboBoxMappingFilterAircraft);
-         this.groupBoxFilterMapping.Location = new System.Drawing.Point(414, 0);
+         this.groupBoxFilterMapping.Location = new System.Drawing.Point(397, 1);
          this.groupBoxFilterMapping.Name = "groupBoxFilterMapping";
-         this.groupBoxFilterMapping.Size = new System.Drawing.Size(216, 46);
+         this.groupBoxFilterMapping.Size = new System.Drawing.Size(238, 44);
          this.groupBoxFilterMapping.TabIndex = 13;
          this.groupBoxFilterMapping.TabStop = false;
          this.groupBoxFilterMapping.Text = "Filter";
@@ -921,7 +923,7 @@
          // buttonMappingEdit
          // 
          this.buttonMappingEdit.Enabled = false;
-         this.buttonMappingEdit.Location = new System.Drawing.Point(555, 110);
+         this.buttonMappingEdit.Location = new System.Drawing.Point(560, 110);
          this.buttonMappingEdit.Name = "buttonMappingEdit";
          this.buttonMappingEdit.Size = new System.Drawing.Size(75, 23);
          this.buttonMappingEdit.TabIndex = 11;
@@ -932,7 +934,7 @@
          // buttonMappingRemove
          // 
          this.buttonMappingRemove.Enabled = false;
-         this.buttonMappingRemove.Location = new System.Drawing.Point(555, 81);
+         this.buttonMappingRemove.Location = new System.Drawing.Point(560, 81);
          this.buttonMappingRemove.Name = "buttonMappingRemove";
          this.buttonMappingRemove.Size = new System.Drawing.Size(75, 23);
          this.buttonMappingRemove.TabIndex = 10;
@@ -942,7 +944,7 @@
          // 
          // buttonMappingAdd
          // 
-         this.buttonMappingAdd.Location = new System.Drawing.Point(555, 52);
+         this.buttonMappingAdd.Location = new System.Drawing.Point(560, 52);
          this.buttonMappingAdd.Name = "buttonMappingAdd";
          this.buttonMappingAdd.Size = new System.Drawing.Size(75, 23);
          this.buttonMappingAdd.TabIndex = 9;
@@ -1629,6 +1631,17 @@
          this.buttonMainMerge.UseVisualStyleBackColor = true;
          this.buttonMainMerge.Click += new System.EventHandler(this.buttonMainMerge_Click);
          // 
+         // buttonCurrentAircraft
+         // 
+         this.buttonCurrentAircraft.AccessibleDescription = "";
+         this.buttonCurrentAircraft.Image = global::VLEDCONTROL.Properties.Resources.CurrentAircraftIcon;
+         this.buttonCurrentAircraft.Location = new System.Drawing.Point(207, 13);
+         this.buttonCurrentAircraft.Margin = new System.Windows.Forms.Padding(2);
+         this.buttonCurrentAircraft.Name = "buttonCurrentAircraft";
+         this.buttonCurrentAircraft.Size = new System.Drawing.Size(22, 22);
+         this.buttonCurrentAircraft.TabIndex = 14;
+         this.buttonCurrentAircraft.UseVisualStyleBackColor = true;
+         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1832,6 +1845,7 @@
       private System.Windows.Forms.Label labelMappingNumberOfAircrafts;
       private System.Windows.Forms.Label labelMappingNumberOfMappings;
       private System.Windows.Forms.Button buttonMainMerge;
+      private System.Windows.Forms.Button buttonCurrentAircraft;
    }
 }
 

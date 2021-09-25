@@ -414,5 +414,29 @@ namespace VLEDCONTROL
       {
 
       }
+
+      private void buttonSetPrimaryValue0_Click(object sender, EventArgs e)
+      {
+         this.textBoxPrimaryValue.Text = "0";
+         this.textBoxPrimaryValue.Focus();
+      }
+
+      private void buttonSetPrimaryValue1_Click(object sender, EventArgs e)
+      {
+         this.textBoxPrimaryValue.Text = "1";
+         this.textBoxPrimaryValue.Focus();
+      }
+
+      private void buttonSetSecondaryValue0_Click(object sender, EventArgs e)
+      {
+         this.textBoxSecondaryValue.Text = "0";
+         this.textBoxSecondaryValue.Focus();
+      }
+
+      private void buttonSetSecondaryValue1_Click(object sender, EventArgs e)
+      {
+         this.textBoxSecondaryValue.Text = "1";
+         this.textBoxSecondaryValue.Focus();
+      }
    }
 }

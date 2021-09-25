@@ -41,6 +41,10 @@
          this.textBoxDeviceId = new System.Windows.Forms.TextBox();
          this.groupBoxEvent = new System.Windows.Forms.GroupBox();
          this.groupBoxCondition = new System.Windows.Forms.GroupBox();
+         this.buttonSetSecondaryValue1 = new System.Windows.Forms.Button();
+         this.buttonSetSecondaryValue0 = new System.Windows.Forms.Button();
+         this.buttonSetPrimaryValue1 = new System.Windows.Forms.Button();
+         this.buttonSetPrimaryValue0 = new System.Windows.Forms.Button();
          this.comboBoxSecondaryCondition = new System.Windows.Forms.ComboBox();
          this.textBoxSecondaryValue = new System.Windows.Forms.TextBox();
          this.groupBoxLed = new System.Windows.Forms.GroupBox();
@@ -182,6 +186,10 @@
          // 
          // groupBoxCondition
          // 
+         this.groupBoxCondition.Controls.Add(this.buttonSetSecondaryValue1);
+         this.groupBoxCondition.Controls.Add(this.buttonSetSecondaryValue0);
+         this.groupBoxCondition.Controls.Add(this.buttonSetPrimaryValue1);
+         this.groupBoxCondition.Controls.Add(this.buttonSetPrimaryValue0);
          this.groupBoxCondition.Controls.Add(this.comboBoxSecondaryCondition);
          this.groupBoxCondition.Controls.Add(this.textBoxSecondaryValue);
          this.groupBoxCondition.Controls.Add(this.label3);
@@ -194,6 +202,50 @@
          this.groupBoxCondition.TabIndex = 12;
          this.groupBoxCondition.TabStop = false;
          this.groupBoxCondition.Text = "Condition";
+         // 
+         // buttonSetSecondaryValue1
+         // 
+         this.buttonSetSecondaryValue1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+         this.buttonSetSecondaryValue1.Location = new System.Drawing.Point(291, 57);
+         this.buttonSetSecondaryValue1.Name = "buttonSetSecondaryValue1";
+         this.buttonSetSecondaryValue1.Size = new System.Drawing.Size(26, 20);
+         this.buttonSetSecondaryValue1.TabIndex = 19;
+         this.buttonSetSecondaryValue1.Text = "1";
+         this.buttonSetSecondaryValue1.UseVisualStyleBackColor = true;
+         this.buttonSetSecondaryValue1.Click += new System.EventHandler(this.buttonSetSecondaryValue1_Click);
+         // 
+         // buttonSetSecondaryValue0
+         // 
+         this.buttonSetSecondaryValue0.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+         this.buttonSetSecondaryValue0.Location = new System.Drawing.Point(261, 57);
+         this.buttonSetSecondaryValue0.Name = "buttonSetSecondaryValue0";
+         this.buttonSetSecondaryValue0.Size = new System.Drawing.Size(26, 20);
+         this.buttonSetSecondaryValue0.TabIndex = 18;
+         this.buttonSetSecondaryValue0.Text = "0";
+         this.buttonSetSecondaryValue0.UseVisualStyleBackColor = true;
+         this.buttonSetSecondaryValue0.Click += new System.EventHandler(this.buttonSetSecondaryValue0_Click);
+         // 
+         // buttonSetPrimaryValue1
+         // 
+         this.buttonSetPrimaryValue1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+         this.buttonSetPrimaryValue1.Location = new System.Drawing.Point(291, 30);
+         this.buttonSetPrimaryValue1.Name = "buttonSetPrimaryValue1";
+         this.buttonSetPrimaryValue1.Size = new System.Drawing.Size(26, 20);
+         this.buttonSetPrimaryValue1.TabIndex = 17;
+         this.buttonSetPrimaryValue1.Text = "1";
+         this.buttonSetPrimaryValue1.UseVisualStyleBackColor = true;
+         this.buttonSetPrimaryValue1.Click += new System.EventHandler(this.buttonSetPrimaryValue1_Click);
+         // 
+         // buttonSetPrimaryValue0
+         // 
+         this.buttonSetPrimaryValue0.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+         this.buttonSetPrimaryValue0.Location = new System.Drawing.Point(261, 30);
+         this.buttonSetPrimaryValue0.Name = "buttonSetPrimaryValue0";
+         this.buttonSetPrimaryValue0.Size = new System.Drawing.Size(26, 20);
+         this.buttonSetPrimaryValue0.TabIndex = 16;
+         this.buttonSetPrimaryValue0.Text = "0";
+         this.buttonSetPrimaryValue0.UseVisualStyleBackColor = true;
+         this.buttonSetPrimaryValue0.Click += new System.EventHandler(this.buttonSetPrimaryValue0_Click);
          // 
          // comboBoxSecondaryCondition
          // 
@@ -473,5 +525,9 @@
       private System.Windows.Forms.GroupBox groupBoxDescription;
       private System.Windows.Forms.TextBox textBoxDescription;
       private System.Windows.Forms.Button buttonSetDefault;
+      private System.Windows.Forms.Button buttonSetSecondaryValue1;
+      private System.Windows.Forms.Button buttonSetSecondaryValue0;
+      private System.Windows.Forms.Button buttonSetPrimaryValue1;
+      private System.Windows.Forms.Button buttonSetPrimaryValue0;
    }
 }
