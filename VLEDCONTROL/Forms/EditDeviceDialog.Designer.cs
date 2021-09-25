@@ -55,6 +55,7 @@
          this.textBoxDeviceName.Name = "textBoxDeviceName";
          this.textBoxDeviceName.Size = new System.Drawing.Size(156, 20);
          this.textBoxDeviceName.TabIndex = 1;
+         this.textBoxDeviceName.TextChanged += new System.EventHandler(this.textBoxDeviceName_TextChanged);
          // 
          // labelUsbVid
          // 

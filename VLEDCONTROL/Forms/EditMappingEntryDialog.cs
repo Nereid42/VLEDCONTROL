@@ -26,6 +26,8 @@ namespace VLEDCONTROL
 {
    public partial class EditMappingEntryDialog : Form
    {
+      static String PreviousMappingName;
+
       public Profile Profile;
       public Profile.MappingEntry MappingEntry;
 
@@ -131,6 +133,23 @@ namespace VLEDCONTROL
       private void comboBoxAircraft_SelectedIndexChanged(object sender, EventArgs e)
       {
 
+      }
+
+      private void buttonCopyPrevious_Click(object sender, EventArgs e)
+      {
+         this.textBoxName.Text = EditMappingEntryDialog.PreviousMappingName;
+         this.textBoxName.Focus();
+         this.textBoxName.SelectionLength = 0;
+      }
+
+      private void buttonOk_Click(object sender, EventArgs e)
+      {
+         EditMappingEntryDialog.PreviousMappingName = this.textBoxName.Text;
+      }
+
+      private void buttonCurrentAircraft_Click(object sender, EventArgs e)
+      {
+         this.comboBoxAircraft.Text = VLED.MainWindow.textBoxAircraft.Text;
       }
    }
 }

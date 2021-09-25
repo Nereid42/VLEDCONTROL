@@ -196,6 +196,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Forms\CopyIcon.png" />
+    <None Include="Forms\CurrentAircraftIcon.png" />
+    <None Include="Forms\PastePreviousIcon.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

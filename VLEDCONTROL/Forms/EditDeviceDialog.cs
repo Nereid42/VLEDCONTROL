@@ -35,6 +35,7 @@ namespace VLEDCONTROL
          this.textBoxId.KeyPress += new KeyPressEventHandler(IntegerKeyPressed);
       }
 
+
       private void IntegerKeyPressed(Object o, KeyPressEventArgs e)
       {
          if (e.KeyChar >= '0' && e.KeyChar <= '9' )
@@ -86,9 +87,18 @@ namespace VLEDCONTROL
             this.textBoxUsbVid.Text = Device.USB_VID;
             this.textBoxUsbPid.Text = Device.USB_PID;
          }
+         else
+         {
+            this.textBoxUsbVid.Text = "3344";
+         }
       }
 
       private void textBoxId_TextChanged(object sender, EventArgs e)
+      {
+
+      }
+
+      private void textBoxDeviceName_TextChanged(object sender, EventArgs e)
       {
 
       }
