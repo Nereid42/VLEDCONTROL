@@ -30,17 +30,6 @@
       {
          this.components = new System.ComponentModel.Container();
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindowForm));
-         this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-         this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.loadProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.saveProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.setupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.installExportScrriptsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.removeExportScriptsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-         this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
          this.tabMain = new System.Windows.Forms.TabControl();
          this.tabPageData = new System.Windows.Forms.TabPage();
          this.panel2 = new System.Windows.Forms.Panel();
@@ -100,6 +89,7 @@
          this.labelMappingNumberOfMappings = new System.Windows.Forms.Label();
          this.buttonImportFromProfile = new System.Windows.Forms.Button();
          this.groupBoxFilterMapping = new System.Windows.Forms.GroupBox();
+         this.buttonCurrentAircraft = new System.Windows.Forms.Button();
          this.label7 = new System.Windows.Forms.Label();
          this.comboBoxMappingFilterAircraft = new System.Windows.Forms.ComboBox();
          this.buttonMappingEdit = new System.Windows.Forms.Button();
@@ -167,14 +157,20 @@
          this.radioButtonFull = new System.Windows.Forms.RadioButton();
          this.radioButtonChanges = new System.Windows.Forms.RadioButton();
          this.buttonRegister = new System.Windows.Forms.Button();
-         this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-         this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-         this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
          this.progressBarEngineStatus = new System.Windows.Forms.ProgressBar();
          this.buttonMainResetLeds = new System.Windows.Forms.Button();
          this.buttonMainMerge = new System.Windows.Forms.Button();
-         this.buttonCurrentAircraft = new System.Windows.Forms.Button();
-         this.menuStrip1.SuspendLayout();
+         this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.loadProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.saveProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.setupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.installExportScrriptsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.removeExportScriptsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+         this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+         this.toolTip = new System.Windows.Forms.ToolTip(this.components);
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
          this.panel2.SuspendLayout();
@@ -188,94 +184,8 @@
          this.groupBox1.SuspendLayout();
          this.panelMode.SuspendLayout();
          this.panel1.SuspendLayout();
+         this.menuStrip1.SuspendLayout();
          this.SuspendLayout();
-         // 
-         // menuStrip1
-         // 
-         this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.setupToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-         this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-         this.menuStrip1.Name = "menuStrip1";
-         this.menuStrip1.Size = new System.Drawing.Size(1170, 24);
-         this.menuStrip1.TabIndex = 0;
-         this.menuStrip1.Text = "menuStrip1";
-         // 
-         // fileToolStripMenuItem
-         // 
-         this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadProfileToolStripMenuItem,
-            this.saveProfileToolStripMenuItem,
-            this.exitToolStripMenuItem});
-         this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-         this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-         this.fileToolStripMenuItem.Text = "File";
-         // 
-         // loadProfileToolStripMenuItem
-         // 
-         this.loadProfileToolStripMenuItem.Name = "loadProfileToolStripMenuItem";
-         this.loadProfileToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-         this.loadProfileToolStripMenuItem.Text = "Load Profile";
-         this.loadProfileToolStripMenuItem.Click += new System.EventHandler(this.MenuItemLoadProfile_Click);
-         // 
-         // saveProfileToolStripMenuItem
-         // 
-         this.saveProfileToolStripMenuItem.Name = "saveProfileToolStripMenuItem";
-         this.saveProfileToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-         this.saveProfileToolStripMenuItem.Text = "Save Profile";
-         this.saveProfileToolStripMenuItem.Click += new System.EventHandler(this.MenuItemSaveProfile_Click);
-         // 
-         // exitToolStripMenuItem
-         // 
-         this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-         this.exitToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-         this.exitToolStripMenuItem.Text = "Exit";
-         this.exitToolStripMenuItem.Click += new System.EventHandler(this.MenuItemExit_Click);
-         // 
-         // setupToolStripMenuItem
-         // 
-         this.setupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.installExportScrriptsToolStripMenuItem,
-            this.removeExportScriptsToolStripMenuItem});
-         this.setupToolStripMenuItem.Name = "setupToolStripMenuItem";
-         this.setupToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-         this.setupToolStripMenuItem.Text = "Setup";
-         // 
-         // installExportScrriptsToolStripMenuItem
-         // 
-         this.installExportScrriptsToolStripMenuItem.Name = "installExportScrriptsToolStripMenuItem";
-         this.installExportScrriptsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-         this.installExportScrriptsToolStripMenuItem.Text = "Install Export Scrripts";
-         this.installExportScrriptsToolStripMenuItem.Click += new System.EventHandler(this.installExportScrriptsToolStripMenuItem_Click);
-         // 
-         // removeExportScriptsToolStripMenuItem
-         // 
-         this.removeExportScriptsToolStripMenuItem.Name = "removeExportScriptsToolStripMenuItem";
-         this.removeExportScriptsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-         this.removeExportScriptsToolStripMenuItem.Text = "Remove Export Scripts";
-         this.removeExportScriptsToolStripMenuItem.Click += new System.EventHandler(this.removeExportScriptsToolStripMenuItem_Click);
-         // 
-         // aboutToolStripMenuItem
-         // 
-         this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem1});
-         this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-         this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-         this.aboutToolStripMenuItem.Text = "Help";
-         this.aboutToolStripMenuItem.Click += new System.EventHandler(this.MenuItemAbout_Click);
-         // 
-         // aboutToolStripMenuItem1
-         // 
-         this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-         this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
-         this.aboutToolStripMenuItem1.Text = "About";
-         this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
-         // 
-         // contextMenuStrip1
-         // 
-         this.contextMenuStrip1.Name = "contextMenuStrip1";
-         this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
          // 
          // tabMain
          // 
@@ -341,6 +251,7 @@
          this.buttonCopyAircraftToClipboard.Name = "buttonCopyAircraftToClipboard";
          this.buttonCopyAircraftToClipboard.Size = new System.Drawing.Size(22, 22);
          this.buttonCopyAircraftToClipboard.TabIndex = 11;
+         this.toolTip.SetToolTip(this.buttonCopyAircraftToClipboard, "Copy current aircraft");
          this.buttonCopyAircraftToClipboard.UseVisualStyleBackColor = true;
          this.buttonCopyAircraftToClipboard.Click += new System.EventHandler(this.buttonCopyAircraftToClipboard_Click);
          // 
@@ -445,6 +356,7 @@
          this.textBoxAircraft.ReadOnly = true;
          this.textBoxAircraft.Size = new System.Drawing.Size(151, 20);
          this.textBoxAircraft.TabIndex = 3;
+         this.toolTip.SetToolTip(this.textBoxAircraft, "Current aircraft");
          this.textBoxAircraft.TextChanged += new System.EventHandler(this.textBoxAircraft_TextChanged);
          // 
          // labelDataCurrent
@@ -884,6 +796,7 @@
          this.buttonImportFromProfile.Size = new System.Drawing.Size(75, 23);
          this.buttonImportFromProfile.TabIndex = 14;
          this.buttonImportFromProfile.Text = "Import ...";
+         this.toolTip.SetToolTip(this.buttonImportFromProfile, "Import mappings from other profile");
          this.buttonImportFromProfile.UseVisualStyleBackColor = true;
          this.buttonImportFromProfile.Click += new System.EventHandler(this.buttonImportFromProfile_Click);
          // 
@@ -898,6 +811,18 @@
          this.groupBoxFilterMapping.TabIndex = 13;
          this.groupBoxFilterMapping.TabStop = false;
          this.groupBoxFilterMapping.Text = "Filter";
+         // 
+         // buttonCurrentAircraft
+         // 
+         this.buttonCurrentAircraft.AccessibleDescription = "";
+         this.buttonCurrentAircraft.Image = global::VLEDCONTROL.Properties.Resources.CurrentAircraftIcon;
+         this.buttonCurrentAircraft.Location = new System.Drawing.Point(207, 13);
+         this.buttonCurrentAircraft.Margin = new System.Windows.Forms.Padding(2);
+         this.buttonCurrentAircraft.Name = "buttonCurrentAircraft";
+         this.buttonCurrentAircraft.Size = new System.Drawing.Size(22, 22);
+         this.buttonCurrentAircraft.TabIndex = 14;
+         this.toolTip.SetToolTip(this.buttonCurrentAircraft, "Set to current aircraft");
+         this.buttonCurrentAircraft.UseVisualStyleBackColor = true;
          // 
          // label7
          // 
@@ -928,6 +853,7 @@
          this.buttonMappingEdit.Size = new System.Drawing.Size(75, 23);
          this.buttonMappingEdit.TabIndex = 11;
          this.buttonMappingEdit.Text = "Edit";
+         this.toolTip.SetToolTip(this.buttonMappingEdit, "Edit selected mapping entry");
          this.buttonMappingEdit.UseVisualStyleBackColor = true;
          this.buttonMappingEdit.Click += new System.EventHandler(this.buttonMappingEdit_Click);
          // 
@@ -939,6 +865,7 @@
          this.buttonMappingRemove.Size = new System.Drawing.Size(75, 23);
          this.buttonMappingRemove.TabIndex = 10;
          this.buttonMappingRemove.Text = "Remove";
+         this.toolTip.SetToolTip(this.buttonMappingRemove, "Remove selected mapping entry");
          this.buttonMappingRemove.UseVisualStyleBackColor = true;
          this.buttonMappingRemove.Click += new System.EventHandler(this.buttonMappingRemove_Click);
          // 
@@ -949,6 +876,7 @@
          this.buttonMappingAdd.Size = new System.Drawing.Size(75, 23);
          this.buttonMappingAdd.TabIndex = 9;
          this.buttonMappingAdd.Text = "Add";
+         this.toolTip.SetToolTip(this.buttonMappingAdd, "Add new mapping entry");
          this.buttonMappingAdd.UseVisualStyleBackColor = true;
          this.buttonMappingAdd.Click += new System.EventHandler(this.buttonMappingAdd_Click);
          // 
@@ -1455,6 +1383,7 @@
          this.buttonMainStart.Size = new System.Drawing.Size(81, 23);
          this.buttonMainStart.TabIndex = 2;
          this.buttonMainStart.Text = "START";
+         this.toolTip.SetToolTip(this.buttonMainStart, "START/STOP");
          this.buttonMainStart.UseVisualStyleBackColor = true;
          this.buttonMainStart.Click += new System.EventHandler(this.buttonMainStart_Click);
          // 
@@ -1465,6 +1394,7 @@
          this.buttonMainLoad.Size = new System.Drawing.Size(81, 23);
          this.buttonMainLoad.TabIndex = 3;
          this.buttonMainLoad.Text = "Load Profile";
+         this.toolTip.SetToolTip(this.buttonMainLoad, "Load a profile");
          this.buttonMainLoad.UseVisualStyleBackColor = true;
          this.buttonMainLoad.Click += new System.EventHandler(this.buttonMainLoadProfile_Click);
          // 
@@ -1475,6 +1405,7 @@
          this.buttonMainSave.Size = new System.Drawing.Size(81, 23);
          this.buttonMainSave.TabIndex = 4;
          this.buttonMainSave.Text = "Save Profile";
+         this.toolTip.SetToolTip(this.buttonMainSave, "Save  the current profile");
          this.buttonMainSave.UseVisualStyleBackColor = true;
          this.buttonMainSave.Click += new System.EventHandler(this.buttonMainSaveProfile_Click);
          // 
@@ -1495,6 +1426,7 @@
          this.buttonDataQuery.Size = new System.Drawing.Size(81, 23);
          this.buttonDataQuery.TabIndex = 6;
          this.buttonDataQuery.Text = "Query";
+         this.toolTip.SetToolTip(this.buttonDataQuery, "Query the status from DCS");
          this.buttonDataQuery.UseVisualStyleBackColor = true;
          this.buttonDataQuery.Click += new System.EventHandler(this.button1_Click_2);
          // 
@@ -1579,26 +1511,16 @@
          // 
          // buttonRegister
          // 
+         this.buttonRegister.Enabled = false;
          this.buttonRegister.Location = new System.Drawing.Point(12, 231);
          this.buttonRegister.Name = "buttonRegister";
          this.buttonRegister.Size = new System.Drawing.Size(81, 23);
          this.buttonRegister.TabIndex = 11;
          this.buttonRegister.Text = "Register";
+         this.toolTip.SetToolTip(this.buttonRegister, "Not implemented");
          this.buttonRegister.UseVisualStyleBackColor = true;
          this.buttonRegister.Visible = false;
          this.buttonRegister.Click += new System.EventHandler(this.button1_Click);
-         // 
-         // openFileDialog1
-         // 
-         this.openFileDialog1.FileName = "openFileDialog1";
-         // 
-         // openFileDialog2
-         // 
-         this.openFileDialog2.FileName = "openFileDialog2";
-         // 
-         // openFileDialog3
-         // 
-         this.openFileDialog3.FileName = "openFileDialog3";
          // 
          // progressBarEngineStatus
          // 
@@ -1628,19 +1550,91 @@
          this.buttonMainMerge.Size = new System.Drawing.Size(81, 23);
          this.buttonMainMerge.TabIndex = 14;
          this.buttonMainMerge.Text = "Merge Profile";
+         this.toolTip.SetToolTip(this.buttonMainMerge, "Merge a profile into the current one");
          this.buttonMainMerge.UseVisualStyleBackColor = true;
          this.buttonMainMerge.Click += new System.EventHandler(this.buttonMainMerge_Click);
          // 
-         // buttonCurrentAircraft
+         // fileToolStripMenuItem
          // 
-         this.buttonCurrentAircraft.AccessibleDescription = "";
-         this.buttonCurrentAircraft.Image = global::VLEDCONTROL.Properties.Resources.CurrentAircraftIcon;
-         this.buttonCurrentAircraft.Location = new System.Drawing.Point(207, 13);
-         this.buttonCurrentAircraft.Margin = new System.Windows.Forms.Padding(2);
-         this.buttonCurrentAircraft.Name = "buttonCurrentAircraft";
-         this.buttonCurrentAircraft.Size = new System.Drawing.Size(22, 22);
-         this.buttonCurrentAircraft.TabIndex = 14;
-         this.buttonCurrentAircraft.UseVisualStyleBackColor = true;
+         this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadProfileToolStripMenuItem,
+            this.saveProfileToolStripMenuItem,
+            this.exitToolStripMenuItem});
+         this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+         this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+         this.fileToolStripMenuItem.Text = "File";
+         // 
+         // loadProfileToolStripMenuItem
+         // 
+         this.loadProfileToolStripMenuItem.Name = "loadProfileToolStripMenuItem";
+         this.loadProfileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+         this.loadProfileToolStripMenuItem.Text = "Load Profile";
+         this.loadProfileToolStripMenuItem.Click += new System.EventHandler(this.MenuItemLoadProfile_Click);
+         // 
+         // saveProfileToolStripMenuItem
+         // 
+         this.saveProfileToolStripMenuItem.Name = "saveProfileToolStripMenuItem";
+         this.saveProfileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+         this.saveProfileToolStripMenuItem.Text = "Save Profile";
+         this.saveProfileToolStripMenuItem.Click += new System.EventHandler(this.MenuItemSaveProfile_Click);
+         // 
+         // exitToolStripMenuItem
+         // 
+         this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+         this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+         this.exitToolStripMenuItem.Text = "Exit";
+         this.exitToolStripMenuItem.Click += new System.EventHandler(this.MenuItemExit_Click);
+         // 
+         // setupToolStripMenuItem
+         // 
+         this.setupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.installExportScrriptsToolStripMenuItem,
+            this.removeExportScriptsToolStripMenuItem});
+         this.setupToolStripMenuItem.Name = "setupToolStripMenuItem";
+         this.setupToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+         this.setupToolStripMenuItem.Text = "Setup";
+         // 
+         // installExportScrriptsToolStripMenuItem
+         // 
+         this.installExportScrriptsToolStripMenuItem.Name = "installExportScrriptsToolStripMenuItem";
+         this.installExportScrriptsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+         this.installExportScrriptsToolStripMenuItem.Text = "Install Export Scrripts";
+         this.installExportScrriptsToolStripMenuItem.Click += new System.EventHandler(this.installExportScrriptsToolStripMenuItem_Click);
+         // 
+         // removeExportScriptsToolStripMenuItem
+         // 
+         this.removeExportScriptsToolStripMenuItem.Name = "removeExportScriptsToolStripMenuItem";
+         this.removeExportScriptsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+         this.removeExportScriptsToolStripMenuItem.Text = "Remove Export Scripts";
+         this.removeExportScriptsToolStripMenuItem.Click += new System.EventHandler(this.removeExportScriptsToolStripMenuItem_Click);
+         // 
+         // aboutToolStripMenuItem
+         // 
+         this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem1});
+         this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+         this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+         this.aboutToolStripMenuItem.Text = "Help";
+         this.aboutToolStripMenuItem.Click += new System.EventHandler(this.MenuItemAbout_Click);
+         // 
+         // aboutToolStripMenuItem1
+         // 
+         this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+         this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+         this.aboutToolStripMenuItem1.Text = "About";
+         this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
+         // 
+         // menuStrip1
+         // 
+         this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.setupToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+         this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+         this.menuStrip1.Name = "menuStrip1";
+         this.menuStrip1.Size = new System.Drawing.Size(1170, 24);
+         this.menuStrip1.TabIndex = 0;
+         this.menuStrip1.Text = "menuStrip1";
          // 
          // MainWindowForm
          // 
@@ -1668,8 +1662,6 @@
          this.ShowIcon = false;
          this.Text = "VLEDCONTROL";
          this.Load += new System.EventHandler(this.MainWindowForm_Load);
-         this.menuStrip1.ResumeLayout(false);
-         this.menuStrip1.PerformLayout();
          this.tabMain.ResumeLayout(false);
          this.tabPageData.ResumeLayout(false);
          this.tabPageData.PerformLayout();
@@ -1695,21 +1687,14 @@
          this.panelMode.PerformLayout();
          this.panel1.ResumeLayout(false);
          this.panel1.PerformLayout();
+         this.menuStrip1.ResumeLayout(false);
+         this.menuStrip1.PerformLayout();
          this.ResumeLayout(false);
          this.PerformLayout();
 
       }
 
       #endregion
-
-      private System.Windows.Forms.MenuStrip menuStrip1;
-      private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-      private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-      private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-      private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-      private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
-      private System.Windows.Forms.ToolStripMenuItem loadProfileToolStripMenuItem;
-      private System.Windows.Forms.ToolStripMenuItem saveProfileToolStripMenuItem;
       private System.Windows.Forms.TabControl tabMain;
       private System.Windows.Forms.TabPage tabPageData;
       private System.Windows.Forms.TabPage tabPageProfile;
@@ -1770,8 +1755,6 @@
       public System.Windows.Forms.TextBox textBoxSettingsUpdateInterval;
       public System.Windows.Forms.TextBox textBoxSettingsFlashingCycles;
       internal System.Windows.Forms.ListView listViewSettingsDevices;
-      private System.Windows.Forms.ToolStripMenuItem setupToolStripMenuItem;
-      private System.Windows.Forms.ToolStripMenuItem installExportScrriptsToolStripMenuItem;
       private System.Windows.Forms.Button buttonProfileDown;
       private System.Windows.Forms.Button buttonProfileUp;
       private System.Windows.Forms.Button buttonProfileEdit;
@@ -1787,9 +1770,6 @@
       internal System.Windows.Forms.TextBox textBoxProfileName;
       private System.Windows.Forms.GroupBox groupBox1;
       internal System.Windows.Forms.CheckBox checkBoxAutostartEnabled;
-      private System.Windows.Forms.OpenFileDialog openFileDialog1;
-      private System.Windows.Forms.OpenFileDialog openFileDialog2;
-      private System.Windows.Forms.OpenFileDialog openFileDialog3;
       private System.Windows.Forms.GroupBox groupBox2;
       private System.Windows.Forms.Label labelNumberLedChanges;
       internal System.Windows.Forms.CheckBox checkBox2;
@@ -1815,7 +1795,6 @@
       internal System.Windows.Forms.RadioButton radioButtonNewElementsInsertAfter;
       internal System.Windows.Forms.RadioButton radioButtonNewElementsInsertBefore;
       private System.Windows.Forms.ColumnHeader columnHeaderLed;
-      private System.Windows.Forms.ToolStripMenuItem removeExportScriptsToolStripMenuItem;
       private System.Windows.Forms.Button buttonProfilesClear;
       private System.Windows.Forms.Button buttonCopyAircraftToClipboard;
       internal System.Windows.Forms.CheckBox checkBoxEnableStatistics;
@@ -1846,6 +1825,17 @@
       private System.Windows.Forms.Label labelMappingNumberOfMappings;
       private System.Windows.Forms.Button buttonMainMerge;
       private System.Windows.Forms.Button buttonCurrentAircraft;
+      private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem loadProfileToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem saveProfileToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem setupToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem installExportScrriptsToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem removeExportScriptsToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
+      private System.Windows.Forms.MenuStrip menuStrip1;
+      private System.Windows.Forms.ToolTip toolTip;
    }
 }
 
