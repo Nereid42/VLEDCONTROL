@@ -823,6 +823,7 @@
          this.buttonCurrentAircraft.TabIndex = 14;
          this.toolTip.SetToolTip(this.buttonCurrentAircraft, "Set to current aircraft");
          this.buttonCurrentAircraft.UseVisualStyleBackColor = true;
+         this.buttonCurrentAircraft.Click += new System.EventHandler(this.buttonCurrentAircraft_Click);
          // 
          // label7
          // 

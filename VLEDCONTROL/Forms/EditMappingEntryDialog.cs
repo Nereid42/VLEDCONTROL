@@ -75,8 +75,15 @@ namespace VLEDCONTROL
                Profile.MappingEntry lastEntry = Profile.MappingEntries.Last();
                this.comboBoxAircraft.Text = lastEntry.Aircraft;
                this.textBoxEventId.Text = (lastEntry.Id + 1).ToString();
+               // clipboard
+               String clipboardData = Clipboard.GetText();
+               if (clipboardData != null)
+               {
+                  textBoxName.Text = Tools.AlphaNumeric(clipboardData.ToUpper().Trim().Replace(' ', '_'));
+               }
             }
          }
+         // focus
          this.ActiveControl = textBoxName;
       }
 

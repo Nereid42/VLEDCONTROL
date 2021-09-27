@@ -26,7 +26,6 @@ namespace VLEDCONTROL
    {
       private static readonly System.Globalization.CultureInfo EN_CI = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
-
       public static int ToInt(String s)
       {
          try
@@ -104,6 +103,25 @@ namespace VLEDCONTROL
             }
          }
          return null;
+      }
+
+      internal static String AlphaNumeric(String text)
+      {
+         StringBuilder result = new StringBuilder();
+
+         foreach(char c in text)
+         {
+            if( ( c >= 'a' && c <= 'z' )
+            ||  ( c >= 'A' && c <= 'Z' )
+            ||  ( c >= '0' && c <= '9' )
+            ||  ( c == ' ' )
+            ||  ( c == '_' ) )
+            {
+               result.Append(c);
+            }
+         }
+
+         return result.ToString();
       }
 
       public static void NoKeyPressed(Object o, KeyPressEventArgs e)

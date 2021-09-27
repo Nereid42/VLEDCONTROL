@@ -56,8 +56,6 @@ namespace VLEDCONTROL
 
       private long Cycle = 0;
 
-      private long Executes = 0;
-
       public volatile bool IsRunning = false;
 
       public Engine()
@@ -401,7 +399,7 @@ namespace VLEDCONTROL
                      if (swTotalRunning.ElapsedMilliseconds >= millis + 1000)
                      {
                         millis = swTotalRunning.ElapsedMilliseconds;
-                        Controller.DisplayStatistics(swTotalRunning.ElapsedMilliseconds, swCalcLeds.ElapsedMilliseconds, Executes);
+                        Controller.DisplayStatistics(swTotalRunning.ElapsedMilliseconds, swCalcLeds.ElapsedMilliseconds, VirpilDevice.UsbCommandCnt);
                      }
                   } 
                   // Is displayed data dirty?
@@ -416,7 +414,7 @@ namespace VLEDCONTROL
                }
 
                CalculateLEDs();
-               if (IsLoggable(LEVEL.DEBUG)) LogDebug("Commdands executed: " + Executes);
+               if (IsLoggable(LEVEL.DEBUG)) LogDebug("USB command send: " + VirpilDevice.UsbCommandCnt);
 
                Thread.Sleep(CurrentSettings.GetUpdateIntervalInMillis());
             }
@@ -446,7 +444,7 @@ namespace VLEDCONTROL
 
          LogInfo("Total time running: "+swTotalRunning.ElapsedMilliseconds+" ms");
          LogInfo("Calculating Leds: " + swCalcLeds.ElapsedMilliseconds + " ms");
-         LogInfo("Executes: " + swCalcLeds.ElapsedMilliseconds + " ms for "+Executes+" command executes");
+         LogInfo("Executes: " + swCalcLeds.ElapsedMilliseconds + " ms for "+ VirpilDevice.UsbCommandCnt + " command executes");
 
          swTotalRunning.Stop();
       }

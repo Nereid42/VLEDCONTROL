@@ -620,5 +620,11 @@ namespace VLEDCONTROL
          listViewData.Items.Clear();
          Controller.MarkDataAsDirty(true);
       }
+
+      private void buttonCurrentAircraft_Click(object sender, EventArgs e)
+      {
+         this.comboBoxMappingFilterAircraft.Text = this.textBoxAircraft.Text;
+         Controller.SetProfile(VLED.Engine.CurrentProfile);
+      }
    }
 }

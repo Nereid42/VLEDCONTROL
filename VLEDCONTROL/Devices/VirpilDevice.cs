@@ -23,6 +23,7 @@ namespace VLEDCONTROL
 {
    public class VirpilDevice : Loggable, IDisposable
    {
+      public static long UsbCommandCnt { get; private set; } = 0;
       public enum BOARDTYPE { DEFAULT = 0x64, ADDBOARD = 0x65, ONBOARD = 0x66, SLAVE = 0x67 }
 
       public String Name { get; set; } = "";
@@ -169,6 +170,7 @@ namespace VLEDCONTROL
          {
             LogDebug("sending command led "+ledNumber+" color "+color+" to device "+this);
             stream.SetFeature(packet);
+            UsbCommandCnt++;
          }
          catch
          {
