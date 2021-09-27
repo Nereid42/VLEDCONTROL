@@ -358,7 +358,7 @@ namespace VLEDCONTROL
 
       public IReadOnlyCollection<String> GetAircraftList()
       {
-         HashSet<String> aircrafts = new HashSet<String>();
+         SortedSet<String> aircrafts = new SortedSet<String>();
 
          foreach(ProfileEvent e in ProfileEvents)
          {
