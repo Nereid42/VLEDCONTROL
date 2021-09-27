@@ -92,12 +92,6 @@ namespace VLEDCONTROL
             buttonProfileEdit.Enabled = true;
             buttonProfileDown.Enabled = ( listViewProfileEvents.SelectedIndices[0] < listViewProfileEvents.Items.Count - 1 );
             buttonProfileUp.Enabled = ( listViewProfileEvents.SelectedIndices[0] > 0 );
-            //
-            // Debug
-            //int index = listViewProfileEvents.SelectedIndices[0];
-            //System.Windows.Forms.ListViewItem item = listViewProfileEvents.Items[index];
-            //Profile.ProfileEvent e = VLED.Engine.CurrentProfile.ProfileEvents[index]
-            //Loggable.Debug("Selected: index="+index+", Tag="+item.Tag);
          }
       }
 
@@ -626,6 +620,5 @@ namespace VLEDCONTROL
          listViewData.Items.Clear();
          Controller.MarkDataAsDirty(true);
       }
-
    }
 }
