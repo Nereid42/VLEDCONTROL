@@ -171,6 +171,7 @@
          this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
          this.menuStrip1 = new System.Windows.Forms.MenuStrip();
          this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+         this.button1 = new System.Windows.Forms.Button();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
          this.panel2.SuspendLayout();
@@ -451,6 +452,7 @@
          // 
          // groupBoxFilterProfile
          // 
+         this.groupBoxFilterProfile.Controls.Add(this.button1);
          this.groupBoxFilterProfile.Controls.Add(this.comboBoxProfileFilterDevice);
          this.groupBoxFilterProfile.Controls.Add(this.label2);
          this.groupBoxFilterProfile.Controls.Add(this.checkBoxProfileFilterStatic);
@@ -458,7 +460,7 @@
          this.groupBoxFilterProfile.Controls.Add(this.comboBoxProfileFilterAircraft);
          this.groupBoxFilterProfile.Location = new System.Drawing.Point(414, 0);
          this.groupBoxFilterProfile.Name = "groupBoxFilterProfile";
-         this.groupBoxFilterProfile.Size = new System.Drawing.Size(563, 46);
+         this.groupBoxFilterProfile.Size = new System.Drawing.Size(561, 46);
          this.groupBoxFilterProfile.TabIndex = 15;
          this.groupBoxFilterProfile.TabStop = false;
          this.groupBoxFilterProfile.Text = "Filter";
@@ -468,7 +470,7 @@
          this.comboBoxProfileFilterDevice.FormattingEnabled = true;
          this.comboBoxProfileFilterDevice.Items.AddRange(new object[] {
             "ANY"});
-         this.comboBoxProfileFilterDevice.Location = new System.Drawing.Point(255, 14);
+         this.comboBoxProfileFilterDevice.Location = new System.Drawing.Point(284, 14);
          this.comboBoxProfileFilterDevice.Name = "comboBoxProfileFilterDevice";
          this.comboBoxProfileFilterDevice.Size = new System.Drawing.Size(149, 21);
          this.comboBoxProfileFilterDevice.TabIndex = 4;
@@ -478,7 +480,7 @@
          // label2
          // 
          this.label2.AutoSize = true;
-         this.label2.Location = new System.Drawing.Point(208, 18);
+         this.label2.Location = new System.Drawing.Point(237, 18);
          this.label2.Name = "label2";
          this.label2.Size = new System.Drawing.Size(41, 13);
          this.label2.TabIndex = 3;
@@ -489,7 +491,7 @@
          this.checkBoxProfileFilterStatic.AutoSize = true;
          this.checkBoxProfileFilterStatic.Checked = true;
          this.checkBoxProfileFilterStatic.CheckState = System.Windows.Forms.CheckState.Checked;
-         this.checkBoxProfileFilterStatic.Location = new System.Drawing.Point(428, 17);
+         this.checkBoxProfileFilterStatic.Location = new System.Drawing.Point(448, 17);
          this.checkBoxProfileFilterStatic.Name = "checkBoxProfileFilterStatic";
          this.checkBoxProfileFilterStatic.Size = new System.Drawing.Size(53, 17);
          this.checkBoxProfileFilterStatic.TabIndex = 2;
@@ -819,7 +821,7 @@
          this.buttonCurrentAircraft.Location = new System.Drawing.Point(207, 13);
          this.buttonCurrentAircraft.Margin = new System.Windows.Forms.Padding(2);
          this.buttonCurrentAircraft.Name = "buttonCurrentAircraft";
-         this.buttonCurrentAircraft.Size = new System.Drawing.Size(22, 22);
+         this.buttonCurrentAircraft.Size = new System.Drawing.Size(23, 23);
          this.buttonCurrentAircraft.TabIndex = 14;
          this.toolTip.SetToolTip(this.buttonCurrentAircraft, "Set to current aircraft");
          this.buttonCurrentAircraft.UseVisualStyleBackColor = true;
@@ -1637,6 +1639,17 @@
          this.menuStrip1.TabIndex = 0;
          this.menuStrip1.Text = "menuStrip1";
          // 
+         // button1
+         // 
+         this.button1.Image = global::VLEDCONTROL.Properties.Resources.CurrentAircraftIcon;
+         this.button1.Location = new System.Drawing.Point(208, 13);
+         this.button1.Name = "button1";
+         this.button1.Size = new System.Drawing.Size(23, 23);
+         this.button1.TabIndex = 17;
+         this.toolTip.SetToolTip(this.button1, "Set to current aircraft");
+         this.button1.UseVisualStyleBackColor = true;
+         this.button1.Click += new System.EventHandler(this.button1_Click_4);
+         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1837,6 +1850,7 @@
       private System.Windows.Forms.MenuStrip menuStrip1;
       private System.Windows.Forms.ToolTip toolTip;
       internal System.Windows.Forms.TabControl tabMain;
+      private System.Windows.Forms.Button button1;
    }
 }
 

@@ -626,5 +626,11 @@ namespace VLEDCONTROL
          this.comboBoxMappingFilterAircraft.Text = this.textBoxAircraft.Text;
          Controller.SetProfile(VLED.Engine.CurrentProfile);
       }
+
+      private void button1_Click_4(object sender, EventArgs e)
+      {
+         this.comboBoxProfileFilterAircraft.Text = this.textBoxAircraft.Text;
+         Controller.SetProfile(VLED.Engine.CurrentProfile);
+      }
    }
 }
