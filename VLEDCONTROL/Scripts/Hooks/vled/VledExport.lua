@@ -86,17 +86,29 @@ function PrepareData()
 	end
 	
 	local aircraft = MyAircraft.Name
+
+	local changeInData = false;
+	local data = {}
+
 	
 	-- Su-25T is not supported
 	if aircraft == 'Su-25T' then
-	    log.write('VLED.EXPORT', log.ERROR, 'Su-25T not supported');
-		 return data;
+	   log.write('VLED.EXPORT', log.ERROR, 'Su-25T not supported');
+		data[9999] = aircraft;
+		return data;
+	end
+
+	local panel = GetDevice(0);
+	if panel == nil then
+		return nil;
+	else
+		--if panel:get_argument_value == nil then
+		--	log.write('VLED.EXPORT', log.INFO, 'NO PANEL');	
+		--	return nil;			
+		--end
 	end
 
 
-	local changeInData = false;
-
-	local data = {}
 	--log.write('VLED.EXPORT', log.INFO, 'creating data');		
 	if ( currentData[9999] ~= aircraft ) then
 		--log.write('VLED.EXPORT', log.INFO, 'NEW AIRCRAFT');		
@@ -104,20 +116,16 @@ function PrepareData()
 		data[9999] = aircraft;
 		currentData[9999] = aircraft;
 		
-		local panel = GetDevice(0);
-		if (panel ~= nil) then
-			for i=1,MAX_PANEL_INDEX,1 do
-				arg = panel:get_argument_value(i);
-				currentData[i] = arg;
-				if ( arg ~= nil and arg ~= 0 ) then
-					--log.write('VLED.EXPORT', log.INFO, 'PANEL '..tostring(i)..": "..arg);				  
-					data[i] = arg;
-				end
+		for i=1,MAX_PANEL_INDEX,1 do
+			arg = panel:get_argument_value(i);
+			currentData[i] = arg;
+			if ( arg ~= nil and arg ~= 0 ) then
+				--log.write('VLED.EXPORT', log.INFO, 'PANEL '..tostring(i)..": "..arg);				  
+				data[i] = arg;
 			end
 		end
 	else
 		--log.write('VLED.EXPORT', log.INFO, 'no new aircraft');			
-		local panel = GetDevice(0);
 		for i=1,MAX_PANEL_INDEX,1 do
 			arg = panel:get_argument_value(i);
 			if ( arg ~= nil and currentData[i] ~= arg ) then
