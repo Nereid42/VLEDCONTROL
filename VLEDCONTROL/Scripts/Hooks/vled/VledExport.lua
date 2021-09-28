@@ -87,10 +87,11 @@ function PrepareData()
 	
 	local aircraft = MyAircraft.Name
 	
-	-- Su-27 ius not supported
-	--if ( aircraft == 'Su-27' ) then
-	--	return nil;
-	--end
+	-- Su-25T is not supported
+	if aircraft == 'Su-25T' then
+	    log.write('VLED.EXPORT', log.ERROR, 'Su-25T not supported');
+		 return data;
+	end
 
 
 	local changeInData = false;
