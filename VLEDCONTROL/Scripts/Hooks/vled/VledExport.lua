@@ -100,12 +100,15 @@ function PrepareData()
 
 	local panel = GetDevice(0);
 	if panel == nil then
-		return nil;
+		log.write('VLED.EXPORT', log.INFO, 'NULL PANEL');	
+		data[9999] = aircraft;
+		return data;
 	else
-		--if panel:get_argument_value == nil then
-		--	log.write('VLED.EXPORT', log.INFO, 'NO PANEL');	
-		--	return nil;			
-		--end
+		if type(panel) ~= 'table' then
+			log.write('VLED.EXPORT', log.INFO, 'NO PANEL');	
+			data[9999] = aircraft;
+			return data;
+		end
 	end
 
 
