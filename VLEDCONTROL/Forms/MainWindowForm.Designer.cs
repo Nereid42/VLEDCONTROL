@@ -1568,21 +1568,21 @@
          // loadProfileToolStripMenuItem
          // 
          this.loadProfileToolStripMenuItem.Name = "loadProfileToolStripMenuItem";
-         this.loadProfileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+         this.loadProfileToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
          this.loadProfileToolStripMenuItem.Text = "Load Profile";
          this.loadProfileToolStripMenuItem.Click += new System.EventHandler(this.MenuItemLoadProfile_Click);
          // 
          // saveProfileToolStripMenuItem
          // 
          this.saveProfileToolStripMenuItem.Name = "saveProfileToolStripMenuItem";
-         this.saveProfileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+         this.saveProfileToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
          this.saveProfileToolStripMenuItem.Text = "Save Profile";
          this.saveProfileToolStripMenuItem.Click += new System.EventHandler(this.MenuItemSaveProfile_Click);
          // 
          // exitToolStripMenuItem
          // 
          this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-         this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+         this.exitToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
          this.exitToolStripMenuItem.Text = "Exit";
          this.exitToolStripMenuItem.Click += new System.EventHandler(this.MenuItemExit_Click);
          // 
@@ -1621,7 +1621,7 @@
          // aboutToolStripMenuItem1
          // 
          this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-         this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+         this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
          this.aboutToolStripMenuItem1.Text = "About";
          this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
          // 
@@ -1696,7 +1696,6 @@
       }
 
       #endregion
-      private System.Windows.Forms.TabControl tabMain;
       private System.Windows.Forms.TabPage tabPageData;
       private System.Windows.Forms.TabPage tabPageProfile;
       private System.Windows.Forms.Label labelProfile;
@@ -1837,6 +1836,7 @@
       private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
       private System.Windows.Forms.MenuStrip menuStrip1;
       private System.Windows.Forms.ToolTip toolTip;
+      internal System.Windows.Forms.TabControl tabMain;
    }
 }
 

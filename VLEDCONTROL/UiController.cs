@@ -230,6 +230,8 @@ namespace VLEDCONTROL
                VLED.Engine.CurrentProfile = Profile.Load(chooser.FileName);
                SetProfile(VLED.Engine.CurrentProfile);
                SetProfileFilter(VLED.Engine.CurrentProfile);
+               // show profile tab
+               MainWindow.tabMain.SelectTab(1);
             }
          }
       }
@@ -249,6 +251,8 @@ namespace VLEDCONTROL
                VLED.Engine.CurrentProfile.Merge(profile);
                SetProfile(VLED.Engine.CurrentProfile);
                SetProfileFilter(VLED.Engine.CurrentProfile);
+               // show profile tab
+               MainWindow.tabMain.SelectTab(1);
             }
          }
       }
