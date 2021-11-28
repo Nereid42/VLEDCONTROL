@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
+using System.Globalization;
 
 namespace VLEDCONTROL
 {
@@ -30,7 +31,7 @@ namespace VLEDCONTROL
       {
          try
          {
-            return int.Parse(s);
+            return int.Parse(s, CultureInfo.InvariantCulture);
          }
          catch
          {
@@ -42,7 +43,7 @@ namespace VLEDCONTROL
       {
          try
          {
-            return double.Parse(s);
+            return double.Parse(s, CultureInfo.InvariantCulture);
          }
          catch
          {
