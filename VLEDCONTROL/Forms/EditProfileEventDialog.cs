@@ -40,12 +40,25 @@ namespace VLEDCONTROL
          this.comboBoxLed.KeyPress += new KeyPressEventHandler(Tools.NoKeyPressed);
          this.comboBoxPrimaryCondition.KeyPress += new KeyPressEventHandler(Tools.NoKeyPressed);
          this.comboBoxSecondaryCondition.KeyPress += new KeyPressEventHandler(Tools.NoKeyPressed);
-         this.textBoxPrimaryValue.KeyPress += new KeyPressEventHandler(Tools.NumericKeyPressed);
-         this.textBoxSecondaryValue.KeyPress += new KeyPressEventHandler(Tools.NumericKeyPressed);
+         this.textBoxPrimaryValue.KeyPress += new KeyPressEventHandler(NumericKeyPressed); 
+         this.textBoxSecondaryValue.KeyPress += new KeyPressEventHandler(NumericKeyPressed);
          this.comboBoxEventNames.KeyPress += new KeyPressEventHandler(Tools.NoKeyPressed);
          this.comboBoxAircraft.KeyPress += new KeyPressEventHandler(this.ComboBoxAircraftTextChanged);
 
          this.comboBoxAircraft.TextChanged += new EventHandler(this.ComboBoxAircraftTextChanged);
+      }
+
+      private void NumericKeyPressed(object sender, KeyPressEventArgs e)
+      {
+         Tools.NumericKeyPressed(sender, e);
+         TextBox box = (TextBox)sender;
+         if(!e.Handled)
+         {
+            if (e.KeyChar == '-' && box.SelectionStart != 0)
+            {
+               e.Handled = true;
+            }
+         }
       }
 
       private bool IsValid()

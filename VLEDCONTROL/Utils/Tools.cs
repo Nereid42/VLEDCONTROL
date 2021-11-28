@@ -59,7 +59,7 @@ namespace VLEDCONTROL
 
       public static void NumericKeyPressed(Object o, KeyPressEventArgs e)
       {
-         if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == '.' || e.KeyChar == 8 )
+         if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == '.' || e.KeyChar == 8 || e.KeyChar == '-')
          {
             e.Handled = false;
             return;
