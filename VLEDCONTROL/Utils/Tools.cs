@@ -201,7 +201,20 @@ namespace VLEDCONTROL
             result++;
             if (item.Equals(box.Text)) return result;
          }
-         return result;
+         return -1;
+      }
+
+      internal static void TrySelectComboBoxItem(ComboBox box, string text)
+      {
+         foreach (Object item in box.Items)
+         {
+            if (item.Equals(text))
+            {
+               box.Text = item.ToString();
+               return;
+            }
+         }
+         box.Text = "";
       }
 
       public static void SelectComboBoxItem(ComboBox box, int index)

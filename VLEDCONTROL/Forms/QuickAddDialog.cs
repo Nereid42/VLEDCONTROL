@@ -153,9 +153,15 @@ namespace VLEDCONTROL
          {
             this.comboBoxAircraft.Items.Add(ac);
          }
-         this.comboBoxAircraft.Text = LastAircraft;
 
-         if(this.comboBoxAircraft.Text!=null && this.comboBoxAircraft.Text.Length>0)
+         Tools.TrySelectComboBoxItem(this.comboBoxAircraft, VLED.MainWindow.textBoxAircraft.Text);
+         if (Tools.IndexOfSelectedComboBoxItem(this.comboBoxAircraft)<0)
+         {
+            this.comboBoxAircraft.Text = LastAircraft;
+         }
+
+
+         if (this.comboBoxAircraft.Text!=null && this.comboBoxAircraft.Text.Length>0)
          {
             IsAdjusting = true;
             IReadOnlyCollection<String> eventNames = Profile.GetEventNamesForAircraft(comboBoxAircraft.Text);

@@ -80,6 +80,7 @@ namespace VLEDCONTROL
 
       private void EditDeviceDialog_Load(object sender, EventArgs e)
       {
+
          this.textBoxId.Text = this.Id.ToString();
          if(Device != null)
          {
@@ -101,6 +102,54 @@ namespace VLEDCONTROL
       private void textBoxDeviceName_TextChanged(object sender, EventArgs e)
       {
 
+      }
+
+      private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+      {
+
+      }
+
+      private void button2_Click(object sender, EventArgs e)
+      {
+
+      }
+
+      private void comboBoxDevice_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         int item = Tools.IndexOfSelectedComboBoxItem(this.comboBoxDevice);
+         switch(item)
+         {
+            case 0:
+               this.textBoxDeviceName.Text = "VPC Panel #1";
+               this.textBoxUsbVid.Text = "3344";
+               this.textBoxUsbPid.Text = "";
+               break;
+            case 1:
+               this.textBoxDeviceName.Text = "VPC Panel #2";
+               this.textBoxUsbVid.Text = "3344";
+               this.textBoxUsbPid.Text = "025B";
+               break;
+            case 2:
+               this.textBoxDeviceName.Text = "VPC SharKa-50 Panel";
+               this.textBoxUsbVid.Text = "3344";
+               this.textBoxUsbPid.Text = "025D";
+               break;
+            case 3:
+               this.textBoxDeviceName.Text = "VPC Throttle MT-50CM3";
+               this.textBoxUsbVid.Text = "3344";
+               this.textBoxUsbPid.Text = "0194";
+               break;
+            case 4:
+               this.textBoxDeviceName.Text = "VPC Stick WarBRD";
+               this.textBoxUsbVid.Text = "3344";
+               this.textBoxUsbPid.Text = "00CC";
+               break;
+            default:
+               this.textBoxDeviceName.Text = "";
+               this.textBoxUsbVid.Text = "3344";
+               this.textBoxUsbPid.Text = "";
+               break;
+         }
       }
    }
 }

@@ -106,6 +106,7 @@
          // 
          this.comboBoxAircraft.FormattingEnabled = true;
          this.comboBoxAircraft.Location = new System.Drawing.Point(66, 58);
+         this.comboBoxAircraft.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
          this.comboBoxAircraft.Name = "comboBoxAircraft";
          this.comboBoxAircraft.Size = new System.Drawing.Size(249, 21);
          this.comboBoxAircraft.TabIndex = 4;

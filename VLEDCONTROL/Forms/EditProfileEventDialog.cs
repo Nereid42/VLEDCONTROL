@@ -32,6 +32,8 @@ namespace VLEDCONTROL
 
       private readonly ColorChooserDialog colorChooser = new ColorChooserDialog();
 
+      static String LastAircraft = "";
+
       public EditProfileEventDialog()
       {
          InitializeComponent();
@@ -180,7 +182,13 @@ namespace VLEDCONTROL
             this.comboBoxAircraft.Items.Add(ac);
          }
 
-         foreach(VirpilDevice device in VLED.Engine.CurrentSettings.Devices)
+         Tools.TrySelectComboBoxItem(this.comboBoxAircraft, VLED.MainWindow.textBoxAircraft.Text);
+         if (Tools.IndexOfSelectedComboBoxItem(this.comboBoxAircraft) < 0)
+         {
+            this.comboBoxAircraft.Text = LastAircraft;
+         }
+
+         foreach (VirpilDevice device in VLED.Engine.CurrentSettings.Devices)
          {
             this.comboBoxDeviceName.Items.Add(device.Name);
          }
@@ -392,6 +400,8 @@ namespace VLEDCONTROL
             int id = Tools.ToInt(this.textBoxEventId.Text);
             comboBoxEventNames.Text = Profile.MapPropertyName(this.comboBoxAircraft.Text, id);
 
+            EditProfileEventDialog.LastAircraft = comboBoxAircraft.Text;
+
             IsAdjusting = false;
 
             ValidateInput();
@@ -450,6 +460,11 @@ namespace VLEDCONTROL
       {
          this.textBoxSecondaryValue.Text = "1";
          this.textBoxSecondaryValue.Focus();
+      }
+
+      private void buttonCurrentAircraft_Click(object sender, EventArgs e)
+      {
+
       }
    }
 }

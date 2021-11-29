@@ -38,6 +38,7 @@
          this.textBoxId = new System.Windows.Forms.TextBox();
          this.buttonCancel = new System.Windows.Forms.Button();
          this.buttonOk = new System.Windows.Forms.Button();
+         this.comboBoxDevice = new System.Windows.Forms.ComboBox();
          this.SuspendLayout();
          // 
          // labelDeviceName
@@ -127,12 +128,29 @@
          this.buttonOk.UseVisualStyleBackColor = true;
          this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
          // 
+         // comboBoxDevice
+         // 
+         this.comboBoxDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.comboBoxDevice.FormattingEnabled = true;
+         this.comboBoxDevice.Items.AddRange(new object[] {
+            "VPC Panel #1",
+            "VPC Panel #2",
+            "VPC SharKa Panel",
+            "VPC Throttle MT-50",
+            "VPC Stick WarBRD"});
+         this.comboBoxDevice.Location = new System.Drawing.Point(129, 14);
+         this.comboBoxDevice.Name = "comboBoxDevice";
+         this.comboBoxDevice.Size = new System.Drawing.Size(121, 21);
+         this.comboBoxDevice.TabIndex = 10;
+         this.comboBoxDevice.SelectedIndexChanged += new System.EventHandler(this.comboBoxDevice_SelectedIndexChanged);
+         // 
          // EditDeviceDialog
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(276, 189);
          this.ControlBox = false;
+         this.Controls.Add(this.comboBoxDevice);
          this.Controls.Add(this.buttonOk);
          this.Controls.Add(this.buttonCancel);
          this.Controls.Add(this.textBoxId);
@@ -166,5 +184,6 @@
       private System.Windows.Forms.TextBox textBoxId;
       private System.Windows.Forms.Button buttonCancel;
       private System.Windows.Forms.Button buttonOk;
+      internal System.Windows.Forms.ComboBox comboBoxDevice;
    }
 }
