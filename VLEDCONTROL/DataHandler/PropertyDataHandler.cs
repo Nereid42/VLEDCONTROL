@@ -33,7 +33,7 @@ namespace VLEDCONTROL
             int numeric_id = int.Parse(id);
             if(numeric_id < 1000)
             {
-               double numeric_value = double.Parse(value);
+               double numeric_value = Tools.ToDouble(value);
                engine.SetProperty(numeric_id, numeric_value);
             }
          }
