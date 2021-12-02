@@ -346,6 +346,7 @@ namespace VLEDCONTROL
          SetCheckBoxChecked(MainWindow.checkBoxEnableStatistics, settings.StatisticsEnabled);
          SetCheckBoxChecked(MainWindow.checkBoxLiveDataEnabled, settings.LiveDataEnabled);
          SetCheckBoxChecked(MainWindow.checkBoxAutostartEnabled, settings.AutostartEnabled);
+         SetCheckBoxChecked(MainWindow.checkBoxHighlightLed, settings.HighlightLedEnabled);
 
          // Buttons
          SetSettingsModified(modified);

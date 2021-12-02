@@ -87,12 +87,31 @@ namespace VLEDCONTROL
          }
          else
          {
+            int selectedIndex = listViewProfileEvents.SelectedIndices[0];
             buttonProfileRemove.Enabled = true;
             buttonProfileDuplicate.Enabled = true;
             buttonProfileEdit.Enabled = true;
-            buttonProfileDown.Enabled = ( listViewProfileEvents.SelectedIndices[0] < listViewProfileEvents.Items.Count - 1 );
-            buttonProfileUp.Enabled = ( listViewProfileEvents.SelectedIndices[0] > 0 );
+            buttonProfileDown.Enabled = (selectedIndex < listViewProfileEvents.Items.Count - 1 );
+            buttonProfileUp.Enabled = (selectedIndex > 0 );
+
+            if (checkBoxHighlightLed.Checked)
+            {
+               int index = (int)listViewProfileEvents.Items[selectedIndex].Tag;
+               Loggable.LogUrgend("INDEX: " + index);
+               Profile.ProfileEvent profileEvent = VLED.Engine.CurrentProfile.ProfileEvents[index];
+               if (profileEvent != null)
+               {
+                  int deviceId = profileEvent.DeviceId;
+                  VirpilDevice device = VLED.Engine.CurrentSettings.GetDevice(deviceId);
+                  if (device != null)
+                  {
+                     int led = profileEvent.LedNumber;
+                     VLED.Engine.HighlightLed(deviceId, led, LedColor.WHITE);
+                  }
+               }
+            }
          }
+
       }
 
       private void label1_Click(object sender, EventArgs e)
@@ -631,6 +650,11 @@ namespace VLEDCONTROL
       {
          this.comboBoxProfileFilterAircraft.Text = this.textBoxAircraft.Text;
          Controller.SetProfile(VLED.Engine.CurrentProfile);
+      }
+
+      private void checkBoxHighlightLed_CheckedChanged(object sender, EventArgs e)
+      {
+         VLED.Engine.CurrentSettings.HighlightLedEnabled = checkBoxHighlightLed.Checked;
       }
    }
 }

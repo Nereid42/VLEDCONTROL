@@ -31,6 +31,7 @@ namespace VLEDCONTROL
       private volatile bool _AutostartEnabled = true;
       private volatile bool _StatisticsEnabled = true;
       private volatile bool _LiveDataEnabled = true;
+      private volatile bool _HighlightLedEnabled = false;
       private volatile List<VirpilDevice> _Devices = new List<VirpilDevice>();
       private volatile String _DefaultProfile = "Default.profile";
       private volatile int _FlashingCycles = 2;
@@ -47,6 +48,7 @@ namespace VLEDCONTROL
       public bool StatisticsEnabled { get { return _StatisticsEnabled; } set { _StatisticsEnabled = value; } } 
       public bool LiveDataEnabled { get { return _LiveDataEnabled; } set { _LiveDataEnabled = value; } }
       public bool AutostartEnabled { get { return _AutostartEnabled; } set { _AutostartEnabled = value; } }
+      public bool HighlightLedEnabled { get { return _HighlightLedEnabled; } set { _HighlightLedEnabled = value; } }
 
       public static bool FileExists()
       {
@@ -77,6 +79,7 @@ namespace VLEDCONTROL
             this.FlashingCycles = settings.FlashingCycles;
             this.LiveDataEnabled = settings.LiveDataEnabled;
             this.AutostartEnabled = settings.AutostartEnabled;
+            this.HighlightLedEnabled = settings.HighlightLedEnabled;
          }
       }
 

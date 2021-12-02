@@ -258,5 +258,10 @@ namespace VLEDCONTROL
          }
          return System.Drawing.Color.Black;
       }
+
+      public static void Sleep(int millis)
+      {
+         System.Threading.Thread.Sleep(millis);
+      }
    }
 }

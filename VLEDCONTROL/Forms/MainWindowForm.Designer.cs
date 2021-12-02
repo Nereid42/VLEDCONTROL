@@ -52,8 +52,10 @@
          this.columnHeaderDataValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderLastChange = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabPageProfile = new System.Windows.Forms.TabPage();
+         this.checkBoxHighlightLed = new System.Windows.Forms.CheckBox();
          this.buttonQuickAdd = new System.Windows.Forms.Button();
          this.groupBoxFilterProfile = new System.Windows.Forms.GroupBox();
+         this.button1 = new System.Windows.Forms.Button();
          this.comboBoxProfileFilterDevice = new System.Windows.Forms.ComboBox();
          this.label2 = new System.Windows.Forms.Label();
          this.checkBoxProfileFilterStatic = new System.Windows.Forms.CheckBox();
@@ -171,7 +173,6 @@
          this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
          this.menuStrip1 = new System.Windows.Forms.MenuStrip();
          this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-         this.button1 = new System.Windows.Forms.Button();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
          this.panel2.SuspendLayout();
@@ -415,6 +416,7 @@
          // 
          // tabPageProfile
          // 
+         this.tabPageProfile.Controls.Add(this.checkBoxHighlightLed);
          this.tabPageProfile.Controls.Add(this.buttonQuickAdd);
          this.tabPageProfile.Controls.Add(this.groupBoxFilterProfile);
          this.tabPageProfile.Controls.Add(this.buttonProfilesClear);
@@ -437,6 +439,17 @@
          this.tabPageProfile.TabIndex = 1;
          this.tabPageProfile.Text = "Profile";
          this.tabPageProfile.UseVisualStyleBackColor = true;
+         // 
+         // checkBoxHighlightLed
+         // 
+         this.checkBoxHighlightLed.AutoSize = true;
+         this.checkBoxHighlightLed.Location = new System.Drawing.Point(901, 539);
+         this.checkBoxHighlightLed.Name = "checkBoxHighlightLed";
+         this.checkBoxHighlightLed.Size = new System.Drawing.Size(91, 17);
+         this.checkBoxHighlightLed.TabIndex = 17;
+         this.checkBoxHighlightLed.Text = "Highlight LED";
+         this.checkBoxHighlightLed.UseVisualStyleBackColor = true;
+         this.checkBoxHighlightLed.CheckedChanged += new System.EventHandler(this.checkBoxHighlightLed_CheckedChanged);
          // 
          // buttonQuickAdd
          // 
@@ -464,6 +477,17 @@
          this.groupBoxFilterProfile.TabIndex = 15;
          this.groupBoxFilterProfile.TabStop = false;
          this.groupBoxFilterProfile.Text = "Filter";
+         // 
+         // button1
+         // 
+         this.button1.Image = global::VLEDCONTROL.Properties.Resources.CurrentAircraftIcon;
+         this.button1.Location = new System.Drawing.Point(208, 13);
+         this.button1.Name = "button1";
+         this.button1.Size = new System.Drawing.Size(23, 23);
+         this.button1.TabIndex = 17;
+         this.toolTip.SetToolTip(this.button1, "Set to current aircraft");
+         this.button1.UseVisualStyleBackColor = true;
+         this.button1.Click += new System.EventHandler(this.button1_Click_4);
          // 
          // comboBoxProfileFilterDevice
          // 
@@ -1639,17 +1663,6 @@
          this.menuStrip1.TabIndex = 0;
          this.menuStrip1.Text = "menuStrip1";
          // 
-         // button1
-         // 
-         this.button1.Image = global::VLEDCONTROL.Properties.Resources.CurrentAircraftIcon;
-         this.button1.Location = new System.Drawing.Point(208, 13);
-         this.button1.Name = "button1";
-         this.button1.Size = new System.Drawing.Size(23, 23);
-         this.button1.TabIndex = 17;
-         this.toolTip.SetToolTip(this.button1, "Set to current aircraft");
-         this.button1.UseVisualStyleBackColor = true;
-         this.button1.Click += new System.EventHandler(this.button1_Click_4);
-         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1851,6 +1864,7 @@
       private System.Windows.Forms.ToolTip toolTip;
       internal System.Windows.Forms.TabControl tabMain;
       private System.Windows.Forms.Button button1;
+      internal System.Windows.Forms.CheckBox checkBoxHighlightLed;
    }
 }
 
