@@ -1,16 +1,16 @@
-statistics = {}
+vledcontrol = {}
 
-function statistics.onSimulationStart()
-    net.log("VLED.Export: loading");
-    net.dostring_in("export", "dofile(lfs.writedir()..[[Scripts\\Hooks\\vled\\VledExport.lua]])");
-    net.log('VLED.Export: loaded');
+function vledcontrol.onSimulationStart()
+    net.log('VLEDCONTROL: loading VledExport.lua');
+    net.dostring_in('export', 'dofile(lfs.writedir()..[[Scripts\\Hooks\\vled\\VledExport.lua]])');
+    net.log('VLEDCONTROL: loaded');
 end
 
-function statistics.onMissionLoadBegin()
-    net.log('VLED.Export: Reloading user scripts...');
+function vledcontrol.onMissionLoadBegin()
+    net.log('VLEDCONTROL: reloading user scripts...');
     DCS.reloadUserScripts();
-    net.log('VLED.Export: Scripts successfully reloaded.');
+    net.log('VLEDCONTROL: scripts successfully reloaded.');
 end
-DCS.setUserCallbacks(statistics);
+DCS.setUserCallbacks(vledcontrol);
 
-net.log("VLED.Export: hook loaded!");
+net.log('VLEDCONTROL: hook loaded');
