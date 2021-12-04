@@ -150,18 +150,35 @@ namespace VLEDCONTROL
 
       internal static void DeleteScriptFile(string dcsBasePath,String filename)
       {
-         String path = dcsBasePath + "Scripts/" + filename;
+         String path = dcsBasePath + "/Scripts/" + filename;
+         Loggable.LogInfo("deleting file '" + path + "'");
          if (System.IO.File.Exists(path))
          {
-            System.IO.File.Delete(path);
+            try
+            {
+               System.IO.File.Delete(path);
+            }
+            catch
+            {
+               Loggable.LogError("failed to delete file '"+path+"'");
+            }
          }
       }
+
       internal static void DeleteScriptFolder(string dcsBasePath, String foldername)
       {
-         String path = dcsBasePath + "Scripts/" + foldername;
+         String path = dcsBasePath + "/Scripts/" + foldername;
+         Loggable.LogInfo("deleting folder '"+ path + "'");
          if (System.IO.Directory.Exists(path))
          {
-            System.IO.Directory.Delete(path);
+            try
+            {
+               System.IO.Directory.Delete(path);
+            }
+            catch
+            {
+               Loggable.LogError("failed to delete folder '" + path + "'");
+            }
          }
       }
 
@@ -225,7 +242,8 @@ namespace VLEDCONTROL
       internal static void UninstallDcsScripts(string dcsBasePath)
       {
          RemoveObsoleteDcsScripts(dcsBasePath);
-         System.IO.File.Delete(dcsBasePath + "/Scripts/vled/VledExport.lua" );
+         DeleteScriptFile(dcsBasePath, "/vled/VledExport.lua" );
+         DeleteScriptFolder(dcsBasePath, "/vled");
          UninstallDcsExportScript(dcsBasePath);
       }
 
