@@ -27,6 +27,7 @@ namespace VLEDCONTROL
    {
       private static readonly System.Globalization.CultureInfo EN_CI = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
+      private const String SCRIPTBASE_NAME = "/Scripts/Export.lua";
       private const String EXPORTFILE_NAME = "/Scripts/Export.lua";
       private const String EXPORTFILE_MARKER = "--[[VLEDCONTROL]]";
       private const String EXPORTFILE_VLED_CMD = "local Vledlfs=require('lfs');dofile(Vledlfs.writedir()..'Scripts/vled/VledExport.lua')";
@@ -178,8 +179,7 @@ namespace VLEDCONTROL
          String exportfile = dcsBasePath + EXPORTFILE_NAME;
          if(!File.Exists(exportfile))
          {
-            File.Create(exportfile);
-            File.AppendAllText(exportfile, "-- created by VLEDCONTROL");
+            File.AppendAllText(exportfile, "-- created by VLEDCONTROL\n\n");
          }
          string[] lines = System.IO.File.ReadAllLines(exportfile);
          foreach (String line in lines)
