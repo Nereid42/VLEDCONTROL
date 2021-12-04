@@ -27,6 +27,10 @@ namespace VLEDCONTROL
    {
       private static readonly System.Globalization.CultureInfo EN_CI = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
+      private const String EXPORTFILE_NAME = "/Scripts/Export.lua";
+      private const String EXPORTFILE_MARKER = "--[[VLEDCONTROL]]";
+      private const String EXPORTFILE_VLED_CMD = "local Vledlfs=require('lfs');dofile(Vledlfs.writedir()..'Scripts/vled/VledExport.lua')";
+
       public static int ToInt(String s)
       {
          try
@@ -144,19 +148,86 @@ namespace VLEDCONTROL
          }
       }
 
-      internal static void CopyDcsScripts(string dcsBasePath)
+      internal static void DeleteScriptFile(string dcsBasePath,String filename)
       {
-         MakeDir(dcsBasePath + "/Scripts");
-         MakeDir(dcsBasePath + "/Scripts/Hooks");
-         MakeDir(dcsBasePath + "/Scripts/Hooks/vled");
-         System.IO.File.Copy("Scripts/Hooks/VledExportHook.lua", dcsBasePath + "/Scripts/Hooks/VledExportHook.lua",true);
-         System.IO.File.Copy("Scripts/Hooks/vled/VledExport.lua", dcsBasePath + "/Scripts/Hooks/vled/VledExport.lua",true);
+         String path = dcsBasePath + "Scripts/" + filename;
+         if (System.IO.File.Exists(path))
+         {
+            System.IO.File.Delete(path);
+         }
+      }
+      internal static void DeleteScriptFolder(string dcsBasePath, String foldername)
+      {
+         String path = dcsBasePath + "Scripts/" + foldername;
+         if (System.IO.Directory.Exists(path))
+         {
+            System.IO.Directory.Delete(path);
+         }
       }
 
-      internal static void RemoveDcsScripts(string dcsBasePath)
+
+      internal static void RemoveObsoleteDcsScripts(string dcsBasePath)
       {
-         System.IO.File.Delete(dcsBasePath + "/Scripts/Hooks/VledExportHook.lua");
-         System.IO.File.Delete(dcsBasePath + "/Scripts/Hooks/vled/VledExport.lua" );
+         DeleteScriptFile(dcsBasePath,"Hooks/VledExportHook.lua");
+         DeleteScriptFile(dcsBasePath, "Hooks/vled/VledExport.lua");
+         DeleteScriptFolder(dcsBasePath, "Hooks/vled");
+      }
+
+      internal static void InstallDcsExportScript(string dcsBasePath)
+      {
+         String exportfile = dcsBasePath + EXPORTFILE_NAME;
+         if(!File.Exists(exportfile))
+         {
+            File.Create(exportfile);
+            File.AppendAllText(exportfile, "-- created by VLEDCONTROL");
+         }
+         string[] lines = System.IO.File.ReadAllLines(exportfile);
+         foreach (String line in lines)
+         {
+            if (line.StartsWith(EXPORTFILE_MARKER))
+            {
+               return;
+            }
+         }
+
+         File.AppendAllText(exportfile, EXPORTFILE_MARKER + " " + EXPORTFILE_VLED_CMD);
+      }
+
+      internal static void UninstallDcsExportScript(string dcsBasePath)
+      {
+         String exportfile = dcsBasePath + EXPORTFILE_NAME;
+         string tempFile = exportfile + ".new";
+
+         using (var sr = new StreamReader(exportfile))
+         using (var sw = new StreamWriter(tempFile))
+         {
+            string line;
+
+            while ((line = sr.ReadLine()) != null)
+            {
+               if (!line.StartsWith(EXPORTFILE_MARKER))
+                  sw.WriteLine(line);
+            }
+         }
+
+         File.Delete(exportfile);
+         File.Move(tempFile, exportfile);
+      }
+
+      internal static void InstallDcsScripts(string dcsBasePath)
+      {
+         RemoveObsoleteDcsScripts(dcsBasePath);
+         MakeDir(dcsBasePath + "/Scripts");
+         MakeDir(dcsBasePath + "/Scripts/vled");
+         System.IO.File.Copy("Scripts/vled/VledExport.lua", dcsBasePath + "/Scripts/vled/VledExport.lua",true);
+         InstallDcsExportScript(dcsBasePath);
+      }
+
+      internal static void UninstallDcsScripts(string dcsBasePath)
+      {
+         RemoveObsoleteDcsScripts(dcsBasePath);
+         System.IO.File.Delete(dcsBasePath + "/Scripts/vled/VledExport.lua" );
+         UninstallDcsExportScript(dcsBasePath);
       }
 
 

@@ -1,3 +1,4 @@
+-- 1.0.0
 local HOST = '127.0.0.1';
 local OUTGOING_PORT = 5555;
 local INGOING_PORT = 5556;

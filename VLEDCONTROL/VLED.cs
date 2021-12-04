@@ -97,7 +97,7 @@ namespace VLEDCONTROL
          }
          if (dialog.ShowDialog() == DialogResult.OK)
          {
-            Tools.CopyDcsScripts(dialog.BasePath);
+            Tools.InstallDcsScripts(dialog.BasePath);
          }
       }
 

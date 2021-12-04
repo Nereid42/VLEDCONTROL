@@ -538,8 +538,8 @@ namespace VLEDCONTROL
          if (MessageBox.Show("Are you sure to remove all export scripts?", "Remove Export Scripts from DCS",MessageBoxButtons.YesNo) == DialogResult.Yes)
          {
             String userprofile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            Tools.RemoveDcsScripts(userprofile + "\\" + "Saved Games" + "\\DCS");
-            Tools.RemoveDcsScripts(userprofile + "\\" + "Saved Games" + "\\DCS.openbeta");
+            Tools.UninstallDcsScripts(userprofile + "\\" + "Saved Games" + "\\DCS");
+            Tools.UninstallDcsScripts(userprofile + "\\" + "Saved Games" + "\\DCS.openbeta");
          }
       }
 
