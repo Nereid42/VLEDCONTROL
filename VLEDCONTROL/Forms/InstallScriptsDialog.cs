@@ -34,12 +34,6 @@ namespace VLEDCONTROL
          InitializeComponent();
       }
 
-      private String BrowseScriptsFolder()
-      {
-         //FolderBrowserDialog
-         return "";
-      }
-
       private void InstallScriptsDialog_Load(object sender, EventArgs e)
       {
 

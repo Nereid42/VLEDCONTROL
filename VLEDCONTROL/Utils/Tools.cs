@@ -27,7 +27,6 @@ namespace VLEDCONTROL
    {
       private static readonly System.Globalization.CultureInfo EN_CI = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 
-      private const String SCRIPTBASE_NAME = "/Scripts/Export.lua";
       private const String EXPORTFILE_NAME = "/Scripts/Export.lua";
       private const String EXPORTFILE_MARKER = "--[[VLEDCONTROL]]";
       private const String EXPORTFILE_VLED_CMD = "local Vledlfs=require('lfs');dofile(Vledlfs.writedir()..'Scripts/vled/VledExport.lua')";
