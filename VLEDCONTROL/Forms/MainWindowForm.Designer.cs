@@ -1684,9 +1684,9 @@
          this.Controls.Add(this.tabMain);
          this.Controls.Add(this.menuStrip1);
          this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
          this.MainMenuStrip = this.menuStrip1;
          this.Name = "MainWindowForm";
-         this.ShowIcon = false;
          this.Text = "VLEDCONTROL";
          this.Load += new System.EventHandler(this.MainWindowForm_Load);
          this.tabMain.ResumeLayout(false);
