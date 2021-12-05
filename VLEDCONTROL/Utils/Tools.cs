@@ -55,6 +55,18 @@ namespace VLEDCONTROL
          }
       }
 
+      public static float ToFloat(String s)
+      {
+         try
+         {
+            return float.Parse(s, CultureInfo.InvariantCulture);
+         }
+         catch
+         {
+            return 0.0f;
+         }
+      }
+
       public static string ToString(double value)
       {
          return String.Format(EN_CI, "{0:0.##}", value);
