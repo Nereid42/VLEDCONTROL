@@ -97,17 +97,12 @@ namespace VLEDCONTROL
             if (checkBoxHighlightLed.Checked)
             {
                int index = (int)listViewProfileEvents.Items[selectedIndex].Tag;
-               Loggable.LogUrgend("INDEX: " + index);
                Profile.ProfileEvent profileEvent = VLED.Engine.CurrentProfile.ProfileEvents[index];
                if (profileEvent != null)
                {
                   int deviceId = profileEvent.DeviceId;
-                  VirpilDevice device = VLED.Engine.CurrentSettings.GetDevice(deviceId);
-                  if (device != null)
-                  {
-                     int led = profileEvent.LedNumber;
-                     VLED.Engine.HighlightLed(deviceId, led, LedColor.WHITE);
-                  }
+                  int led = profileEvent.LedNumber;
+                  VLED.Engine.HighlightLed(deviceId, led, LedColor.WHITE);
                }
             }
          }

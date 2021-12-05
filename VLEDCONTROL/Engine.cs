@@ -60,11 +60,18 @@ namespace VLEDCONTROL
 
       public Engine()
       {
-         this.Sender = new Sender(UDP_PORT_SEND);
-         this.Receiver = new Receiver(UDP_PORT_RECEIVE);
-         Receiver.AddDataHandler(new EstablishCommunicationDataHandler(this));
-         Receiver.AddDataHandler(new AircraftDataHandler(this));
-         Receiver.AddDataHandler(new PropertyDataHandler(this));
+         try
+         {
+            this.Sender = new Sender(UDP_PORT_SEND);
+            this.Receiver = new Receiver(UDP_PORT_RECEIVE);
+            Receiver.AddDataHandler(new EstablishCommunicationDataHandler(this));
+            Receiver.AddDataHandler(new AircraftDataHandler(this));
+            Receiver.AddDataHandler(new PropertyDataHandler(this));
+         }
+         catch (Exception e)
+         {
+            LogException(e);
+         }
 
          try
          {

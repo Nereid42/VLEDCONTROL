@@ -466,5 +466,114 @@ namespace VLEDCONTROL
       {
 
       }
+
+      private void SetAndHighlightOLed(int led)
+      {
+         if (textBoxDeviceId.Text is null || textBoxDeviceId.Text.Length == 0) return;
+         int deviceId = Tools.ToInt(textBoxDeviceId.Text);
+         led = led + 4;
+         VLED.Engine.HighlightLed(deviceId, led, LedColor.WHITE);
+         Tools.SelectComboBoxItem(comboBoxLed, led);
+      }
+
+      private void buttonLed1_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(1);
+      }
+
+      private void buttonLed2_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(2);
+      }
+
+      private void buttonLed3_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(3);
+      }
+
+      private void buttonLed04_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(4);
+      }
+
+      private void buttonLed5_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(5);
+      }
+
+      private void buttonLed6_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(6);
+      }
+
+      private void buttonLed7_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(7);
+      }
+
+      private void buttonLed8_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(8);
+      }
+
+      private void buttonLed9_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(9);
+      }
+
+      private void buttonLed10_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(10);
+      }
+
+      private void buttonLed11_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(11);
+      }
+
+      private void buttonLed12_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(12);
+      }
+
+      private void buttonLed13_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(13);
+      }
+
+      private void buttonLed14_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(14);
+      }
+
+      private void buttonLed15_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(15);
+      }
+
+      private void buttonLed16_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(16);
+      }
+
+      private void buttonLed17_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(17);
+      }
+
+      private void buttonLed18_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(18);
+      }
+
+      private void buttonLed19_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(19);
+      }
+
+      private void buttonLed20_Click(object sender, EventArgs e)
+      {
+         SetAndHighlightOLed(20);
+      }
    }
 }
