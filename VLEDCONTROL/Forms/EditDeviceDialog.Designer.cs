@@ -54,7 +54,7 @@
          // 
          this.textBoxDeviceName.Location = new System.Drawing.Point(94, 57);
          this.textBoxDeviceName.Name = "textBoxDeviceName";
-         this.textBoxDeviceName.Size = new System.Drawing.Size(156, 20);
+         this.textBoxDeviceName.Size = new System.Drawing.Size(198, 20);
          this.textBoxDeviceName.TabIndex = 1;
          this.textBoxDeviceName.TextChanged += new System.EventHandler(this.textBoxDeviceName_TextChanged);
          // 
@@ -110,7 +110,7 @@
          // buttonCancel
          // 
          this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-         this.buttonCancel.Location = new System.Drawing.Point(175, 156);
+         this.buttonCancel.Location = new System.Drawing.Point(217, 156);
          this.buttonCancel.Name = "buttonCancel";
          this.buttonCancel.Size = new System.Drawing.Size(75, 23);
          this.buttonCancel.TabIndex = 8;
@@ -120,7 +120,7 @@
          // buttonOk
          // 
          this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-         this.buttonOk.Location = new System.Drawing.Point(94, 156);
+         this.buttonOk.Location = new System.Drawing.Point(129, 156);
          this.buttonOk.Name = "buttonOk";
          this.buttonOk.Size = new System.Drawing.Size(75, 23);
          this.buttonOk.TabIndex = 9;
@@ -133,14 +133,16 @@
          this.comboBoxDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.comboBoxDevice.FormattingEnabled = true;
          this.comboBoxDevice.Items.AddRange(new object[] {
-            "VPC Panel #1",
-            "VPC Panel #2",
-            "VPC SharKa Panel",
-            "VPC Throttle MT-50",
-            "VPC Stick WarBRD"});
+            "0000 VPC Panel #1",
+            "025B VPC Panel #2",
+            "025D VPC SharKa-50 Panel",
+            "0194 VPC Throttle MT-50 CM3",
+            "8194 VPC Throttle MT-50 CM3",
+            "00CC VPC Stick WarBRD",
+            "40D0 VPC Stick WarBRD"});
          this.comboBoxDevice.Location = new System.Drawing.Point(129, 14);
          this.comboBoxDevice.Name = "comboBoxDevice";
-         this.comboBoxDevice.Size = new System.Drawing.Size(121, 21);
+         this.comboBoxDevice.Size = new System.Drawing.Size(163, 21);
          this.comboBoxDevice.TabIndex = 10;
          this.comboBoxDevice.SelectedIndexChanged += new System.EventHandler(this.comboBoxDevice_SelectedIndexChanged);
          // 
@@ -148,7 +150,7 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(276, 189);
+         this.ClientSize = new System.Drawing.Size(304, 189);
          this.ControlBox = false;
          this.Controls.Add(this.comboBoxDevice);
          this.Controls.Add(this.buttonOk);
