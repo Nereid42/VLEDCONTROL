@@ -207,7 +207,7 @@ namespace VLEDCONTROL
          String exportfile = dcsBasePath + EXPORTFILE_NAME;
          if(!File.Exists(exportfile))
          {
-            File.AppendAllText(exportfile, "-- created by VLEDCONTROL\n\n");
+            File.AppendAllText(exportfile, "-- created by VLEDCONTROL\n");
          }
          string[] lines = System.IO.File.ReadAllLines(exportfile);
          foreach (String line in lines)
@@ -218,7 +218,7 @@ namespace VLEDCONTROL
             }
          }
 
-         File.AppendAllText(exportfile, EXPORTFILE_MARKER + " " + EXPORTFILE_VLED_CMD);
+         File.AppendAllText(exportfile, "\n" + EXPORTFILE_MARKER + " " + EXPORTFILE_VLED_CMD);
       }
 
       internal static void UninstallDcsExportScript(string dcsBasePath)

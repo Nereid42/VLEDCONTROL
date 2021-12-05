@@ -46,7 +46,6 @@ namespace VLEDCONTROL
       // Measuring time for performance analysis
       private Stopwatch swTotalRunning = new Stopwatch();
       private Stopwatch swCalcLeds = new Stopwatch();
-      private Stopwatch swExecutes = new Stopwatch();
 
       // Highlight single LED
       private long HightlightEndCycle = 0;
