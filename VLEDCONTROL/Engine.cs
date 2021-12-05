@@ -41,7 +41,7 @@ namespace VLEDCONTROL
       // Data
       private volatile String CurrentAircraft;
       private readonly float[] CurrentProperties = new float[VALUE_COUNT];
-      private readonly DateTime[] CurrentTimestamps = new DateTime[VALUE_COUNT];
+      private readonly long[] CurrentTimestamps = new long[VALUE_COUNT];
 
       // Measuring time for performance analysis
       private Stopwatch swTotalRunning = new Stopwatch();
@@ -112,7 +112,7 @@ namespace VLEDCONTROL
          for (int i = 0; i < VALUE_COUNT; i++)
          {
             Volatile.Write(ref CurrentProperties[i], 0.0f);
-            CurrentTimestamps[i] = DateTime.MinValue;
+            Interlocked.Exchange(ref CurrentTimestamps[i], DateTime.MinValue.ToBinary());
          }
       }
 
@@ -204,12 +204,13 @@ namespace VLEDCONTROL
       internal void SetProperty(int id, float value)
       {
          Volatile.Write(ref CurrentProperties[id], value);
-         CurrentTimestamps[id] = DateTime.Now;
+         DateTime now = DateTime.Now;
+         Volatile.Write(ref CurrentTimestamps[id],  now.ToBinary());
 
          if (Controller != null && CurrentSettings.LiveDataEnabled)
          {
-            String name = CurrentProfile.MapPropertyName(CurrentAircraft, id);
-            Controller.SetData(id, name, value, CurrentTimestamps[id]);
+            String name = CurrentProfile.MapPropertyName(CurrentAircraft, id);            
+            Controller.SetData(id, name, value, now);
          }
       }
 
@@ -219,11 +220,13 @@ namespace VLEDCONTROL
          {
             for (int id = 0; id < CurrentProperties.Length; id++)
             {
-               if (CurrentTimestamps[id] != null && CurrentTimestamps[id] != DateTime.MinValue)
+               long ts = Volatile.Read(ref CurrentTimestamps[id]);
+               DateTime time = new DateTime(ts);
+               if (time != DateTime.MinValue)
                {
                   String name = CurrentProfile.MapPropertyName(CurrentAircraft, id);
                   float property = Volatile.Read(ref CurrentProperties[id]);
-                  Controller.SetData(id, name, property, CurrentTimestamps[id]);
+                  Controller.SetData(id, name, property, time);
                }
             }
             Controller.MarkDataAsDirty(false);
@@ -477,7 +480,7 @@ namespace VLEDCONTROL
          for(int i=0; i<CurrentProperties.Length; i++)
          {
             Volatile.Write(ref CurrentProperties[i],0.0f);
-            CurrentTimestamps[i] = DateTime.MinValue;
+            Volatile.Write(ref CurrentTimestamps[i], DateTime.MinValue.ToBinary());
          }
       }
    }
