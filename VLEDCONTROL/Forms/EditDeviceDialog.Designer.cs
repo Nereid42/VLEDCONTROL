@@ -167,6 +167,7 @@
          this.Name = "EditDeviceDialog";
          this.ShowIcon = false;
          this.ShowInTaskbar = false;
+         this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
          this.Text = "Edit Virpil Device";
          this.Load += new System.EventHandler(this.EditDeviceDialog_Load);
          this.ResumeLayout(false);
