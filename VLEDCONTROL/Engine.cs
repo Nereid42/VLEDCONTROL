@@ -86,8 +86,7 @@ namespace VLEDCONTROL
          // data
          this.CurrentAircraft = null;
 
-         ClearProperties();
-
+         ResetAllProperties();
       }
 
       internal void Join(int timeoutInSeconds)
@@ -106,14 +105,6 @@ namespace VLEDCONTROL
          LogDebug("Engine is stopped");
       }
 
-      private void ClearProperties()
-      {
-         for (int i = 0; i < VALUE_COUNT; i++)
-         {
-            Volatile.Write(ref CurrentProperties[i], 0.0f);
-            Interlocked.Exchange(ref CurrentTimestamps[i], DateTime.MinValue.ToBinary());
-         }
-      }
 
       private void InitUiController()
       {
