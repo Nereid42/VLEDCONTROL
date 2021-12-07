@@ -220,12 +220,19 @@ namespace VLEDCONTROL
             for (int id = 0; id < CurrentProperties.Length; id++)
             {
                long ts = Volatile.Read(ref CurrentTimestamps[id]);
-               DateTime time = new DateTime(ts);
-               if (time != DateTime.MinValue)
+               try
                {
-                  String name = CurrentProfile.MapPropertyName(CurrentAircraft, id);
-                  float property = Volatile.Read(ref CurrentProperties[id]);
-                  Controller.SetData(id, name, property, time);
+                  DateTime time = new DateTime(ts);
+                  if (time != DateTime.MinValue)
+                  {
+                     String name = CurrentProfile.MapPropertyName(CurrentAircraft, id);
+                     float property = Volatile.Read(ref CurrentProperties[id]);
+                     Controller.SetData(id, name, property, time);
+                  }
+               }
+               catch(Exception e)
+               {
+                  LogException("Exception in ShowProperties for id=" + id + ", ts=" + ts, e);
                }
             }
             Controller.MarkDataAsDirty(false);
