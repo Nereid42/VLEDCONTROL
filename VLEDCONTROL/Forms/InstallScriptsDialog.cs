@@ -28,6 +28,7 @@ namespace VLEDCONTROL
    public partial class InstallScriptsDialog : Form
    {
       public String BasePath;
+      public bool UseHooks;
 
       public InstallScriptsDialog()
       {
@@ -36,7 +37,8 @@ namespace VLEDCONTROL
 
       private void InstallScriptsDialog_Load(object sender, EventArgs e)
       {
-
+         checkBoxDirectExport.Checked = false;
+         UseHooks = true;
       }
 
       private void buttonDcsRelease_Click(object sender, EventArgs e)
@@ -61,5 +63,11 @@ namespace VLEDCONTROL
             BasePath = dialog.SelectedPath;
          }
       }
+
+      private void checkBoxDirectExport_CheckedChanged(object sender, EventArgs e)
+      {
+         UseHooks = !checkBoxDirectExport.Checked;
+      }
+
    }
 }

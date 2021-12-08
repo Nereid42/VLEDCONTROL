@@ -242,19 +242,35 @@ namespace VLEDCONTROL
          File.Move(tempFile, exportfile);
       }
 
-      internal static void InstallDcsScripts(string dcsBasePath)
+      internal static void InstallDcsScripts(string dcsBasePath, bool useHook)
       {
-         RemoveObsoleteDcsScripts(dcsBasePath);
+         Loggable.LogInfo("Installing DCS scripts (use hooks=" + useHook + ")");
+         //
          MakeDir(dcsBasePath + "/Scripts");
          MakeDir(dcsBasePath + "/Scripts/vled");
          System.IO.File.Copy("Scripts/vled/VledExport.lua", dcsBasePath + "/Scripts/vled/VledExport.lua",true);
-         InstallDcsExportScript(dcsBasePath);
+         //
+         // Hooks or direkt Export?
+         if(useHook)
+         {
+            // hooks (no multiplayer support)
+            UninstallDcsExportScript(dcsBasePath);
+            MakeDir(dcsBasePath + "/Scripts/Hooks");
+            System.IO.File.Copy("Scripts/Hooks/VledExportHook.lua", dcsBasePath + "/Scripts/Hooks/VledExportHook.lua", true);
+         }
+         else
+         {
+            // direct export (multiplayer support)
+            RemoveObsoleteDcsScripts(dcsBasePath);
+            InstallDcsExportScript(dcsBasePath);
+         }
       }
 
       internal static void UninstallDcsScripts(string dcsBasePath)
       {
          RemoveObsoleteDcsScripts(dcsBasePath);
-         DeleteScriptFile(dcsBasePath, "/vled/VledExport.lua" );
+         DeleteScriptFile(dcsBasePath, "/vled/VledExport.lua");
+         DeleteScriptFile(dcsBasePath, "/Hooks/VledExportHook.lua");
          DeleteScriptFolder(dcsBasePath, "/vled");
          UninstallDcsExportScript(dcsBasePath);
       }

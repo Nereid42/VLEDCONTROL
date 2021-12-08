@@ -191,6 +191,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Scripts\Hooks\VledExportHook.lua" />
     <None Include="Scripts\vled\VledExport.lua" />
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +207,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mkdir Scripts\vled
+mkdir Scripts\Hooks
+copy /Y ..\..\Scripts\Hooks\VledExportHook.lua Scripts\Hooks\VledExportHook.lua
 copy /Y ..\..\Scripts\vled\VledExport.lua Scripts\vled\VledExport.lua
 copy /Y ..\..\..\LICENSE LICENSE
 

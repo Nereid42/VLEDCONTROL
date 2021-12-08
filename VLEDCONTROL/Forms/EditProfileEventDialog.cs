@@ -182,12 +182,6 @@ namespace VLEDCONTROL
             this.comboBoxAircraft.Items.Add(ac);
          }
 
-         Tools.TrySelectComboBoxItem(this.comboBoxAircraft, VLED.MainWindow.textBoxAircraft.Text);
-         if (Tools.IndexOfSelectedComboBoxItem(this.comboBoxAircraft) < 0)
-         {
-            this.comboBoxAircraft.Text = LastAircraft;
-         }
-
          foreach (VirpilDevice device in VLED.Engine.CurrentSettings.Devices)
          {
             this.comboBoxDeviceName.Items.Add(device.Name);
@@ -234,6 +228,20 @@ namespace VLEDCONTROL
          }
          else
          {
+
+
+            Tools.TrySelectComboBoxItem(this.comboBoxAircraft, VLED.MainWindow.textBoxAircraft.Text);
+            if (Tools.IndexOfSelectedComboBoxItem(this.comboBoxAircraft) < 0)
+            {
+               this.comboBoxAircraft.Text = LastAircraft;
+            }
+            IReadOnlyCollection<String> eventNames = Profile.GetEventNamesForAircraft(this.comboBoxAircraft.Text);
+            this.comboBoxEventNames.Items.Clear();
+            foreach (String name in eventNames)
+            {
+               this.comboBoxEventNames.Items.Add(name);
+            }
+
             Tools.SelectComboBoxItem(this.comboBoxDeviceName, 0);
             this.textBoxDeviceId.Text = "0";
             this.textBoxEventId.Text = "0";
