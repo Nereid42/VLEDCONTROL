@@ -333,6 +333,11 @@ namespace VLEDCONTROL
          box.Text = "";
       }
 
+      internal static String EnabledToYesNo(bool enabled)
+      {
+         return enabled ? "+":"-";
+      }
+
       public static void SelectComboBoxItem(ComboBox box, int index)
       {
          if (index < box.Items.Count)

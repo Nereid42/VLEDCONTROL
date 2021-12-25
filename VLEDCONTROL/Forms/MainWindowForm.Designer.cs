@@ -52,6 +52,7 @@
          this.columnHeaderDataValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderLastChange = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabPageProfile = new System.Windows.Forms.TabPage();
+         this.buttonProfileEnable = new System.Windows.Forms.Button();
          this.checkBoxHighlightLed = new System.Windows.Forms.CheckBox();
          this.buttonQuickAdd = new System.Windows.Forms.Button();
          this.groupBoxFilterProfile = new System.Windows.Forms.GroupBox();
@@ -85,6 +86,7 @@
          this.columnHeaderLed = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderColorOn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderColorFlashing = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+         this.columnHeaderEnabled = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabPageMapping = new System.Windows.Forms.TabPage();
          this.labelMappingNumberOfAircrafts = new System.Windows.Forms.Label();
@@ -173,8 +175,6 @@
          this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
          this.menuStrip1 = new System.Windows.Forms.MenuStrip();
          this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-         this.columnHeaderEnabled = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-         this.buttonProfileEnable = new System.Windows.Forms.Button();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
          this.panel2.SuspendLayout();
@@ -442,6 +442,17 @@
          this.tabPageProfile.TabIndex = 1;
          this.tabPageProfile.Text = "Profile";
          this.tabPageProfile.UseVisualStyleBackColor = true;
+         // 
+         // buttonProfileEnable
+         // 
+         this.buttonProfileEnable.Enabled = false;
+         this.buttonProfileEnable.Location = new System.Drawing.Point(901, 220);
+         this.buttonProfileEnable.Name = "buttonProfileEnable";
+         this.buttonProfileEnable.Size = new System.Drawing.Size(75, 23);
+         this.buttonProfileEnable.TabIndex = 18;
+         this.buttonProfileEnable.Text = "Disable";
+         this.buttonProfileEnable.UseVisualStyleBackColor = true;
+         this.buttonProfileEnable.Click += new System.EventHandler(this.buttonEnable_Click);
          // 
          // checkBoxHighlightLed
          // 
@@ -748,7 +759,7 @@
          // columnHeaderName
          // 
          this.columnHeaderName.Text = "Name";
-         this.columnHeaderName.Width = 180;
+         this.columnHeaderName.Width = 176;
          // 
          // columnHeaderCondition
          // 
@@ -763,7 +774,7 @@
          // columnHeaderLed
          // 
          this.columnHeaderLed.Text = "LED";
-         this.columnHeaderLed.Width = 40;
+         this.columnHeaderLed.Width = 33;
          // 
          // columnHeaderColorOn
          // 
@@ -776,6 +787,11 @@
          this.columnHeaderColorFlashing.Text = "Color Flash";
          this.columnHeaderColorFlashing.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
          this.columnHeaderColorFlashing.Width = 70;
+         // 
+         // columnHeaderEnabled
+         // 
+         this.columnHeaderEnabled.Text = "E";
+         this.columnHeaderEnabled.Width = 18;
          // 
          // columnHeaderDescription
          // 
@@ -1666,22 +1682,6 @@
          this.menuStrip1.Size = new System.Drawing.Size(1170, 24);
          this.menuStrip1.TabIndex = 0;
          this.menuStrip1.Text = "menuStrip1";
-         // 
-         // columnHeaderEnabled
-         // 
-         this.columnHeaderEnabled.Text = "E";
-         this.columnHeaderEnabled.Width = 20;
-         // 
-         // buttonEnable
-         // 
-         this.buttonProfileEnable.Enabled = false;
-         this.buttonProfileEnable.Location = new System.Drawing.Point(901, 220);
-         this.buttonProfileEnable.Name = "buttonEnable";
-         this.buttonProfileEnable.Size = new System.Drawing.Size(75, 23);
-         this.buttonProfileEnable.TabIndex = 18;
-         this.buttonProfileEnable.Text = "Disable";
-         this.buttonProfileEnable.UseVisualStyleBackColor = true;
-         this.buttonProfileEnable.Click += new System.EventHandler(this.buttonEnable_Click);
          // 
          // MainWindowForm
          // 
