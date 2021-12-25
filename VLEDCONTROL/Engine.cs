@@ -288,6 +288,9 @@ namespace VLEDCONTROL
 
             foreach (Profile.ProfileEvent entry in CurrentProfile.ProfileEvents)
             {
+               // ignore entry if it is not enabled
+               if (!entry.Enabled) continue;
+
                if (IsLoggable(LEVEL.DEBUG)) LogDebug("calculating LED for " + entry);
                if (CurrentAircraft == entry.Aircraft)
                {

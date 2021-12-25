@@ -397,6 +397,7 @@ namespace VLEDCONTROL
          public LedColor ColorFlashing { get; set; } = LedColor.BLACK;
          public int DeviceId { get; set; } = 0;
          public int LedNumber { get; set; } = 0;
+         public bool Enabled { get; set; } = true;
          public String Description { get; set; }
 
          public ProfileEvent()
@@ -411,6 +412,7 @@ namespace VLEDCONTROL
             this.ColorFlashing = LedColor.BLACK;
             this.DeviceId = 0;
             this.LedNumber = 0;
+            this.Enabled = true;
             this.Description = "";
          }
 
@@ -426,6 +428,7 @@ namespace VLEDCONTROL
             this.ColorFlashing = entry.ColorFlashing;
             this.DeviceId = entry.DeviceId;
             this.LedNumber = entry.LedNumber;
+            this.Enabled = entry.Enabled;
             this.Description = entry.Description;
          }
 
@@ -442,6 +445,7 @@ namespace VLEDCONTROL
             this.ColorFlashing = colorFlashing;
             this.DeviceId = deviceId;
             this.LedNumber = ledNumber;
+            this.Enabled = true;
             this.Description = description;
          }
 

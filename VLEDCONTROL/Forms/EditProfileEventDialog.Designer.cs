@@ -55,20 +55,7 @@
          this.buttonOk = new System.Windows.Forms.Button();
          this.buttonCancel = new System.Windows.Forms.Button();
          this.groupBoxTestLed = new System.Windows.Forms.GroupBox();
-         this.buttonSetDefault = new System.Windows.Forms.Button();
-         this.buttonTestColor2 = new System.Windows.Forms.Button();
-         this.buttonTestColor1 = new System.Windows.Forms.Button();
-         this.groupBoxDescription = new System.Windows.Forms.GroupBox();
-         this.textBoxDescription = new System.Windows.Forms.TextBox();
-         this.buttonLed1 = new System.Windows.Forms.Button();
-         this.buttonLed2 = new System.Windows.Forms.Button();
-         this.buttonLed3 = new System.Windows.Forms.Button();
-         this.buttonLed04 = new System.Windows.Forms.Button();
-         this.buttonLed5 = new System.Windows.Forms.Button();
-         this.buttonLed6 = new System.Windows.Forms.Button();
-         this.buttonLed7 = new System.Windows.Forms.Button();
-         this.buttonLed8 = new System.Windows.Forms.Button();
-         this.buttonLed9 = new System.Windows.Forms.Button();
+         this.buttonLed10 = new System.Windows.Forms.Button();
          this.buttonLed20 = new System.Windows.Forms.Button();
          this.buttonLed19 = new System.Windows.Forms.Button();
          this.buttonLed18 = new System.Windows.Forms.Button();
@@ -79,12 +66,28 @@
          this.buttonLed13 = new System.Windows.Forms.Button();
          this.buttonLed12 = new System.Windows.Forms.Button();
          this.buttonLed11 = new System.Windows.Forms.Button();
-         this.buttonLed10 = new System.Windows.Forms.Button();
+         this.buttonLed9 = new System.Windows.Forms.Button();
+         this.buttonLed8 = new System.Windows.Forms.Button();
+         this.buttonLed7 = new System.Windows.Forms.Button();
+         this.buttonLed6 = new System.Windows.Forms.Button();
+         this.buttonLed5 = new System.Windows.Forms.Button();
+         this.buttonLed04 = new System.Windows.Forms.Button();
+         this.buttonLed3 = new System.Windows.Forms.Button();
+         this.buttonLed2 = new System.Windows.Forms.Button();
+         this.buttonLed1 = new System.Windows.Forms.Button();
+         this.buttonSetDefault = new System.Windows.Forms.Button();
+         this.buttonTestColor2 = new System.Windows.Forms.Button();
+         this.buttonTestColor1 = new System.Windows.Forms.Button();
+         this.groupBoxDescription = new System.Windows.Forms.GroupBox();
+         this.textBoxDescription = new System.Windows.Forms.TextBox();
+         this.checkBoxEnabled = new System.Windows.Forms.CheckBox();
+         this.groupBoxEnabled = new System.Windows.Forms.GroupBox();
          this.groupBoxEvent.SuspendLayout();
          this.groupBoxCondition.SuspendLayout();
          this.groupBoxLed.SuspendLayout();
          this.groupBoxTestLed.SuspendLayout();
          this.groupBoxDescription.SuspendLayout();
+         this.groupBoxEnabled.SuspendLayout();
          this.SuspendLayout();
          // 
          // label1
@@ -448,178 +451,18 @@
          this.groupBoxTestLed.Text = "Test LED";
          this.groupBoxTestLed.Enter += new System.EventHandler(this.groupBoxTestLed_Enter);
          // 
-         // buttonSetDefault
+         // buttonLed10
          // 
-         this.buttonSetDefault.BackColor = System.Drawing.Color.Silver;
-         this.buttonSetDefault.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-         this.buttonSetDefault.Location = new System.Drawing.Point(170, 18);
-         this.buttonSetDefault.Name = "buttonSetDefault";
-         this.buttonSetDefault.Size = new System.Drawing.Size(126, 23);
-         this.buttonSetDefault.TabIndex = 4;
-         this.buttonSetDefault.Text = "Set Default";
-         this.buttonSetDefault.UseVisualStyleBackColor = false;
-         this.buttonSetDefault.Click += new System.EventHandler(this.buttonSetDefault_Click);
-         // 
-         // buttonTestColor2
-         // 
-         this.buttonTestColor2.BackColor = System.Drawing.SystemColors.AppWorkspace;
-         this.buttonTestColor2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-         this.buttonTestColor2.Location = new System.Drawing.Point(89, 18);
-         this.buttonTestColor2.Name = "buttonTestColor2";
-         this.buttonTestColor2.Size = new System.Drawing.Size(75, 23);
-         this.buttonTestColor2.TabIndex = 1;
-         this.buttonTestColor2.Text = "Test Color 2";
-         this.buttonTestColor2.UseVisualStyleBackColor = false;
-         this.buttonTestColor2.Click += new System.EventHandler(this.buttonTestColor2_Click);
-         // 
-         // buttonTestColor1
-         // 
-         this.buttonTestColor1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-         this.buttonTestColor1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-         this.buttonTestColor1.Location = new System.Drawing.Point(8, 18);
-         this.buttonTestColor1.Name = "buttonTestColor1";
-         this.buttonTestColor1.Size = new System.Drawing.Size(75, 23);
-         this.buttonTestColor1.TabIndex = 0;
-         this.buttonTestColor1.Text = "Test Color 1";
-         this.buttonTestColor1.UseVisualStyleBackColor = false;
-         this.buttonTestColor1.Click += new System.EventHandler(this.buttonTestColor1_Click);
-         // 
-         // groupBoxDescription
-         // 
-         this.groupBoxDescription.Controls.Add(this.textBoxDescription);
-         this.groupBoxDescription.Location = new System.Drawing.Point(16, 222);
-         this.groupBoxDescription.Name = "groupBoxDescription";
-         this.groupBoxDescription.Size = new System.Drawing.Size(328, 66);
-         this.groupBoxDescription.TabIndex = 18;
-         this.groupBoxDescription.TabStop = false;
-         this.groupBoxDescription.Text = "Description";
-         // 
-         // textBoxDescription
-         // 
-         this.textBoxDescription.Location = new System.Drawing.Point(7, 19);
-         this.textBoxDescription.Multiline = true;
-         this.textBoxDescription.Name = "textBoxDescription";
-         this.textBoxDescription.Size = new System.Drawing.Size(315, 37);
-         this.textBoxDescription.TabIndex = 0;
-         this.textBoxDescription.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-         // 
-         // buttonLed1
-         // 
-         this.buttonLed1.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.buttonLed1.FlatAppearance.BorderSize = 0;
-         this.buttonLed1.Location = new System.Drawing.Point(8, 46);
-         this.buttonLed1.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-         this.buttonLed1.Name = "buttonLed1";
-         this.buttonLed1.Size = new System.Drawing.Size(27, 21);
-         this.buttonLed1.TabIndex = 6;
-         this.buttonLed1.Text = "1";
-         this.buttonLed1.UseVisualStyleBackColor = false;
-         this.buttonLed1.Click += new System.EventHandler(this.buttonLed1_Click);
-         // 
-         // buttonLed2
-         // 
-         this.buttonLed2.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.buttonLed2.FlatAppearance.BorderSize = 0;
-         this.buttonLed2.Location = new System.Drawing.Point(37, 46);
-         this.buttonLed2.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-         this.buttonLed2.Name = "buttonLed2";
-         this.buttonLed2.Size = new System.Drawing.Size(27, 21);
-         this.buttonLed2.TabIndex = 7;
-         this.buttonLed2.Text = "2";
-         this.buttonLed2.UseVisualStyleBackColor = false;
-         this.buttonLed2.Click += new System.EventHandler(this.buttonLed2_Click);
-         // 
-         // buttonLed3
-         // 
-         this.buttonLed3.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.buttonLed3.FlatAppearance.BorderSize = 0;
-         this.buttonLed3.Location = new System.Drawing.Point(66, 46);
-         this.buttonLed3.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-         this.buttonLed3.Name = "buttonLed3";
-         this.buttonLed3.Size = new System.Drawing.Size(27, 21);
-         this.buttonLed3.TabIndex = 8;
-         this.buttonLed3.Text = "3";
-         this.buttonLed3.UseVisualStyleBackColor = false;
-         this.buttonLed3.Click += new System.EventHandler(this.buttonLed3_Click);
-         // 
-         // buttonLed04
-         // 
-         this.buttonLed04.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.buttonLed04.FlatAppearance.BorderSize = 0;
-         this.buttonLed04.Location = new System.Drawing.Point(95, 46);
-         this.buttonLed04.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-         this.buttonLed04.Name = "buttonLed04";
-         this.buttonLed04.Size = new System.Drawing.Size(27, 21);
-         this.buttonLed04.TabIndex = 9;
-         this.buttonLed04.Text = "4";
-         this.buttonLed04.UseVisualStyleBackColor = false;
-         this.buttonLed04.Click += new System.EventHandler(this.buttonLed04_Click);
-         // 
-         // buttonLed5
-         // 
-         this.buttonLed5.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.buttonLed5.FlatAppearance.BorderSize = 0;
-         this.buttonLed5.Location = new System.Drawing.Point(124, 46);
-         this.buttonLed5.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-         this.buttonLed5.Name = "buttonLed5";
-         this.buttonLed5.Size = new System.Drawing.Size(27, 21);
-         this.buttonLed5.TabIndex = 10;
-         this.buttonLed5.Text = "5";
-         this.buttonLed5.UseVisualStyleBackColor = false;
-         this.buttonLed5.Click += new System.EventHandler(this.buttonLed5_Click);
-         // 
-         // buttonLed6
-         // 
-         this.buttonLed6.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.buttonLed6.FlatAppearance.BorderSize = 0;
-         this.buttonLed6.Location = new System.Drawing.Point(153, 46);
-         this.buttonLed6.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-         this.buttonLed6.Name = "buttonLed6";
-         this.buttonLed6.Size = new System.Drawing.Size(27, 21);
-         this.buttonLed6.TabIndex = 11;
-         this.buttonLed6.Text = "6";
-         this.buttonLed6.UseVisualStyleBackColor = false;
-         this.buttonLed6.Click += new System.EventHandler(this.buttonLed6_Click);
-         // 
-         // buttonLed7
-         // 
-         this.buttonLed7.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.buttonLed7.FlatAppearance.BorderSize = 0;
-         this.buttonLed7.Location = new System.Drawing.Point(182, 46);
-         this.buttonLed7.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-         this.buttonLed7.Name = "buttonLed7";
-         this.buttonLed7.Size = new System.Drawing.Size(27, 21);
-         this.buttonLed7.TabIndex = 12;
-         this.buttonLed7.Text = "7";
-         this.buttonLed7.UseVisualStyleBackColor = false;
-         this.buttonLed7.Click += new System.EventHandler(this.buttonLed7_Click);
-         // 
-         // buttonLed8
-         // 
-         this.buttonLed8.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.buttonLed8.FlatAppearance.BorderSize = 0;
-         this.buttonLed8.Location = new System.Drawing.Point(211, 46);
-         this.buttonLed8.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-         this.buttonLed8.Name = "buttonLed8";
-         this.buttonLed8.Size = new System.Drawing.Size(27, 21);
-         this.buttonLed8.TabIndex = 13;
-         this.buttonLed8.Text = "8";
-         this.buttonLed8.UseVisualStyleBackColor = false;
-         this.buttonLed8.Click += new System.EventHandler(this.buttonLed8_Click);
-         // 
-         // buttonLed9
-         // 
-         this.buttonLed9.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.buttonLed9.FlatAppearance.BorderSize = 0;
-         this.buttonLed9.Location = new System.Drawing.Point(240, 46);
-         this.buttonLed9.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-         this.buttonLed9.Name = "buttonLed9";
-         this.buttonLed9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-         this.buttonLed9.Size = new System.Drawing.Size(27, 21);
-         this.buttonLed9.TabIndex = 14;
-         this.buttonLed9.Text = "9";
-         this.buttonLed9.UseVisualStyleBackColor = false;
-         this.buttonLed9.Click += new System.EventHandler(this.buttonLed9_Click);
+         this.buttonLed10.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.buttonLed10.FlatAppearance.BorderSize = 0;
+         this.buttonLed10.Location = new System.Drawing.Point(269, 46);
+         this.buttonLed10.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+         this.buttonLed10.Name = "buttonLed10";
+         this.buttonLed10.Size = new System.Drawing.Size(27, 21);
+         this.buttonLed10.TabIndex = 25;
+         this.buttonLed10.Text = "10";
+         this.buttonLed10.UseVisualStyleBackColor = false;
+         this.buttonLed10.Click += new System.EventHandler(this.buttonLed10_Click);
          // 
          // buttonLed20
          // 
@@ -751,18 +594,198 @@
          this.buttonLed11.UseVisualStyleBackColor = false;
          this.buttonLed11.Click += new System.EventHandler(this.buttonLed11_Click);
          // 
-         // buttonLed10
+         // buttonLed9
          // 
-         this.buttonLed10.BackColor = System.Drawing.SystemColors.ControlLight;
-         this.buttonLed10.FlatAppearance.BorderSize = 0;
-         this.buttonLed10.Location = new System.Drawing.Point(269, 46);
-         this.buttonLed10.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-         this.buttonLed10.Name = "buttonLed10";
-         this.buttonLed10.Size = new System.Drawing.Size(27, 21);
-         this.buttonLed10.TabIndex = 25;
-         this.buttonLed10.Text = "10";
-         this.buttonLed10.UseVisualStyleBackColor = false;
-         this.buttonLed10.Click += new System.EventHandler(this.buttonLed10_Click);
+         this.buttonLed9.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.buttonLed9.FlatAppearance.BorderSize = 0;
+         this.buttonLed9.Location = new System.Drawing.Point(240, 46);
+         this.buttonLed9.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+         this.buttonLed9.Name = "buttonLed9";
+         this.buttonLed9.RightToLeft = System.Windows.Forms.RightToLeft.No;
+         this.buttonLed9.Size = new System.Drawing.Size(27, 21);
+         this.buttonLed9.TabIndex = 14;
+         this.buttonLed9.Text = "9";
+         this.buttonLed9.UseVisualStyleBackColor = false;
+         this.buttonLed9.Click += new System.EventHandler(this.buttonLed9_Click);
+         // 
+         // buttonLed8
+         // 
+         this.buttonLed8.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.buttonLed8.FlatAppearance.BorderSize = 0;
+         this.buttonLed8.Location = new System.Drawing.Point(211, 46);
+         this.buttonLed8.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+         this.buttonLed8.Name = "buttonLed8";
+         this.buttonLed8.Size = new System.Drawing.Size(27, 21);
+         this.buttonLed8.TabIndex = 13;
+         this.buttonLed8.Text = "8";
+         this.buttonLed8.UseVisualStyleBackColor = false;
+         this.buttonLed8.Click += new System.EventHandler(this.buttonLed8_Click);
+         // 
+         // buttonLed7
+         // 
+         this.buttonLed7.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.buttonLed7.FlatAppearance.BorderSize = 0;
+         this.buttonLed7.Location = new System.Drawing.Point(182, 46);
+         this.buttonLed7.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+         this.buttonLed7.Name = "buttonLed7";
+         this.buttonLed7.Size = new System.Drawing.Size(27, 21);
+         this.buttonLed7.TabIndex = 12;
+         this.buttonLed7.Text = "7";
+         this.buttonLed7.UseVisualStyleBackColor = false;
+         this.buttonLed7.Click += new System.EventHandler(this.buttonLed7_Click);
+         // 
+         // buttonLed6
+         // 
+         this.buttonLed6.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.buttonLed6.FlatAppearance.BorderSize = 0;
+         this.buttonLed6.Location = new System.Drawing.Point(153, 46);
+         this.buttonLed6.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+         this.buttonLed6.Name = "buttonLed6";
+         this.buttonLed6.Size = new System.Drawing.Size(27, 21);
+         this.buttonLed6.TabIndex = 11;
+         this.buttonLed6.Text = "6";
+         this.buttonLed6.UseVisualStyleBackColor = false;
+         this.buttonLed6.Click += new System.EventHandler(this.buttonLed6_Click);
+         // 
+         // buttonLed5
+         // 
+         this.buttonLed5.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.buttonLed5.FlatAppearance.BorderSize = 0;
+         this.buttonLed5.Location = new System.Drawing.Point(124, 46);
+         this.buttonLed5.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+         this.buttonLed5.Name = "buttonLed5";
+         this.buttonLed5.Size = new System.Drawing.Size(27, 21);
+         this.buttonLed5.TabIndex = 10;
+         this.buttonLed5.Text = "5";
+         this.buttonLed5.UseVisualStyleBackColor = false;
+         this.buttonLed5.Click += new System.EventHandler(this.buttonLed5_Click);
+         // 
+         // buttonLed04
+         // 
+         this.buttonLed04.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.buttonLed04.FlatAppearance.BorderSize = 0;
+         this.buttonLed04.Location = new System.Drawing.Point(95, 46);
+         this.buttonLed04.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+         this.buttonLed04.Name = "buttonLed04";
+         this.buttonLed04.Size = new System.Drawing.Size(27, 21);
+         this.buttonLed04.TabIndex = 9;
+         this.buttonLed04.Text = "4";
+         this.buttonLed04.UseVisualStyleBackColor = false;
+         this.buttonLed04.Click += new System.EventHandler(this.buttonLed04_Click);
+         // 
+         // buttonLed3
+         // 
+         this.buttonLed3.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.buttonLed3.FlatAppearance.BorderSize = 0;
+         this.buttonLed3.Location = new System.Drawing.Point(66, 46);
+         this.buttonLed3.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+         this.buttonLed3.Name = "buttonLed3";
+         this.buttonLed3.Size = new System.Drawing.Size(27, 21);
+         this.buttonLed3.TabIndex = 8;
+         this.buttonLed3.Text = "3";
+         this.buttonLed3.UseVisualStyleBackColor = false;
+         this.buttonLed3.Click += new System.EventHandler(this.buttonLed3_Click);
+         // 
+         // buttonLed2
+         // 
+         this.buttonLed2.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.buttonLed2.FlatAppearance.BorderSize = 0;
+         this.buttonLed2.Location = new System.Drawing.Point(37, 46);
+         this.buttonLed2.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+         this.buttonLed2.Name = "buttonLed2";
+         this.buttonLed2.Size = new System.Drawing.Size(27, 21);
+         this.buttonLed2.TabIndex = 7;
+         this.buttonLed2.Text = "2";
+         this.buttonLed2.UseVisualStyleBackColor = false;
+         this.buttonLed2.Click += new System.EventHandler(this.buttonLed2_Click);
+         // 
+         // buttonLed1
+         // 
+         this.buttonLed1.BackColor = System.Drawing.SystemColors.ControlLight;
+         this.buttonLed1.FlatAppearance.BorderSize = 0;
+         this.buttonLed1.Location = new System.Drawing.Point(8, 46);
+         this.buttonLed1.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+         this.buttonLed1.Name = "buttonLed1";
+         this.buttonLed1.Size = new System.Drawing.Size(27, 21);
+         this.buttonLed1.TabIndex = 6;
+         this.buttonLed1.Text = "1";
+         this.buttonLed1.UseVisualStyleBackColor = false;
+         this.buttonLed1.Click += new System.EventHandler(this.buttonLed1_Click);
+         // 
+         // buttonSetDefault
+         // 
+         this.buttonSetDefault.BackColor = System.Drawing.Color.Silver;
+         this.buttonSetDefault.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+         this.buttonSetDefault.Location = new System.Drawing.Point(170, 18);
+         this.buttonSetDefault.Name = "buttonSetDefault";
+         this.buttonSetDefault.Size = new System.Drawing.Size(126, 23);
+         this.buttonSetDefault.TabIndex = 4;
+         this.buttonSetDefault.Text = "Set Default";
+         this.buttonSetDefault.UseVisualStyleBackColor = false;
+         this.buttonSetDefault.Click += new System.EventHandler(this.buttonSetDefault_Click);
+         // 
+         // buttonTestColor2
+         // 
+         this.buttonTestColor2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+         this.buttonTestColor2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+         this.buttonTestColor2.Location = new System.Drawing.Point(89, 18);
+         this.buttonTestColor2.Name = "buttonTestColor2";
+         this.buttonTestColor2.Size = new System.Drawing.Size(75, 23);
+         this.buttonTestColor2.TabIndex = 1;
+         this.buttonTestColor2.Text = "Test Color 2";
+         this.buttonTestColor2.UseVisualStyleBackColor = false;
+         this.buttonTestColor2.Click += new System.EventHandler(this.buttonTestColor2_Click);
+         // 
+         // buttonTestColor1
+         // 
+         this.buttonTestColor1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+         this.buttonTestColor1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+         this.buttonTestColor1.Location = new System.Drawing.Point(8, 18);
+         this.buttonTestColor1.Name = "buttonTestColor1";
+         this.buttonTestColor1.Size = new System.Drawing.Size(75, 23);
+         this.buttonTestColor1.TabIndex = 0;
+         this.buttonTestColor1.Text = "Test Color 1";
+         this.buttonTestColor1.UseVisualStyleBackColor = false;
+         this.buttonTestColor1.Click += new System.EventHandler(this.buttonTestColor1_Click);
+         // 
+         // groupBoxDescription
+         // 
+         this.groupBoxDescription.Controls.Add(this.textBoxDescription);
+         this.groupBoxDescription.Location = new System.Drawing.Point(16, 222);
+         this.groupBoxDescription.Name = "groupBoxDescription";
+         this.groupBoxDescription.Size = new System.Drawing.Size(328, 66);
+         this.groupBoxDescription.TabIndex = 18;
+         this.groupBoxDescription.TabStop = false;
+         this.groupBoxDescription.Text = "Description";
+         // 
+         // textBoxDescription
+         // 
+         this.textBoxDescription.Location = new System.Drawing.Point(7, 19);
+         this.textBoxDescription.Multiline = true;
+         this.textBoxDescription.Name = "textBoxDescription";
+         this.textBoxDescription.Size = new System.Drawing.Size(315, 37);
+         this.textBoxDescription.TabIndex = 0;
+         this.textBoxDescription.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+         // 
+         // checkBoxEnabled
+         // 
+         this.checkBoxEnabled.AutoSize = true;
+         this.checkBoxEnabled.Location = new System.Drawing.Point(6, 19);
+         this.checkBoxEnabled.Name = "checkBoxEnabled";
+         this.checkBoxEnabled.Size = new System.Drawing.Size(65, 17);
+         this.checkBoxEnabled.TabIndex = 19;
+         this.checkBoxEnabled.Text = "Enabled";
+         this.checkBoxEnabled.UseVisualStyleBackColor = true;
+         this.checkBoxEnabled.CheckedChanged += new System.EventHandler(this.checkBoxEnabled_CheckedChanged);
+         // 
+         // groupBoxEnabled
+         // 
+         this.groupBoxEnabled.Controls.Add(this.checkBoxEnabled);
+         this.groupBoxEnabled.Location = new System.Drawing.Point(350, 222);
+         this.groupBoxEnabled.Name = "groupBoxEnabled";
+         this.groupBoxEnabled.Size = new System.Drawing.Size(84, 66);
+         this.groupBoxEnabled.TabIndex = 20;
+         this.groupBoxEnabled.TabStop = false;
          // 
          // EditProfileEventDialog
          // 
@@ -770,6 +793,7 @@
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(669, 293);
          this.ControlBox = false;
+         this.Controls.Add(this.groupBoxEnabled);
          this.Controls.Add(this.groupBoxDescription);
          this.Controls.Add(this.groupBoxTestLed);
          this.Controls.Add(this.buttonCancel);
@@ -793,6 +817,8 @@
          this.groupBoxTestLed.ResumeLayout(false);
          this.groupBoxDescription.ResumeLayout(false);
          this.groupBoxDescription.PerformLayout();
+         this.groupBoxEnabled.ResumeLayout(false);
+         this.groupBoxEnabled.PerformLayout();
          this.ResumeLayout(false);
 
       }
@@ -851,5 +877,7 @@
       private System.Windows.Forms.Button buttonLed1;
       private System.Windows.Forms.Button buttonLed5;
       private System.Windows.Forms.Button buttonLed10;
+      private System.Windows.Forms.CheckBox checkBoxEnabled;
+      private System.Windows.Forms.GroupBox groupBoxEnabled;
    }
 }

@@ -127,11 +127,15 @@ namespace VLEDCONTROL
          return LedColor.FromSystemColor(this.buttonColor2.BackColor);
       }
 
-      internal string GetDescription()
+      public string GetDescription()
       {
          return this.textBoxDescription.Text;
       }
 
+      public bool GetEnabled()
+      {
+         return this.checkBoxEnabled.Checked;
+      }
 
       private void ComboBoxAircraftTextChanged(Object o, EventArgs e)
       {
@@ -223,6 +227,8 @@ namespace VLEDCONTROL
             this.buttonColor1.ForeColor = Tools.GetBestForegroundColor(this.buttonColor1.BackColor);
             this.buttonColor2.BackColor = Event.ColorFlashing.ToSystemColor();
             this.buttonColor2.ForeColor = Tools.GetBestForegroundColor(this.buttonColor2.BackColor);
+            //
+            this.checkBoxEnabled.Checked = Event.Enabled;
             //
             this.textBoxDescription.Text = Event.Description;
          }
@@ -582,6 +588,11 @@ namespace VLEDCONTROL
       private void buttonLed20_Click(object sender, EventArgs e)
       {
          SetAndHighlightOLed(20);
+      }
+
+      private void checkBoxEnabled_CheckedChanged(object sender, EventArgs e)
+      {
+         Event.Enabled = checkBoxEnabled.Checked;
       }
    }
 }

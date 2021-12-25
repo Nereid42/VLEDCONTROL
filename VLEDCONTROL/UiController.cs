@@ -447,6 +447,7 @@ namespace VLEDCONTROL
                      item.SubItems.Add(entry.LedNumber.ToString());
                      item.SubItems.Add(entry.ColorOn.AsString());
                      item.SubItems.Add(entry.ColorFlashing.AsString());
+                     item.SubItems.Add(entry.Enabled?"Y":"N");
                      item.SubItems.Add(entry.Description);
                   }
                }
@@ -745,6 +746,7 @@ namespace VLEDCONTROL
             //Profile.ProfileEvent newEvent = VLED.Engine.CurrentProfile.AddProfileEvent(aircraft, eventId, condition1, value1, condition2, value2, deviceId, led, color1, color2, description);
 
             Profile.ProfileEvent newEvent = new Profile.ProfileEvent(aircraft, eventId, condition1, value1, condition2, value2, deviceId, led, color1, color2, description);
+            newEvent.Enabled = dialog.GetEnabled();
 
             int index = VLED.Engine.CurrentProfile.ProfileEvents.Count;
             int selected = MainWindow.listViewProfileEvents.Items.Count;
@@ -775,6 +777,7 @@ namespace VLEDCONTROL
                   item.SubItems.Add(newEvent.LedNumber.ToString());
                   item.SubItems.Add(newEvent.ColorOn.AsString());
                   item.SubItems.Add(newEvent.ColorFlashing.AsString());
+                  item.SubItems.Add(newEvent.Enabled?"Y":"N");
                   item.SubItems.Add(newEvent.Description);
                   //
                   for (int i = selected + 1; i < MainWindow.listViewProfileEvents.Items.Count; i++)
@@ -834,6 +837,7 @@ namespace VLEDCONTROL
                   offItem.SubItems.Add(off.LedNumber.ToString());
                   offItem.SubItems.Add(off.ColorOn.AsString());
                   offItem.SubItems.Add(off.ColorFlashing.AsString());
+                  offItem.SubItems.Add(off.Enabled ? "Y" : "N");
                   offItem.SubItems.Add(off.Description);
 
                   System.Windows.Forms.ListViewItem onItem = MainWindow.listViewProfileEvents.Items.Insert(selected+1, off.Id.ToString());
@@ -845,6 +849,7 @@ namespace VLEDCONTROL
                   onItem.SubItems.Add(on.LedNumber.ToString());
                   onItem.SubItems.Add(on.ColorOn.AsString());
                   onItem.SubItems.Add(on.ColorFlashing.AsString());
+                  onItem.SubItems.Add(on.Enabled ? "Y" : "N");
                   onItem.SubItems.Add(on.Description);
 
                   for(int i= selected+2; i< MainWindow.listViewProfileEvents.Items.Count; i++ )
@@ -856,6 +861,24 @@ namespace VLEDCONTROL
             );
 
          }
+      }
+
+
+      internal bool EnableProfileEvent(bool enable)
+      {
+         if (MainWindow.listViewProfileEvents.SelectedIndices.Count == 0) return true;
+         System.Windows.Forms.ListViewItem item = MainWindow.listViewProfileEvents.SelectedItems[0];
+
+         int index = (int)item.Tag;
+
+         if (index < VLED.Engine.CurrentProfile.ProfileEvents.Count)
+         {
+            Profile.ProfileEvent entry = VLED.Engine.CurrentProfile.ProfileEvents[index];
+            entry.Enabled = enable;
+            item.SubItems[8].Text = enable ? "Y" : "N";
+            return enable;
+         }
+         return true;
       }
 
       internal void EditProfileEvent()
@@ -897,7 +920,8 @@ namespace VLEDCONTROL
                      item.SubItems[5].Text = edit.LedNumber.ToString();
                      item.SubItems[6].Text = edit.ColorOn.AsString();
                      item.SubItems[7].Text = edit.ColorFlashing.AsString();
-                     item.SubItems[8].Text = edit.Description;
+                     item.SubItems[8].Text = edit.Enabled ? "Y" : "N";
+                     item.SubItems[9].Text = edit.Description;
                   })
                );
             }

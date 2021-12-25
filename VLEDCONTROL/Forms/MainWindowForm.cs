@@ -84,6 +84,7 @@ namespace VLEDCONTROL
             buttonProfileEdit.Enabled = false;
             buttonProfileDown.Enabled = false;
             buttonProfileUp.Enabled = false;
+            buttonProfileEnable.Enabled = false;
          }
          else
          {
@@ -93,13 +94,17 @@ namespace VLEDCONTROL
             buttonProfileEdit.Enabled = true;
             buttonProfileDown.Enabled = (selectedIndex < listViewProfileEvents.Items.Count - 1 );
             buttonProfileUp.Enabled = (selectedIndex > 0 );
+            buttonProfileEnable.Enabled = (selectedIndex > 0);
 
-            if (checkBoxHighlightLed.Checked)
+            int index = (int)listViewProfileEvents.Items[selectedIndex].Tag;
+            if(index < VLED.Engine.CurrentProfile.ProfileEvents.Count)
             {
-               int index = (int)listViewProfileEvents.Items[selectedIndex].Tag;
                Profile.ProfileEvent profileEvent = VLED.Engine.CurrentProfile.ProfileEvents[index];
-               if (profileEvent != null)
+               buttonProfileEnable.Text = profileEvent.Enabled ? "Disable" : "Enable";
+               //
+               if (checkBoxHighlightLed.Checked)
                {
+                  // highlight LED
                   int deviceId = profileEvent.DeviceId;
                   int led = profileEvent.LedNumber;
                   VLED.Engine.HighlightLed(deviceId, led, LedColor.WHITE);
@@ -650,6 +655,13 @@ namespace VLEDCONTROL
       private void checkBoxHighlightLed_CheckedChanged(object sender, EventArgs e)
       {
          VLED.Engine.CurrentSettings.HighlightLedEnabled = checkBoxHighlightLed.Checked;
+      }
+
+      private void buttonEnable_Click(object sender, EventArgs e)
+      {
+         bool enabled = Controller.EnableProfileEvent(buttonProfileEnable.Text.Equals("Enable"));
+
+         buttonProfileEnable.Text = enabled ? "Disable" : "Enable";
       }
    }
 }
