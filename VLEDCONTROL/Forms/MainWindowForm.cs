@@ -173,7 +173,16 @@ namespace VLEDCONTROL
 
       private void textBoxAircraft_TextChanged(object sender, EventArgs e)
       {
-
+         String currentAircraft = this.textBoxAircraft.Text;
+         this.textBoxMappingCurrentAircraft.Text = currentAircraft;
+         if (currentAircraft.Equals(UiController.NO_AIRCRAFT) || Tools.IndexOfSelectedComboBoxItem(this.comboBoxMappingFilterAircraft) == 0)
+         {
+            this.buttonCopyMappingToCurrentAircraft.Enabled = false;
+         }
+         else
+         {
+            this.buttonCopyMappingToCurrentAircraft.Enabled = true;
+         }
       }
 
       private void label1_Click_4(object sender, EventArgs e)
@@ -609,6 +618,15 @@ namespace VLEDCONTROL
       private void comboBoxMappingFilterAircraft_SelectedIndexChanged(object sender, EventArgs e)
       {
          Controller.SetProfile(VLED.Engine.CurrentProfile);
+         String currentAircraft = this.textBoxAircraft.Text;
+         if (currentAircraft.Equals(UiController.NO_AIRCRAFT) || Tools.IndexOfSelectedComboBoxItem(this.comboBoxMappingFilterAircraft) == 0)
+         {
+            this.buttonCopyMappingToCurrentAircraft.Enabled = false;
+         }
+         else
+         {
+            this.buttonCopyMappingToCurrentAircraft.Enabled = true;
+         }
       }
 
       private void buttonImportFromProfile_Click(object sender, EventArgs e)
@@ -672,6 +690,19 @@ namespace VLEDCONTROL
       private void copyDefaultProfileMappingToolStripMenuItem_Click(object sender, EventArgs e)
       {
          Tools.CopyDefaultProfileMapping();
+      }
+
+      private void buttonCopyMappingToCurrentAircraft_Click(object sender, EventArgs e)
+      {
+         String fromAircraft = this.comboBoxMappingFilterAircraft.Text;
+         String toAircraft = this.textBoxAircraft.Text;
+         if (!toAircraft.Equals(UiController.NO_AIRCRAFT))
+         {
+            Profile profile = VLED.Engine.CurrentProfile;
+            profile.CopyMapping(fromAircraft, toAircraft);
+            Controller.SetProfileFilter(VLED.Engine.CurrentProfile);
+            UpdateMappingStatistics();
+         }
       }
    }
 }

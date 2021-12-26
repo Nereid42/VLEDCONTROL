@@ -473,5 +473,24 @@ namespace VLEDCONTROL
             return result;
          }
       }
+
+      public void CopyMapping(String fromAircraft, String toAircraft)
+      {
+         ArrayList newEntries = new ArrayList();
+
+         foreach(MappingEntry entry in MappingEntries)
+         {
+            if(entry.Aircraft.Equals(fromAircraft))
+            {
+               MappingEntry newEntry = new MappingEntry(toAircraft,entry.Id,entry.Name);
+               RemoveMapping(newEntry);
+               newEntries.Add(newEntry);
+            }
+         }
+         foreach(MappingEntry entry in newEntries)
+         {
+            AddMapping(entry);
+         }
+      }
    }
 }

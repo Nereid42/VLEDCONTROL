@@ -24,6 +24,8 @@ namespace VLEDCONTROL
 {
    public class UiController : Loggable
    {
+      public const String NO_AIRCRAFT = "- NO AIRCRAFT -";
+
       private const String PROFILE_FILTER_ANY_AIRCAFT = "ANY";
       private const String PROFILE_FILTER_ANY_DEVICE = "ANY";
 
@@ -1011,7 +1013,7 @@ namespace VLEDCONTROL
          {
             if (name == null || name == "")
             {
-               name = "- NO AIRCRAFT -";
+               name = NO_AIRCRAFT;
             }
             try
             {
