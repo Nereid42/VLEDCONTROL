@@ -203,9 +203,7 @@
     <None Include="Forms\CurrentAircraftIcon.png" />
     <None Include="Forms\PastePreviousIcon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tools\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mkdir Scripts\vled

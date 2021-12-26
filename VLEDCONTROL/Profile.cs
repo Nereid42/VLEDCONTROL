@@ -261,7 +261,7 @@ namespace VLEDCONTROL
 
       internal void ImportMapping(Profile profile)
       {
-         LogInfo("Importing mapping entries from prfile '"+profile.Name+"'");
+         LogInfo("Importing mapping entries from profile '"+profile.Name+"'");
          foreach (MappingEntry entry in profile.MappingEntries)
          {
             try

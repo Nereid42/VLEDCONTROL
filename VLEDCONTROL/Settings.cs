@@ -38,6 +38,8 @@ namespace VLEDCONTROL
       private volatile Loggable.LEVEL _LogLevel = DEFAULT_LOGLEVEL;
       public volatile float _UpdateInterval = 0.2f;
       public volatile float _DataInterval = 0.3f;
+      // 
+      public volatile bool _DebugEnabled = false;
 
       public List<VirpilDevice> Devices { get { return _Devices; } set { _Devices = value; } }
       public String DefaultProfile { get { return _DefaultProfile; } set { _DefaultProfile = value; } }

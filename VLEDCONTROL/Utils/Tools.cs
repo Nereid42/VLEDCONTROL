@@ -384,5 +384,43 @@ namespace VLEDCONTROL
       {
          System.Threading.Thread.Sleep(millis);
       }
+
+      public static void CopyProfileMapping(Profile from, Profile to)
+      {
+         to.MappingEntries.Clear();
+         to.ImportMapping(from);
+      }
+
+
+      public static void CopyDefaultProfileMapping()
+      {
+         try
+         {
+            Profile defaultProfile = Profile.Load("default.profile");
+            foreach(String profilename in Directory.GetFiles(".","*.profile"))
+            {
+               if (!profilename.ToLower().EndsWith("default.profile"))
+               {
+                  Profile profile = Profile.Load(profilename);
+                  Loggable.LogInfo("merging default mapping into " + profilename);
+                  CopyProfileMapping(defaultProfile, profile);
+                  profile.Save();
+               }
+            }
+
+            String[] baseProfiles = { "../../../Files/default.profile", "../../../Files/Example.profile", "../../../Files/F18C.profile", "../../../Files/Mi-24P.profile", "../../../Files/UH-1H.profile" };
+            foreach (String profilename in baseProfiles)
+            {
+               Profile p = Profile.Load(profilename);
+               CopyProfileMapping(defaultProfile, p);
+               p.SaveAs(profilename);
+            }
+
+         } catch(Exception e)
+         {
+            Loggable.LogException("failed to copy default mappings", e);
+         }
+
+      }
    }
 }

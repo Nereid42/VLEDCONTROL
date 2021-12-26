@@ -668,5 +668,10 @@ namespace VLEDCONTROL
       {
 
       }
+
+      private void copyDefaultProfileMappingToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         Tools.CopyDefaultProfileMapping();
+      }
    }
 }

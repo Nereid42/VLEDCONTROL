@@ -119,6 +119,15 @@ namespace VLEDCONTROL
       }
 
 
+      private static void DebugSetup()
+      {
+         if(System.IO.File.Exists("debug"))
+         {
+            Loggable.LogUrgend("debug enabled");
+            Engine.CurrentSettings._DebugEnabled = true;
+         }
+      }
+
       private static void CreateEngine()
       {
          LogInfo("Creating engine");
@@ -164,11 +173,15 @@ namespace VLEDCONTROL
             // ======== Setup ========
             // Add all missing files, if nessessary
             EnvironmentSetup();
+            // check for debug
+            DebugSetup();
 
             // ======== Creating Main Window ======== 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             VLED.MainWindow = new MainWindowForm();
+            // enable debug menu
+            if (Engine.CurrentSettings._DebugEnabled) VLED.MainWindow.debugToolStripMenuItem.Visible = true;
             // hanlde closing of window gracefully
             VLED.MainWindow.FormClosing += VLED.WindowClosing;
 
@@ -190,6 +203,7 @@ namespace VLEDCONTROL
          }
 
       }
+
    }
 
 

@@ -178,6 +178,8 @@
          this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
          this.menuStrip1 = new System.Windows.Forms.MenuStrip();
          this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+         this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.copyDefaultProfileMappingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
          this.panel2.SuspendLayout();
@@ -1707,12 +1709,29 @@
          this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.setupToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.debugToolStripMenuItem});
          this.menuStrip1.Location = new System.Drawing.Point(0, 0);
          this.menuStrip1.Name = "menuStrip1";
          this.menuStrip1.Size = new System.Drawing.Size(1170, 24);
          this.menuStrip1.TabIndex = 0;
          this.menuStrip1.Text = "menuStrip1";
+         // 
+         // debugToolStripMenuItem
+         // 
+         this.debugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyDefaultProfileMappingToolStripMenuItem});
+         this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
+         this.debugToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+         this.debugToolStripMenuItem.Text = "Debug";
+         this.debugToolStripMenuItem.Visible = false;
+         // 
+         // copyDefaultProfileMappingToolStripMenuItem
+         // 
+         this.copyDefaultProfileMappingToolStripMenuItem.Name = "copyDefaultProfileMappingToolStripMenuItem";
+         this.copyDefaultProfileMappingToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+         this.copyDefaultProfileMappingToolStripMenuItem.Text = "CopyDefaultProfileMapping";
+         this.copyDefaultProfileMappingToolStripMenuItem.Click += new System.EventHandler(this.copyDefaultProfileMappingToolStripMenuItem_Click);
          // 
          // MainWindowForm
          // 
@@ -1921,6 +1940,8 @@
       private System.Windows.Forms.ColumnHeader columnIdLimitAircraft;
       internal System.Windows.Forms.ListView listViewIdLimit;
       private System.Windows.Forms.ColumnHeader columnIdLimitValue;
+      internal System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem copyDefaultProfileMappingToolStripMenuItem;
    }
 }
 
