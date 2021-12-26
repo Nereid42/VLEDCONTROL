@@ -119,6 +119,9 @@
          this.labelTimeRunning = new System.Windows.Forms.Label();
          this.labelNumberLedChanges = new System.Windows.Forms.Label();
          this.groupBox1 = new System.Windows.Forms.GroupBox();
+         this.listViewIdLimit = new System.Windows.Forms.ListView();
+         this.columnIdLimitAircraft = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+         this.columnIdLimitValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.checkBoxEnableStatistics = new System.Windows.Forms.CheckBox();
          this.comboBoxLogLevel = new System.Windows.Forms.ComboBox();
          this.labelLogLevel = new System.Windows.Forms.Label();
@@ -175,9 +178,6 @@
          this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
          this.menuStrip1 = new System.Windows.Forms.MenuStrip();
          this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-         this.listViewIdLimit = new System.Windows.Forms.ListView();
-         this.columnIdLimitAircraft = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-         this.columnIdLimitValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
          this.panel2.SuspendLayout();
@@ -1146,6 +1146,33 @@
          this.groupBox1.TabStop = false;
          this.groupBox1.Text = "System";
          // 
+         // listViewIdLimit
+         // 
+         this.listViewIdLimit.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnIdLimitAircraft,
+            this.columnIdLimitValue});
+         this.listViewIdLimit.FullRowSelect = true;
+         this.listViewIdLimit.GridLines = true;
+         this.listViewIdLimit.HideSelection = false;
+         this.listViewIdLimit.Location = new System.Drawing.Point(6, 194);
+         this.listViewIdLimit.MultiSelect = false;
+         this.listViewIdLimit.Name = "listViewIdLimit";
+         this.listViewIdLimit.Size = new System.Drawing.Size(205, 165);
+         this.listViewIdLimit.TabIndex = 29;
+         this.listViewIdLimit.UseCompatibleStateImageBehavior = false;
+         this.listViewIdLimit.View = System.Windows.Forms.View.Details;
+         this.listViewIdLimit.Visible = false;
+         this.listViewIdLimit.SelectedIndexChanged += new System.EventHandler(this.listViewIdLimit_SelectedIndexChanged);
+         // 
+         // columnIdLimitAircraft
+         // 
+         this.columnIdLimitAircraft.Text = "Aircraft";
+         this.columnIdLimitAircraft.Width = 140;
+         // 
+         // columnIdLimitValue
+         // 
+         this.columnIdLimitValue.Text = "Max ID";
+         // 
          // checkBoxEnableStatistics
          // 
          this.checkBoxEnableStatistics.AutoSize = true;
@@ -1686,32 +1713,6 @@
          this.menuStrip1.Size = new System.Drawing.Size(1170, 24);
          this.menuStrip1.TabIndex = 0;
          this.menuStrip1.Text = "menuStrip1";
-         // 
-         // listViewIdLimit
-         // 
-         this.listViewIdLimit.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnIdLimitAircraft,
-            this.columnIdLimitValue});
-         this.listViewIdLimit.FullRowSelect = true;
-         this.listViewIdLimit.GridLines = true;
-         this.listViewIdLimit.HideSelection = false;
-         this.listViewIdLimit.Location = new System.Drawing.Point(6, 194);
-         this.listViewIdLimit.MultiSelect = false;
-         this.listViewIdLimit.Name = "listViewIdLimit";
-         this.listViewIdLimit.Size = new System.Drawing.Size(205, 165);
-         this.listViewIdLimit.TabIndex = 29;
-         this.listViewIdLimit.UseCompatibleStateImageBehavior = false;
-         this.listViewIdLimit.View = System.Windows.Forms.View.Details;
-         this.listViewIdLimit.SelectedIndexChanged += new System.EventHandler(this.listViewIdLimit_SelectedIndexChanged);
-         // 
-         // columnIdLimitAircraft
-         // 
-         this.columnIdLimitAircraft.Text = "Aircraft";
-         this.columnIdLimitAircraft.Width = 140;
-         // 
-         // columnIdLimitValue
-         // 
-         this.columnIdLimitValue.Text = "Max ID";
          // 
          // MainWindowForm
          // 

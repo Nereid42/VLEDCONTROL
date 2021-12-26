@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VLEDCONTROL", "VLEDCONTROL\VLEDCONTROL.csproj", "{69E7E84C-517E-4287-8D6E-D0FDBCFA7737}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOOLS", "TOOLS\TOOLS.csproj", "{E2C1FE45-F3CB-4064-BDB0-3F80867C2E40}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{69E7E84C-517E-4287-8D6E-D0FDBCFA7737}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69E7E84C-517E-4287-8D6E-D0FDBCFA7737}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69E7E84C-517E-4287-8D6E-D0FDBCFA7737}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E2C1FE45-F3CB-4064-BDB0-3F80867C2E40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2C1FE45-F3CB-4064-BDB0-3F80867C2E40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2C1FE45-F3CB-4064-BDB0-3F80867C2E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2C1FE45-F3CB-4064-BDB0-3F80867C2E40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
