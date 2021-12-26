@@ -135,9 +135,10 @@
          this.checkBoxDirectExport.Location = new System.Drawing.Point(20, 150);
          this.checkBoxDirectExport.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
          this.checkBoxDirectExport.Name = "checkBoxDirectExport";
-         this.checkBoxDirectExport.Size = new System.Drawing.Size(392, 17);
+         this.checkBoxDirectExport.Size = new System.Drawing.Size(564, 17);
          this.checkBoxDirectExport.TabIndex = 8;
-         this.checkBoxDirectExport.Text = "Use multiplayer support (this may render other plugins unusable!)";
+         this.checkBoxDirectExport.Text = "Use multiplayer support (this may not work with other plugins or render other plu" +
+    "gins unusable!)";
          this.checkBoxDirectExport.UseVisualStyleBackColor = true;
          this.checkBoxDirectExport.CheckedChanged += new System.EventHandler(this.checkBoxDirectExport_CheckedChanged);
          // 

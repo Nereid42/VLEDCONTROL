@@ -97,7 +97,14 @@ namespace VLEDCONTROL
          }
          if (dialog.ShowDialog() == DialogResult.OK)
          {
-            Tools.InstallDcsScripts(dialog.BasePath, dialog.UseHooks);
+            try
+            {
+               Tools.InstallDcsScripts(dialog.BasePath, dialog.UseHooks);
+            }
+            catch
+            {
+               Tools.ShowErrorDialog("Failed to install export scripts!");
+            }
          }
       }
 

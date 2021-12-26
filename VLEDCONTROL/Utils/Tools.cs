@@ -210,6 +210,7 @@ namespace VLEDCONTROL
             File.AppendAllText(exportfile, "-- created by VLEDCONTROL\n");
          }
          string[] lines = System.IO.File.ReadAllLines(exportfile);
+         // check if VLED export is alöready called
          foreach (String line in lines)
          {
             if (line.StartsWith(EXPORTFILE_MARKER))
@@ -218,7 +219,29 @@ namespace VLEDCONTROL
             }
          }
 
-         File.AppendAllText(exportfile, "\n" + EXPORTFILE_MARKER + " " + EXPORTFILE_VLED_CMD);
+         // add VLED axport at the beginning of the Export-script
+         string tempFile = exportfile + ".new";
+
+         using (var sr = new StreamReader(exportfile))
+         using (var sw = new StreamWriter(tempFile))
+         {
+            string line;
+
+            bool commandWritten = false;
+
+            while ((line = sr.ReadLine()) != null)
+            {
+               if (line.Length>0 && !line.StartsWith("--") && !commandWritten)
+               {
+                  sw.WriteLine(EXPORTFILE_MARKER + " " + EXPORTFILE_VLED_CMD);
+                  commandWritten = true;
+               }
+               sw.WriteLine(line);
+            }
+         }
+
+         File.Delete(exportfile);
+         File.Move(tempFile, exportfile);
       }
 
       internal static void UninstallDcsExportScript(string dcsBasePath)
@@ -244,35 +267,51 @@ namespace VLEDCONTROL
 
       internal static void InstallDcsScripts(string dcsBasePath, bool useHook)
       {
-         Loggable.LogInfo("Installing DCS scripts (use hooks=" + useHook + ")");
-         //
-         MakeDir(dcsBasePath + "/Scripts");
-         MakeDir(dcsBasePath + "/Scripts/vled");
-         System.IO.File.Copy("Scripts/vled/VledExport.lua", dcsBasePath + "/Scripts/vled/VledExport.lua",true);
-         //
-         // Hooks or direkt Export?
-         if(useHook)
+         try
          {
-            // hooks (no multiplayer support)
-            UninstallDcsExportScript(dcsBasePath);
-            MakeDir(dcsBasePath + "/Scripts/Hooks");
-            System.IO.File.Copy("Scripts/Hooks/VledExportHook.lua", dcsBasePath + "/Scripts/Hooks/VledExportHook.lua", true);
+            Loggable.LogInfo("Installing DCS scripts (use hooks=" + useHook + ")");
+            //
+            MakeDir(dcsBasePath + "/Scripts");
+            MakeDir(dcsBasePath + "/Scripts/vled");
+            System.IO.File.Copy("Scripts/vled/VledExport.lua", dcsBasePath + "/Scripts/vled/VledExport.lua", true);
+            //
+            // Hooks or direkt Export?
+            if (useHook)
+            {
+               // hooks (no multiplayer support)
+               UninstallDcsExportScript(dcsBasePath);
+               MakeDir(dcsBasePath + "/Scripts/Hooks");
+               System.IO.File.Copy("Scripts/Hooks/VledExportHook.lua", dcsBasePath + "/Scripts/Hooks/VledExportHook.lua", true);
+            }
+            else
+            {
+               // direct export (multiplayer support)
+               RemoveObsoleteDcsScripts(dcsBasePath);
+               InstallDcsExportScript(dcsBasePath);
+            }
          }
-         else
+         catch(Exception e)
          {
-            // direct export (multiplayer support)
-            RemoveObsoleteDcsScripts(dcsBasePath);
-            InstallDcsExportScript(dcsBasePath);
+            Loggable.LogException("failed to uninstall export scripts", e);
+            throw e;
          }
       }
 
       internal static void UninstallDcsScripts(string dcsBasePath)
       {
-         RemoveObsoleteDcsScripts(dcsBasePath);
-         DeleteScriptFile(dcsBasePath, "/vled/VledExport.lua");
-         DeleteScriptFile(dcsBasePath, "/Hooks/VledExportHook.lua");
-         DeleteScriptFolder(dcsBasePath, "/vled");
-         UninstallDcsExportScript(dcsBasePath);
+         try
+         {
+            RemoveObsoleteDcsScripts(dcsBasePath);
+            DeleteScriptFile(dcsBasePath, "/vled/VledExport.lua");
+            DeleteScriptFile(dcsBasePath, "/Hooks/VledExportHook.lua");
+            DeleteScriptFolder(dcsBasePath, "/vled");
+            UninstallDcsExportScript(dcsBasePath);
+         }
+         catch(Exception e)
+         {
+            Loggable.LogException("failed to uninstall export scripts",e);
+            throw e;
+         }
       }
 
 
