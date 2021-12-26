@@ -25,7 +25,7 @@ namespace VLEDCONTROL
    {
       private const int UDP_PORT_RECEIVE = 5555;
       private const int UDP_PORT_SEND = 5556;
-      public const int VALUE_COUNT = 10000;
+      public const int VALUE_COUNT = 20000;
 
       public readonly Settings CurrentSettings = new Settings();
 

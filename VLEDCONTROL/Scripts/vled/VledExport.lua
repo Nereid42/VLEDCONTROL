@@ -132,23 +132,27 @@ function PrepareData()
 		end
 		
 		for i=1,MAX_PANEL_INDEX,1 do
-			arg = panel:get_argument_value(i);
-			currentData[i] = arg;
-			if ( arg ~= nil and arg ~= 0 ) then
-				--log.write('VLED.EXPORT', log.INFO, 'PANEL '..tostring(i)..": "..arg);				  
-				data[i] = arg;
-			end
+		   if ( i ~= AIRCRAFT_NAME_INDEX ) then
+				arg = panel:get_argument_value(i);
+				currentData[i] = arg;
+				if ( arg ~= nil and arg ~= 0 ) then
+					--log.write('VLED.EXPORT', log.INFO, 'PANEL '..tostring(i)..": "..arg);				  
+					data[i] = arg;
+				end
+		   end
 		end
 	else
 		--log.write('VLED.EXPORT', log.INFO, 'no new aircraft');			
 		for i=1,MAX_PANEL_INDEX,1 do
-			arg = panel:get_argument_value(i);
-			if ( arg ~= nil and currentData[i] ~= arg ) then
-				changeInData = true;
-				c = currentData[i];
-				--log.write('VLED.EXPORT', log.INFO, 'DATA CHANGE ['..i..'] : '..c..' -> '..arg);
-				currentData[i] = arg;
-				data[i] = arg;
+		   if ( i ~= AIRCRAFT_NAME_INDEX ) then
+				arg = panel:get_argument_value(i);
+				if ( arg ~= nil and currentData[i] ~= arg ) then
+					changeInData = true;
+					c = currentData[i];
+					--log.write('VLED.EXPORT', log.INFO, 'DATA CHANGE ['..i..'] : '..c..' -> '..arg);
+					currentData[i] = arg;
+					data[i] = arg;
+				end
 			end
 		end	
 	end	

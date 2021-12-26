@@ -483,12 +483,12 @@ namespace VLEDCONTROL
             if(entry.Aircraft.Equals(fromAircraft))
             {
                MappingEntry newEntry = new MappingEntry(toAircraft,entry.Id,entry.Name);
-               RemoveMapping(newEntry);
                newEntries.Add(newEntry);
             }
          }
          foreach(MappingEntry entry in newEntries)
          {
+            RemoveMapping(entry);
             AddMapping(entry);
          }
       }
