@@ -663,5 +663,10 @@ namespace VLEDCONTROL
 
          buttonProfileEnable.Text = enabled ? "Disable" : "Enable";
       }
+
+      private void listViewIdLimit_SelectedIndexChanged(object sender, EventArgs e)
+      {
+
+      }
    }
 }

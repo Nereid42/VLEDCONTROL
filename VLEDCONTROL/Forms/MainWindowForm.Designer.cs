@@ -175,6 +175,9 @@
          this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
          this.menuStrip1 = new System.Windows.Forms.MenuStrip();
          this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+         this.listViewIdLimit = new System.Windows.Forms.ListView();
+         this.columnIdLimitAircraft = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+         this.columnIdLimitValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
          this.panel2.SuspendLayout();
@@ -1129,6 +1132,7 @@
          // 
          // groupBox1
          // 
+         this.groupBox1.Controls.Add(this.listViewIdLimit);
          this.groupBox1.Controls.Add(this.checkBoxEnableStatistics);
          this.groupBox1.Controls.Add(this.comboBoxLogLevel);
          this.groupBox1.Controls.Add(this.labelLogLevel);
@@ -1164,7 +1168,7 @@
             "INFO",
             "DEBUG",
             "TRACE"});
-         this.comboBoxLogLevel.Location = new System.Drawing.Point(9, 172);
+         this.comboBoxLogLevel.Location = new System.Drawing.Point(6, 142);
          this.comboBoxLogLevel.Name = "comboBoxLogLevel";
          this.comboBoxLogLevel.Size = new System.Drawing.Size(121, 21);
          this.comboBoxLogLevel.TabIndex = 27;
@@ -1174,7 +1178,7 @@
          // labelLogLevel
          // 
          this.labelLogLevel.AutoSize = true;
-         this.labelLogLevel.Location = new System.Drawing.Point(6, 152);
+         this.labelLogLevel.Location = new System.Drawing.Point(3, 126);
          this.labelLogLevel.Name = "labelLogLevel";
          this.labelLogLevel.Size = new System.Drawing.Size(57, 13);
          this.labelLogLevel.TabIndex = 26;
@@ -1683,6 +1687,32 @@
          this.menuStrip1.TabIndex = 0;
          this.menuStrip1.Text = "menuStrip1";
          // 
+         // listViewIdLimit
+         // 
+         this.listViewIdLimit.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnIdLimitAircraft,
+            this.columnIdLimitValue});
+         this.listViewIdLimit.FullRowSelect = true;
+         this.listViewIdLimit.GridLines = true;
+         this.listViewIdLimit.HideSelection = false;
+         this.listViewIdLimit.Location = new System.Drawing.Point(6, 194);
+         this.listViewIdLimit.MultiSelect = false;
+         this.listViewIdLimit.Name = "listViewIdLimit";
+         this.listViewIdLimit.Size = new System.Drawing.Size(205, 165);
+         this.listViewIdLimit.TabIndex = 29;
+         this.listViewIdLimit.UseCompatibleStateImageBehavior = false;
+         this.listViewIdLimit.View = System.Windows.Forms.View.Details;
+         this.listViewIdLimit.SelectedIndexChanged += new System.EventHandler(this.listViewIdLimit_SelectedIndexChanged);
+         // 
+         // columnIdLimitAircraft
+         // 
+         this.columnIdLimitAircraft.Text = "Aircraft";
+         this.columnIdLimitAircraft.Width = 140;
+         // 
+         // columnIdLimitValue
+         // 
+         this.columnIdLimitValue.Text = "Max ID";
+         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1887,6 +1917,9 @@
       internal System.Windows.Forms.CheckBox checkBoxHighlightLed;
       private System.Windows.Forms.ColumnHeader columnHeaderEnabled;
       private System.Windows.Forms.Button buttonProfileEnable;
+      private System.Windows.Forms.ColumnHeader columnIdLimitAircraft;
+      internal System.Windows.Forms.ListView listViewIdLimit;
+      private System.Windows.Forms.ColumnHeader columnIdLimitValue;
    }
 }
 

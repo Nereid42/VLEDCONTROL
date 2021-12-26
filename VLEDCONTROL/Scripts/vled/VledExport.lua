@@ -7,6 +7,8 @@ local EXPORT_INTERVAL = 0.3;
 
 local MAX_PANEL_INDEX=1000;
 
+local AIRCRAFT_NAME_INDEX=9999
+
 statistics = {}
 
 log.write('VLED.EXPORT', log.INFO, 'Starting VLED export script');
@@ -68,7 +70,7 @@ function ExecuteCommand(command)
 			command = string.sub(command,1, p-1);
 		end;
 		--
-		if     command == "QUERY"    then  currentData[9999] = nil; 
+		if     command == "QUERY"    then  currentData[AIRCRAFT_NAME_INDEX] = nil; 
 		elseif command == "INTERVAL" then  EXPORT_INTERVAL = data;					
 		else
 			log.write('VLED.EXPORT', log.INFO, 'unknow command: '..command);					  
@@ -88,6 +90,7 @@ function PrepareData()
 	
 	local aircraft = MyAircraft.Name
 
+	-- init variables
 	local changeInData = false;
 	local data = {}
 
@@ -95,30 +98,38 @@ function PrepareData()
 	-- Su-25T is not supported
 	if aircraft == 'Su-25T' then
 	   log.write('VLED.EXPORT', log.ERROR, 'Su-25T not supported');
-		data[9999] = aircraft;
+		data[AIRCRAFT_NAME_INDEX] = aircraft;
 		return data;
 	end
 
+	-- check for valid panel
 	local panel = GetDevice(0);
 	if panel == nil then
 		log.write('VLED.EXPORT', log.INFO, 'NULL PANEL');	
-		data[9999] = aircraft;
+		data[AIRCRAFT_NAME_INDEX] = aircraft;
 		return data;
 	else
 		if type(panel) ~= 'table' then
 			log.write('VLED.EXPORT', log.INFO, 'NO PANEL');	
-			data[9999] = aircraft;
+			data[AIRCRAFT_NAME_INDEX] = aircraft;
 			return data;
 		end
 	end
 
 
 	--log.write('VLED.EXPORT', log.INFO, 'creating data');		
-	if ( currentData[9999] ~= aircraft ) then
+	if ( currentData[AIRCRAFT_NAME_INDEX] ~= aircraft ) then
 		--log.write('VLED.EXPORT', log.INFO, 'NEW AIRCRAFT');		
 		changeInData = true;
-		data[9999] = aircraft;
-		currentData[9999] = aircraft;
+		data[AIRCRAFT_NAME_INDEX] = aircraft;
+		currentData[AIRCRAFT_NAME_INDEX] = aircraft;
+
+		-- check for larger panel arrays
+		if ( aircraft == 'F-14B' or aircraft == 'F-14A-135-GR' ) then
+			 MAX_PANEL_INDEX=9998;
+		else
+			 MAX_PANEL_INDEX=1000;
+		end
 		
 		for i=1,MAX_PANEL_INDEX,1 do
 			arg = panel:get_argument_value(i);
