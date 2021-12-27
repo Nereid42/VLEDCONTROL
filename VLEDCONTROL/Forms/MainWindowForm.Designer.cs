@@ -767,7 +767,7 @@
          // columnHeaderName
          // 
          this.columnHeaderName.Text = "Name";
-         this.columnHeaderName.Width = 176;
+         this.columnHeaderName.Width = 174;
          // 
          // columnHeaderCondition
          // 
@@ -799,12 +799,13 @@
          // columnHeaderEnabled
          // 
          this.columnHeaderEnabled.Text = "E";
-         this.columnHeaderEnabled.Width = 18;
+         this.columnHeaderEnabled.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+         this.columnHeaderEnabled.Width = 20;
          // 
          // columnHeaderDescription
          // 
          this.columnHeaderDescription.Text = "Description";
-         this.columnHeaderDescription.Width = 200;
+         this.columnHeaderDescription.Width = 190;
          // 
          // tabPageMapping
          // 
