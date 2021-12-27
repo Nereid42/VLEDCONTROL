@@ -469,11 +469,14 @@ namespace VLEDCONTROL
          );
          SetTextBoxText(MainWindow.textBoxProfileName, profile.Name);
          SetTextBoxText(MainWindow.textBoxMappingProfileName, profile.Name);
+         //
+         MainWindow.UpdateButtonStates();
       }
 
       private bool ProfileFilterAccepted(Profile.ProfileEvent entry)
       {
          if (!MainWindow.checkBoxProfileFilterStatic.Checked && entry.IsStatic()) return false;
+         if (!MainWindow.checkBoxProfileFilterDisabled.Checked && !entry.Enabled) return false;
          if (!MainWindow.comboBoxProfileFilterAircraft.Text.Equals(PROFILE_FILTER_ANY_AIRCAFT) && !MainWindow.comboBoxProfileFilterAircraft.Text.Equals(entry.Aircraft)) return false;
          int id = Tools.IndexOfSelectedComboBoxItem(MainWindow.comboBoxProfileFilterDevice) - 1;
          if (id >= 0)

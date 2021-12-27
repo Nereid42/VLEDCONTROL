@@ -183,6 +183,7 @@
          this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.copyDefaultProfileMappingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+         this.checkBoxProfileFilterDisabled = new System.Windows.Forms.CheckBox();
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
          this.panel2.SuspendLayout();
@@ -487,6 +488,7 @@
          // 
          // groupBoxFilterProfile
          // 
+         this.groupBoxFilterProfile.Controls.Add(this.checkBoxProfileFilterDisabled);
          this.groupBoxFilterProfile.Controls.Add(this.button1);
          this.groupBoxFilterProfile.Controls.Add(this.comboBoxProfileFilterDevice);
          this.groupBoxFilterProfile.Controls.Add(this.label2);
@@ -495,7 +497,7 @@
          this.groupBoxFilterProfile.Controls.Add(this.comboBoxProfileFilterAircraft);
          this.groupBoxFilterProfile.Location = new System.Drawing.Point(414, 0);
          this.groupBoxFilterProfile.Name = "groupBoxFilterProfile";
-         this.groupBoxFilterProfile.Size = new System.Drawing.Size(561, 46);
+         this.groupBoxFilterProfile.Size = new System.Drawing.Size(601, 46);
          this.groupBoxFilterProfile.TabIndex = 15;
          this.groupBoxFilterProfile.TabStop = false;
          this.groupBoxFilterProfile.Text = "Filter";
@@ -1772,6 +1774,19 @@
          this.copyDefaultProfileMappingToolStripMenuItem.Text = "CopyDefaultProfileMapping";
          this.copyDefaultProfileMappingToolStripMenuItem.Click += new System.EventHandler(this.copyDefaultProfileMappingToolStripMenuItem_Click);
          // 
+         // checkBoxProfileFilterDisabled
+         // 
+         this.checkBoxProfileFilterDisabled.AutoSize = true;
+         this.checkBoxProfileFilterDisabled.Checked = true;
+         this.checkBoxProfileFilterDisabled.CheckState = System.Windows.Forms.CheckState.Checked;
+         this.checkBoxProfileFilterDisabled.Location = new System.Drawing.Point(507, 17);
+         this.checkBoxProfileFilterDisabled.Name = "checkBoxProfileFilterDisabled";
+         this.checkBoxProfileFilterDisabled.Size = new System.Drawing.Size(67, 17);
+         this.checkBoxProfileFilterDisabled.TabIndex = 18;
+         this.checkBoxProfileFilterDisabled.Text = "Disabled";
+         this.checkBoxProfileFilterDisabled.UseVisualStyleBackColor = true;
+         this.checkBoxProfileFilterDisabled.CheckedChanged += new System.EventHandler(this.checkBoxProfileFilterDisabled_CheckedChanged);
+         // 
          // MainWindowForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1984,6 +1999,7 @@
       private System.Windows.Forms.Button buttonCopyMappingToCurrentAircraft;
       private System.Windows.Forms.Label labelMappingCurrentAircraft;
       public System.Windows.Forms.TextBox textBoxMappingCurrentAircraft;
+      internal System.Windows.Forms.CheckBox checkBoxProfileFilterDisabled;
    }
 }
 

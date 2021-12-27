@@ -77,30 +77,14 @@ namespace VLEDCONTROL
 
       private void listViewProfileEvents_SelectedIndexChanged(object sender, EventArgs e)
       {
-         if (listViewProfileEvents.SelectedIndices.Count == 0)
-         {
-            buttonProfileRemove.Enabled = false;
-            buttonProfileDuplicate.Enabled = false;
-            buttonProfileEdit.Enabled = false;
-            buttonProfileDown.Enabled = false;
-            buttonProfileUp.Enabled = false;
-            buttonProfileEnable.Enabled = false;
-         }
-         else
+         UpdateButtonStates();
+         if (listViewProfileEvents.SelectedIndices.Count > 0)
          {
             int selectedIndex = listViewProfileEvents.SelectedIndices[0];
-            buttonProfileRemove.Enabled = true;
-            buttonProfileDuplicate.Enabled = true;
-            buttonProfileEdit.Enabled = true;
-            buttonProfileDown.Enabled = (selectedIndex < listViewProfileEvents.Items.Count - 1 );
-            buttonProfileUp.Enabled = (selectedIndex > 0 );
-            buttonProfileEnable.Enabled = (selectedIndex > 0);
-
             int index = (int)listViewProfileEvents.Items[selectedIndex].Tag;
             if(index < VLED.Engine.CurrentProfile.ProfileEvents.Count)
             {
                Profile.ProfileEvent profileEvent = VLED.Engine.CurrentProfile.ProfileEvents[index];
-               buttonProfileEnable.Text = profileEvent.Enabled ? "Disable" : "Enable";
                //
                if (checkBoxHighlightLed.Checked)
                {
@@ -489,17 +473,7 @@ namespace VLEDCONTROL
 
       private void listView1_SelectedIndexChanged(object sender, EventArgs e)
       {
-
-         if (listViewMapping.SelectedIndices.Count == 0)
-         {
-            buttonMappingRemove.Enabled = false;
-            buttonMappingEdit.Enabled = false;
-         }
-         else
-         {
-            buttonMappingRemove.Enabled = true;
-            buttonMappingEdit.Enabled = true;
-         }
+         UpdateButtonStates();
       }
 
       private void buttonMappingAdd_Click(object sender, EventArgs e)
@@ -625,15 +599,7 @@ namespace VLEDCONTROL
       private void comboBoxMappingFilterAircraft_SelectedIndexChanged(object sender, EventArgs e)
       {
          Controller.SetProfile(VLED.Engine.CurrentProfile);
-         String currentAircraft = this.textBoxAircraft.Text;
-         if (currentAircraft.Equals(UiController.NO_AIRCRAFT) || Tools.IndexOfSelectedComboBoxItem(this.comboBoxMappingFilterAircraft) == 0)
-         {
-            this.buttonCopyMappingToCurrentAircraft.Enabled = false;
-         }
-         else
-         {
-            this.buttonCopyMappingToCurrentAircraft.Enabled = true;
-         }
+         UpdateButtonStates();
       }
 
       private void buttonImportFromProfile_Click(object sender, EventArgs e)
@@ -710,6 +676,66 @@ namespace VLEDCONTROL
             Controller.SetProfileFilter(VLED.Engine.CurrentProfile);
             UpdateMappingStatistics();
          }
+      }
+
+      private void checkBoxProfileFilterDisabled_CheckedChanged(object sender, EventArgs e)
+      {
+         Controller.SetProfile(VLED.Engine.CurrentProfile);
+      }
+
+      public void UpdateButtonStates()
+      {
+         // Copy Mapping
+         String currentAircraft = this.textBoxAircraft.Text;
+         if (currentAircraft.Equals(UiController.NO_AIRCRAFT) || Tools.IndexOfSelectedComboBoxItem(this.comboBoxMappingFilterAircraft) == 0)
+         {
+            this.buttonCopyMappingToCurrentAircraft.Enabled = false;
+         }
+         else
+         {
+            this.buttonCopyMappingToCurrentAircraft.Enabled = true;
+         }
+
+         // Mapping
+         if (listViewMapping.SelectedIndices.Count == 0)
+         {
+            buttonMappingRemove.Enabled = false;
+            buttonMappingEdit.Enabled = false;
+         }
+         else
+         {
+            buttonMappingRemove.Enabled = true;
+            buttonMappingEdit.Enabled = true;
+         }
+
+         // Profile
+         if (listViewProfileEvents.SelectedIndices.Count == 0)
+         {
+            buttonProfileRemove.Enabled = false;
+            buttonProfileDuplicate.Enabled = false;
+            buttonProfileEdit.Enabled = false;
+            buttonProfileDown.Enabled = false;
+            buttonProfileUp.Enabled = false;
+            buttonProfileEnable.Enabled = false;
+         }
+         else
+         {
+            int selectedIndex = listViewProfileEvents.SelectedIndices[0];
+            buttonProfileRemove.Enabled = true;
+            buttonProfileDuplicate.Enabled = true;
+            buttonProfileEdit.Enabled = true;
+            buttonProfileDown.Enabled = (selectedIndex < listViewProfileEvents.Items.Count - 1);
+            buttonProfileUp.Enabled = (selectedIndex > 0);
+            buttonProfileEnable.Enabled = (selectedIndex > 0);
+
+            int index = (int)listViewProfileEvents.Items[selectedIndex].Tag;
+            if (index < VLED.Engine.CurrentProfile.ProfileEvents.Count)
+            {
+               Profile.ProfileEvent profileEvent = VLED.Engine.CurrentProfile.ProfileEvents[index];
+               buttonProfileEnable.Text = profileEvent.Enabled ? "Disable" : "Enable";
+            }
+         }
+
       }
    }
 }
