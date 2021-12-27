@@ -89,6 +89,9 @@
          this.columnHeaderEnabled = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.columnHeaderDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
          this.tabPageMapping = new System.Windows.Forms.TabPage();
+         this.labelMappingCurrentAircraft = new System.Windows.Forms.Label();
+         this.textBoxMappingCurrentAircraft = new System.Windows.Forms.TextBox();
+         this.buttonCopyMappingToCurrentAircraft = new System.Windows.Forms.Button();
          this.labelMappingNumberOfAircrafts = new System.Windows.Forms.Label();
          this.labelMappingNumberOfMappings = new System.Windows.Forms.Label();
          this.buttonImportFromProfile = new System.Windows.Forms.Button();
@@ -177,12 +180,9 @@
          this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
          this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-         this.toolTip = new System.Windows.Forms.ToolTip(this.components);
          this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.copyDefaultProfileMappingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.buttonCopyMappingToCurrentAircraft = new System.Windows.Forms.Button();
-         this.textBoxMappingCurrentAircraft = new System.Windows.Forms.TextBox();
-         this.labelMappingCurrentAircraft = new System.Windows.Forms.Label();
+         this.toolTip = new System.Windows.Forms.ToolTip(this.components);
          this.tabMain.SuspendLayout();
          this.tabPageData.SuspendLayout();
          this.panel2.SuspendLayout();
@@ -830,6 +830,38 @@
          this.tabPageMapping.Text = "Mapping";
          this.tabPageMapping.UseVisualStyleBackColor = true;
          // 
+         // labelMappingCurrentAircraft
+         // 
+         this.labelMappingCurrentAircraft.AutoSize = true;
+         this.labelMappingCurrentAircraft.Location = new System.Drawing.Point(733, 7);
+         this.labelMappingCurrentAircraft.Name = "labelMappingCurrentAircraft";
+         this.labelMappingCurrentAircraft.Size = new System.Drawing.Size(80, 13);
+         this.labelMappingCurrentAircraft.TabIndex = 19;
+         this.labelMappingCurrentAircraft.Text = "Current Aircraft:";
+         // 
+         // textBoxMappingCurrentAircraft
+         // 
+         this.textBoxMappingCurrentAircraft.BackColor = System.Drawing.SystemColors.InactiveBorder;
+         this.textBoxMappingCurrentAircraft.Enabled = false;
+         this.textBoxMappingCurrentAircraft.Location = new System.Drawing.Point(733, 25);
+         this.textBoxMappingCurrentAircraft.Name = "textBoxMappingCurrentAircraft";
+         this.textBoxMappingCurrentAircraft.ReadOnly = true;
+         this.textBoxMappingCurrentAircraft.Size = new System.Drawing.Size(151, 20);
+         this.textBoxMappingCurrentAircraft.TabIndex = 18;
+         this.toolTip.SetToolTip(this.textBoxMappingCurrentAircraft, "Current aircraft");
+         // 
+         // buttonCopyMappingToCurrentAircraft
+         // 
+         this.buttonCopyMappingToCurrentAircraft.Enabled = false;
+         this.buttonCopyMappingToCurrentAircraft.Location = new System.Drawing.Point(641, 7);
+         this.buttonCopyMappingToCurrentAircraft.Name = "buttonCopyMappingToCurrentAircraft";
+         this.buttonCopyMappingToCurrentAircraft.Size = new System.Drawing.Size(86, 38);
+         this.buttonCopyMappingToCurrentAircraft.TabIndex = 17;
+         this.buttonCopyMappingToCurrentAircraft.Text = "Copy To Current Aircraft";
+         this.toolTip.SetToolTip(this.buttonCopyMappingToCurrentAircraft, "Add new mapping entry");
+         this.buttonCopyMappingToCurrentAircraft.UseVisualStyleBackColor = true;
+         this.buttonCopyMappingToCurrentAircraft.Click += new System.EventHandler(this.buttonCopyMappingToCurrentAircraft_Click);
+         // 
          // labelMappingNumberOfAircrafts
          // 
          this.labelMappingNumberOfAircrafts.Location = new System.Drawing.Point(552, 544);
@@ -1236,9 +1268,9 @@
          this.checkBox2.Enabled = false;
          this.checkBox2.Location = new System.Drawing.Point(6, 65);
          this.checkBox2.Name = "checkBox2";
-         this.checkBox2.Size = new System.Drawing.Size(204, 17);
+         this.checkBox2.Size = new System.Drawing.Size(201, 17);
          this.checkBox2.TabIndex = 24;
-         this.checkBox2.Text = "Check For Updates (not implemented)";
+         this.checkBox2.Text = "Check for Updates (not implemented)";
          this.checkBox2.UseVisualStyleBackColor = true;
          this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
          // 
@@ -1706,7 +1738,7 @@
          // aboutToolStripMenuItem1
          // 
          this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-         this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+         this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
          this.aboutToolStripMenuItem1.Text = "About";
          this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
          // 
@@ -1738,38 +1770,6 @@
          this.copyDefaultProfileMappingToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
          this.copyDefaultProfileMappingToolStripMenuItem.Text = "CopyDefaultProfileMapping";
          this.copyDefaultProfileMappingToolStripMenuItem.Click += new System.EventHandler(this.copyDefaultProfileMappingToolStripMenuItem_Click);
-         // 
-         // buttonCopyMappingToCurrentAircraft
-         // 
-         this.buttonCopyMappingToCurrentAircraft.Enabled = false;
-         this.buttonCopyMappingToCurrentAircraft.Location = new System.Drawing.Point(641, 7);
-         this.buttonCopyMappingToCurrentAircraft.Name = "buttonCopyMappingToCurrentAircraft";
-         this.buttonCopyMappingToCurrentAircraft.Size = new System.Drawing.Size(86, 38);
-         this.buttonCopyMappingToCurrentAircraft.TabIndex = 17;
-         this.buttonCopyMappingToCurrentAircraft.Text = "Copy To Current Aircraft";
-         this.toolTip.SetToolTip(this.buttonCopyMappingToCurrentAircraft, "Add new mapping entry");
-         this.buttonCopyMappingToCurrentAircraft.UseVisualStyleBackColor = true;
-         this.buttonCopyMappingToCurrentAircraft.Click += new System.EventHandler(this.buttonCopyMappingToCurrentAircraft_Click);
-         // 
-         // textBoxMappingCurrentAircraft
-         // 
-         this.textBoxMappingCurrentAircraft.BackColor = System.Drawing.SystemColors.InactiveBorder;
-         this.textBoxMappingCurrentAircraft.Enabled = false;
-         this.textBoxMappingCurrentAircraft.Location = new System.Drawing.Point(733, 25);
-         this.textBoxMappingCurrentAircraft.Name = "textBoxMappingCurrentAircraft";
-         this.textBoxMappingCurrentAircraft.ReadOnly = true;
-         this.textBoxMappingCurrentAircraft.Size = new System.Drawing.Size(151, 20);
-         this.textBoxMappingCurrentAircraft.TabIndex = 18;
-         this.toolTip.SetToolTip(this.textBoxMappingCurrentAircraft, "Current aircraft");
-         // 
-         // labelMappingCurrentAircraft
-         // 
-         this.labelMappingCurrentAircraft.AutoSize = true;
-         this.labelMappingCurrentAircraft.Location = new System.Drawing.Point(733, 7);
-         this.labelMappingCurrentAircraft.Name = "labelMappingCurrentAircraft";
-         this.labelMappingCurrentAircraft.Size = new System.Drawing.Size(80, 13);
-         this.labelMappingCurrentAircraft.TabIndex = 19;
-         this.labelMappingCurrentAircraft.Text = "Current Aircraft:";
          // 
          // MainWindowForm
          // 
