@@ -224,6 +224,7 @@ if not exist ..\VLEDCONTROL-TEST mkdir ..\VLEDCONTROL-TEST
 del /Q ..\VLEDCONTROL\*
 xcopy /Y/S ..\Debug ..\VLEDCONTROL
 
+del ..\VLEDCONTROL\debug
 del ..\VLEDCONTROL\*.log
 del ..\VLEDCONTROL\*.profile
 del ..\VLEDCONTROL\*.ini
