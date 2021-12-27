@@ -3,7 +3,7 @@ local HOST = '127.0.0.1';
 local OUTGOING_PORT = 5555;
 local INGOING_PORT = 5556;
 
-local EXPORT_INTERVAL = 0.3;
+local EXPORT_INTERVAL = 0.2;
 
 local MAX_PANEL_INDEX=1000;
 

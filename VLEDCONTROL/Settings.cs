@@ -37,7 +37,7 @@ namespace VLEDCONTROL
       private volatile int _FlashingCycles = 2;
       private volatile Loggable.LEVEL _LogLevel = DEFAULT_LOGLEVEL;
       public volatile float _UpdateInterval = 0.2f;
-      public volatile float _DataInterval = 0.3f;
+      public volatile float _DataInterval = 0.2f;
       // 
       public volatile bool _DebugEnabled = false;
 
