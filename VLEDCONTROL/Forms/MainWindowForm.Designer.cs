@@ -208,7 +208,7 @@
          this.tabMain.Location = new System.Drawing.Point(112, 28);
          this.tabMain.Name = "tabMain";
          this.tabMain.SelectedIndex = 0;
-         this.tabMain.Size = new System.Drawing.Size(1001, 589);
+         this.tabMain.Size = new System.Drawing.Size(1046, 589);
          this.tabMain.TabIndex = 0;
          // 
          // tabPageData
@@ -228,7 +228,7 @@
          this.tabPageData.Location = new System.Drawing.Point(4, 22);
          this.tabPageData.Name = "tabPageData";
          this.tabPageData.Padding = new System.Windows.Forms.Padding(3);
-         this.tabPageData.Size = new System.Drawing.Size(993, 563);
+         this.tabPageData.Size = new System.Drawing.Size(1038, 563);
          this.tabPageData.TabIndex = 0;
          this.tabPageData.Text = "Data";
          this.tabPageData.UseVisualStyleBackColor = true;
@@ -446,7 +446,7 @@
          this.tabPageProfile.Location = new System.Drawing.Point(4, 22);
          this.tabPageProfile.Name = "tabPageProfile";
          this.tabPageProfile.Padding = new System.Windows.Forms.Padding(3);
-         this.tabPageProfile.Size = new System.Drawing.Size(993, 563);
+         this.tabPageProfile.Size = new System.Drawing.Size(1038, 563);
          this.tabPageProfile.TabIndex = 1;
          this.tabPageProfile.Text = "Profile";
          this.tabPageProfile.UseVisualStyleBackColor = true;
@@ -454,7 +454,7 @@
          // buttonProfileEnable
          // 
          this.buttonProfileEnable.Enabled = false;
-         this.buttonProfileEnable.Location = new System.Drawing.Point(901, 220);
+         this.buttonProfileEnable.Location = new System.Drawing.Point(940, 220);
          this.buttonProfileEnable.Name = "buttonProfileEnable";
          this.buttonProfileEnable.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileEnable.TabIndex = 18;
@@ -465,7 +465,7 @@
          // checkBoxHighlightLed
          // 
          this.checkBoxHighlightLed.AutoSize = true;
-         this.checkBoxHighlightLed.Location = new System.Drawing.Point(901, 539);
+         this.checkBoxHighlightLed.Location = new System.Drawing.Point(940, 539);
          this.checkBoxHighlightLed.Name = "checkBoxHighlightLed";
          this.checkBoxHighlightLed.Size = new System.Drawing.Size(91, 17);
          this.checkBoxHighlightLed.TabIndex = 17;
@@ -477,7 +477,7 @@
          // 
          this.buttonQuickAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.buttonQuickAdd.ForeColor = System.Drawing.Color.SeaGreen;
-         this.buttonQuickAdd.Location = new System.Drawing.Point(901, 52);
+         this.buttonQuickAdd.Location = new System.Drawing.Point(940, 52);
          this.buttonQuickAdd.Name = "buttonQuickAdd";
          this.buttonQuickAdd.Size = new System.Drawing.Size(75, 46);
          this.buttonQuickAdd.TabIndex = 16;
@@ -569,7 +569,7 @@
          // buttonProfilesClear
          // 
          this.buttonProfilesClear.ForeColor = System.Drawing.Color.Maroon;
-         this.buttonProfilesClear.Location = new System.Drawing.Point(901, 339);
+         this.buttonProfilesClear.Location = new System.Drawing.Point(940, 339);
          this.buttonProfilesClear.Name = "buttonProfilesClear";
          this.buttonProfilesClear.Size = new System.Drawing.Size(75, 23);
          this.buttonProfilesClear.TabIndex = 14;
@@ -580,7 +580,7 @@
          // label6
          // 
          this.label6.AutoSize = true;
-         this.label6.Location = new System.Drawing.Point(898, 378);
+         this.label6.Location = new System.Drawing.Point(937, 378);
          this.label6.Name = "label6";
          this.label6.Size = new System.Drawing.Size(65, 13);
          this.label6.TabIndex = 13;
@@ -592,7 +592,7 @@
          this.panel3.Controls.Add(this.radioButtonNewElementsAppend);
          this.panel3.Controls.Add(this.radioButtonNewElementsInsertAfter);
          this.panel3.Controls.Add(this.radioButtonNewElementsInsertBefore);
-         this.panel3.Location = new System.Drawing.Point(899, 394);
+         this.panel3.Location = new System.Drawing.Point(940, 394);
          this.panel3.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
          this.panel3.Name = "panel3";
          this.panel3.Size = new System.Drawing.Size(75, 75);
@@ -635,7 +635,7 @@
          // buttonProfileDuplicate
          // 
          this.buttonProfileDuplicate.Enabled = false;
-         this.buttonProfileDuplicate.Location = new System.Drawing.Point(901, 133);
+         this.buttonProfileDuplicate.Location = new System.Drawing.Point(940, 133);
          this.buttonProfileDuplicate.Name = "buttonProfileDuplicate";
          this.buttonProfileDuplicate.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileDuplicate.TabIndex = 11;
@@ -646,7 +646,7 @@
          // buttonProfileDown
          // 
          this.buttonProfileDown.Enabled = false;
-         this.buttonProfileDown.Location = new System.Drawing.Point(901, 294);
+         this.buttonProfileDown.Location = new System.Drawing.Point(940, 294);
          this.buttonProfileDown.Name = "buttonProfileDown";
          this.buttonProfileDown.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileDown.TabIndex = 10;
@@ -657,7 +657,7 @@
          // buttonProfileUp
          // 
          this.buttonProfileUp.Enabled = false;
-         this.buttonProfileUp.Location = new System.Drawing.Point(901, 265);
+         this.buttonProfileUp.Location = new System.Drawing.Point(940, 265);
          this.buttonProfileUp.Name = "buttonProfileUp";
          this.buttonProfileUp.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileUp.TabIndex = 9;
@@ -668,7 +668,7 @@
          // buttonProfileEdit
          // 
          this.buttonProfileEdit.Enabled = false;
-         this.buttonProfileEdit.Location = new System.Drawing.Point(901, 191);
+         this.buttonProfileEdit.Location = new System.Drawing.Point(940, 191);
          this.buttonProfileEdit.Name = "buttonProfileEdit";
          this.buttonProfileEdit.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileEdit.TabIndex = 8;
@@ -679,7 +679,7 @@
          // buttonProfileRemove
          // 
          this.buttonProfileRemove.Enabled = false;
-         this.buttonProfileRemove.Location = new System.Drawing.Point(901, 162);
+         this.buttonProfileRemove.Location = new System.Drawing.Point(940, 162);
          this.buttonProfileRemove.Name = "buttonProfileRemove";
          this.buttonProfileRemove.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileRemove.TabIndex = 7;
@@ -689,7 +689,7 @@
          // 
          // buttonProfileAdd
          // 
-         this.buttonProfileAdd.Location = new System.Drawing.Point(901, 104);
+         this.buttonProfileAdd.Location = new System.Drawing.Point(940, 104);
          this.buttonProfileAdd.Name = "buttonProfileAdd";
          this.buttonProfileAdd.Size = new System.Drawing.Size(75, 23);
          this.buttonProfileAdd.TabIndex = 6;
@@ -748,7 +748,7 @@
          this.listViewProfileEvents.Location = new System.Drawing.Point(9, 52);
          this.listViewProfileEvents.MultiSelect = false;
          this.listViewProfileEvents.Name = "listViewProfileEvents";
-         this.listViewProfileEvents.Size = new System.Drawing.Size(886, 505);
+         this.listViewProfileEvents.Size = new System.Drawing.Size(922, 505);
          this.listViewProfileEvents.TabIndex = 0;
          this.listViewProfileEvents.UseCompatibleStateImageBehavior = false;
          this.listViewProfileEvents.View = System.Windows.Forms.View.Details;
@@ -767,7 +767,7 @@
          // columnHeaderName
          // 
          this.columnHeaderName.Text = "Name";
-         this.columnHeaderName.Width = 174;
+         this.columnHeaderName.Width = 180;
          // 
          // columnHeaderCondition
          // 
@@ -805,7 +805,7 @@
          // columnHeaderDescription
          // 
          this.columnHeaderDescription.Text = "Description";
-         this.columnHeaderDescription.Width = 190;
+         this.columnHeaderDescription.Width = 220;
          // 
          // tabPageMapping
          // 
@@ -826,7 +826,7 @@
          this.tabPageMapping.Location = new System.Drawing.Point(4, 22);
          this.tabPageMapping.Name = "tabPageMapping";
          this.tabPageMapping.Padding = new System.Windows.Forms.Padding(3);
-         this.tabPageMapping.Size = new System.Drawing.Size(993, 563);
+         this.tabPageMapping.Size = new System.Drawing.Size(1038, 563);
          this.tabPageMapping.TabIndex = 3;
          this.tabPageMapping.Text = "Mapping";
          this.tabPageMapping.UseVisualStyleBackColor = true;
@@ -1060,7 +1060,7 @@
          this.tabPageSettings.Location = new System.Drawing.Point(4, 22);
          this.tabPageSettings.Name = "tabPageSettings";
          this.tabPageSettings.Padding = new System.Windows.Forms.Padding(3);
-         this.tabPageSettings.Size = new System.Drawing.Size(993, 563);
+         this.tabPageSettings.Size = new System.Drawing.Size(1038, 563);
          this.tabPageSettings.TabIndex = 2;
          this.tabPageSettings.Text = "Settings";
          this.tabPageSettings.UseVisualStyleBackColor = true;
@@ -1077,7 +1077,7 @@
          this.groupBox2.Controls.Add(this.labelTimeUsedLedCalc);
          this.groupBox2.Controls.Add(this.labelTimeRunning);
          this.groupBox2.Controls.Add(this.labelNumberLedChanges);
-         this.groupBox2.Location = new System.Drawing.Point(563, 407);
+         this.groupBox2.Location = new System.Drawing.Point(584, 407);
          this.groupBox2.Name = "groupBox2";
          this.groupBox2.Size = new System.Drawing.Size(414, 110);
          this.groupBox2.TabIndex = 24;
@@ -1180,7 +1180,7 @@
          this.groupBox1.Controls.Add(this.checkBox3);
          this.groupBox1.Controls.Add(this.checkBox2);
          this.groupBox1.Controls.Add(this.checkBoxAutostartEnabled);
-         this.groupBox1.Location = new System.Drawing.Point(563, 36);
+         this.groupBox1.Location = new System.Drawing.Point(584, 36);
          this.groupBox1.Name = "groupBox1";
          this.groupBox1.Size = new System.Drawing.Size(414, 365);
          this.groupBox1.TabIndex = 23;
@@ -1317,7 +1317,7 @@
          // buttonSettingsCancel
          // 
          this.buttonSettingsCancel.Enabled = false;
-         this.buttonSettingsCancel.Location = new System.Drawing.Point(902, 524);
+         this.buttonSettingsCancel.Location = new System.Drawing.Point(923, 524);
          this.buttonSettingsCancel.Name = "buttonSettingsCancel";
          this.buttonSettingsCancel.Size = new System.Drawing.Size(75, 23);
          this.buttonSettingsCancel.TabIndex = 18;
@@ -1328,7 +1328,7 @@
          // buttonSettingsSave
          // 
          this.buttonSettingsSave.Enabled = false;
-         this.buttonSettingsSave.Location = new System.Drawing.Point(821, 524);
+         this.buttonSettingsSave.Location = new System.Drawing.Point(842, 524);
          this.buttonSettingsSave.Name = "buttonSettingsSave";
          this.buttonSettingsSave.Size = new System.Drawing.Size(75, 23);
          this.buttonSettingsSave.TabIndex = 17;
@@ -1339,7 +1339,7 @@
          // buttonSettingsEditDevice
          // 
          this.buttonSettingsEditDevice.Enabled = false;
-         this.buttonSettingsEditDevice.Location = new System.Drawing.Point(418, 275);
+         this.buttonSettingsEditDevice.Location = new System.Drawing.Point(446, 275);
          this.buttonSettingsEditDevice.Name = "buttonSettingsEditDevice";
          this.buttonSettingsEditDevice.Size = new System.Drawing.Size(94, 23);
          this.buttonSettingsEditDevice.TabIndex = 16;
@@ -1350,7 +1350,7 @@
          // buttonSettingsRemoveDevice
          // 
          this.buttonSettingsRemoveDevice.Enabled = false;
-         this.buttonSettingsRemoveDevice.Location = new System.Drawing.Point(418, 246);
+         this.buttonSettingsRemoveDevice.Location = new System.Drawing.Point(446, 246);
          this.buttonSettingsRemoveDevice.Name = "buttonSettingsRemoveDevice";
          this.buttonSettingsRemoveDevice.Size = new System.Drawing.Size(94, 23);
          this.buttonSettingsRemoveDevice.TabIndex = 15;
@@ -1360,7 +1360,7 @@
          // 
          // buttonSettingsAddDevice
          // 
-         this.buttonSettingsAddDevice.Location = new System.Drawing.Point(418, 217);
+         this.buttonSettingsAddDevice.Location = new System.Drawing.Point(446, 217);
          this.buttonSettingsAddDevice.Name = "buttonSettingsAddDevice";
          this.buttonSettingsAddDevice.Size = new System.Drawing.Size(94, 23);
          this.buttonSettingsAddDevice.TabIndex = 14;
@@ -1389,7 +1389,7 @@
          this.listViewSettingsDevices.Location = new System.Drawing.Point(114, 217);
          this.listViewSettingsDevices.MultiSelect = false;
          this.listViewSettingsDevices.Name = "listViewSettingsDevices";
-         this.listViewSettingsDevices.Size = new System.Drawing.Size(298, 300);
+         this.listViewSettingsDevices.Size = new System.Drawing.Size(326, 300);
          this.listViewSettingsDevices.TabIndex = 12;
          this.listViewSettingsDevices.UseCompatibleStateImageBehavior = false;
          this.listViewSettingsDevices.View = System.Windows.Forms.View.Details;
@@ -1403,7 +1403,7 @@
          // columnDevicesName
          // 
          this.columnDevicesName.Text = "Name";
-         this.columnDevicesName.Width = 146;
+         this.columnDevicesName.Width = 170;
          // 
          // columnDevicesVID
          // 
@@ -1470,7 +1470,7 @@
          // 
          // buttonChooseDefaultProfile
          // 
-         this.buttonChooseDefaultProfile.Location = new System.Drawing.Point(481, 49);
+         this.buttonChooseDefaultProfile.Location = new System.Drawing.Point(509, 49);
          this.buttonChooseDefaultProfile.Name = "buttonChooseDefaultProfile";
          this.buttonChooseDefaultProfile.Size = new System.Drawing.Size(31, 22);
          this.buttonChooseDefaultProfile.TabIndex = 5;
@@ -1483,7 +1483,7 @@
          this.textBoxSettingsDefaultProfile.Location = new System.Drawing.Point(114, 50);
          this.textBoxSettingsDefaultProfile.Name = "textBoxSettingsDefaultProfile";
          this.textBoxSettingsDefaultProfile.ReadOnly = true;
-         this.textBoxSettingsDefaultProfile.Size = new System.Drawing.Size(361, 20);
+         this.textBoxSettingsDefaultProfile.Size = new System.Drawing.Size(389, 20);
          this.textBoxSettingsDefaultProfile.TabIndex = 4;
          // 
          // labelSettingsDefaultProfile
