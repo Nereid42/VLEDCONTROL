@@ -1220,9 +1220,9 @@
          this.checkBoxEnableStatistics.CheckState = System.Windows.Forms.CheckState.Checked;
          this.checkBoxEnableStatistics.Location = new System.Drawing.Point(6, 87);
          this.checkBoxEnableStatistics.Name = "checkBoxEnableStatistics";
-         this.checkBoxEnableStatistics.Size = new System.Drawing.Size(104, 17);
+         this.checkBoxEnableStatistics.Size = new System.Drawing.Size(102, 17);
          this.checkBoxEnableStatistics.TabIndex = 28;
-         this.checkBoxEnableStatistics.Text = "Enable Statistics";
+         this.checkBoxEnableStatistics.Text = "Enable statistics";
          this.checkBoxEnableStatistics.UseVisualStyleBackColor = true;
          this.checkBoxEnableStatistics.CheckedChanged += new System.EventHandler(this.checkBoxEnableStatistics_CheckedChanged);
          // 
@@ -1257,9 +1257,9 @@
          this.checkBox3.Enabled = false;
          this.checkBox3.Location = new System.Drawing.Point(6, 42);
          this.checkBox3.Name = "checkBox3";
-         this.checkBox3.Size = new System.Drawing.Size(187, 17);
+         this.checkBox3.Size = new System.Drawing.Size(185, 17);
          this.checkBox3.TabIndex = 25;
-         this.checkBox3.Text = "Start as Service (not implemented)";
+         this.checkBox3.Text = "Start as service (not implemented)";
          this.checkBox3.UseVisualStyleBackColor = true;
          // 
          // checkBox2
@@ -1268,9 +1268,9 @@
          this.checkBox2.Enabled = false;
          this.checkBox2.Location = new System.Drawing.Point(6, 65);
          this.checkBox2.Name = "checkBox2";
-         this.checkBox2.Size = new System.Drawing.Size(201, 17);
+         this.checkBox2.Size = new System.Drawing.Size(199, 17);
          this.checkBox2.TabIndex = 24;
-         this.checkBox2.Text = "Check for Updates (not implemented)";
+         this.checkBox2.Text = "Check for updates (not implemented)";
          this.checkBox2.UseVisualStyleBackColor = true;
          this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
          // 
@@ -1281,9 +1281,9 @@
          this.checkBoxAutostartEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
          this.checkBoxAutostartEnabled.Location = new System.Drawing.Point(6, 19);
          this.checkBoxAutostartEnabled.Name = "checkBoxAutostartEnabled";
-         this.checkBoxAutostartEnabled.Size = new System.Drawing.Size(113, 17);
+         this.checkBoxAutostartEnabled.Size = new System.Drawing.Size(112, 17);
          this.checkBoxAutostartEnabled.TabIndex = 22;
-         this.checkBoxAutostartEnabled.Text = "Start Automatically";
+         this.checkBoxAutostartEnabled.Text = "Start automatically";
          this.checkBoxAutostartEnabled.UseVisualStyleBackColor = true;
          this.checkBoxAutostartEnabled.CheckedChanged += new System.EventHandler(this.checkBoxAutostart_CheckedChanged);
          // 
