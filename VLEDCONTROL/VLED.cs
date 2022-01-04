@@ -72,18 +72,16 @@ namespace VLEDCONTROL
          if ( ! Settings.FileExists() )
          {
             IsFirstRun = true;
+
+            if (!System.IO.File.Exists(defaultSettings.DefaultProfile))
+            {
+               Profile profile = new Profile();
+               profile.Name = "Default";
+               profile.SaveAs(defaultSettings.DefaultProfile);
+               //Engine.CurrentProfile = profile;
+            }
+
             defaultSettings.Save();
-            Engine.CurrentSettings.Load();
-            Engine.CurrentProfile = Profile.Load(defaultSettings.DefaultProfile);
-         }
-         // Create Empty Default-Profile if not present
-         Engine.CurrentSettings.Load();
-         if (!System.IO.File.Exists(defaultSettings.DefaultProfile))
-         {
-            Profile profile = new Profile();
-            profile.Name = "Default";
-            profile.SaveAs(defaultSettings.DefaultProfile);
-            Engine.CurrentProfile = profile;
          }
       }
 
@@ -174,12 +172,12 @@ namespace VLEDCONTROL
             // ======== Load Version ========
             LoadVersion();
 
-            // ======== Create Engine ========
-            CreateEngine();
-
             // ======== Setup ========
             // Add all missing files, if nessessary
             EnvironmentSetup();
+
+            // ======== Create Engine ========
+            CreateEngine();
             // check for debug
             DebugSetup();
 
