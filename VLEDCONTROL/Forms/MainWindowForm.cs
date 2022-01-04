@@ -67,6 +67,9 @@ namespace VLEDCONTROL
 
          // status of engine
          Controller.SetEngineStarted(VLED.Engine.IsRunning);
+
+         // set the UI controller when window is fully initialized
+         VLED.Engine.SetUiController(VLED.MainWindow.Controller);
       }
 
       public void UpdateMappingStatistics()
