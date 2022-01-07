@@ -36,9 +36,9 @@ namespace VLEDCONTROL
       public int MinLedNumber = 0;
       public int MaxLedNumber = MAX_LED_CNT-1;
 
-      private LedColor[] CurrentLedColors = new LedColor[MAX_LED_CNT];
+      private readonly LedColor[] CurrentLedColors = new LedColor[MAX_LED_CNT];
       //private bool[] CurrentLedChanged = new bool[MAX_LED_CNT];
-      private LedColor[] PreparedLedColors = new LedColor[MAX_LED_CNT];
+      private readonly LedColor[] PreparedLedColors = new LedColor[MAX_LED_CNT];
 
 
       public VirpilDevice()
@@ -117,7 +117,7 @@ namespace VLEDCONTROL
 
       private static byte GetByte(LedColor color)
       {
-         byte[] rgb = new byte[] { (byte)color.red, (byte)color.green, (byte)color.blue };
+         byte[] rgb = new byte[] { (byte)color.Red, (byte)color.Green, (byte)color.Blue };
          byte b = 0b_1000_0000;
          for (int i = 0; i < rgb.Length; i++)
          {

@@ -22,9 +22,9 @@ namespace VLEDCONTROL
 {
    public class LedColor
    {
-      public int red { get; set; } = 0;
-      public int green { get; set; } = 0;
-      public int blue { get; set; } = 0;
+      public int Red { get; set; } = 0;
+      public int Green { get; set; } = 0;
+      public int Blue { get; set; } = 0;
 
       public static readonly LedColor BLACK = new LedColor(0, 0, 0);
       public static readonly LedColor GRAY = new LedColor(128, 128, 128);
@@ -38,25 +38,25 @@ namespace VLEDCONTROL
 
       public LedColor(int red, int green, int blue)
       {
-         this.red = red;
-         this.green = green;
-         this.blue = blue;
+         this.Red = red;
+         this.Green = green;
+         this.Blue = blue;
       }
 
       public override string ToString()
       {
-         return "#" + red.ToString("X2") + "/#" + green.ToString("X2") + "/#" + blue.ToString("X2");
+         return "#" + Red.ToString("X2") + "/#" + Green.ToString("X2") + "/#" + Blue.ToString("X2");
       }
 
       public String AsString()
       {
-         return red.ToString("X2") + "/" + green.ToString("X2") + "/" + blue.ToString("X2");
+         return Red.ToString("X2") + "/" + Green.ToString("X2") + "/" + Blue.ToString("X2");
       }
 
 
       public System.Drawing.Color ToSystemColor()
       {
-         return System.Drawing.Color.FromArgb(red,green,blue);
+         return System.Drawing.Color.FromArgb(Red,Green,Blue);
       }
 
       public static LedColor FromSystemColor(System.Drawing.Color color)
@@ -69,12 +69,12 @@ namespace VLEDCONTROL
          if (obj is null) return false;
          if (obj.GetType() != typeof(LedColor)) return false;
          LedColor cmp = (LedColor)obj;
-         return (this.red == cmp.red && this.green == cmp.green && this.blue == cmp.blue);
+         return (this.Red == cmp.Red && this.Green == cmp.Green && this.Blue == cmp.Blue);
       }
 
       public override int GetHashCode()
       {
-         return red.GetHashCode() + 255*green.GetHashCode() + 255*255*blue.GetHashCode();
+         return Red.GetHashCode() + 255*Green.GetHashCode() + 255*255*Blue.GetHashCode();
       }
    }
 }

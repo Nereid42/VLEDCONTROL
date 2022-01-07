@@ -485,7 +485,7 @@ namespace VLEDCONTROL
       {
          if (textBoxDeviceId.Text is null || textBoxDeviceId.Text.Length == 0) return;
          int deviceId = Tools.ToInt(textBoxDeviceId.Text);
-         led = led + 4;
+         led += 4;
          VLED.Engine.HighlightLed(deviceId, led, LedColor.WHITE);
          Tools.SelectComboBoxItem(comboBoxLed, led);
       }

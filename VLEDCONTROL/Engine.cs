@@ -44,8 +44,8 @@ namespace VLEDCONTROL
       private readonly long[] CurrentTimestamps = new long[VALUE_COUNT];
 
       // Measuring time for performance analysis
-      private Stopwatch swTotalRunning = new Stopwatch();
-      private Stopwatch swCalcLeds = new Stopwatch();
+      private readonly Stopwatch swTotalRunning = new Stopwatch();
+      private readonly Stopwatch swCalcLeds = new Stopwatch();
 
       // Highlight single LED
       private long HightlightEndCycle = 0;

@@ -37,7 +37,7 @@ namespace VLEDCONTROL
       static String LastDeviceName = "";
       static String LastAircraft = "";
 
-      private Point[] CP2_Locations =
+      private readonly Point[] CP2_Locations =
       {
          new Point(80,21), // 1
          new Point(55,21), // 2
@@ -58,7 +58,7 @@ namespace VLEDCONTROL
          new Point(116,113) // 16
       };
 
-      private Point[] T50CM3_Locations =
+      private readonly Point[] T50CM3_Locations =
       {
          new Point(50,111), // 1
          new Point(74,111), // 2

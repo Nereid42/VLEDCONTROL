@@ -98,9 +98,9 @@ namespace VLEDCONTROL
 
       private void SetResultcolor(Button button)
       {
-         Color.red = button.BackColor.R;
-         Color.green = button.BackColor.G;
-         Color.blue = button.BackColor.B;
+         Color.Red = button.BackColor.R;
+         Color.Green = button.BackColor.G;
+         Color.Blue = button.BackColor.B;
          ResultColor = button.BackColor;
       }
 

@@ -30,9 +30,9 @@ namespace VLEDCONTROL
       public List<ProfileEvent> ProfileEvents { get; set; } = new List<ProfileEvent>();
       public List<MappingEntry> MappingEntries { get; set; } = new List<MappingEntry>();
 
-      private Dictionary<Tuple<String, int>, MappingEntry> MapNameEntries = new Dictionary<Tuple<string, int>, MappingEntry>();
-      private Dictionary<Tuple<String, String>, MappingEntry> MapNameEventId = new Dictionary<Tuple<String, String>, MappingEntry>();
-      private Dictionary<String,List<String>> MapAircraftEvents = new Dictionary<String, List<String>>();
+      private readonly Dictionary<Tuple<String, int>, MappingEntry>  MapNameEntries = new Dictionary<Tuple<string, int>, MappingEntry>();
+      private readonly Dictionary<Tuple<String, String>, MappingEntry> MapNameEventId = new Dictionary<Tuple<String, String>, MappingEntry>();
+      private readonly Dictionary<String,List<String>> MapAircraftEvents = new Dictionary<String, List<String>>();
 
       private static readonly IReadOnlyCollection<String> EMPTY_COLLECTION = (new List<string>()).AsReadOnly();
 
@@ -157,7 +157,6 @@ namespace VLEDCONTROL
       public void RemoveMapping(String aircraft, int id)
       {
          MappingEntry entry;
-
          Tuple<String, int> mapid = new Tuple<String, int>(aircraft, id);
          if (MapNameEntries.TryGetValue(mapid, out entry))
          {
