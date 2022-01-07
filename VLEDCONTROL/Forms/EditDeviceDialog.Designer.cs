@@ -139,6 +139,7 @@
             "0194 VPC Throttle MT-50 CM3",
             "8194 VPC Throttle MT-50 CM3",
             "00CC VPC Stick WarBRD",
+            "40CC VPC Stick WarBRD",
             "40D0 VPC Stick WarBRD"});
          this.comboBoxDevice.Location = new System.Drawing.Point(129, 14);
          this.comboBoxDevice.Name = "comboBoxDevice";
