@@ -262,6 +262,8 @@ namespace VLEDCONTROL
             this.buttonColor1.BackColor = LedColor.GRAY.ToSystemColor();
             this.buttonColor2.BackColor = LedColor.GRAY.ToSystemColor();
             //
+            this.checkBoxEnabled.Checked = true;
+            //
             this.textBoxDescription.Text = "";
          }
 
@@ -592,7 +594,10 @@ namespace VLEDCONTROL
 
       private void checkBoxEnabled_CheckedChanged(object sender, EventArgs e)
       {
-         Event.Enabled = checkBoxEnabled.Checked;
+         if(Event != null)
+         {
+            Event.Enabled = checkBoxEnabled.Checked;
+         }
       }
    }
 }
