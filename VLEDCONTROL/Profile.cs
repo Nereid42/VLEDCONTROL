@@ -67,12 +67,25 @@ namespace VLEDCONTROL
          }
       }
 
+
+      private static string ConvertOldFormat(string json)
+      {
+         string result = json.Replace("\"red\"", "\"Red\"");
+         result = result.Replace("\"blue\"", "\"Blue\"");
+         result = result.Replace("\"green\"", "\"Green\"");
+         return result;
+      }
+
       public static Profile Load(String filename)
       {
          LogDebug("Loading profile "+filename);
          try
          {
             String json = File.ReadAllText(filename);
+            //
+            json = ConvertOldFormat(json);
+            //
+
             Profile profile = JsonSerializer.Deserialize<Profile>(json);
 
             foreach (MappingEntry entry in profile.MappingEntries)
@@ -108,6 +121,7 @@ namespace VLEDCONTROL
             throw e;
          }
       }
+
 
       public void Save()
       {
