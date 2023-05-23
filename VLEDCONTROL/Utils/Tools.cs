@@ -172,7 +172,7 @@ namespace VLEDCONTROL
             }
             catch
             {
-               Loggable.LogError("failed to delete file '"+path+"'");
+               Loggable.LogWarning("failed to delete file '"+path+"'");
             }
          }
       }
@@ -189,7 +189,7 @@ namespace VLEDCONTROL
             }
             catch
             {
-               Loggable.LogError("failed to delete folder '" + path + "'");
+               Loggable.LogWarning("failed to delete folder '" + path + "'");
             }
          }
       }
@@ -265,30 +265,20 @@ namespace VLEDCONTROL
          File.Move(tempFile, exportfile);
       }
 
-      internal static void InstallDcsScripts(string dcsBasePath, bool useHook)
+      internal static void InstallDcsScripts(string dcsBasePath)
       {
          try
          {
-            Loggable.LogInfo("Installing DCS scripts (use hooks=" + useHook + ")");
+            Loggable.LogInfo("Installing DCS scripts");
             //
             MakeDir(dcsBasePath + "/Scripts");
             MakeDir(dcsBasePath + "/Scripts/vled");
             System.IO.File.Copy("Scripts/vled/VledExport.lua", dcsBasePath + "/Scripts/vled/VledExport.lua", true);
             //
-            // Hooks or direkt Export?
-            if (useHook)
-            {
-               // hooks (no multiplayer support)
-               UninstallDcsExportScript(dcsBasePath);
-               MakeDir(dcsBasePath + "/Scripts/Hooks");
-               System.IO.File.Copy("Scripts/Hooks/VledExportHook.lua", dcsBasePath + "/Scripts/Hooks/VledExportHook.lua", true);
-            }
-            else
-            {
-               // direct export (multiplayer support)
-               RemoveObsoleteDcsScripts(dcsBasePath);
-               InstallDcsExportScript(dcsBasePath);
-            }
+            UninstallDcsExportScript(dcsBasePath);
+            RemoveObsoleteDcsScripts(dcsBasePath);
+            MakeDir(dcsBasePath + "/Scripts/Hooks");
+            System.IO.File.Copy("Scripts/Hooks/VledExportHook.lua", dcsBasePath + "/Scripts/Hooks/VledExportHook.lua", true);
          }
          catch(Exception e)
          {
@@ -430,6 +420,42 @@ namespace VLEDCONTROL
          to.ImportMapping(from);
       }
 
+      public static string ReadFirstLineFromFile(string pathToFile)
+      {
+         try
+         {
+            using (StreamReader file = new StreamReader(pathToFile))
+            {
+               string line = file.ReadLine();
+               if( line != null)
+               {
+                  return line.TrimEnd('\r', '\n', ' ');
+               }
+               return "";
+            }
+         }
+         catch
+         {
+            Loggable.LogWarning("cannot read from file '" + pathToFile + "'");
+            return "";
+         }
+      }
+
+      public static void WriteLineToFile(string pathToFile, String line)
+      {
+         try
+         {
+            using (StreamWriter file = new StreamWriter(pathToFile))
+            {
+               file.WriteLine(line);
+            }
+         }
+         catch
+         {
+            Loggable.LogWarning("cannot write to file '"+ pathToFile + "'");
+         }
+      }
+
 
       public static void CopyDefaultProfileMapping()
       {
@@ -459,7 +485,14 @@ namespace VLEDCONTROL
          {
             Loggable.LogException("failed to copy default mappings", e);
          }
+      }
 
+      public static string[] SafeSplit(string s, char c)
+      {
+         if (s == null) return new string[] { "", "" };
+         string[] result = s.Split(c);
+         if (result.Length < 2 ) return new string[] { result[0], "" };
+         return result;
       }
    }
 }

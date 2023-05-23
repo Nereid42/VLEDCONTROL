@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Diagnostics;
+using System.Linq.Expressions;
 
 namespace VLEDCONTROL
 {
@@ -58,6 +59,8 @@ namespace VLEDCONTROL
          try
          {
             Version = System.IO.File.ReadAllText("version");
+            Version = Version.TrimEnd('\r', '\n', ' ');
+            Loggable.LogInfo("Version loaded: '"+Version+"'");
          }
          catch
          {
@@ -67,6 +70,8 @@ namespace VLEDCONTROL
 
       private static void EnvironmentSetup()
       {
+         Loggable.LogInfo("setting up environment...");
+
          // Create Settings if not present
          Settings defaultSettings = new Settings();
          if ( ! Settings.FileExists() )
@@ -83,6 +88,21 @@ namespace VLEDCONTROL
 
             defaultSettings.Save();
          }
+
+         // check version of last execution
+         string lastVersionFile = "last.version";
+         string lastVersion = Tools.ReadFirstLineFromFile(lastVersionFile);
+         Loggable.LogInfo("last executed version was '" + Version + "'");
+         // Comparer versions without build numbers
+         string cmpCurrentVersion = Tools.SafeSplit(Version, '-')[0] ;
+         string cmpLastVersion = Tools.SafeSplit(lastVersion, '-')[0] ;
+         if (!cmpLastVersion.Equals(cmpCurrentVersion) )
+         {
+            Loggable.LogInfo("not recent last executed version, forcing setup of hooks");
+            IsFirstRun = true;
+            Loggable.LogInfo("writing version '" + Version + "' to file '"+lastVersionFile+"'");
+            Tools.WriteLineToFile(lastVersionFile, Version);
+         }
       }
 
       public static void ShowInstallScriptsDialog(bool isFirstInstallation)
@@ -97,7 +117,7 @@ namespace VLEDCONTROL
          {
             try
             {
-               Tools.InstallDcsScripts(dialog.BasePath, dialog.UseHooks);
+               Tools.InstallDcsScripts(dialog.BasePath);
             }
             catch
             {

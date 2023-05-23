@@ -35,7 +35,6 @@
          this.buttonSkip = new System.Windows.Forms.Button();
          this.labelExplanation = new System.Windows.Forms.Label();
          this.textBoxFirstInstallWarning = new System.Windows.Forms.TextBox();
-         this.checkBoxDirectExport = new System.Windows.Forms.CheckBox();
          this.SuspendLayout();
          // 
          // label1
@@ -114,12 +113,12 @@
          this.textBoxFirstInstallWarning.Cursor = System.Windows.Forms.Cursors.No;
          this.textBoxFirstInstallWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
          this.textBoxFirstInstallWarning.ForeColor = System.Drawing.Color.Red;
-         this.textBoxFirstInstallWarning.Location = new System.Drawing.Point(20, 184);
+         this.textBoxFirstInstallWarning.Location = new System.Drawing.Point(17, 151);
          this.textBoxFirstInstallWarning.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
          this.textBoxFirstInstallWarning.Multiline = true;
          this.textBoxFirstInstallWarning.Name = "textBoxFirstInstallWarning";
          this.textBoxFirstInstallWarning.ReadOnly = true;
-         this.textBoxFirstInstallWarning.Size = new System.Drawing.Size(748, 38);
+         this.textBoxFirstInstallWarning.Size = new System.Drawing.Size(754, 38);
          this.textBoxFirstInstallWarning.TabIndex = 7;
          this.textBoxFirstInstallWarning.TabStop = false;
          this.textBoxFirstInstallWarning.Text = "This is the first execution of VLEDCONTROL. If you skip this installation, VLEDCO" +
@@ -127,28 +126,12 @@
     "\n";
          this.textBoxFirstInstallWarning.Visible = false;
          // 
-         // checkBoxDirectExport
-         // 
-         this.checkBoxDirectExport.AutoSize = true;
-         this.checkBoxDirectExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.checkBoxDirectExport.ForeColor = System.Drawing.SystemColors.Highlight;
-         this.checkBoxDirectExport.Location = new System.Drawing.Point(20, 150);
-         this.checkBoxDirectExport.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
-         this.checkBoxDirectExport.Name = "checkBoxDirectExport";
-         this.checkBoxDirectExport.Size = new System.Drawing.Size(564, 17);
-         this.checkBoxDirectExport.TabIndex = 8;
-         this.checkBoxDirectExport.Text = "Use multiplayer support (this may not work with other plugins or render other plu" +
-    "gins unusable!)";
-         this.checkBoxDirectExport.UseVisualStyleBackColor = true;
-         this.checkBoxDirectExport.CheckedChanged += new System.EventHandler(this.checkBoxDirectExport_CheckedChanged);
-         // 
          // InstallScriptsDialog
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(788, 224);
+         this.ClientSize = new System.Drawing.Size(788, 195);
          this.ControlBox = false;
-         this.Controls.Add(this.checkBoxDirectExport);
          this.Controls.Add(this.textBoxFirstInstallWarning);
          this.Controls.Add(this.labelExplanation);
          this.Controls.Add(this.buttonSkip);
@@ -180,6 +163,5 @@
       private System.Windows.Forms.Button buttonSkip;
       private System.Windows.Forms.Label labelExplanation;
       internal System.Windows.Forms.TextBox textBoxFirstInstallWarning;
-      private System.Windows.Forms.CheckBox checkBoxDirectExport;
    }
 }
